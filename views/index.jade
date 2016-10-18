@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  .body
+    #content
+    script(src='http://lib.sinaapp.com/js/jquery/3.1.0/jquery-3.1.0.min.js')
+    script(src='http://127.0.0.1:#{sourcePort}/output/external/react.min.js')
+    script(src='http://127.0.0.1:#{sourcePort}/output/external/react-dom.min.js')
+    script(src='http://127.0.0.1:#{sourcePort}/output/external/redux.min.js')
+    script(src='http://127.0.0.1:#{sourcePort}/output/js/#{page}.bundle.js')
