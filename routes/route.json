@@ -1,10 +1,7 @@
 [
   {
-    "name": "index",
-    "src": "./public/javascripts/index.jsx"
-  },
-  {
-    "name": "user",
-    "src": "./public/javascripts/user.jsx"
+    "name": "video",
+    "src": "./src/single_pages/videoCenter"
   }
+
 ]

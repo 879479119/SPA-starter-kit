@@ -15,7 +15,7 @@ pages.forEach(function(item,index){
 var DevConfig = {
 	output : {
 		publicPath: "http://127.0.0.1:"+globalConfig.dev.sourcePort+"/output/js/",
-		path : __dirname + '/output/js/',
+		path : __dirname + '/output/js',
 		filename : '[name].bundle.js',
 		libraryTarget: "umd",
 		library: "jquery.min.js"
@@ -25,7 +25,8 @@ var DevConfig = {
       progress: true,
 			//好像想要在手机上访问的话这里需要改成 0.0.0.0
       host: '127.0.0.1',
-			port: globalConfig.dev.sourcePort
+			port: globalConfig.dev.sourcePort,
+			contentBase: 'output/'
   },
 	// 插件项
 	plugins : [
@@ -86,6 +87,7 @@ var config = {
 	],
 };
 
+//进入开发者模式
 if(__DEV__){
 	var prop;
 	for(prop in DevConfig){
@@ -96,5 +98,7 @@ if(__DEV__){
 		err && console.error(err,new Date());
 	});
 }
+
+console.log(config);
 
 module.exports = config;
