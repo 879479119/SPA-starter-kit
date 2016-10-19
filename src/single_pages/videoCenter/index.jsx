@@ -14,7 +14,6 @@ import './main.less';
 class Init extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {

@@ -9,7 +9,11 @@ var pages = JSON.parse(fs.readFileSync('routes/route.json', 'utf-8'));
 var entryObj = {};
 
 pages.forEach(function(item,index){
-	entryObj[item.name] = __DEV__ ? [item.src,'webpack-dev-server/client?http://127.0.0.1:'+globalConfig.dev.sourcePort] : item.src;
+	entryObj[item.name] = __DEV__ ? [
+		item.src,
+		'webpack/hot/dev-server',
+		'webpack-dev-server/client?http://127.0.0.1:'+globalConfig.dev.sourcePort
+	] : item.src;
 })
 
 var DevConfig = {
