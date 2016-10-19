@@ -2,6 +2,13 @@
   {
     "name": "video",
     "src": "./src/single_pages/videoCenter"
+  },
+  {
+    "name": "music",
+    "src": "./src/single_pages/musicCenter"
+  },
+  {
+    "name": "data",
+    "src": "./src/single_pages/dataCenter"
   }
-
 ]

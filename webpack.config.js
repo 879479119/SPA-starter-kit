@@ -20,17 +20,17 @@ var DevConfig = {
 	output : {
 		publicPath: "http://127.0.0.1:"+globalConfig.dev.sourcePort+"/output/js/",
 		path : __dirname + '/output/js',
-		filename : '[name].bundle.js',
-		libraryTarget: "umd",
-		library: "jquery.min.js"
+		filename : '[name].bundle.js'
 	},
 	devServer: {
       inline: true,
       progress: true,
+			color: true,
 			//好像想要在手机上访问的话这里需要改成 0.0.0.0
       host: '127.0.0.1',
 			port: globalConfig.dev.sourcePort,
-			contentBase: 'output/'
+			contentBase: 'output/',
+			outputPublicPath: 'output/'
   },
 	// 插件项
 	plugins : [
@@ -61,23 +61,26 @@ var config = {
 	module: {
 		// 加载器配置
 		loaders: [
-			{
-				test: /\.jsx$/,
+			{	test: /\.jsx$/,
 				exclude: /node_modules/,
 				loader: 'babel'
 				//很奇怪，不需要进行query配置或者是.babelrc文件，用了会报错
 			},
-			{
-				test: /\.css$/,
+			{	test: /\.css$/,
 				exclude: /node_modules/,
-				loader: 'style-loader!css-loader'
+				loader: 'style!css'
 			},
-			{ test: /\.less$/, loader: 'less' },
+			{ test: /\.less$/,
+				loader: 'style!css!less'
+			},
+			{ test: /\.(png|jpg)$/,
+      	loader: 'url?limit=5000'
+			}
 		]
 	},
 	// 其他解决方案配置
 	resolve: {
-		extensions: ['', '.js', '.jsx', '.css', '.json']
+		extensions: ['', '.js', '.jsx', '.css', '.json', 'less']
 	},
 
 	externals: {
@@ -98,9 +101,9 @@ if(__DEV__){
 		config[prop] = DevConfig[prop]
 	}
 	//启动后台nodejs服务器
-	exec('npm start',function(err,another_process){
-		err && console.error(err,new Date());
-	});
+	// exec('npm start',function(err,another_process){
+	// 	err && console.error(err,new Date());
+	// });
 }
 
 console.log(config);
