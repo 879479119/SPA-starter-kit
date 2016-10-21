@@ -63,8 +63,11 @@ var config = {
 		loaders: [
 			{	test: /\.jsx$/,
 				exclude: /node_modules/,
-				loader: 'babel'
+				loader: 'babel',
 				//很奇怪，不需要进行query配置或者是.babelrc文件，用了会报错
+				query: {
+					presets: ["react",'es2015','stage-0']
+				}
 			},
 			{	test: /\.css$/,
 				exclude: /node_modules/,
