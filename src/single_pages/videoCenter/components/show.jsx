@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {handleChange} from '../actions'
+import { Router, Route, Link, hashHistory, IndexRoute, Redirect,IndexLink} from 'react-router';
 
 
 class Show extends Component {
@@ -16,8 +17,11 @@ class Show extends Component {
     const {a} = this.props
     return (
       <div>
-        <a href="javascript:;" onClick={this._click.bind(this)}>CLICK</a>
+        <a href="javascript:;" onClick={this._click.bind(this)} className="asdasd">CLICK</a>
+        <Link to="/main">asdasd</Link>
         <p>This is {a} ----</p>
+
+        {this.props.children}
       </div>
     )
   }

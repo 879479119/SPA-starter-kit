@@ -42,7 +42,7 @@ class Page extends Component {
 }
 
 // 配置路由，并将路由注入到id为init的DOM元素中
-ReactDOM.render((
+RouterConfig.render((
     <Router history={hashHistory} >
         <Route path="/" component={Init}>
             <IndexRoute component={Page}/>
