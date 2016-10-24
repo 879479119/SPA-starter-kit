@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {handleChange} from '../../actions'
+import { handleChange, changeRoute} from '../../actions'
+
 import { Router, Route, Link, hashHistory, IndexRoute, Redirect,IndexLink} from 'react-router';
 import './main.less'
 import MainSider from './sub-lists/main'
@@ -13,8 +14,15 @@ class Frame extends Component {
         const {handleChange} = this.props
         handleChange(22222)
     }
+    componentWillMount(){
+        //when paste the url in location bar
+        const {changeRoute} = this.props
+        let result = window.location.hash.match(/#\/(.*)\/(.*)\?/)
+        changeRoute(result)
+    }
     render(){
-        const {a, children} = this.props
+        const {a, children, route} = this.props
+        const level1 = ( route && route.length) > 1 ? route[1] : "main"
         return (
             <div className="container-fluid frame">
                 <nav className="navbar navbar-default navbar-fixed-top">
@@ -25,11 +33,11 @@ class Frame extends Component {
                     </div>
                     <div className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
-                            <li className="active"><Link to={"/main"}>main</Link></li>
-                            <li><Link to={"/live"}>live</Link></li>
-                            <li ><Link to={"/field"}>field</Link></li>
-                            <li ><Link to={"/watch"}>watch</Link></li>
-                            <li ><Link to={"/personal"}>personal</Link></li>
+                            <li className={level1 == "main" ? "active" : ""}><Link to={"/main"}>main</Link></li>
+                            <li className={level1 == "live" ? "active" : ""}><Link to={"/live"}>live</Link></li>
+                            <li className={level1 == "field" ? "active" : ""}><Link to={"/field"}>field</Link></li>
+                            <li className={level1 == "watch" ? "active" : ""}><Link to={"/watch"}>watch</Link></li>
+                            <li className={level1 == "personal" ? "active" : ""}><Link to={"/personal"}>personal</Link></li>
                         </ul>
 
                         <form action="#" className="navbar-form navbar-right">
@@ -61,9 +69,11 @@ class Frame extends Component {
 }
 
 const maps2p = (state) => ({
-    a: state.common.a
+    a: state.common.a,
+    route: state.common.route
 })
 
 export default connect(maps2p,{
-    handleChange
+    handleChange,
+    changeRoute
 })(Frame)

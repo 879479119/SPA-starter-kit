@@ -8,11 +8,12 @@ class Show extends Component {
   constructor(props) {
     super(props)
   }
+
   _click(){
     const {handleChange} = this.props
-
     handleChange(22222)
   }
+
   render(){
     const {a} = this.props
     return (

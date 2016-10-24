@@ -8,3 +8,14 @@ export const handleChange = (color) => {
     })
   }
 }
+
+export const CHANGE_ROUTE = 'CHANGE_ROUTE'
+
+export const changeRoute = (routeArr) => {
+  return (dispatch) => {
+    dispatch({
+      type: CHANGE_ROUTE,
+      routeArr
+    })
+  }
+}
