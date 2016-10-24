@@ -28867,7 +28867,7 @@
 
 	var _frame2 = _interopRequireDefault(_frame);
 
-	var _main = __webpack_require__(267);
+	var _main = __webpack_require__(269);
 
 	var _main2 = _interopRequireDefault(_main);
 
@@ -28931,7 +28931,7 @@
 
 	var _reactRouter = __webpack_require__(1);
 
-	__webpack_require__(268);
+	__webpack_require__(267);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29029,6 +29029,20 @@
 	                                    'personal'
 	                                )
 	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'form',
+	                            { action: '#', className: 'navbar-form navbar-right' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'form-group' },
+	                                _react2.default.createElement('input', { type: 'text', name: 'search', id: 'search', className: 'form-control', placeholder: 'Search whole site' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'submit', className: 'btn btn-default btn-search' },
+	                                _react2.default.createElement('span', { className: 'glyphicon glyphicon-search' })
+	                            )
 	                        )
 	                    )
 	                ),
@@ -29055,7 +29069,8 @@
 	                                            { to: "/main", className: '' },
 	                                            _react2.default.createElement('img', {
 	                                                src: 'http://i0.hdslb.com/bfs/face/663cc07db67f40ac79b51f15a1cff5f5cf3b5545.jpg@75Q.webp',
-	                                                alt: 'face' })
+	                                                alt: 'face',
+	                                                className: 'user-face' })
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'h4',
@@ -29069,8 +29084,13 @@
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'blockquote',
-	                                            null,
-	                                            'Tech Otaku Save World'
+	                                            { className: 'p-sign' },
+	                                            'My name is unbilieveable',
+	                                            _react2.default.createElement(
+	                                                'small',
+	                                                null,
+	                                                'Tech Otaku Save World'
+	                                            )
 	                                        )
 	                                    )
 	                                ),
@@ -29098,7 +29118,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'col-lg-9' },
+	                            { className: 'col-lg-9 content-body' },
 	                            _react2.default.createElement(
 	                                'h1',
 	                                null,
@@ -29109,6 +29129,20 @@
 	                                'a',
 	                                { href: 'javascript:;', onClick: this._click.bind(this), className: 'asdasd' },
 	                                'CLICK'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'footer',
+	                        { className: 'footer' },
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'copyright@RockSAMA- ',
+	                            _react2.default.createElement(
+	                                'ins',
+	                                null,
+	                                ' 767444690@qq.com'
 	                            )
 	                        )
 	                    )
@@ -29132,6 +29166,39 @@
 
 /***/ },
 /* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(268);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(84)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/less-loader/index.js!./main.less", function() {
+				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/less-loader/index.js!./main.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(83)();
+	exports.push([module.id, ".frame {\n  padding-left: 0;\n}\n.frame .btn-search {\n  margin: 0 10px;\n}\n.main-body {\n  margin-top: 50px;\n  padding: 0 0;\n}\n.main-body .user-face {\n  margin-top: 20px;\n}\n.main-body .p-sign {\n  margin-left: 40px;\n  text-align: left;\n}\n.main-body .content-body {\n  min-height: 620px;\n}\n.main-body .footer {\n  text-align: center;\n  color: darkgray;\n}\n", ""]);
+
+/***/ },
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29218,39 +29285,6 @@
 	exports.default = (0, _reactRedux.connect)(maps2p, {
 		handleChange: _actions.handleChange
 	})(Main);
-
-/***/ },
-/* 268 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(269);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(84)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/less-loader/index.js!./main.less", function() {
-				var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/less-loader/index.js!./main.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 269 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(83)();
-	exports.push([module.id, ".frame {\n  padding-left: 0;\n}\n.main-body {\n  margin-top: 50px;\n  padding: 0 0;\n}\n", ""]);
 
 /***/ }
 /******/ ]);

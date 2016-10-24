@@ -30,6 +30,14 @@ class Frame extends Component {
                             <li ><Link to={"/watch"}>watch</Link></li>
                             <li ><Link to={"/personal"}>personal</Link></li>
                         </ul>
+
+                        <form action="#" className="navbar-form navbar-right">
+                            <div className="form-group">
+                                <input type="text" name="search" id="search" className="form-control" placeholder="Search whole site"/>
+                            </div>
+                            <button type="submit" className="btn btn-default btn-search"><span className="glyphicon glyphicon-search">
+                            </span></button>
+                        </form>
                     </div>
                 </nav>
                 <div className="container-fluid main-body">
@@ -41,13 +49,12 @@ class Frame extends Component {
                                         <Link to={"/main"} className="">
                                             <img
                                                 src="http://i0.hdslb.com/bfs/face/663cc07db67f40ac79b51f15a1cff5f5cf3b5545.jpg@75Q.webp"
-                                                alt="face"/>
+                                                alt="face"
+                                                className="user-face"/>
 
                                         </Link>
                                         <h4>Name: <small>RockSAMA</small></h4>
-                                        <blockquote>
-                                            Tech Otaku Save World
-                                        </blockquote>
+                                        <blockquote className="p-sign">My name is unbilieveable<small>Tech Otaku Save World</small></blockquote>
                                     </div>
                                 </li>
                                 <Link className="list-group-item active text-center" to={"/main"}>index</Link>
@@ -56,12 +63,15 @@ class Frame extends Component {
                                 <Link className="list-group-item text-center" to={"/main"}>index</Link>
                             </div>
                         </div>
-                        <div className="col-lg-9">
+                        <div className="col-lg-9 content-body">
                             <h1>Building...</h1>
                             {this.props.children}
                             <a href="javascript:;" onClick={this._click.bind(this)} className="asdasd">CLICK</a>
                         </div>
                     </div>
+                    <footer className="footer">
+                        <p>copyright@RockSAMA- <ins> 767444690@qq.com</ins></p>
+                    </footer>
                 </div>
             </div>
         )
