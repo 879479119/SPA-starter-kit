@@ -28871,6 +28871,18 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
+	var _rank = __webpack_require__(272);
+
+	var _rank2 = _interopRequireDefault(_rank);
+
+	var _fun = __webpack_require__(273);
+
+	var _fun2 = _interopRequireDefault(_fun);
+
+	var _animation = __webpack_require__(274);
+
+	var _animation2 = _interopRequireDefault(_animation);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28878,6 +28890,11 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//noinspection JSUnresolvedVariable
+
+
+	// import MainHome from './containers/main/home'
+
 
 	//关于react-router路由的配置
 	var RouterConfig = function (_Component) {
@@ -28898,7 +28915,15 @@
 					_react2.default.createElement(
 						_reactRouter.Route,
 						{ path: '/', component: _frame2.default },
-						_react2.default.createElement(_reactRouter.Route, { path: '/main', components: _main2.default })
+						_react2.default.createElement(_reactRouter.IndexRoute, { component: _main2.default }),
+						_react2.default.createElement(
+							_reactRouter.Route,
+							{ path: '/main' },
+							_react2.default.createElement(_reactRouter.IndexRoute, { components: _main2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: "ranks", components: _rank2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: "fun", components: _fun2.default }),
+							_react2.default.createElement(_reactRouter.Route, { path: "animation", components: _animation2.default })
+						)
 					)
 				);
 			}
@@ -28933,6 +28958,10 @@
 
 	__webpack_require__(267);
 
+	var _main = __webpack_require__(270);
+
+	var _main2 = _interopRequireDefault(_main);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28960,7 +28989,9 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var a = this.props.a;
+	            var _props = this.props;
+	            var a = _props.a;
+	            var children = _props.children;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -29055,81 +29086,12 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'col-lg-3' },
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'list-group' },
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    { className: 'list-group-item' },
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'row text-center' },
-	                                        _react2.default.createElement(
-	                                            _reactRouter.Link,
-	                                            { to: "/main", className: '' },
-	                                            _react2.default.createElement('img', {
-	                                                src: 'http://i0.hdslb.com/bfs/face/663cc07db67f40ac79b51f15a1cff5f5cf3b5545.jpg@75Q.webp',
-	                                                alt: 'face',
-	                                                className: 'user-face' })
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            'h4',
-	                                            null,
-	                                            'Name: ',
-	                                            _react2.default.createElement(
-	                                                'small',
-	                                                null,
-	                                                'RockSAMA'
-	                                            )
-	                                        ),
-	                                        _react2.default.createElement(
-	                                            'blockquote',
-	                                            { className: 'p-sign' },
-	                                            'My name is unbilieveable',
-	                                            _react2.default.createElement(
-	                                                'small',
-	                                                null,
-	                                                'Tech Otaku Save World'
-	                                            )
-	                                        )
-	                                    )
-	                                ),
-	                                _react2.default.createElement(
-	                                    _reactRouter.Link,
-	                                    { className: 'list-group-item active text-center', to: "/main" },
-	                                    'index'
-	                                ),
-	                                _react2.default.createElement(
-	                                    _reactRouter.Link,
-	                                    { className: 'list-group-item text-center', to: "/main" },
-	                                    'index'
-	                                ),
-	                                _react2.default.createElement(
-	                                    _reactRouter.Link,
-	                                    { className: 'list-group-item text-center', to: "/main" },
-	                                    'index'
-	                                ),
-	                                _react2.default.createElement(
-	                                    _reactRouter.Link,
-	                                    { className: 'list-group-item text-center', to: "/main" },
-	                                    'index'
-	                                )
-	                            )
+	                            _react2.default.createElement(_main2.default, null)
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'col-lg-9 content-body' },
-	                            _react2.default.createElement(
-	                                'h1',
-	                                null,
-	                                'Building...'
-	                            ),
-	                            this.props.children,
-	                            _react2.default.createElement(
-	                                'a',
-	                                { href: 'javascript:;', onClick: this._click.bind(this), className: 'asdasd' },
-	                                'CLICK'
-	                            )
+	                            children
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -29226,6 +29188,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//noinspection JSUnresolvedVariable
+
 
 	var Main = function (_Component) {
 		_inherits(Main, _Component);
@@ -29253,8 +29217,388 @@
 					null,
 					_react2.default.createElement(
 						'a',
-						{ href: 'javascript:;', onClick: this._click.bind(this), className: 'asdasd' },
-						'CLICK'
+						{ href: 'javascript:;', onClick: this._click.bind(this), className: '2eqwe' },
+						'This is Index'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/main' },
+						'asdasd'
+					),
+					_react2.default.createElement(
+						'p',
+						null,
+						'This is ',
+						a,
+						' ----'
+					),
+					this.props.children
+				);
+			}
+		}]);
+
+		return Main;
+	}(_react.Component);
+
+	var maps2p = function maps2p(state) {
+		return {
+			a: state.common.a
+		};
+	};
+
+	exports.default = (0, _reactRedux.connect)(maps2p, {
+		handleChange: _actions.handleChange
+	})(Main);
+
+/***/ },
+/* 270 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(1);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Sider = function (_Component) {
+		_inherits(Sider, _Component);
+
+		function Sider() {
+			_classCallCheck(this, Sider);
+
+			return _possibleConstructorReturn(this, (Sider.__proto__ || Object.getPrototypeOf(Sider)).apply(this, arguments));
+		}
+
+		_createClass(Sider, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'list-group' },
+					_react2.default.createElement(
+						'li',
+						{ className: 'list-group-item' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'row text-center' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: "/main", className: '' },
+								_react2.default.createElement('img', {
+									src: 'http://i0.hdslb.com/bfs/face/663cc07db67f40ac79b51f15a1cff5f5cf3b5545.jpg@75Q.webp',
+									alt: 'face',
+									className: 'user-face' })
+							),
+							_react2.default.createElement(
+								'h4',
+								null,
+								'Name: ',
+								_react2.default.createElement(
+									'small',
+									null,
+									'RockSAMA'
+								)
+							),
+							_react2.default.createElement(
+								'blockquote',
+								{ className: 'p-sign' },
+								'My name is unbilieveable',
+								_react2.default.createElement(
+									'small',
+									null,
+									'Tech Otaku Save World'
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item active text-center', to: "/main/" },
+						'HomePage'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item text-center', to: "/main/ranks" },
+						'Ranks'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item text-center', to: "/main/fun" },
+						'Fun Thins'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item text-center', to: "/main/animation" },
+						'Animations'
+					)
+				);
+			}
+		}]);
+
+		return Sider;
+	}(_react.Component);
+
+	exports.default = Sider;
+
+/***/ },
+/* 271 */,
+/* 272 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(225);
+
+	var _actions = __webpack_require__(256);
+
+	var _reactRouter = __webpack_require__(1);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//noinspection JSUnresolvedVariable
+
+
+	var Main = function (_Component) {
+		_inherits(Main, _Component);
+
+		function Main(props) {
+			_classCallCheck(this, Main);
+
+			return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+		}
+
+		_createClass(Main, [{
+			key: '_click',
+			value: function _click() {
+				var handleChange = this.props.handleChange;
+
+				handleChange(22222);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var a = this.props.a;
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ href: 'javascript:;', onClick: this._click.bind(this), className: '2eqwe' },
+						'This is RAnk'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/main' },
+						'asdasd'
+					),
+					_react2.default.createElement(
+						'p',
+						null,
+						'This is ',
+						a,
+						' ----'
+					),
+					this.props.children
+				);
+			}
+		}]);
+
+		return Main;
+	}(_react.Component);
+
+	var maps2p = function maps2p(state) {
+		return {
+			a: state.common.a
+		};
+	};
+
+	exports.default = (0, _reactRedux.connect)(maps2p, {
+		handleChange: _actions.handleChange
+	})(Main);
+
+/***/ },
+/* 273 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(225);
+
+	var _actions = __webpack_require__(256);
+
+	var _reactRouter = __webpack_require__(1);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//noinspection JSUnresolvedVariable
+
+
+	var Main = function (_Component) {
+		_inherits(Main, _Component);
+
+		function Main(props) {
+			_classCallCheck(this, Main);
+
+			return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+		}
+
+		_createClass(Main, [{
+			key: '_click',
+			value: function _click() {
+				var handleChange = this.props.handleChange;
+
+				handleChange(22222);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var a = this.props.a;
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ href: 'javascript:;', onClick: this._click.bind(this), className: '2eqwe' },
+						'This is Fun'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/main' },
+						'asdasd'
+					),
+					_react2.default.createElement(
+						'p',
+						null,
+						'This is ',
+						a,
+						' ----'
+					),
+					this.props.children
+				);
+			}
+		}]);
+
+		return Main;
+	}(_react.Component);
+
+	var maps2p = function maps2p(state) {
+		return {
+			a: state.common.a
+		};
+	};
+
+	exports.default = (0, _reactRedux.connect)(maps2p, {
+		handleChange: _actions.handleChange
+	})(Main);
+
+/***/ },
+/* 274 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(225);
+
+	var _actions = __webpack_require__(256);
+
+	var _reactRouter = __webpack_require__(1);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//noinspection JSUnresolvedVariable
+
+
+	var Main = function (_Component) {
+		_inherits(Main, _Component);
+
+		function Main(props) {
+			_classCallCheck(this, Main);
+
+			return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+		}
+
+		_createClass(Main, [{
+			key: '_click',
+			value: function _click() {
+				var handleChange = this.props.handleChange;
+
+				handleChange(22222);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var a = this.props.a;
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'a',
+						{ href: 'javascript:;', onClick: this._click.bind(this), className: '2eqwe' },
+						'This is Animation'
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,

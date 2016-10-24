@@ -17,7 +17,7 @@ class Main extends Component {
 		const {a} = this.props
 		return (
 			<div>
-				<a href="javascript:;" onClick={this._click.bind(this)} className="2eqwe">This is Index</a>
+				<a href="javascript:;" onClick={this._click.bind(this)} className="2eqwe">This is Fun</a>
 				<Link to="/main">asdasd</Link>
 				<p>This is {a} ----</p>
 				{this.props.children}
