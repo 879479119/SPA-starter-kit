@@ -64,7 +64,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _config = __webpack_require__(265);
+	var _config = __webpack_require__(267);
 
 	var _config2 = _interopRequireDefault(_config);
 
@@ -27828,7 +27828,7 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _reduxLogger = __webpack_require__(259);
+	var _reduxLogger = __webpack_require__(261);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
@@ -27887,10 +27887,15 @@
 
 	var _common2 = _interopRequireDefault(_common);
 
+	var _fun = __webpack_require__(260);
+
+	var _fun2 = _interopRequireDefault(_fun);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = (0, _redux.combineReducers)({
-	  common: _common2.default
+	  common: _common2.default,
+	  fun: _fun2.default
 	});
 
 /***/ },
@@ -27910,13 +27915,15 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var common = function common() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { a: 111111 };
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { a: 111111, route: [] };
 		var action = arguments[1];
 
 		console.log(action);
 		switch (action.type) {
 			case Action.CHANGE:
 				return Object.assign({}, state, { a: action.color });
+			case Action.CHANGE_ROUTE:
+				return Object.assign({}, state, { route: action.routeArr });
 			default:
 				return state;
 		}
@@ -27978,24 +27985,95 @@
 	  };
 	};
 
+	var CHANGE_ROUTE = exports.CHANGE_ROUTE = 'CHANGE_ROUTE';
+
+	var changeRoute = exports.changeRoute = function changeRoute(routeArr) {
+	  return function (dispatch) {
+	    dispatch({
+	      type: CHANGE_ROUTE,
+	      routeArr: routeArr
+	    });
+	  };
+	};
+
 /***/ },
 /* 258 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// export const CHANGE = 'CHANGE'
-	//
-	// export const handleChange = (color) => {
-	// 	return (dispatch) => {
-	// 		dispatch({
-	// 			type: CHANGE,
-	// 			color
-	// 		})
-	// 	}
-	// }
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _fun = __webpack_require__(259);
+
+	Object.keys(_fun).forEach(function (key) {
+	  if (key === "default" || key === "__esModule") return;
+	  Object.defineProperty(exports, key, {
+	    enumerable: true,
+	    get: function get() {
+	      return _fun[key];
+	    }
+	  });
+	});
 
 /***/ },
 /* 259 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var READY = exports.READY = 'READY';
+
+	var FETCH_ERR = exports.FETCH_ERR = 'FETCH_ERR';
+
+	var fetchSuccess = exports.fetchSuccess = function fetchSuccess(data) {
+		return function (dispatch) {
+			dispatch({
+				type: READY,
+				data: data
+			});
+		};
+	};
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(256);
+
+	var Action = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	var fun = function fun() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { fetchData: {} };
+		var action = arguments[1];
+
+		switch (action.type) {
+			case Action.READY:
+				return Object.assign({}, state, { fetchData: action.data });
+			case Action.FETCH_ERR:
+				return Object.assign({}, state);
+			default:
+				return state;
+		}
+	};
+
+	exports.default = fun;
+
+/***/ },
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28006,11 +28084,11 @@
 	  value: true
 	});
 
-	var _core = __webpack_require__(260);
+	var _core = __webpack_require__(262);
 
-	var _helpers = __webpack_require__(261);
+	var _helpers = __webpack_require__(263);
 
-	var _defaults = __webpack_require__(264);
+	var _defaults = __webpack_require__(266);
 
 	var _defaults2 = _interopRequireDefault(_defaults);
 
@@ -28113,7 +28191,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 260 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28123,9 +28201,9 @@
 	});
 	exports.printBuffer = printBuffer;
 
-	var _helpers = __webpack_require__(261);
+	var _helpers = __webpack_require__(263);
 
-	var _diff = __webpack_require__(262);
+	var _diff = __webpack_require__(264);
 
 	var _diff2 = _interopRequireDefault(_diff);
 
@@ -28246,7 +28324,7 @@
 	}
 
 /***/ },
-/* 261 */
+/* 263 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28270,7 +28348,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
-/* 262 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28280,7 +28358,7 @@
 	});
 	exports.default = diffLogger;
 
-	var _deepDiff = __webpack_require__(263);
+	var _deepDiff = __webpack_require__(265);
 
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 
@@ -28366,7 +28444,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -28795,7 +28873,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 264 */
+/* 266 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28846,7 +28924,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 265 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28863,23 +28941,23 @@
 
 	var _reactRouter = __webpack_require__(1);
 
-	var _frame = __webpack_require__(266);
+	var _frame = __webpack_require__(268);
 
 	var _frame2 = _interopRequireDefault(_frame);
 
-	var _main = __webpack_require__(269);
+	var _main = __webpack_require__(272);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _rank = __webpack_require__(272);
+	var _rank = __webpack_require__(273);
 
 	var _rank2 = _interopRequireDefault(_rank);
 
-	var _fun = __webpack_require__(273);
+	var _fun = __webpack_require__(274);
 
 	var _fun2 = _interopRequireDefault(_fun);
 
-	var _animation = __webpack_require__(274);
+	var _animation = __webpack_require__(276);
 
 	var _animation2 = _interopRequireDefault(_animation);
 
@@ -28935,7 +29013,7 @@
 	exports.default = RouterConfig;
 
 /***/ },
-/* 266 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28956,9 +29034,9 @@
 
 	var _reactRouter = __webpack_require__(1);
 
-	__webpack_require__(267);
+	__webpack_require__(269);
 
-	var _main = __webpack_require__(270);
+	var _main = __webpack_require__(271);
 
 	var _main2 = _interopRequireDefault(_main);
 
@@ -28987,12 +29065,23 @@
 	            handleChange(22222);
 	        }
 	    }, {
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            //when paste the url in location bar
+	            var changeRoute = this.props.changeRoute;
+
+	            var result = window.location.hash.match(/#\/(.*)\/(.*)\?/);
+	            changeRoute(result);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _props = this.props;
 	            var a = _props.a;
 	            var children = _props.children;
+	            var route = _props.route;
 
+	            var level1 = (route && route.length) > 1 ? route[1] : "main";
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'container-fluid frame' },
@@ -29017,7 +29106,7 @@
 	                            { className: 'nav navbar-nav' },
 	                            _react2.default.createElement(
 	                                'li',
-	                                { className: 'active' },
+	                                { className: level1 == "main" ? "active" : "" },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
 	                                    { to: "/main" },
@@ -29026,7 +29115,7 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                'li',
-	                                null,
+	                                { className: level1 == "live" ? "active" : "" },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
 	                                    { to: "/live" },
@@ -29035,7 +29124,7 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                'li',
-	                                null,
+	                                { className: level1 == "field" ? "active" : "" },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
 	                                    { to: "/field" },
@@ -29044,7 +29133,7 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                'li',
-	                                null,
+	                                { className: level1 == "watch" ? "active" : "" },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
 	                                    { to: "/watch" },
@@ -29053,7 +29142,7 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                'li',
-	                                null,
+	                                { className: level1 == "personal" ? "active" : "" },
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
 	                                    { to: "/personal" },
@@ -29118,22 +29207,24 @@
 
 	var maps2p = function maps2p(state) {
 	    return {
-	        a: state.common.a
+	        a: state.common.a,
+	        route: state.common.route
 	    };
 	};
 
 	exports.default = (0, _reactRedux.connect)(maps2p, {
-	    handleChange: _actions.handleChange
+	    handleChange: _actions.handleChange,
+	    changeRoute: _actions.changeRoute
 	})(Frame);
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(268);
+	var content = __webpack_require__(270);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(84)(content, {});
@@ -29153,14 +29244,136 @@
 	}
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(83)();
 	exports.push([module.id, ".frame {\n  padding-left: 0;\n}\n.frame .btn-search {\n  margin: 0 10px;\n}\n.main-body {\n  margin-top: 50px;\n  padding: 0 0;\n}\n.main-body .user-face {\n  margin-top: 20px;\n}\n.main-body .p-sign {\n  margin-left: 40px;\n  text-align: left;\n}\n.main-body .content-body {\n  min-height: 620px;\n}\n.main-body .footer {\n  text-align: center;\n  color: darkgray;\n}\n", ""]);
 
 /***/ },
-/* 269 */
+/* 271 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(1);
+
+	var _reactRedux = __webpack_require__(225);
+
+	var _actions = __webpack_require__(256);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Sider = function (_Component) {
+		_inherits(Sider, _Component);
+
+		function Sider(props) {
+			_classCallCheck(this, Sider);
+
+			return _possibleConstructorReturn(this, (Sider.__proto__ || Object.getPrototypeOf(Sider)).call(this, props));
+		}
+
+		_createClass(Sider, [{
+			key: 'render',
+			value: function render() {
+				var route = this.props.route;
+
+				var level2 = (route && route.length) > 2 ? route[2] : "";
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'list-group' },
+					_react2.default.createElement(
+						'li',
+						{ className: 'list-group-item' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'row text-center' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: "/main", className: '' },
+								_react2.default.createElement('img', {
+									src: 'http://i0.hdslb.com/bfs/face/663cc07db67f40ac79b51f15a1cff5f5cf3b5545.jpg@75Q.webp',
+									alt: 'face',
+									className: 'user-face' })
+							),
+							_react2.default.createElement(
+								'h4',
+								null,
+								'Name: ',
+								_react2.default.createElement(
+									'small',
+									null,
+									'RockSAMA'
+								)
+							),
+							_react2.default.createElement(
+								'blockquote',
+								{ className: 'p-sign' },
+								'My name is unbilieveable',
+								_react2.default.createElement(
+									'small',
+									null,
+									'Tech Otaku Save World'
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item text-center ' + (level2 == "" ? "active" : ""), to: "/main/" },
+						'HomePage'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item text-center ' + (level2 == "ranks" ? "active" : ""), to: "/main/ranks" },
+						'Ranks'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item text-center ' + (level2 == "fun" ? "active" : ""), to: "/main/fun" },
+						'Fun Things'
+					),
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'list-group-item text-center ' + (level2 == "animation" ? "active" : ""), to: "/main/animation" },
+						'Animations'
+					)
+				);
+			}
+		}]);
+
+		return Sider;
+	}(_react.Component);
+
+	var maps2p = function maps2p(state) {
+		return {
+			route: state.common.route
+		};
+	};
+
+	exports.default = (0, _reactRedux.connect)(maps2p, {
+		changeRoute: _actions.changeRoute
+	})(Sider);
+
+/***/ },
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29251,114 +29464,7 @@
 	})(Main);
 
 /***/ },
-/* 270 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(5);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(1);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Sider = function (_Component) {
-		_inherits(Sider, _Component);
-
-		function Sider() {
-			_classCallCheck(this, Sider);
-
-			return _possibleConstructorReturn(this, (Sider.__proto__ || Object.getPrototypeOf(Sider)).apply(this, arguments));
-		}
-
-		_createClass(Sider, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'list-group' },
-					_react2.default.createElement(
-						'li',
-						{ className: 'list-group-item' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'row text-center' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: "/main", className: '' },
-								_react2.default.createElement('img', {
-									src: 'http://i0.hdslb.com/bfs/face/663cc07db67f40ac79b51f15a1cff5f5cf3b5545.jpg@75Q.webp',
-									alt: 'face',
-									className: 'user-face' })
-							),
-							_react2.default.createElement(
-								'h4',
-								null,
-								'Name: ',
-								_react2.default.createElement(
-									'small',
-									null,
-									'RockSAMA'
-								)
-							),
-							_react2.default.createElement(
-								'blockquote',
-								{ className: 'p-sign' },
-								'My name is unbilieveable',
-								_react2.default.createElement(
-									'small',
-									null,
-									'Tech Otaku Save World'
-								)
-							)
-						)
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ className: 'list-group-item active text-center', to: "/main/" },
-						'HomePage'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ className: 'list-group-item text-center', to: "/main/ranks" },
-						'Ranks'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ className: 'list-group-item text-center', to: "/main/fun" },
-						'Fun Thins'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ className: 'list-group-item text-center', to: "/main/animation" },
-						'Animations'
-					)
-				);
-			}
-		}]);
-
-		return Sider;
-	}(_react.Component);
-
-	exports.default = Sider;
-
-/***/ },
-/* 271 */,
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29449,7 +29555,7 @@
 	})(Main);
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29469,6 +29575,10 @@
 	var _actions = __webpack_require__(256);
 
 	var _reactRouter = __webpack_require__(1);
+
+	var _funCell = __webpack_require__(275);
+
+	var _funCell2 = _interopRequireDefault(_funCell);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29490,6 +29600,23 @@
 		}
 
 		_createClass(Main, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _props = this.props;
+				var fetchSuccess = _props.fetchSuccess;
+				var fetchData = _props.fetchData;
+				// call the server-side for a json data
+				// when fetch has called we don't to do that again
+
+				fetchData || fetch("/video/getFunImages").then(function (res) {
+					return res.json();
+				}).then(function (data) {
+					fetchSuccess(data);
+				}).catch(function (err) {
+					throw err;
+				});
+			}
+		}, {
 			key: '_click',
 			value: function _click() {
 				var handleChange = this.props.handleChange;
@@ -29499,34 +29626,168 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var a = this.props.a;
+				var _props2 = this.props;
+				var a = _props2.a;
+				var fetchData = _props2.fetchData;
 
+				console.log(fetchData, 456);
 				return _react2.default.createElement(
 					'div',
 					null,
+					fetchData ? fetchData.map(function (obj, index) {
+						if (index > 27) {
+							return undefined;
+						} else {
+							return _react2.default.createElement(_funCell2.default, { data: obj });
+						}
+					}) : "SOME THING BAD HAPPEN",
 					_react2.default.createElement(
-						'a',
-						{ href: 'javascript:;', onClick: this._click.bind(this), className: '2eqwe' },
-						'This is Fun'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/main' },
-						'asdasd'
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						'This is ',
-						a,
-						' ----'
-					),
-					this.props.children
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'nav',
+							{ className: 'text-center' },
+							_react2.default.createElement(
+								'ul',
+								{ className: 'pagination' },
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: 'javascript:;' },
+										'\xAB'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: 'javascript:;' },
+										'1'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: 'javascript:;' },
+										'2'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: 'javascript:;' },
+										'3'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: 'javascript:;' },
+										'\xBB'
+									)
+								)
+							)
+						)
+					)
 				);
 			}
 		}]);
 
 		return Main;
+	}(_react.Component);
+
+	var maps2p = function maps2p(state) {
+		return {
+			a: state.common.a,
+			fetchData: state.fun.fetchData
+		};
+	};
+
+	exports.default = (0, _reactRedux.connect)(maps2p, {
+		handleChange: _actions.handleChange,
+		fetchSuccess: _actions.fetchSuccess
+	})(Main);
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(225);
+
+	var _actions = __webpack_require__(256);
+
+	var _reactRouter = __webpack_require__(1);
+
+	__webpack_require__(279);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Cell = function (_Component) {
+		_inherits(Cell, _Component);
+
+		function Cell(props) {
+			_classCallCheck(this, Cell);
+
+			return _possibleConstructorReturn(this, (Cell.__proto__ || Object.getPrototypeOf(Cell)).call(this, props));
+		}
+
+		_createClass(Cell, [{
+			key: '_click',
+			value: function _click() {
+				var handleChange = this.props.handleChange;
+
+				handleChange(22222);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _props = this.props;
+				var a = _props.a;
+				var children = _props.children;
+				var data = _props.data;
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'fun-cell' },
+					_react2.default.createElement('img', { src: data.icon, alt: 'a', className: 'img' }),
+					_react2.default.createElement(
+						'p',
+						{ className: 'title' },
+						data.title
+					),
+					children
+				);
+			}
+		}]);
+
+		return Cell;
 	}(_react.Component);
 
 	var maps2p = function maps2p(state) {
@@ -29537,10 +29798,10 @@
 
 	exports.default = (0, _reactRedux.connect)(maps2p, {
 		handleChange: _actions.handleChange
-	})(Main);
+	})(Cell);
 
 /***/ },
-/* 274 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29629,6 +29890,41 @@
 	exports.default = (0, _reactRedux.connect)(maps2p, {
 		handleChange: _actions.handleChange
 	})(Main);
+
+/***/ },
+/* 277 */,
+/* 278 */,
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(280);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(84)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./fun-cell.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./fun-cell.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(83)();
+	exports.push([module.id, ".fun-cell {\n  display: inline-block;\n  padding: 10px;\n  margin: 20px;\n  border: #aaa solid 1px;\n  /* box-shadow: 0 0 1px 1px #999; */\n  border-radius: 3px;\n}\n.fun-cell .img {\n  display: block;\n  width: 76px;\n  height: 44px;\n  margin-bottom: 10px;\n}\n.fun-cell .title {\n  width: 76px;\n  overflow: hidden;\n  text-align: center;\n  color: #888888;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  margin-bottom: 0;\n}\n", ""]);
 
 /***/ }
 /******/ ]);
