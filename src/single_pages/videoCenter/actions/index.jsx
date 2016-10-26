@@ -6,3 +6,6 @@ export * from './common'
 
 //pages
 export * from '../containers/main/actions'
+
+//components
+export * from './pagination'

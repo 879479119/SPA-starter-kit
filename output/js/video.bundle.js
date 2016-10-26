@@ -27891,6 +27891,10 @@
 
 	var _common2 = _interopRequireDefault(_common);
 
+	var _pagination = __webpack_require__(302);
+
+	var _pagination2 = _interopRequireDefault(_pagination);
+
 	var _fun = __webpack_require__(260);
 
 	var _fun2 = _interopRequireDefault(_fun);
@@ -27902,6 +27906,7 @@
 	exports.default = (0, _redux.combineReducers)({
 	  common: _common2.default,
 	  fun: _fun2.default,
+	  pagination: _pagination2.default,
 	  SimpleAPIReducer: _fetch.SimpleAPIReducer
 	});
 
@@ -27968,6 +27973,18 @@
 	    enumerable: true,
 	    get: function get() {
 	      return _actions[key];
+	    }
+	  });
+	});
+
+	var _pagination = __webpack_require__(301);
+
+	Object.keys(_pagination).forEach(function (key) {
+	  if (key === "default" || key === "__esModule") return;
+	  Object.defineProperty(exports, key, {
+	    enumerable: true,
+	    get: function get() {
+	      return _pagination[key];
 	    }
 	  });
 	});
@@ -29657,7 +29674,7 @@
 								return _react2.default.createElement(_funCell2.default, { data: obj, key: 'cell' + index });
 							}
 						}),
-						_react2.default.createElement(_pagination2.default, { length: data.length, size: 28 })
+						_react2.default.createElement(_pagination2.default, { length: data.length, size: 28, api: '/video/getFunImages' })
 					);
 				} else {
 					return _react2.default.createElement(
@@ -29914,6 +29931,10 @@
 
 	var _reactRedux = __webpack_require__(225);
 
+	var _fetch = __webpack_require__(281);
+
+	var _actions = __webpack_require__(256);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29921,6 +29942,14 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * To avoid conflict when we use multiple pagination in a single page,
+	 * we set the variable "cur" as a property of this instead of a global
+	 * state.
+	 *
+	 * @Usage: you must trigger a request before mount this component.
+	 */
 
 	var Pagination = function (_Component) {
 		_inherits(Pagination, _Component);
@@ -29933,25 +29962,55 @@
 
 		_createClass(Pagination, [{
 			key: '_prevPage',
-			value: function _prevPage() {}
+			value: function _prevPage() {
+				var _props = this.props;
+				var changePage = _props.changePage;
+				var fetchBackSymbol = _props.fetchBackSymbol;
+				var api = _props.api;
+				var page = _props.page;
+
+				fetchBackSymbol(api + "?page=" + (page - 1));
+				changePage(page - 1);
+			}
 		}, {
 			key: '_nextPage',
-			value: function _nextPage() {}
+			value: function _nextPage() {
+				var _props2 = this.props;
+				var changePage = _props2.changePage;
+				var fetchBackSymbol = _props2.fetchBackSymbol;
+				var api = _props2.api;
+				var page = _props2.page;
+
+				fetchBackSymbol(api + "?page=" + (page + 1));
+				changePage(page + 1);
+			}
 		}, {
 			key: '_goPage',
-			value: function _goPage() {}
+			value: function _goPage(index) {
+				var page = index;
+				var _props3 = this.props;
+				var changePage = _props3.changePage;
+				var fetchBackSymbol = _props3.fetchBackSymbol;
+				var api = _props3.api;
+
+				this.cur = page;
+				return function () {
+					fetchBackSymbol(api + "?page=" + page);
+					changePage(page);
+				};
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
 		}, {
 			key: 'render',
 			value: function render() {
 				var _this2 = this;
 
-				var _props = this.props;
-				var length = _props.length;
-				var size = _props.size;
-				var _props$start = _props.start;
-				var start = _props$start === undefined ? 0 : _props$start;
-				var _props$cur = _props.cur;
-				var cur = _props$cur === undefined ? 0 : _props$cur;
+				var _props4 = this.props;
+				var length = _props4.length;
+				var size = _props4.size;
+				var page = _props4.page;
 
 
 				if (!length && !size) {
@@ -29969,7 +30028,7 @@
 							{ className: 'pagination' },
 							_react2.default.createElement(
 								'li',
-								{ className: cur == 0 && "disabled" },
+								{ className: page == 0 && "disabled" },
 								_react2.default.createElement(
 									'a',
 									{ href: 'javascript:;', onClick: this._prevPage.bind(this) },
@@ -29981,10 +30040,13 @@
 								for (var i = 0; i < Math.ceil(length / size); i++) {
 									arr.push(_react2.default.createElement(
 										'li',
-										{ className: cur == i && "active" },
+										{ className: page == i && "active" },
 										_react2.default.createElement(
 											'a',
-											{ href: 'javascript:;', key: i, onClick: _this2._goPage.bind(_this2) },
+											{ href: 'javascript:;',
+												key: i,
+												onClick: _this2._goPage.bind(_this2)(i)
+											},
 											i + 1
 										)
 									));
@@ -29993,7 +30055,7 @@
 							}(),
 							_react2.default.createElement(
 								'li',
-								{ className: cur == Math.ceil(length / size) - 1 && "disable" },
+								{ className: page == Math.ceil(length / size) - 1 && "disable" },
 								_react2.default.createElement(
 									'a',
 									{ href: 'javascript:;', onClick: this._nextPage.bind(this) },
@@ -30009,7 +30071,19 @@
 		return Pagination;
 	}(_react.Component);
 
-	exports.default = Pagination;
+	var maps2p = function maps2p(state) {
+		return {
+			SAMfetchState: state.SimpleAPIReducer.SAMfetchState,
+			data: state.SimpleAPIReducer.data,
+			symbol: state.SimpleAPIReducer.symbol,
+			page: state.pagination.page
+		};
+	};
+
+	exports.default = (0, _reactRedux.connect)(maps2p, {
+		fetchBackSymbol: _fetch.fetchBackSymbol,
+		changePage: _actions.changePage
+	})(Pagination);
 
 /***/ },
 /* 281 */
@@ -30034,11 +30108,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var config = {
+		method: 'GET',
+		cache: 'default'
+	};
+
 	//the funtion component thst is used to call a request 
 	//and get a unique symbol object back
-	var fetchBackSymbol = exports.fetchBackSymbol = function fetchBackSymbol(url) {
+	var fetchBackSymbol = exports.fetchBackSymbol = function fetchBackSymbol(url, opt) {
 		return function (disptch) {
 			var symbol = (0, _es6Symbol2.default)("fetch");
+			opt && (config = opt);
 			disptch({
 				type: N.FETCH,
 				url: url, symbol: symbol
@@ -30088,7 +30168,7 @@
 
 
 	function loadWithAPI(url) {
-		return fetch(url);
+		return fetch(url, config);
 	}
 
 	var SimpleAPIReducer = exports.SimpleAPIReducer = function SimpleAPIReducer() {
@@ -30553,6 +30633,56 @@
 	var FETCH_REQUEST = exports.FETCH_REQUEST = 'FETCH_REQUEST_APIMIDDLE_AVOID_SAME';
 	var FETCH_SUCCESS = exports.FETCH_SUCCESS = 'FETCH_SUCCESS_APIMIDDLE_AVOID_SAME';
 	var FETCH_REJECT = exports.FETCH_REJECT = 'FETCH_REJECT_APIMIDDLE_AVOID_SAME';
+
+/***/ },
+/* 301 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var CHANGE_PAGE = exports.CHANGE_PAGE = 'CHANGE_PAGE';
+
+	var changePage = exports.changePage = function changePage(page) {
+		return function (dispatch) {
+			dispatch({
+				type: CHANGE_PAGE,
+				page: page
+			});
+		};
+	};
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _actions = __webpack_require__(256);
+
+	var Action = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	var pagination = function pagination() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { page: 0 };
+		var action = arguments[1];
+
+		switch (action.type) {
+			case Action.CHANGE_PAGE:
+				return Object.assign({}, state, { page: action.page });
+			default:
+				return state;
+		}
+	};
+
+	exports.default = pagination;
 
 /***/ }
 /******/ ]);

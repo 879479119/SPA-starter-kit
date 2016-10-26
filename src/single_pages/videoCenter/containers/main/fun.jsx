@@ -19,7 +19,6 @@ class Main extends Component {
 		// when fetch has called we don't to do that again
 
 		this.log = fetchBackSymbol("/video/getFunImages?page=0")
-
 	}
 
 	_click(){
@@ -43,7 +42,7 @@ class Main extends Component {
 							}
 						})
 					}
-					<Pagination length={data.length} size={28}/>
+					<Pagination length={data.length} size={28} api="/video/getFunImages"/>
 				</div>
 			)
 		}else{
