@@ -27832,6 +27832,10 @@
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
+	var _index = __webpack_require__(281);
+
+	var _index2 = _interopRequireDefault(_index);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var loggerMiddleware = (0, _reduxLogger2.default)();
@@ -27840,7 +27844,7 @@
 
 	//性能调试和打包时删掉 loggerMiddleware,并且必须要把他放在最后一个！
 	function configureStore(initialState) {
-		return (0, _redux.createStore)(_reducers2.default, initialState, (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk2.default, loggerMiddleware)));
+		return (0, _redux.createStore)(_reducers2.default, initialState, (0, _redux.compose)((0, _redux.applyMiddleware)(_reduxThunk2.default, _index2.default, loggerMiddleware)));
 	}
 
 /***/ },
@@ -27891,11 +27895,14 @@
 
 	var _fun2 = _interopRequireDefault(_fun);
 
+	var _fetch = __webpack_require__(281);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = (0, _redux.combineReducers)({
 	  common: _common2.default,
-	  fun: _fun2.default
+	  fun: _fun2.default,
+	  SimpleAPIReducer: _fetch.SimpleAPIReducer
 	});
 
 /***/ },
@@ -28057,7 +28064,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var fun = function fun() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { fetchData: {} };
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { fetchData: [] };
 		var action = arguments[1];
 
 		switch (action.type) {
@@ -28957,7 +28964,7 @@
 
 	var _fun2 = _interopRequireDefault(_fun);
 
-	var _animation = __webpack_require__(276);
+	var _animation = __webpack_require__(278);
 
 	var _animation2 = _interopRequireDefault(_animation);
 
@@ -29580,6 +29587,12 @@
 
 	var _funCell2 = _interopRequireDefault(_funCell);
 
+	var _pagination = __webpack_require__(280);
+
+	var _pagination2 = _interopRequireDefault(_pagination);
+
+	var _fetch = __webpack_require__(281);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29605,16 +29618,11 @@
 				var _props = this.props;
 				var fetchSuccess = _props.fetchSuccess;
 				var fetchData = _props.fetchData;
+				var fetchBackSymbol = _props.fetchBackSymbol;
 				// call the server-side for a json data
 				// when fetch has called we don't to do that again
 
-				fetchData || fetch("/video/getFunImages").then(function (res) {
-					return res.json();
-				}).then(function (data) {
-					fetchSuccess(data);
-				}).catch(function (err) {
-					throw err;
-				});
+				this.log = fetchBackSymbol("/video/getFunImages?page=0");
 			}
 		}, {
 			key: '_click',
@@ -29629,76 +29637,35 @@
 				var _props2 = this.props;
 				var a = _props2.a;
 				var fetchData = _props2.fetchData;
+				var data = _props2.data;
+				var SAMfetchState = _props2.SAMfetchState;
 
-				console.log(fetchData, 456);
-				return _react2.default.createElement(
-					'div',
-					null,
-					fetchData ? fetchData.map(function (obj, index) {
-						if (index > 27) {
-							return undefined;
-						} else {
-							return _react2.default.createElement(_funCell2.default, { data: obj });
-						}
-					}) : "SOME THING BAD HAPPEN",
-					_react2.default.createElement(
+				if (SAMfetchState == 1) {
+					return _react2.default.createElement(
 						'div',
-						{ className: 'row' },
-						_react2.default.createElement(
-							'nav',
-							{ className: 'text-center' },
-							_react2.default.createElement(
-								'ul',
-								{ className: 'pagination' },
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ href: 'javascript:;' },
-										'\xAB'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ href: 'javascript:;' },
-										'1'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ href: 'javascript:;' },
-										'2'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ href: 'javascript:;' },
-										'3'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement(
-										'a',
-										{ href: 'javascript:;' },
-										'\xBB'
-									)
-								)
-							)
-						)
-					)
-				);
+						null,
+						'Loading'
+					);
+				} else if (SAMfetchState == 2) {
+					return _react2.default.createElement(
+						'div',
+						null,
+						data.list.map(function (obj, index) {
+							if (index > 27) {
+								return undefined;
+							} else {
+								return _react2.default.createElement(_funCell2.default, { data: obj, key: 'cell' + index });
+							}
+						}),
+						_react2.default.createElement(_pagination2.default, { length: data.length, size: 28 })
+					);
+				} else {
+					return _react2.default.createElement(
+						'h2',
+						null,
+						'Failed'
+					);
+				}
 			}
 		}]);
 
@@ -29708,13 +29675,17 @@
 	var maps2p = function maps2p(state) {
 		return {
 			a: state.common.a,
-			fetchData: state.fun.fetchData
+			fetchData: state.fun.fetchData,
+			SAMfetchState: state.SimpleAPIReducer.SAMfetchState,
+			data: state.SimpleAPIReducer.data,
+			symbol: state.SimpleAPIReducer.symbol
 		};
 	};
 
 	exports.default = (0, _reactRedux.connect)(maps2p, {
 		handleChange: _actions.handleChange,
-		fetchSuccess: _actions.fetchSuccess
+		fetchSuccess: _actions.fetchSuccess,
+		fetchBackSymbol: _fetch.fetchBackSymbol
 	})(Main);
 
 /***/ },
@@ -29739,7 +29710,7 @@
 
 	var _reactRouter = __webpack_require__(1);
 
-	__webpack_require__(279);
+	__webpack_require__(276);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29802,6 +29773,39 @@
 
 /***/ },
 /* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(277);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(84)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./fun-cell.less", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./fun-cell.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(83)();
+	exports.push([module.id, ".fun-cell {\n  display: inline-block;\n  padding: 10px;\n  margin: 20px;\n  border: #aaa solid 1px;\n  /* box-shadow: 0 0 1px 1px #999; */\n  border-radius: 3px;\n}\n.fun-cell .img {\n  display: block;\n  width: 76px;\n  height: 44px;\n  margin-bottom: 10px;\n}\n.fun-cell .title {\n  width: 76px;\n  overflow: hidden;\n  text-align: center;\n  color: #888888;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  margin-bottom: 0;\n}\n", ""]);
+
+/***/ },
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29892,39 +29896,663 @@
 	})(Main);
 
 /***/ },
-/* 277 */,
-/* 278 */,
-/* 279 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(280);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(84)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./fun-cell.less", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/less-loader/index.js!./fun-cell.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
+/* 279 */,
 /* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(83)();
-	exports.push([module.id, ".fun-cell {\n  display: inline-block;\n  padding: 10px;\n  margin: 20px;\n  border: #aaa solid 1px;\n  /* box-shadow: 0 0 1px 1px #999; */\n  border-radius: 3px;\n}\n.fun-cell .img {\n  display: block;\n  width: 76px;\n  height: 44px;\n  margin-bottom: 10px;\n}\n.fun-cell .title {\n  width: 76px;\n  overflow: hidden;\n  text-align: center;\n  color: #888888;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  margin-bottom: 0;\n}\n", ""]);
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(225);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Pagination = function (_Component) {
+		_inherits(Pagination, _Component);
+
+		function Pagination(props) {
+			_classCallCheck(this, Pagination);
+
+			return _possibleConstructorReturn(this, (Pagination.__proto__ || Object.getPrototypeOf(Pagination)).call(this, props));
+		}
+
+		_createClass(Pagination, [{
+			key: '_prevPage',
+			value: function _prevPage() {}
+		}, {
+			key: '_nextPage',
+			value: function _nextPage() {}
+		}, {
+			key: '_goPage',
+			value: function _goPage() {}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _this2 = this;
+
+				var _props = this.props;
+				var length = _props.length;
+				var size = _props.size;
+				var _props$start = _props.start;
+				var start = _props$start === undefined ? 0 : _props$start;
+				var _props$cur = _props.cur;
+				var cur = _props$cur === undefined ? 0 : _props$cur;
+
+
+				if (!length && !size) {
+					throw Error("You must set length and size");
+				}
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'row' },
+					_react2.default.createElement(
+						'nav',
+						{ className: 'text-center' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'pagination' },
+							_react2.default.createElement(
+								'li',
+								{ className: cur == 0 && "disabled" },
+								_react2.default.createElement(
+									'a',
+									{ href: 'javascript:;', onClick: this._prevPage.bind(this) },
+									'\xAB'
+								)
+							),
+							function () {
+								var arr = [];
+								for (var i = 0; i < Math.ceil(length / size); i++) {
+									arr.push(_react2.default.createElement(
+										'li',
+										{ className: cur == i && "active" },
+										_react2.default.createElement(
+											'a',
+											{ href: 'javascript:;', key: i, onClick: _this2._goPage.bind(_this2) },
+											i + 1
+										)
+									));
+								}
+								return arr;
+							}(),
+							_react2.default.createElement(
+								'li',
+								{ className: cur == Math.ceil(length / size) - 1 && "disable" },
+								_react2.default.createElement(
+									'a',
+									{ href: 'javascript:;', onClick: this._nextPage.bind(this) },
+									'\xBB'
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return Pagination;
+	}(_react.Component);
+
+	exports.default = Pagination;
+
+/***/ },
+/* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.SimpleAPIReducer = exports.fetchBackSymbol = undefined;
+
+	var _es6Symbol = __webpack_require__(282);
+
+	var _es6Symbol2 = _interopRequireDefault(_es6Symbol);
+
+	var _action = __webpack_require__(300);
+
+	var N = _interopRequireWildcard(_action);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//the funtion component thst is used to call a request 
+	//and get a unique symbol object back
+	var fetchBackSymbol = exports.fetchBackSymbol = function fetchBackSymbol(url) {
+		return function (disptch) {
+			var symbol = (0, _es6Symbol2.default)("fetch");
+			disptch({
+				type: N.FETCH,
+				url: url, symbol: symbol
+			});
+			return symbol;
+		};
+	};
+
+	//default exported middleware,just need to add this in the middleware list
+
+	exports.default = function (store) {
+		return function (next) {
+			return function (action) {
+
+				function actionWith(data) {
+					return Object.assign({}, action, data);
+				}
+
+				if (action.type == N.FETCH) {
+					next(actionWith({ type: N.FETCH_REQUEST }));
+				}
+
+				if (action.url) {
+					return loadWithAPI(action.url).then(function (rsp) {
+						return rsp.json();
+					}).then(function (rsp) {
+						return next(actionWith({
+							rsp: rsp,
+							type: N.FETCH_SUCCESS
+						}));
+					}, function (error) {
+						return next(actionWith({
+							type: N.FETCH_REJECT,
+							error: error.message
+						}));
+					}).catch(function (err) {
+						console.error(err);
+					});
+				} else {
+					return next(action);
+				}
+			};
+		};
+	};
+
+	//TODO: need to adapt more datatype and abort it when needed 
+
+
+	function loadWithAPI(url) {
+		return fetch(url);
+	}
+
+	var SimpleAPIReducer = exports.SimpleAPIReducer = function SimpleAPIReducer() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { data: undefined, SAMfetchState: 0 };
+		var action = arguments[1];
+
+		// property fetchState is defined to describe the fetch state
+		// 0 for no network activity, 1 for processing, 2 for success, -1 for failed
+
+		switch (action.type) {
+			case N.FETCH_REQUEST:
+				return Object.assign({}, state, { SAMfetchState: 1, symbol: action.symbol });
+			case N.FETCH_SUCCESS:
+				return Object.assign({}, state, { SAMfetchState: 2, data: action.rsp, symbol: action.symbol });
+			case N.FETCH_REJECT:
+				return Object.assign({}, state, { SAMfetchState: -1, data: action.rsp, symbol: action.symbol });
+			default:
+				return state;
+		}
+	};
+
+/***/ },
+/* 282 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(283)() ? Symbol : __webpack_require__(284);
+
+
+/***/ },
+/* 283 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var validTypes = { object: true, symbol: true };
+
+	module.exports = function () {
+		var symbol;
+		if (typeof Symbol !== 'function') return false;
+		symbol = Symbol('test symbol');
+		try { String(symbol); } catch (e) { return false; }
+
+		// Return 'true' also for polyfills
+		if (!validTypes[typeof Symbol.iterator]) return false;
+		if (!validTypes[typeof Symbol.toPrimitive]) return false;
+		if (!validTypes[typeof Symbol.toStringTag]) return false;
+
+		return true;
+	};
+
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// ES2015 Symbol polyfill for environments that do not support it (or partially support it)
+
+	'use strict';
+
+	var d              = __webpack_require__(285)
+	  , validateSymbol = __webpack_require__(298)
+
+	  , create = Object.create, defineProperties = Object.defineProperties
+	  , defineProperty = Object.defineProperty, objPrototype = Object.prototype
+	  , NativeSymbol, SymbolPolyfill, HiddenSymbol, globalSymbols = create(null)
+	  , isNativeSafe;
+
+	if (typeof Symbol === 'function') {
+		NativeSymbol = Symbol;
+		try {
+			String(NativeSymbol());
+			isNativeSafe = true;
+		} catch (ignore) {}
+	}
+
+	var generateName = (function () {
+		var created = create(null);
+		return function (desc) {
+			var postfix = 0, name, ie11BugWorkaround;
+			while (created[desc + (postfix || '')]) ++postfix;
+			desc += (postfix || '');
+			created[desc] = true;
+			name = '@@' + desc;
+			defineProperty(objPrototype, name, d.gs(null, function (value) {
+				// For IE11 issue see:
+				// https://connect.microsoft.com/IE/feedbackdetail/view/1928508/
+				//    ie11-broken-getters-on-dom-objects
+				// https://github.com/medikoo/es6-symbol/issues/12
+				if (ie11BugWorkaround) return;
+				ie11BugWorkaround = true;
+				defineProperty(this, name, d(value));
+				ie11BugWorkaround = false;
+			}));
+			return name;
+		};
+	}());
+
+	// Internal constructor (not one exposed) for creating Symbol instances.
+	// This one is used to ensure that `someSymbol instanceof Symbol` always return false
+	HiddenSymbol = function Symbol(description) {
+		if (this instanceof HiddenSymbol) throw new TypeError('TypeError: Symbol is not a constructor');
+		return SymbolPolyfill(description);
+	};
+
+	// Exposed `Symbol` constructor
+	// (returns instances of HiddenSymbol)
+	module.exports = SymbolPolyfill = function Symbol(description) {
+		var symbol;
+		if (this instanceof Symbol) throw new TypeError('TypeError: Symbol is not a constructor');
+		if (isNativeSafe) return NativeSymbol(description);
+		symbol = create(HiddenSymbol.prototype);
+		description = (description === undefined ? '' : String(description));
+		return defineProperties(symbol, {
+			__description__: d('', description),
+			__name__: d('', generateName(description))
+		});
+	};
+	defineProperties(SymbolPolyfill, {
+		for: d(function (key) {
+			if (globalSymbols[key]) return globalSymbols[key];
+			return (globalSymbols[key] = SymbolPolyfill(String(key)));
+		}),
+		keyFor: d(function (s) {
+			var key;
+			validateSymbol(s);
+			for (key in globalSymbols) if (globalSymbols[key] === s) return key;
+		}),
+
+		// If there's native implementation of given symbol, let's fallback to it
+		// to ensure proper interoperability with other native functions e.g. Array.from
+		hasInstance: d('', (NativeSymbol && NativeSymbol.hasInstance) || SymbolPolyfill('hasInstance')),
+		isConcatSpreadable: d('', (NativeSymbol && NativeSymbol.isConcatSpreadable) ||
+			SymbolPolyfill('isConcatSpreadable')),
+		iterator: d('', (NativeSymbol && NativeSymbol.iterator) || SymbolPolyfill('iterator')),
+		match: d('', (NativeSymbol && NativeSymbol.match) || SymbolPolyfill('match')),
+		replace: d('', (NativeSymbol && NativeSymbol.replace) || SymbolPolyfill('replace')),
+		search: d('', (NativeSymbol && NativeSymbol.search) || SymbolPolyfill('search')),
+		species: d('', (NativeSymbol && NativeSymbol.species) || SymbolPolyfill('species')),
+		split: d('', (NativeSymbol && NativeSymbol.split) || SymbolPolyfill('split')),
+		toPrimitive: d('', (NativeSymbol && NativeSymbol.toPrimitive) || SymbolPolyfill('toPrimitive')),
+		toStringTag: d('', (NativeSymbol && NativeSymbol.toStringTag) || SymbolPolyfill('toStringTag')),
+		unscopables: d('', (NativeSymbol && NativeSymbol.unscopables) || SymbolPolyfill('unscopables'))
+	});
+
+	// Internal tweaks for real symbol producer
+	defineProperties(HiddenSymbol.prototype, {
+		constructor: d(SymbolPolyfill),
+		toString: d('', function () { return this.__name__; })
+	});
+
+	// Proper implementation of methods exposed on Symbol.prototype
+	// They won't be accessible on produced symbol instances as they derive from HiddenSymbol.prototype
+	defineProperties(SymbolPolyfill.prototype, {
+		toString: d(function () { return 'Symbol (' + validateSymbol(this).__description__ + ')'; }),
+		valueOf: d(function () { return validateSymbol(this); })
+	});
+	defineProperty(SymbolPolyfill.prototype, SymbolPolyfill.toPrimitive, d('', function () {
+		var symbol = validateSymbol(this);
+		if (typeof symbol === 'symbol') return symbol;
+		return symbol.toString();
+	}));
+	defineProperty(SymbolPolyfill.prototype, SymbolPolyfill.toStringTag, d('c', 'Symbol'));
+
+	// Proper implementaton of toPrimitive and toStringTag for returned symbol instances
+	defineProperty(HiddenSymbol.prototype, SymbolPolyfill.toStringTag,
+		d('c', SymbolPolyfill.prototype[SymbolPolyfill.toStringTag]));
+
+	// Note: It's important to define `toPrimitive` as last one, as some implementations
+	// implement `toPrimitive` natively without implementing `toStringTag` (or other specified symbols)
+	// And that may invoke error in definition flow:
+	// See: https://github.com/medikoo/es6-symbol/issues/13#issuecomment-164146149
+	defineProperty(HiddenSymbol.prototype, SymbolPolyfill.toPrimitive,
+		d('c', SymbolPolyfill.prototype[SymbolPolyfill.toPrimitive]));
+
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var assign        = __webpack_require__(286)
+	  , normalizeOpts = __webpack_require__(293)
+	  , isCallable    = __webpack_require__(294)
+	  , contains      = __webpack_require__(295)
+
+	  , d;
+
+	d = module.exports = function (dscr, value/*, options*/) {
+		var c, e, w, options, desc;
+		if ((arguments.length < 2) || (typeof dscr !== 'string')) {
+			options = value;
+			value = dscr;
+			dscr = null;
+		} else {
+			options = arguments[2];
+		}
+		if (dscr == null) {
+			c = w = true;
+			e = false;
+		} else {
+			c = contains.call(dscr, 'c');
+			e = contains.call(dscr, 'e');
+			w = contains.call(dscr, 'w');
+		}
+
+		desc = { value: value, configurable: c, enumerable: e, writable: w };
+		return !options ? desc : assign(normalizeOpts(options), desc);
+	};
+
+	d.gs = function (dscr, get, set/*, options*/) {
+		var c, e, options, desc;
+		if (typeof dscr !== 'string') {
+			options = set;
+			set = get;
+			get = dscr;
+			dscr = null;
+		} else {
+			options = arguments[3];
+		}
+		if (get == null) {
+			get = undefined;
+		} else if (!isCallable(get)) {
+			options = get;
+			get = set = undefined;
+		} else if (set == null) {
+			set = undefined;
+		} else if (!isCallable(set)) {
+			options = set;
+			set = undefined;
+		}
+		if (dscr == null) {
+			c = true;
+			e = false;
+		} else {
+			c = contains.call(dscr, 'c');
+			e = contains.call(dscr, 'e');
+		}
+
+		desc = { get: get, set: set, configurable: c, enumerable: e };
+		return !options ? desc : assign(normalizeOpts(options), desc);
+	};
+
+
+/***/ },
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(287)()
+		? Object.assign
+		: __webpack_require__(288);
+
+
+/***/ },
+/* 287 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function () {
+		var assign = Object.assign, obj;
+		if (typeof assign !== 'function') return false;
+		obj = { foo: 'raz' };
+		assign(obj, { bar: 'dwa' }, { trzy: 'trzy' });
+		return (obj.foo + obj.bar + obj.trzy) === 'razdwatrzy';
+	};
+
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var keys  = __webpack_require__(289)
+	  , value = __webpack_require__(292)
+
+	  , max = Math.max;
+
+	module.exports = function (dest, src/*, …srcn*/) {
+		var error, i, l = max(arguments.length, 2), assign;
+		dest = Object(value(dest));
+		assign = function (key) {
+			try { dest[key] = src[key]; } catch (e) {
+				if (!error) error = e;
+			}
+		};
+		for (i = 1; i < l; ++i) {
+			src = arguments[i];
+			keys(src).forEach(assign);
+		}
+		if (error !== undefined) throw error;
+		return dest;
+	};
+
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(290)()
+		? Object.keys
+		: __webpack_require__(291);
+
+
+/***/ },
+/* 290 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function () {
+		try {
+			Object.keys('primitive');
+			return true;
+		} catch (e) { return false; }
+	};
+
+
+/***/ },
+/* 291 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var keys = Object.keys;
+
+	module.exports = function (object) {
+		return keys(object == null ? object : Object(object));
+	};
+
+
+/***/ },
+/* 292 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function (value) {
+		if (value == null) throw new TypeError("Cannot use null or undefined");
+		return value;
+	};
+
+
+/***/ },
+/* 293 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var forEach = Array.prototype.forEach, create = Object.create;
+
+	var process = function (src, obj) {
+		var key;
+		for (key in src) obj[key] = src[key];
+	};
+
+	module.exports = function (options/*, …options*/) {
+		var result = create(null);
+		forEach.call(arguments, function (options) {
+			if (options == null) return;
+			process(Object(options), result);
+		});
+		return result;
+	};
+
+
+/***/ },
+/* 294 */
+/***/ function(module, exports) {
+
+	// Deprecated
+
+	'use strict';
+
+	module.exports = function (obj) { return typeof obj === 'function'; };
+
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(296)()
+		? String.prototype.contains
+		: __webpack_require__(297);
+
+
+/***/ },
+/* 296 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var str = 'razdwatrzy';
+
+	module.exports = function () {
+		if (typeof str.contains !== 'function') return false;
+		return ((str.contains('dwa') === true) && (str.contains('foo') === false));
+	};
+
+
+/***/ },
+/* 297 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var indexOf = String.prototype.indexOf;
+
+	module.exports = function (searchString/*, position*/) {
+		return indexOf.call(this, searchString, arguments[1]) > -1;
+	};
+
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var isSymbol = __webpack_require__(299);
+
+	module.exports = function (value) {
+		if (!isSymbol(value)) throw new TypeError(value + " is not a symbol");
+		return value;
+	};
+
+
+/***/ },
+/* 299 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = function (x) {
+		if (!x) return false;
+		if (typeof x === 'symbol') return true;
+		if (!x.constructor) return false;
+		if (x.constructor.name !== 'Symbol') return false;
+		return (x[x.constructor.toStringTag] === 'Symbol');
+	};
+
+
+/***/ },
+/* 300 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var FETCH = exports.FETCH = 'FETCH_APIMIDDLE_AVOID_SAME';
+	var FETCH_REQUEST = exports.FETCH_REQUEST = 'FETCH_REQUEST_APIMIDDLE_AVOID_SAME';
+	var FETCH_SUCCESS = exports.FETCH_SUCCESS = 'FETCH_SUCCESS_APIMIDDLE_AVOID_SAME';
+	var FETCH_REJECT = exports.FETCH_REJECT = 'FETCH_REJECT_APIMIDDLE_AVOID_SAME';
 
 /***/ }
 /******/ ]);

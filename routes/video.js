@@ -18,18 +18,18 @@ router.get('/getFunImages', function (req, res, next) {
 
   var size = req.query.size || 28,
       page = req.query.page || 0,
-      rand = req.query.rand || false;
+      rand = req.query.rand;
   var result = [];
-
+  var len = data.length;
   if(rand){
-    var len = data.length, i = size;
+    var i = size;
     while(i --)
       result.push(data[Math.floor(Math.random() * len)]);
   }else{
     result = data.splice(page * size, size);
   }
 
-  res.send(result);
+  res.send({length: len, list: result});
   res.end();
 })
 

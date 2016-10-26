@@ -5,6 +5,8 @@ import {handleChange} from '../../actions'
 import { Router, Route, Link, hashHistory, IndexRoute, Redirect,IndexLink} from 'react-router';
 import FunCell from '../../components/fun-cell'
 import { fetchSuccess } from '../../actions'
+import Pagination from '../../components/pagination'
+import {fetchBackSymbol} from '../../utils/fetch'
 
 class Main extends Component {
 	constructor(props) {
@@ -12,16 +14,12 @@ class Main extends Component {
 	}
 
 	componentDidMount(){
-		const { fetchSuccess, fetchData } = this.props
+		const { fetchSuccess, fetchData, fetchBackSymbol } = this.props
 		// call the server-side for a json data
 		// when fetch has called we don't to do that again
 
-		fetchData || fetch("/video/getFunImages")
-			.then(res => {return res.json()})
-			.then(data => {
-				fetchSuccess(data)
-			})
-			.catch(err => {throw err})
+		this.log = fetchBackSymbol("/video/getFunImages?page=0")
+
 	}
 
 	_click(){
@@ -30,41 +28,41 @@ class Main extends Component {
 	}
 
 	render(){
-		const { a, fetchData } = this.props
-		console.log(fetchData,456);
-		return (
-			<div>
-				{
-					fetchData ? fetchData.map((obj, index) => {
-						if(index > 27){
-							return undefined;
-						}else {
-							return <FunCell data={obj} />
-						}
-					}) : "SOME THING BAD HAPPEN"
-				}
-				<div className="row">
-					<nav className="text-center">
-						<ul className="pagination">
-							<li><a href="javascript:;">&laquo;</a></li>
-							<li><a href="javascript:;">1</a></li>
-							<li><a href="javascript:;">2</a></li>
-							<li><a href="javascript:;">3</a></li>
-							<li><a href="javascript:;">&raquo;</a></li>
-						</ul>
-					</nav>
+		const { a, fetchData, data, SAMfetchState } = this.props
+		if(SAMfetchState == 1){
+			return <div>Loading</div>
+		}else if(SAMfetchState == 2){
+			return (
+				<div>
+					{
+						data.list.map((obj, index) => {
+							if(index > 27){
+								return undefined;
+							}else {
+								return <FunCell data={obj} key={`cell${index}`}/>
+							}
+						})
+					}
+					<Pagination length={data.length} size={28}/>
 				</div>
-			</div>
-		)
+			)
+		}else{
+			return <h2>Failed</h2>
+		}
+
 	}
 }
 
 const maps2p = (state) => ({
 	a: state.common.a,
-	fetchData: state.fun.fetchData
+	fetchData: state.fun.fetchData,
+	SAMfetchState:state.SimpleAPIReducer.SAMfetchState,
+	data:state.SimpleAPIReducer.data,
+	symbol:state.SimpleAPIReducer.symbol
 })
 
 export default connect(maps2p,{
 	handleChange,
-	fetchSuccess
+	fetchSuccess,
+	fetchBackSymbol
 })(Main)
