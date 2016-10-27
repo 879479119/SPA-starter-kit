@@ -31,7 +31,12 @@ class Main extends Component {
 	}
 	render(){
 		const {a} = this.props
-
+		fetch(`http://www.bilibili.com/index/catalogy/1-3day.json`,{
+			mode: "no-cors"
+		}).then(r => {
+			console.log(r);
+			// this.setState({fetch: json})
+		}).catch(err => {console.log(err);})
 		return (
 			<div>
 				<h2 className="text-center">- Bilibili Video Rank -</h2>

@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="pagination completed">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/main.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/actions/rank.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/reducers/rank.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/utils/number.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell.jsx" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell/fun-cell.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell.less" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell/fun-cell.less" />
+    <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/fun.jsx" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/fun.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/index.jsx" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/index.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx" />
     </list>
     <ignored path="WTF.iws" />
@@ -38,8 +30,8 @@
       <file leaf-file-name="fun.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/fun.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="216">
+              <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
               <folding>
                 <element signature="e#156#251#0" expanded="true" />
               </folding>
@@ -50,8 +42,8 @@
       <file leaf-file-name="rank.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="69">
+              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding>
                 <element signature="e#156#251#0" expanded="true" />
               </folding>
@@ -62,8 +54,8 @@
       <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+            <state relative-caret-position="168">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -182,8 +174,8 @@
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell/fun-cell.jsx" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/main.less" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/utils/number.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx" />
+        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx" />
       </list>
     </option>
   </component>
@@ -879,7 +871,7 @@
       <workItem from="1477362198348" duration="7084000" />
       <workItem from="1477383340273" duration="361000" />
       <workItem from="1477480792348" duration="13026000" />
-      <workItem from="1477536005822" duration="14575000" />
+      <workItem from="1477536005822" duration="16781000" />
     </task>
     <task id="LOCAL-00001" summary="aside">
       <created>1477287814745</created>
@@ -937,11 +929,18 @@
       <option name="project" value="LOCAL" />
       <updated>1477541377207</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="promise">
+      <created>1477561754132</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1477561754132</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69000000" />
+    <option name="totallyTimeSpent" value="71206000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -994,7 +993,8 @@
     <MESSAGE value="show fun images" />
     <MESSAGE value="api" />
     <MESSAGE value="pagination completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="pagination completed" />
+    <MESSAGE value="promise" />
+    <option name="LAST_COMMIT_MESSAGE" value="promise" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1305,34 +1305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/fun.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding>
-            <element signature="e#156#251#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/utils/number.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/main.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -1367,10 +1339,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx">
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/fun.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+          <folding>
+            <element signature="e#156#251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/utils/number.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding>
             <element signature="e#156#251#0" expanded="true" />
           </folding>

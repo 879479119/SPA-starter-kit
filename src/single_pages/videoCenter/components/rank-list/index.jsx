@@ -23,14 +23,12 @@ export default class List extends Component {
 
 	componentDidMount(){
 		const {index} = this.props
-		fetch(`http://www.bilibili.com/index/catalogy/${index}-3day.json`,{
-			mode: "no-cors"
-		}).then(r => {
-			return r.json()
-		}).then(json => {
-			// console.log(json);
-			// this.setState({fetch: json})
-		}).catch(err => {console.log(err);})
+		// fetch(`http://www.bilibili.com/index/catalogy/${index}-3day.json`,{
+		// 	mode: "no-cors"
+		// }).then(r => r).then(r => r).then(r => r.json()).then(r => {
+		// 	console.log(r);
+		// 	// this.setState({fetch: json})
+		// }).catch(err => {console.log(err);})
 
 	}
 
