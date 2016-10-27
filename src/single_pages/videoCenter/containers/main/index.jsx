@@ -12,13 +12,6 @@ class Main extends Component {
 	_click(){
 		const {handleChange} = this.props
 		handleChange(22222)
-
-
-		fetch("http://api.bilibili.com/x/web-show/res/loc?callback=jQuery17205245701043178401_1477536806751&jsonp=jsonp&pf=0&id=23&_=1477536807769",{
-			mode:"no-cors"
-		})
-			.then(r => r.json())
-			.then(r => {console.log(r,88)})
 	}
 	render(){
 		const {a} = this.props

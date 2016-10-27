@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {handleChange} from '../../actions'
 //noinspection JSUnresolvedVariable
 import { Router, Route, Link, hashHistory, IndexRoute, Redirect,IndexLink} from 'react-router';
-import FunCell from '../../components/fun-cell'
+import FunCell from '../../components/fun-cell/fun-cell'
 import { fetchSuccess } from '../../actions'
 import Pagination from '../../components/pagination'
 import {fetchBackSymbol} from '../../utils/fetch'
