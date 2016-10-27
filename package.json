@@ -21,7 +21,6 @@
     "react-redux": "^4.4.5",
     "react-router": "^1.0.3",
     "redux": "^3.6.0",
-    "redux-api-simple-middleware": "^1.0.2",
     "redux-thunk": "^2.1.0",
     "serve-favicon": "~2.3.0",
     "url-loader": "^0.5.7"
