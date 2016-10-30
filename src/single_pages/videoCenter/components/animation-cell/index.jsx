@@ -25,7 +25,16 @@ class Cell extends Component {
 								<div className="media-left">
 									<img src={item.square_cover} alt="aa" className="pic"/>
 								</div>
+								<div className="media-body">
+									<h5>{item.title}</h5>
+									<p>更新至 <span className="badge">{item.bgmcount}话</span></p>
+								</div>
+								{
+									item.new ? <div className="new"><span className="glyphicon glyphicon-star icon">
+									</span></div> : undefined
+								}
 							</div>
+
 						</div>
 						)
 					)
