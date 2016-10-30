@@ -17,7 +17,7 @@ class Frame extends Component {
     componentWillMount(){
         //when paste the url in location bar
         const {changeRoute} = this.props
-        let result = window.location.hash.match(/#\/(.*)\/(.*)\?/)
+        let result = window.location.hash.match(/#\/(.*?)\/(.*?)\/\?/)
         changeRoute(result)
     }
     render(){

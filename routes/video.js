@@ -33,4 +33,17 @@ router.get('/getFunImages', function (req, res, next) {
   res.end();
 })
 
+
+/**
+ * API - getRank
+ * @param field {number}
+ */
+
+router.get('/getRank', function (req, res, next) {
+  var field = req.query.field || 0;
+  var data = JSON.parse(fs.readFileSync('./static/rank/r'+field+'-3.json','utf8'));
+  res.send(data);
+  res.end();
+})
+
 module.exports = router;

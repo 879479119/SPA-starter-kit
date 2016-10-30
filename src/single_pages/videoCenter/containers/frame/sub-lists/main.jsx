@@ -25,7 +25,7 @@ class Sider extends Component {
 						</Link>
 						<h4>Name: <small>RockSAMA</small></h4>
 						<blockquote className="p-sign">My name is unbilieveable<small>Tech Otaku Save World</small></blockquote>
-					</div>
+					</div >
 				</li>
 				<Link className={`list-group-item text-center ${level2 == "" ? "active" : ""}`} to={"/main/"}>HomePage</Link>
 				<Link className={`list-group-item text-center ${level2 == "ranks" ? "active" : ""}`} to={"/main/ranks"}>Ranks</Link>

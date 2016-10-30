@@ -23,12 +23,11 @@ export default class List extends Component {
 
 	componentDidMount(){
 		const {index} = this.props
-		// fetch(`http://www.bilibili.com/index/catalogy/${index}-3day.json`,{
-		// 	mode: "no-cors"
-		// }).then(r => r).then(r => r).then(r => r.json()).then(r => {
-		// 	console.log(r);
-		// 	// this.setState({fetch: json})
-		// }).catch(err => {console.log(err);})
+		fetch(`/video/getRank?field=${index}`,{
+		}).then(r => r.json()).then(r => {
+			console.log(r);
+			this.setState({fetch: r})
+		}).catch(err => {console.log(err);})
 
 	}
 
@@ -47,12 +46,22 @@ export default class List extends Component {
 				<div className="panel panel-default">
 					<div className="panel-heading">
 						{name}
-						<button type="button" className="btn btn-default btn-toggle" onClick={this._click.bind(this)}>Toggle{this.state.bibi}</button>
+						{/*<button type="button" className="btn btn-default btn-toggle" onClick={this._click.bind(this)}>Toggle{this.state.bibi}</button>*/}
 					</div>
 					<ul className="list-group">
 						{
 							data.hot.list.map((item, i) => (
-								<li className="list-group-item">{item.title}</li>
+								<li className="list-group-item">
+									<div className="media">
+										<a className="media-left"><img src={item.pic} alt="" className="rank-img"/></a>
+										<div className="media-body small">
+											<p>{item.title}</p>
+											<blockquote className="small">
+												asdasdasd
+											</blockquote>
+										</div>
+									</div>
+								</li>
 							))
 						}
 					</ul>
