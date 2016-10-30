@@ -44,9 +44,9 @@ export default class List extends Component {
 			console.log(data);
 			return (
 				<div className="panel panel-default">
-					<div className="panel-heading">
+					<div className="panel-heading small">
 						{name}
-						{/*<button type="button" className="btn btn-default btn-toggle" onClick={this._click.bind(this)}>Toggle{this.state.bibi}</button>*/}
+						<button type="button" className="btn btn-xs btn-default btn-toggle" onClick={this._click.bind(this)}>Toggle{this.state.bibi}</button>
 					</div>
 					<ul className="list-group">
 						{
@@ -55,10 +55,8 @@ export default class List extends Component {
 									<div className="media">
 										<a className="media-left"><img src={item.pic} alt="" className="rank-img"/></a>
 										<div className="media-body small">
-											<p>{item.title}</p>
-											<blockquote className="small">
-												asdasdasd
-											</blockquote>
+											<p className="title">{item.title}</p>
+											<p className="author">--{item.author}</p>
 										</div>
 									</div>
 								</li>

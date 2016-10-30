@@ -33,7 +33,10 @@ class Main extends Component {
 		const {a} = this.props
 		return (
 			<div>
+				<br/>
 				<h2 className="text-center">- Bilibili Video Rank -</h2>
+				<h5 className="text-center">{Date().toString()}</h5>
+				<hr/>
 				{(()=>{
 					let row = Math.ceil(fieldMap.name.length / 3), arr = []
 					for(let i = 0;i < row;i ++){

@@ -4,7 +4,6 @@ import {handleChange} from '../../actions'
 //noinspection JSUnresolvedVariable
 import { Router, Route, Link, hashHistory, IndexRoute, Redirect,IndexLink} from 'react-router';
 import FunCell from '../../components/fun-cell/fun-cell'
-import { fetchSuccess } from '../../actions'
 import Pagination from '../../components/pagination'
 import {fetchBackSymbol} from '../../utils/fetch'
 
@@ -14,7 +13,7 @@ class Main extends Component {
 	}
 
 	componentDidMount(){
-		const { fetchSuccess, fetchData, fetchBackSymbol } = this.props
+		const { fetchBackSymbol } = this.props
 		// call the server-side for a json data
 		// when fetch has called we don't to do that again
 
@@ -27,7 +26,7 @@ class Main extends Component {
 	}
 
 	render(){
-		const { a, fetchData, data, SAMfetchState } = this.props
+		const { data, SAMfetchState } = this.props
 		if(SAMfetchState == 1){
 			return <div>Loading</div>
 		}else if(SAMfetchState == 2){
@@ -54,7 +53,6 @@ class Main extends Component {
 
 const maps2p = (state) => ({
 	a: state.common.a,
-	fetchData: state.fun.fetchData,
 	SAMfetchState:state.SimpleAPIReducer.SAMfetchState,
 	data:state.SimpleAPIReducer.data,
 	symbol:state.SimpleAPIReducer.symbol
@@ -62,6 +60,5 @@ const maps2p = (state) => ({
 
 export default connect(maps2p,{
 	handleChange,
-	fetchSuccess,
 	fetchBackSymbol
 })(Main)

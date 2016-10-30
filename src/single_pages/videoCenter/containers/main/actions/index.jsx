@@ -10,3 +10,4 @@
 // }
 
 export * from './fun'
+export * from './animation'
