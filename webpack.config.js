@@ -77,7 +77,7 @@ var config = {
 				loader: 'style!css!less'
 			},
 			{ test: /\.(png|jpg)$/,
-      	loader: 'url?limit=5000'
+      	        loader: 'url?limit=5000000'
 			}
 		]
 	},
