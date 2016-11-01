@@ -1,6 +1,14 @@
 # spa-starter-kit
 A set of server and spas built with redux + react-router + webpack + es6 + express
 ---
+## Preview:
+
+![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220523.png)
+![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220449.png)
+![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220417.png)
+![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220505.png)
+
+
 ```
  dir
     │  .gitignore                                  #git repository ignored files
