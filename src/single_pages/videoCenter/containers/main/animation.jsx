@@ -14,14 +14,25 @@ class Animation extends Component {
 	}
 
 	static _handleFilter(e){
-		console.log(e.target.tagName);
 		const { filter, filterAnimation} = this.props
 
 		const weekday = e.target.getAttribute("aria-key")
 		const area = e.target.getAttribute("aria-area")
+		const order = e.target.getAttribute("aria-order")
 
 		if(weekday) filterAnimation(Object.assign({}, filter, {weekday: parseInt(weekday)}))
 		if(area != undefined) filterAnimation(Object.assign({}, filter, {area: area}))
+		if(order) filterAnimation(Object.assign({}, filter, {orderBy: order}))
+	}
+
+	static _handleFilterReverse(e){
+		const { filter, filterAnimation} = this.props
+		const dom = document.getElementById("reverse")
+		let val = dom.getAttribute("value")
+		console.log(val);
+		if(val == "on") dom.setAttribute("value","'off'")
+		else dom.setAttribute("value","'on'")
+		filterAnimation(Object.assign({}, filter, {reverse: val == "on"}))
 	}
 
 	componentDidMount(){
@@ -39,7 +50,25 @@ class Animation extends Component {
 		document.body.appendChild(jsonp)
 	}
 
+	_dataFilter(arr, { weekday, area, orderBy, reverse }){
+		let result = []
+		arr.map(item => {
+			if(weekday == item.weekday && !item.area.indexOf(area)) result.push(item)
+		})
 
+		result.sort((item1, item2) => {
+			//enum: lastupdate, play_count, attention, danmaku_count, favorites
+			let sign = reverse ? 1 : -1
+			if(item1[orderBy] > item2[orderBy]){
+				return sign
+			}else if(item1[orderBy] < item2[orderBy]){
+				return -sign
+			}
+			return 0
+		})
+
+		return result
+	}
 
 	render(){
 		const { jsonpData, filter, filter: { weekday, area, orderBy, reverse } } = this.props
@@ -49,19 +78,12 @@ class Animation extends Component {
 			if(val1 == val2) return "active"
 		}
 
-		const isWeekday = isActive(filter.weekday)
-		const isArea = isActive(filter.area)
+		const isWeekday = isActive(weekday)
+		const isArea = isActive(area)
+		const isOrder = isActive(orderBy)
 
 		let renderData =  []
-
-		if(jsonpData){
-			jsonpData.list.map((item, index) => {
-				if(item.weekday == weekday){
-					renderData.push(item)
-				}
-			})
-		}
-
+		if(jsonpData) renderData = this._dataFilter(jsonpData.list, filter)
 
 		return (
 			<div>
@@ -94,6 +116,24 @@ class Animation extends Component {
 							<li className={`list-group-item text-center ${isArea("中国")}`} aria-area={"中国"}>Chinese</li>
 							<li className={`list-group-item text-center ${isArea("其他")}`} aria-area={"其他"}>Others</li>
 						</ul>
+						<br/>
+						<div className="panel panel-default">
+							<div className="panel-heading">Filter</div>
+							<div className="panel-body">
+								<ul className="list-group" onClick={Animation._handleFilter.bind(this)}>
+									<li className={`list-group-item text-center ${isOrder("lastupdate")}`} aria-order={"lastupdate"}>date</li>
+									<li className={`list-group-item text-center ${isOrder("play_count")}`} aria-order={"play_count"}>play</li>
+									<li className={`list-group-item text-center ${isOrder("attention")}`} aria-order={"attention"}>attention</li>
+									<li className={`list-group-item text-center ${isOrder("danmaku_count")}`} aria-order={"danmaku_count"}>danmaku</li>
+									<li className={`list-group-item text-center ${isOrder("favorites")}`} aria-order={"favorites"}>favorite</li>
+								</ul>
+								<div className="input-group text-center fill" onClick={Animation._handleFilterReverse.bind(this)}>
+									<input type="checkbox" name="reverse" id="reverse" value={"off"}/>
+									<label htmlFor="reverse">Reverse the List</label>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 				{this.props.children}

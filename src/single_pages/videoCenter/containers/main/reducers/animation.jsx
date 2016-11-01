@@ -5,7 +5,7 @@ const initalState = {
 	filter: {
 		weekday: 0,
 		area: "",
-		orderBy: "date", //enum: attention, danmaku, favorite, pay,
+		orderBy: "lastupdate", //enum: play_count, attention, danmaku_count, favorites
 		reverse: false
 	}
 }
