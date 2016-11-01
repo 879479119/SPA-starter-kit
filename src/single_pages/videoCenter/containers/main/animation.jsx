@@ -25,14 +25,12 @@ class Animation extends Component {
 		if(order) filterAnimation(Object.assign({}, filter, {orderBy: order}))
 	}
 
-	static _handleFilterReverse(e){
+	_handleFilterReverse(e){
+		//you can't forget to prevent the default action,or this method will be called twice
+		e.preventDefault()
 		const { filter, filterAnimation} = this.props
-		const dom = document.getElementById("reverse")
-		let val = dom.getAttribute("value")
-		console.log(val);
-		if(val == "on") dom.setAttribute("value","'off'")
-		else dom.setAttribute("value","'on'")
-		filterAnimation(Object.assign({}, filter, {reverse: val == "on"}))
+		const val = document.getElementById("reverse").getAttribute("value")
+		filterAnimation(Object.assign({}, filter, {reverse: val != "on"}))
 	}
 
 	componentDidMount(){
@@ -127,8 +125,8 @@ class Animation extends Component {
 									<li className={`list-group-item text-center ${isOrder("danmaku_count")}`} aria-order={"danmaku_count"}>danmaku</li>
 									<li className={`list-group-item text-center ${isOrder("favorites")}`} aria-order={"favorites"}>favorite</li>
 								</ul>
-								<div className="input-group text-center fill" onClick={Animation._handleFilterReverse.bind(this)}>
-									<input type="checkbox" name="reverse" id="reverse" value={"off"}/>
+								<div className="input-group text-center fill" onClick={this._handleFilterReverse.bind(this)}>
+									<input type="checkbox" name="reverse" id="reverse" value={reverse ? "on" : "off"}/>
 									<label htmlFor="reverse">Reverse the List</label>
 								</div>
 							</div>
