@@ -10,5 +10,9 @@
   {
     "name": "data",
     "src": "./src/single_pages/dataCenter"
+  },
+  {
+    "name": "game",
+    "src": "./src/single_pages/gameCenter"
   }
 ]

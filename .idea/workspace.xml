@@ -2,7 +2,108 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/audio/add.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/audio/blast.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/audio/fire.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/audio/hit.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/audio/start.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/10.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/5.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/6.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/7.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/8.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/9.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast5.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast6.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast7.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/blast8.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/bomb.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/born1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/born2.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/born3.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/born4.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/destory.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2D.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2L.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2R.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2U.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/grass.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/mintank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/over.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p1tankD.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p1tankL.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p1tankR.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p1tankU.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p2tankD.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p2tankF.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p2tankL.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p2tankR.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/select.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/selecttank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/star.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/steel.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/steels.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/symbol.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/timer.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/title.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/wall.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/walls.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/water.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3D.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3L.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3R.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3U.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235303.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235357.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235418.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235441.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235754.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235819.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235843.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235923.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235941.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101118000029.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101118000048.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101118000114.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117134209.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117144551.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117144625.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117145147.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/wall.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/walls.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/game.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/actions/common.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/actions/index.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/actions/pagination.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/main.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/lib/lodash.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/tank.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/index.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/main.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/reducers/common.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/reducers/index.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/reducers/pagination.jsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/store.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/js/music.bundle.js" afterPath="$PROJECT_DIR$/output/js/music.bundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/route.json" afterPath="$PROJECT_DIR$/routes/route.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/videoCenter/index.jsx" afterPath="$PROJECT_DIR$/src/single_pages/videoCenter/index.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <ignored path="WTF.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,22 +125,65 @@
     <favorites_list name="WTF" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/index.jsx">
+    <leaf>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-                <element signature="e#156#251#0" expanded="true" />
-                <element signature="e#395#1504#0" expanded="false" />
-              </folding>
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="map.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tank.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/tank.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-588">
+              <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="judge.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,21 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-dell.less" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/reducers/fun.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/utils/fetch/action.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/store.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/utils/fetch/index.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/actions/pagination.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/actions/index.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/reducers/pagination.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/pagination/index.jsx" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/reducers/rank.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/actions/rank.jsx" />
-        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell/fun-cell.jsx" />
-        <option value="$PROJECT_DIR$/static/rank/r1-3.json" />
         <option value="$PROJECT_DIR$/routes/video.js" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/frame/index.jsx" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/utils/number.jsx" />
@@ -93,11 +222,26 @@
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/components/animation-cell/main.less" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/animation.less" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/animation.jsx" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/main.less" />
         <option value="$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/index.jsx" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/routes/route.json" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/game.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/videoCenter/index.jsx" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/store.jsx" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/reducers/index.jsx" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/actions/index.jsx" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/index.jsx" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/main.less" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/main.less" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/lib/lodash.min.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/tank.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" />
       </list>
     </option>
   </component>
@@ -113,8 +257,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1366" />
-    <option name="height" value="768" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -124,12 +270,120 @@
             <id />
           </State>
           <State>
+            <id>Assignment issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Code quality toolsJavaScript</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>DOM issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Dart</id>
+          </State>
+          <State>
+            <id>Data flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>ECMAScript 6 migration aidsJavaScript</id>
+          </State>
+          <State>
+            <id>EJS</id>
+          </State>
+          <State>
+            <id>Error handlingJavaScript</id>
+          </State>
+          <State>
+            <id>File Watchers</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>HAML</id>
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>Handlebars/Mustache</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>JSON</id>
+          </State>
+          <State>
             <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript function metricsJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Less</id>
+          </State>
+          <State>
+            <id>Meteor</id>
+          </State>
+          <State>
+            <id>Naming conventionsJavaScript</id>
+          </State>
+          <State>
+            <id>Node.jsJavaScript</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>Pug/Jade</id>
+          </State>
+          <State>
+            <id>RELAX NG</id>
+          </State>
+          <State>
+            <id>Sass/SCSS</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+          <State>
+            <id>TypeScript</id>
+          </State>
+          <State>
+            <id>Unit testingJavaScript</id>
+          </State>
+          <State>
+            <id>XML</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+          <State>
+            <id>XSLT</id>
           </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>GeneralJavaScript</id>
+            <id>UnterminatedStatementJS</id>
           </State>
         </selected-state>
       </profile-state>
@@ -160,6 +414,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -179,151 +434,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="single_pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="single_pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="videoCenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="output" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="output" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WTF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,26 +443,40 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="javascript.nodejs.core.library.configured.version" value="6.7.0" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="js.eslint.eslintPackage" value="C:\Users\zi\AppData\Roaming\npm\node_modules\eslint" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zi\Desktop\demo\WTF\src\single_pages\gameCenter\containers\game\assets" />
+      <recent name="C:\Users\zi\Desktop\demo\WTF\src\single_pages\gameCenter" />
+      <recent name="C:\Users\zi\Desktop\demo\WTF\src\single_pages\gameCenter\containers" />
+      <recent name="C:\Users\zi\Desktop\demo\WTF\src\single_pages" />
+      <recent name="C:\Users\zi\Desktop\demo\WTF\output\statics\svg" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\zi\Desktop\demo\WTF\output" />
       <recent name="C:\Users\zi\Desktop\demo\WTF\src\single_pages\videoCenter\components\fun-cell" />
       <recent name="C:\Users\zi\Desktop\demo\WTF\static" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\zi\Desktop\demo\WTF\output\statics\svg" />
-      <recent name="C:\Users\zi\Desktop\demo\WTF\src\single_pages\videoCenter\statics\imgs" />
-      <recent name="C:\Users\zi\Desktop\demo\WTF\output\fonts" />
-    </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="C:\cygwin64\bin\bash.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -435,7 +561,13 @@
       <workItem from="1477921788051" duration="2776000" />
       <workItem from="1477965548188" duration="9405000" />
       <workItem from="1477983422606" duration="1611000" />
-      <workItem from="1477997942736" duration="10884000" />
+      <workItem from="1477997942736" duration="13101000" />
+      <workItem from="1478086716644" duration="140000" />
+      <workItem from="1478099624339" duration="620000" />
+      <workItem from="1478312514196" duration="98000" />
+      <workItem from="1478331280726" duration="413000" />
+      <workItem from="1484229537930" duration="48000" />
+      <workItem from="1484274475348" duration="20439000" />
     </task>
     <task id="LOCAL-00001" summary="aside">
       <created>1477287814745</created>
@@ -577,11 +709,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478009437784</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="images">
+      <created>1478009713307</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1478009713307</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128756000" />
+    <option name="totallyTimeSpent" value="152731000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -593,17 +732,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19568452" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21800596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3045977" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3045977" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32614943" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32614943" sideWeight="0.49702382" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3045977" sideWeight="0.49702382" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30923077" sideWeight="0.49702382" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -661,194 +800,18 @@
     <MESSAGE value="checkbox fixed&#10;" />
     <MESSAGE value="many bugs&#10;" />
     <MESSAGE value="images" />
-    <option name="LAST_COMMIT_MESSAGE" value="images" />
+    <MESSAGE value="go back to update" />
+    <option name="LAST_COMMIT_MESSAGE" value="go back to update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/rank/r129-3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="340" column="1" selection-start-line="340" selection-start-column="1" selection-end-line="340" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/rank/r155-3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="340" column="1" selection-start-line="340" selection-start-column="1" selection-end-line="340" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/rank/r160-3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/rank/r165-3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="314" column="19" selection-start-line="314" selection-start-column="19" selection-end-line="314" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/utils/number.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/rank.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/rank-list/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/frame/sub-lists/main.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/reducers/fun.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/actions/pagination.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/actions/common.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/actions/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/actions/rank.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/reducers/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/fun-cell/fun-cell.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/actions/fun.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/fun.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/actions/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/frame/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/animation-cell/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/components/animation-cell/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/animation.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/actions/animation.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/animation.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -856,21 +819,58 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/frame/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/output/statics/imgs/2233.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../svg/2049.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2195.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2196.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2197.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2122.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2139.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2194.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2604.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2198.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2199.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2328.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2600.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2601.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2602.svg" />
+    <entry file="file://$PROJECT_DIR$/../../svg/2603.svg" />
+    <entry file="file://$PROJECT_DIR$/output/statics/svg/2622.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="44" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/statics/svg/2665.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="63">
+            <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
@@ -881,186 +881,243 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/route.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <marker date="1484276573310" expanded="true" signature="0:294" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/dataCenter/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/video.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/frame/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/reducers/common.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/reducers/pagination.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/actions/common.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/actions/pagination.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/store.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/config.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/reducers/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+            <element signature="e#214#309#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/main/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/store.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/lib/lodash.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1008">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/actions/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <element signature="e#135#174#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        <state relative-caret-position="357">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2049.svg">
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/tank.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="38" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="688" />
+        <state relative-caret-position="-588">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2195.svg">
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="238" />
+        <state relative-caret-position="117">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2196.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="249" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2197.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="250" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2122.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="243" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2139.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="220" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2194.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="241" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2604.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2198.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2199.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2328.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2600.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2601.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2602.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="1033" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../svg/2603.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="3629" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/statics/svg/2622.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="44" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/statics/svg/2665.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="63">
-            <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/videoCenter/containers/main/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#156#251#0" expanded="true" />
-            <element signature="e#395#1504#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

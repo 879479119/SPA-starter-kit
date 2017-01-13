@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var fs = require('fs')
+var fs = require('fs');
 var globalConfig = require('./config');
 var exec = require('child_process').exec, child;
 

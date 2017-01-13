@@ -50,7 +50,7 @@
 
 	var _reactRouter = __webpack_require__(1);
 
-	__webpack_require__(85);
+	__webpack_require__(87);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8968,13 +8968,15 @@
 
 
 /***/ },
-/* 85 */
+/* 85 */,
+/* 86 */,
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(86);
+	var content = __webpack_require__(88);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(84)(content, {});
@@ -8994,7 +8996,7 @@
 	}
 
 /***/ },
-/* 86 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(83)();

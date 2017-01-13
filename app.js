@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var videoRouter = require('./routes/video');
 var musicRouter = require('./routes/music');
 var dataRouter = require('./routes/data');
+var gameRouter = require('./routes/game');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'output')));
 app.use('/video', videoRouter);
 app.use('/music', musicRouter);
 app.use('/data', dataRouter);
+app.use('/game', gameRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

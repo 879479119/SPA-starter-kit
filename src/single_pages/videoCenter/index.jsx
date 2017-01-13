@@ -13,7 +13,7 @@ import RouterConfig from './config'
 let store = configureStore();
 
 class Main extends Component {
-	render(){
+	render (){
 		return (
 			<Provider store={store}>
 				<RouterConfig/>
