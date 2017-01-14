@@ -31,5 +31,5 @@ class Judge{
 	static _checkCannon(){
 
 	}
-	static _
+	static _ = 3;
 }

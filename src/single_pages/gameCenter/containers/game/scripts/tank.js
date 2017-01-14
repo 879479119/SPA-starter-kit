@@ -79,6 +79,13 @@ class Enemy extends Tank{
 		}
 		merge(this, initAttr)
 	}
+
+	_chaseUser(){
+		/**
+		 * when enemies chases users, the A* algorithm will take much time to find the way out,
+		 * therefore, we should do the most complicated part only while user moves a step.
+		 */
+	}
 }
 
 function merge(self, init) {
