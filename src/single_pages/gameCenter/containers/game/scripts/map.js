@@ -17,6 +17,19 @@
  *
  */
 
+/**
+ * construction types:
+ *  'v' - void area
+ *  'b' - complete block
+ *  'hbX' - half block, X represents an clockwise orientation(t,r,l,b)
+ *  'g' - grass
+ *  'w' - water
+ *  'i' - irony block
+ *  'hiX' - half irony block, X is the same as 'hbX'
+ *
+ *
+ */
+
 
 const MAP_TEMPLATE = {
 	size: {

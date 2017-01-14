@@ -22,7 +22,15 @@ class Judge{
 		/**
 		 * steps:
 		 *  1.check if user control the tank crash direct into the wall,and move control(change states)
-		 *  2.check cannonball's position, judging if any tank were damaged
+		 *  2.enemies go towards the base, as a whole, the ratio of getting closer is higher than getting further
+		 *  3.check cannonball's position, judging if any tank were damaged or any construction damaged,
+		 *      - user lose this game if the base were destroyed,
+		 *      - blinking enemies leave items after destroyed,
+		 *      - user can be more powerful when fetch blinking items,
+		 *      - some construction will change state if attacked,
+		 *      -
+		 *  4.
+		 *
 		 */
 	}
 	static _checkMap(){

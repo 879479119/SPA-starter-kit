@@ -84,6 +84,11 @@ class Enemy extends Tank{
 		/**
 		 * when enemies chases users, the A* algorithm will take much time to find the way out,
 		 * therefore, we should do the most complicated part only while user moves a step.
+		 *
+		 * Update: the tanks should not be so talent, they should choose a way and go straight till ending,
+		 * but the ending of their travel cannot locate in anywhere except the 'base'
+		 *
+		 *
 		 */
 	}
 }
