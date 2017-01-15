@@ -73,30 +73,54 @@ export class Grid{
 		this.c = this.ele.getContext('2d')
 		this.step = 4       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
 		this.gridBlock = 4  //a block consists of 16 pixels
+		this.len = this.gridBlock * this.step
+
+		//it's an Matrix which shows where the tanks could go
+		this.alley = []
 	}
 	init(){
 		this.c.clearRect(0,0,this.width,this.height)
 		this.c.fillStyle = "#000"
 		this.c.fillRect(0,0,this.width,this.height)
 	}
-	drawConstruction(map){
-		const mapSourceList = map.getMapList(),
+	drawConstruction(){
+		const mapSourceList = Map.getMapList(),
 			{
 				size: { width, height},
 				startPos,enemies,material
 			} = mapSourceList[0]
+		let blocks = Grid._adaptor(material)
 
 		for(let row = 0;row < height;row ++){
-
 			for(let col = 0;col < width;col ++){
-
+				this._drawBlock(col, row, blocks[col][row])
 			}
 		}
 
-		const blockWidth = this.step*this.gridBlock
-		const image = new Image()
-		image.src = ImageManager.getBitMap("steel")
-		this.c.drawImage(image,0,0,blockWidth,blockWidth)
+	}
+	_drawTank(){
+
+	}
+	_drawBlock(col, row, type){
+		let src, x = col * this.len,
+			y = row * this.len,
+			image = new Image()
+
+		if((src = ImageManager.getBitMap(type)) === undefined) return
+		image.src = src
+		this.c.drawImage(image, x, y, this.len, this.len)
+	}
+	static _adaptor(material){
+		return material.map(k=>{
+			return k.map(k=>Grid.materialData[k])
+		})
+	}
+	//add all the blocks here
+	static get materialData(){
+		return {
+			v: 0,
+			b: "walls"
+		}
 	}
 }
 
@@ -105,6 +129,8 @@ export default class Map extends Grid{
 		super(width, height)
 		this.width = width
 		this.height =height
+		//this prop shows how the block damaged
+		this.blockStatus = []
 	}
 	//init the map
 	init(){
