@@ -61,7 +61,7 @@ var config = {
 	module: {
 		// 加载器配置
 		loaders: [
-			{	test: /\.jsx$/,
+			{	test: /\.(jsx|js)$/,
 				exclude: /node_modules/,
 				loader: 'babel',
 				//很奇怪，不需要进行query配置或者是.babelrc文件，用了会报错
@@ -76,7 +76,7 @@ var config = {
 			{ test: /\.less$/,
 				loader: 'style!css!less'
 			},
-			{ test: /\.(png|jpg)$/,
+			{ test: /\.(png|jpg|gif)$/,
       	        loader: 'url?limit=5000000'
 			}
 		]

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import game from '../game'
 
 import './main.less'
 
 class Frame extends Component {
     constructor(props) {
         super(props)
+    }
+    componentDidMount(){
+        window.onload = game()
     }
     render(){
         return (

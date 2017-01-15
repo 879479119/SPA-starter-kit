@@ -29,7 +29,8 @@
  *
  *
  */
-
+//noinspection JSUnresolvedVariable
+import img from '../assets/image/1.gif'
 
 const MAP_TEMPLATE = {
 	size: {
@@ -53,11 +54,11 @@ const MAP_TEMPLATE = {
 /**
  *
  */
-class Grid{
-	constructor(){
+export class Grid{
+	constructor(width, height){
 		/*the canvas must be width 800px,height 400px*/
-		this.width = 800
-		this.height = 400
+		this.width = width || 800
+		this.height = height || 400
 		this.ele = window.document.querySelector("#canvas")
 		this.c = this.ele.getContext('2d')
 		this.step = 2       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
@@ -66,11 +67,19 @@ class Grid{
 	static init(){
 
 	}
+	drawConstruction(map){
+		let mapSource = map.getMapList()
+		const image = new Image()
+		image.src = img
+		this.c.drawImage(image,0,0)
+	}
 }
 
-class Map extends Grid{
-	constructor(props){
-		super(props)
+export default class Map extends Grid{
+	constructor(width, height){
+		super(width, height)
+		this.width = width
+		this.height =height
 	}
 	//init the map
 	init(){
@@ -90,7 +99,8 @@ class Map extends Grid{
 	}
 	//draw from local storage
 	getMapList(){
-
+		let maps = window.localStorage.getItem('mapList')
+		return JSON.parse(maps)
 	}
 	insertMap(){
 
