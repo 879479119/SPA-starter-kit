@@ -45,10 +45,10 @@ const MAP_TEMPLATE = {
 		{ x: 0, y: 0, type: 0, }
 	],
 	material: [
-		['a','b','c','a','c','c','c','c','c','c'],
-		['a','b','c','a','c','c','c','c','c','c'],
-		['a','b','c','a','c','c','c','c','c','c'],
-		['a','b','c','a','c','c','c','c','c','c']
+		['b','v','v','b'],
+		['v','b','v','v'],
+		['v','b','v','v'],
+		['v','b','v','v']
 	]
 }
 
@@ -74,11 +74,25 @@ export class Grid{
 		this.step = 4       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
 		this.gridBlock = 4  //a block consists of 16 pixels
 	}
-	static init(){
-
+	init(){
+		this.c.clearRect(0,0,this.width,this.height)
+		this.c.fillStyle = "#000"
+		this.c.fillRect(0,0,this.width,this.height)
 	}
 	drawConstruction(map){
-		let mapSource = map.getMapList()
+		const mapSourceList = map.getMapList(),
+			{
+				size: { width, height},
+				startPos,enemies,material
+			} = mapSourceList[0]
+
+		for(let row = 0;row < height;row ++){
+
+			for(let col = 0;col < width;col ++){
+
+			}
+		}
+
 		const blockWidth = this.step*this.gridBlock
 		const image = new Image()
 		image.src = ImageManager.getBitMap("steel")
@@ -109,7 +123,7 @@ export default class Map extends Grid{
 
 	}
 	//draw from local storage
-	getMapList(){
+	static getMapList(){
 		let maps = window.localStorage.getItem('mapList')
 		return JSON.parse(maps)
 	}

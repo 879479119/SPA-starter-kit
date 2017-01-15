@@ -11,11 +11,9 @@ export default function init() {
 	//get map source
 	let grid = new Grid(800,400)
 	let map = new Map(800,400)
-	let mapSource = map.getMapList()
-	//get data from local storage
-	grid.drawConstruction(map)
 	//draw construction
-	ImageManager.getBitMap("water")
+	grid.init()
+	grid.drawConstruction(map)
 	//draw tanks
 
 

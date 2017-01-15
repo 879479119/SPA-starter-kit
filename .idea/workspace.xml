@@ -2,54 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/1.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/10.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/2.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/3.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/4.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/5.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/6.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/7.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/8.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/9.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2D.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2L.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2R.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/enemy2U.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/mintank.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p1tankD.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p1tankL.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p1tankR.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p2tankD.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p2tankL.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/p2tankR.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/select.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/symbol.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/title.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3D.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3L.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3R.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/enemy3U.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235303.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235357.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235418.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235441.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235754.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235819.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235843.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235923.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101117235941.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101118000029.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101118000048.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹 (2)/tugai.net.20101118000114.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117134209.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117144551.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117144625.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/tugai.net.20101117145147.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/wall.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/新建文件夹/walls.gif" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/wall.gif" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/assets/image/wall.gif" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
@@ -80,8 +32,8 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="264">
-                  <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+                <state relative-caret-position="357">
+                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                     <element signature="e#40#81#0" expanded="true" />
@@ -93,7 +45,7 @@
           <file leaf-file-name="map.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
+                <state relative-caret-position="-525">
                   <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
                   <folding />
                 </state>
@@ -139,8 +91,8 @@
           <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="42">
-                  <caret line="70" column="32" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+                <state relative-caret-position="355">
+                  <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -223,8 +175,8 @@
         <option value="$PROJECT_DIR$/src/single_pages/index.jsx" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/audioManager.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
       </list>
     </option>
@@ -697,7 +649,7 @@
       <workItem from="1484229537930" duration="48000" />
       <workItem from="1484274475348" duration="20568000" />
       <workItem from="1484360096945" duration="8367000" />
-      <workItem from="1484458862999" duration="14004000" />
+      <workItem from="1484458862999" duration="16653000" />
     </task>
     <task id="LOCAL-00001" summary="aside">
       <created>1477287814745</created>
@@ -874,11 +826,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484464754604</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="draw some pic">
+      <created>1484478603740</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1484478603740</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175231000" />
+    <option name="totallyTimeSpent" value="177880000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -891,9 +850,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23660715" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23660715" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3045977" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -960,7 +919,8 @@
     <MESSAGE value="images" />
     <MESSAGE value="go back to update" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="draw some pic" />
+    <option name="LAST_COMMIT_MESSAGE" value="draw some pic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1223,17 +1183,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#40#81#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
@@ -1244,10 +1193,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#40#81#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="70" column="32" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
+        <state relative-caret-position="355">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding />
         </state>
       </provider>
