@@ -3,6 +3,7 @@
  */
 
 import Map, { Grid } from './scripts/map'
+import { ImageManager } from './scripts/Manager'
 
 export default function init() {
 	/*仅支持最新的chrome，firefox浏览器，可以运行es6代码的*/
@@ -14,7 +15,7 @@ export default function init() {
 	//get data from local storage
 	grid.drawConstruction(map)
 	//draw construction
-
+	ImageManager.getBitMap("water")
 	//draw tanks
 
 

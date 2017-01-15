@@ -30,7 +30,7 @@
  *
  */
 //noinspection JSUnresolvedVariable
-import img from '../assets/image/1.gif'
+import { ImageManager } from './Manager'
 
 const MAP_TEMPLATE = {
 	size: {
@@ -51,6 +51,16 @@ const MAP_TEMPLATE = {
 		['a','b','c','a','c','c','c','c','c','c']
 	]
 }
+
+export class Store{
+	constructor(){
+		this.type = 'audio'
+	}
+
+}
+
+
+
 /**
  *
  */
@@ -61,7 +71,7 @@ export class Grid{
 		this.height = height || 400
 		this.ele = window.document.querySelector("#canvas")
 		this.c = this.ele.getContext('2d')
-		this.step = 2       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
+		this.step = 4       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
 		this.gridBlock = 4  //a block consists of 16 pixels
 	}
 	static init(){
@@ -69,9 +79,10 @@ export class Grid{
 	}
 	drawConstruction(map){
 		let mapSource = map.getMapList()
+		const blockWidth = this.step*this.gridBlock
 		const image = new Image()
-		image.src = img
-		this.c.drawImage(image,0,0)
+		image.src = ImageManager.getBitMap("steel")
+		this.c.drawImage(image,0,0,blockWidth,blockWidth)
 	}
 }
 
