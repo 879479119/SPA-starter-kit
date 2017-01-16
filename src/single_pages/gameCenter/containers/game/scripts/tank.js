@@ -26,10 +26,10 @@
  */
 
 class Tank{
-	constructor(){
+	constructor(x,y){
 		const initAttr = {
-			posX: 0,         //tank's position on axis X
-			posY: 0,         //position on axis Y
+			posX: x || 0,         //tank's position on axis X
+			posY: y || 0,         //position on axis Y
 			type: 0,
 			speed: 1,
 			health: 5,
@@ -37,12 +37,13 @@ class Tank{
 			shell: 0,        //shell may keep out some attack
 			damage: 1,
 			stage: 0,        //tank acts different
+			direction: 0     //0-3 for the clockwise direction
 		}
 		merge(this, initAttr)
 	}
 }
 
-class Player extends Tank{
+export class Player extends Tank{
 	constructor(props){
 		super(props)
 		const initAttr = {
@@ -52,6 +53,15 @@ class Player extends Tank{
 			damage: 5
 		}
 		merge(this, initAttr)
+	}
+	init(){
+		console.log(2)
+		this._listenKeyboard()
+	}
+	_listenKeyboard(){
+		window.document.addEventListener('keydown',function (e) {
+			console.log(e.key)
+		})
 	}
 }
 
@@ -68,7 +78,7 @@ class Friend extends Tank{
 	}
 }
 
-class Enemy extends Tank{
+export class Enemy extends Tank{
 	constructor(props){
 		super(props)
 		const initAttr = {
@@ -95,6 +105,7 @@ class Enemy extends Tank{
 
 function merge(self, init) {
 	for(let attr of init){
+		console.log(attr)
 		self[attr] = init[attr]
 	}
 	return 1;

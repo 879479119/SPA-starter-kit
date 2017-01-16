@@ -24,8 +24,8 @@
  *  'hbX' - half block, X represents an clockwise orientation(t,r,l,b)
  *  'g' - grass
  *  'w' - water
- *  'i' - irony block
- *  'hiX' - half irony block, X is the same as 'hbX'
+ *  's' - steel block
+ *  'hsX' - half steel block, X is the same as 'hbX'
  *
  *
  */
@@ -52,17 +52,8 @@ const MAP_TEMPLATE = {
 	]
 }
 
-export class Store{
-	constructor(){
-		this.type = 'audio'
-	}
-
-}
-
-
-
 /**
- *
+ * the class grid controls the canvas,and store some data
  */
 export class Grid{
 	constructor(width, height){
@@ -85,10 +76,7 @@ export class Grid{
 	}
 	drawConstruction(){
 		const mapSourceList = Map.getMapList(),
-			{
-				size: { width, height},
-				startPos,enemies,material
-			} = mapSourceList[0]
+			{ size: { width, height}, material } = mapSourceList[0]
 		let blocks = Grid._adaptor(material)
 
 		for(let row = 0;row < height;row ++){
@@ -99,7 +87,13 @@ export class Grid{
 
 	}
 	_drawTank(){
+		const mapSourceList = Map.getMapList(),
+			{ startPos : [{ x, y }], enemies } = mapSourceList[0]
 
+		this._drawPlayer(x,y)
+	}
+	_drawPlayer(x, y){
+		this._drawBlock(x, y, 'p1tankU')
 	}
 	_drawBlock(col, row, type){
 		let src, x = col * this.len,
@@ -109,6 +103,40 @@ export class Grid{
 		if((src = ImageManager.getBitMap(type)) === undefined) return
 		image.src = src
 		this.c.drawImage(image, x, y, this.len, this.len)
+	}
+	_geneAlley(material, width, height){
+		let gridValid = []
+		for(let row = 0;row < height;row ++){
+			let rowArr1 = [],rowArr2 = []
+			for(let col = 0;col < width;col ++){
+				switch (material[row][col]){
+					case 'v': case 'g':
+						rowArr1.push(1,1);rowArr2.push(1,1)
+						break
+					case 'hbt': case 'hst':
+						rowArr1.push(0,0);rowArr2.push(1,1)
+						break
+					case 'hbr': case 'hsr':
+						rowArr1.push(1,0);rowArr2.push(1,0)
+						break
+					case 'hbb': case 'hsb':
+						rowArr1.push(1,1);rowArr2.push(0,0)
+						break
+					case 'hbl': case 'hsl':
+						rowArr1.push(0,1);rowArr2.push(0,1)
+						break
+					default:
+						rowArr1.push(0,0);rowArr2.push(0,0)
+						break
+				}
+			}
+			//store the data and clear cache
+			gridValid.push(rowArr1, rowArr2)
+			rowArr1.length = 0
+			rowArr2.length = 0
+		}
+		this.alley = gridValid
+		return gridValid
 	}
 	static _adaptor(material){
 		return material.map(k=>{
@@ -137,9 +165,18 @@ export default class Map extends Grid{
 
 	}
 	draw(){
-
+		return this.blockStatus
 	}
-
+	_geneStatus(material){
+		// 1 represent this position is accessible,
+		// 0 represent other position with entity
+		const REFLECT = {
+			v: 1, g: 1
+		}
+		return this.blockStatus = material.map(k=>{
+			return k.map(k=>REFLECT[k] || 0)
+		})
+	}
 	/**
 	 * draw map using an object 'map'
 	 * @param map Object
