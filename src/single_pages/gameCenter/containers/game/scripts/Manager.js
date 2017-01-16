@@ -30,13 +30,16 @@ export class ImageManager extends Manager{
 	}
 
 	static getBitMap(file){
+		let image = new Image()
 		let i = 0, found = 0
 		requireContext.keys().map((key)=>{
 			let name = key.match(/\.\/(.*?)\.gif/)[1]
 			if(name === file) found = 1
 			if(found === 0)i ++
 		})
-		return allGif[i]
+		if(allGif[i] === undefined) return
+		image.src = allGif[i]
+		return image
 	}
 
 }

@@ -30,6 +30,8 @@ class Tank{
 		const initAttr = {
 			posX: x || 0,         //tank's position on axis X
 			posY: y || 0,         //position on axis Y
+			offsetX: 0,           //it's the atomic unit - 'px'
+			offsetY: 0,           //that shows where the block is precisely
 			type: 0,
 			speed: 1,
 			health: 5,
@@ -50,17 +52,31 @@ export class Player extends Tank{
 			type: 1,
 			speed: 2,
 			health: 5,
-			damage: 5
+			damage: 5,
+			running: false         //shows whether the tank is moving during key down
 		}
 		merge(this, initAttr)
 	}
 	init(){
-		console.log(2)
 		this._listenKeyboard()
 	}
 	_listenKeyboard(){
-		window.document.addEventListener('keydown',function (e) {
-			console.log(e.key)
+		this.direction = 'w'
+		let that = this
+		const listen = window.document.addEventListener
+		//once player press down a button,we should
+		listen('keydown',function (e) {
+
+			switch (e.key){
+				case 'w'||'a'||'s'||'d':
+					that.direction = e.key
+					that.running = true
+					break
+			}
+		})
+		listen('keyup',function (e) {
+
+			that.running = false
 		})
 	}
 }
@@ -104,8 +120,8 @@ export class Enemy extends Tank{
 }
 
 function merge(self, init) {
-	for(let attr of init){
-		console.log(attr)
+	for(let attr in init){
+		if(init.hasOwnProperty(attr))
 		self[attr] = init[attr]
 	}
 	return 1;

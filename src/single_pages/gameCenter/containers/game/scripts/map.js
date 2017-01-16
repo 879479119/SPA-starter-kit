@@ -14,7 +14,8 @@
  * for tanks,it can go several steps instead of pixel,
  * you can simply get an idea that passing a block needs four steps.
  *
- *
+ * since the canvas does need to draw from head to toe,we just clear
+ * the area needed to save time for complication of calculation
  */
 
 /**
@@ -29,6 +30,17 @@
  *
  *
  */
+
+/*
+0.5px	|———————————|                   -2
+	1px	|           |——————————  offset -1
+	1px	|    4px    |                    0
+	1px	|           |                    1
+0.5px	|———————————|
+	          ↑
+	  single grid block
+ */
+
 //noinspection JSUnresolvedVariable
 import { ImageManager } from './Manager'
 
@@ -96,13 +108,21 @@ export class Grid{
 		this._drawBlock(x, y, 'p1tankU')
 	}
 	_drawBlock(col, row, type){
-		let src, x = col * this.len,
-			y = row * this.len,
-			image = new Image()
-
-		if((src = ImageManager.getBitMap(type)) === undefined) return
-		image.src = src
-		this.c.drawImage(image, x, y, this.len, this.len)
+		let x = col * this.len,
+			y = row * this.len
+		this.c.drawImage(ImageManager.getBitMap(type), x, y, this.len, this.len)
+	}
+	updateTank(tank){
+		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second
+		let {posX, posY, offsetX, offsetY, speed, direction} = tank
+		let move = speed * 10 / 60
+		this.c.fillStyle = "#000"
+		this.c.fillRect(posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
+		offsetX ++
+		switch (true){
+			case offsetX>15 && direction=='':
+		}
+		this.c.drawImage(ImageManager.getBitMap(tank.type), posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
 	}
 	_geneAlley(material, width, height){
 		let gridValid = []

@@ -4,6 +4,7 @@
 
 import Map, { Grid } from './scripts/map'
 import { Player, Enemy } from './scripts/tank'
+import Judge from './scripts/judge'
 
 export default function init() {
 	/*仅支持最新的chrome，firefox浏览器，可以运行es6代码的*/
@@ -19,5 +20,8 @@ export default function init() {
 	grid._drawTank(map)
 	player.init()
 
+	//start moving frame by frame
+	let frame = new Judge()
+	let animation = window.requestAnimationFrame(frame.go)
 }
 

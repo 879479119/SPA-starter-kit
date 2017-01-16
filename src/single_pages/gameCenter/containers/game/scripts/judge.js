@@ -7,18 +7,23 @@
  *
  */
 
-class Judge{
-	constructor(){
+export default class Judge{
+	constructor(grid, map, player, enemies){
 		//user data
-		this.user = {}
+		this.player = player || {}
 		//enemies data
-		this.enemies = {}
+		this.enemies = enemies || {}
 		//map data
-		this.map = {}
+		this.map = map || {}
+		//grid data
+		this.grid = grid || {}
+
+	}
+	init(){
 
 	}
 	//the most important part of this game
-	static go(map){
+	go(map){
 		/**
 		 * steps:
 		 *  1.check if user control the tank crash direct into the wall,and move control(change states)
@@ -32,6 +37,13 @@ class Judge{
 		 *  4.
 		 *
 		 */
+		const player = this.player,
+			grid = this.grid
+		if(player.running){
+			grid.updateTank(player)
+		}
+
+
 	}
 	static _checkMap(){
 
