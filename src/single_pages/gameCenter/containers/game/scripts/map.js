@@ -117,20 +117,72 @@ export class Grid{
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second
 		let {posX, posY, offsetX, offsetY, speed, direction} = tank
 		let move = speed * 10 / 60
-		this.c.fillStyle = "#000"
 
 		//TIP: because calculating pixel will cause some colored pixel left,
 		//     so we just clear a double size of it
 
-		this.c.fillRect(posX * this.len + offsetX - 2*move, posY * this.len + offsetY, this.len, this.len)
-		tank.offsetX = offsetX + move
+		// this._clearArea(posX,posY,offsetX - 2*move,offsetY)
+		// tank.offsetX = offsetX + move
 		switch (true){
-			case offsetX>15 && direction=='r':
-			case offsetX<0 && direction=='l':
-			case offsetY>15 && direction=='s':
-			case offsetY<0 && direction=='w':
+			case direction == 'w':
+				if(offsetY <= 0){
+					tank.posY --
+					tank.offsetY = 15
+				}else tank.offsetY = offsetY - move
+				this._clearArea(posX,tank.posY,offsetX,tank.offsetY + 2 * move)
+				break
+			case direction == 's':
+				if(offsetY >= 15){
+					tank.posY ++
+					tank.offsetY = 0
+				}else tank.offsetY = offsetY + move
+				this._clearArea(posX,tank.posY,offsetX,tank.offsetY - 2 * move)
+				break
+			case direction == 'a':
+				if(offsetX <= 0){
+					tank.posX --
+					tank.offsetX = 15
+				}else tank.offsetX = offsetX - move
+				this._clearArea(tank.posX,posY,tank.offsetX + 2 * move,offsetY)
+				break
+			case direction == 'd':
+				if(offsetX >= 15){
+					tank.posX ++
+					tank.offsetX = 0
+				}else tank.offsetX = offsetX + move
+				this._clearArea(tank.posX,posY,tank.offsetX - 2 * move,offsetY)
+				break
 		}
-		this.c.drawImage(ImageManager.getBitMap(tank.type), posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
+
+		// switch (true){
+		// 	case offsetX>15 && direction=='r':
+		// 		tank.posX ++
+		// 		tank.offsetX = 0
+		// 		break
+		// 	case offsetX<0 && direction=='l':
+		// 		tank.posX --
+		// 		tank.offsetX = 15
+		// 		break
+		// 	case offsetY>15 && direction=='s':
+		// 		tank.posY ++
+		// 		tank.offsetY = 0
+		// 		break
+		// 	case offsetY<0 && direction=='w':
+		// 		tank.posY --
+		// 		tank.offsetY = 15
+		// 		break
+		// }
+		console.log(tank.offsetY);
+		this.c.drawImage(
+			ImageManager.getBitMap(tank.type),
+			tank.posX * this.len + tank.offsetX,
+			tank.posY * this.len + tank.offsetY,
+			this.len, this.len
+		)
+	}
+	_clearArea(posX, posY, offsetX, offsetY){
+		this.c.fillStyle = "#000"
+		this.c.fillRect(posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
 	}
 	_geneAlley(material, width, height){
 		let gridValid = []

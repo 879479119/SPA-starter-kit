@@ -68,7 +68,10 @@ export class Player extends Tank{
 		listen('keydown',function (e) {
 
 			switch (e.key){
-				case 'w'||'a'||'s'||'d':
+				case 'w':
+				case 's':
+				case 'a':
+				case 'd':
 					that.direction = e.key
 					that.running = true
 					break
