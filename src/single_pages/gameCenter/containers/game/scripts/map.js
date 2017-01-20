@@ -89,6 +89,7 @@ export class Grid{
 	drawConstruction(){
 		const mapSourceList = Map.getMapList(),
 			{ size: { width, height}, material } = mapSourceList[0]
+		this.material = material
 		let blocks = Grid._adaptor(material)
 
 		for(let row = 0;row < height;row ++){
@@ -119,8 +120,7 @@ export class Grid{
 		let {posX, posY, offsetX, offsetY, speed, direction} = tank
 		let move = speed * 10 / 60
 
-		//TIP: because calculating pixel will cause some colored pixel left,
-		//     so we just clear a double size of it
+		//TIP: DummyGrid is a canvas buffer which provides a transformed image
 		let dummy = new DummyGrid()
 		let degree = 0
 
@@ -130,6 +130,8 @@ export class Grid{
 					tank.posY --
 					tank.offsetY = 15
 				}else tank.offsetY = offsetY - move
+				//TIP: because calculating pixel will cause some colored pixel left,
+				//     so we just clear a double size of it
 				this._clearArea(posX,tank.posY,offsetX,tank.offsetY + 2 * move)
 				degree = 0
 				break
@@ -171,8 +173,14 @@ export class Grid{
 		this.c.fillStyle = "#000"
 		this.c.fillRect(posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
 	}
-	_geneAlley(material, width, height){
+	_geneAlley(){
+		const material = this.material,
+			width = material[0].length,
+			height = material.length
 		let gridValid = []
+
+		// debugger
+
 		for(let row = 0;row < height;row ++){
 			let rowArr1 = [],rowArr2 = []
 			for(let col = 0;col < width;col ++){
@@ -198,10 +206,13 @@ export class Grid{
 				}
 			}
 			//store the data and clear cache
-			gridValid.push(rowArr1, rowArr2)
+			//TIP: I used to write like 'gridValid.push(rowArr1, rowArr2)', grid gets the references instead
+			//     once set rowArr.length to 0, grid turns to be void
+			gridValid.push([...rowArr1], [...rowArr2])
 			rowArr1.length = 0
 			rowArr2.length = 0
 		}
+		debugger
 		this.alley = gridValid
 		return gridValid
 	}

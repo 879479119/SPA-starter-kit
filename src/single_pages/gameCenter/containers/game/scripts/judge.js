@@ -34,16 +34,19 @@ export default class Judge{
 		 *      - user can be more powerful when fetch blinking items,
 		 *      - some construction will change state if attacked,
 		 *      -
-		 *  4.
+		 *  4.a
 		 *
 		 */
 		const player = this.player,
 			grid = this.grid
+		Judge._checkImpact(grid, player)
 		if(player.running){
 			grid.updateTank(player)
 		}
-
-
+	}
+	static _checkImpact(grid, player){
+		let valley = grid._geneAlley()
+		// console.log(valley);
 	}
 	static _checkMap(){
 
