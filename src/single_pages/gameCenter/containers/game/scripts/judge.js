@@ -45,8 +45,21 @@ export default class Judge{
 		}
 	}
 	static _checkImpact(grid, player){
-		let valley = grid._geneAlley()
-		// console.log(valley);
+		const alley = grid._geneAlley(),
+			{ posX, posY, offsetX, offsetY, direction} = player
+
+		//check if any endpoint touch other construction
+		if(direction === 'w'){
+						
+		}else if(direction === 's'){
+
+		}else if(direction === 'a'){
+
+		}else if(direction === 'd'){
+
+		}else{
+			throw Error("You cannot change variable 'direction' manually")
+		}
 	}
 	static _checkMap(){
 
