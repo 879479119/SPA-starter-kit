@@ -107,11 +107,12 @@ export class Grid{
 	_drawPlayer(x, y){
 		this._drawBlock(x, y, 'p1tankU')
 	}
-	_drawBlock(col, row, type){
-		let x = col * this.len,
-			y = row * this.len,
+	_drawBlock(col, row, type, self){
+		if(self === undefined) self = this
+		let x = col * self.len,
+			y = row * self.len,
 			img = ImageManager.getBitMap(type)
-		img && this.c.drawImage(img, x, y, this.len, this.len)
+		img && self.c.drawImage(img, x, y, self.len, self.len)
 	}
 	updateTank(tank){
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second
@@ -120,9 +121,9 @@ export class Grid{
 
 		//TIP: because calculating pixel will cause some colored pixel left,
 		//     so we just clear a double size of it
+		let dummy = new DummyGrid()
+		let degree = 0
 
-		// this._clearArea(posX,posY,offsetX - 2*move,offsetY)
-		// tank.offsetX = offsetX + move
 		switch (true){
 			case direction == 'w':
 				if(offsetY <= 0){
@@ -130,6 +131,7 @@ export class Grid{
 					tank.offsetY = 15
 				}else tank.offsetY = offsetY - move
 				this._clearArea(posX,tank.posY,offsetX,tank.offsetY + 2 * move)
+				degree = 0
 				break
 			case direction == 's':
 				if(offsetY >= 15){
@@ -137,6 +139,7 @@ export class Grid{
 					tank.offsetY = 0
 				}else tank.offsetY = offsetY + move
 				this._clearArea(posX,tank.posY,offsetX,tank.offsetY - 2 * move)
+				degree = 180
 				break
 			case direction == 'a':
 				if(offsetX <= 0){
@@ -144,6 +147,7 @@ export class Grid{
 					tank.offsetX = 15
 				}else tank.offsetX = offsetX - move
 				this._clearArea(tank.posX,posY,tank.offsetX + 2 * move,offsetY)
+				degree = 270
 				break
 			case direction == 'd':
 				if(offsetX >= 15){
@@ -151,30 +155,13 @@ export class Grid{
 					tank.offsetX = 0
 				}else tank.offsetX = offsetX + move
 				this._clearArea(tank.posX,posY,tank.offsetX - 2 * move,offsetY)
+				degree = 90
 				break
 		}
 
-		// switch (true){
-		// 	case offsetX>15 && direction=='r':
-		// 		tank.posX ++
-		// 		tank.offsetX = 0
-		// 		break
-		// 	case offsetX<0 && direction=='l':
-		// 		tank.posX --
-		// 		tank.offsetX = 15
-		// 		break
-		// 	case offsetY>15 && direction=='s':
-		// 		tank.posY ++
-		// 		tank.offsetY = 0
-		// 		break
-		// 	case offsetY<0 && direction=='w':
-		// 		tank.posY --
-		// 		tank.offsetY = 15
-		// 		break
-		// }
-		console.log(tank.offsetY);
+
 		this.c.drawImage(
-			ImageManager.getBitMap(tank.type),
+			dummy._getRotateBlock('p1tankU',degree),
 			tank.posX * this.len + tank.offsetX,
 			tank.posY * this.len + tank.offsetY,
 			this.len, this.len
@@ -229,6 +216,52 @@ export class Grid{
 			v: 0,
 			b: "walls"
 		}
+	}
+}
+
+export class  DummyGrid extends Grid{
+
+	constructor(width, height) {
+		super(width, height);
+		this.width = 16
+		this.height = 16
+		this.len = 16
+		this.init()
+	}
+
+	init() {
+		this.ele = window.document.createElement("canvas")
+		this.ele.width = this.width
+		this.ele.height = this.height
+		this.c = this.ele.getContext('2d')
+	}
+
+	_getRotateBlock(type, degree){
+		this.c.clearRect(0,0,this.len,this.len)
+		//we must draw the bitmap on 'this.c' ,so just take this as a param
+		this.c.save()
+
+		switch (degree){
+			case 90:
+				this.c.translate(this.len, 0)
+				this.c.rotate(Math.PI/2)
+				break
+			case 180:
+				this.c.translate(this.len, this.len)
+				this.c.rotate(Math.PI)
+				break
+			case 270:
+				this.c.translate(0, this.len)
+				this.c.rotate(-Math.PI/2)
+				break
+			default:
+				console.log("what do you want?");
+		}
+
+		super._drawBlock(0,0,type,this)
+
+		this.c.restore()
+		return this.ele
 	}
 }
 
