@@ -49,7 +49,7 @@ export class Player extends Tank{
 	constructor(props){
 		super(props)
 		const initAttr = {
-			type: 1,
+			type: "p1tankU",
 			speed: 2,
 			health: 5,
 			damage: 5,

@@ -21,7 +21,13 @@ export default function init() {
 	player.init()
 
 	//start moving frame by frame
-	let frame = new Judge()
-	let animation = window.requestAnimationFrame(frame.go)
+	let frame = new Judge(grid, map, player)
+	let i = 1
+	let keyFrame = () => {
+		frame.go()
+		requestAnimationFrame(keyFrame)
+		if(i > 1000) cancelAnimationFrame(animation)
+	}
+	let animation = window.requestAnimationFrame(keyFrame)
 }
 

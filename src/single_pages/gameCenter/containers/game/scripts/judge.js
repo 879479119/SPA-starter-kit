@@ -23,7 +23,7 @@ export default class Judge{
 
 	}
 	//the most important part of this game
-	go(map){
+	go(){
 		/**
 		 * steps:
 		 *  1.check if user control the tank crash direct into the wall,and move control(change states)
@@ -51,5 +51,4 @@ export default class Judge{
 	static _checkCannon(){
 
 	}
-	static _ = 3;
 }

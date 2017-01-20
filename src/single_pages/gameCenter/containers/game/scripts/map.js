@@ -109,18 +109,26 @@ export class Grid{
 	}
 	_drawBlock(col, row, type){
 		let x = col * this.len,
-			y = row * this.len
-		this.c.drawImage(ImageManager.getBitMap(type), x, y, this.len, this.len)
+			y = row * this.len,
+			img = ImageManager.getBitMap(type)
+		img && this.c.drawImage(img, x, y, this.len, this.len)
 	}
 	updateTank(tank){
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second
 		let {posX, posY, offsetX, offsetY, speed, direction} = tank
 		let move = speed * 10 / 60
 		this.c.fillStyle = "#000"
-		this.c.fillRect(posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
-		offsetX ++
+
+		//TIP: because calculating pixel will cause some colored pixel left,
+		//     so we just clear a double size of it
+
+		this.c.fillRect(posX * this.len + offsetX - 2*move, posY * this.len + offsetY, this.len, this.len)
+		tank.offsetX = offsetX + move
 		switch (true){
-			case offsetX>15 && direction=='':
+			case offsetX>15 && direction=='r':
+			case offsetX<0 && direction=='l':
+			case offsetY>15 && direction=='s':
+			case offsetY<0 && direction=='w':
 		}
 		this.c.drawImage(ImageManager.getBitMap(tank.type), posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
 	}
@@ -213,5 +221,4 @@ export default class Map extends Grid{
 	insertMap(){
 
 	}
-
 }
