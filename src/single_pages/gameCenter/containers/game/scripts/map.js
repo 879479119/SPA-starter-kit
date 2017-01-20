@@ -212,7 +212,6 @@ export class Grid{
 			rowArr1.length = 0
 			rowArr2.length = 0
 		}
-		debugger
 		this.alley = gridValid
 		return gridValid
 	}

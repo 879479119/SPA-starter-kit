@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
     </list>
     <ignored path="WTF.iws" />
@@ -38,21 +37,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="judge.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="judge.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+            <state relative-caret-position="63">
+              <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="81" column="23" lean-forward="true" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+            <state relative-caret-position="120">
+              <caret line="213" column="9" lean-forward="false" selection-start-line="213" selection-start-column="9" selection-end-line="213" selection-end-column="9" />
               <folding>
                 <element signature="e#1120#1342#0" expanded="false" />
                 <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
@@ -62,18 +61,31 @@
                 <element signature="n#!!block;n#_drawBlock#0;n#Grid#0" expanded="false" />
                 <element signature="n#!!block;n#updateTank#0;n#Grid#0" expanded="false" />
                 <element signature="n#!!block;n#_clearArea#0;n#Grid#0" expanded="false" />
-                <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
                 <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
                 <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
                 <element signature="n#!!block;n#constructor#0;n#DummyGrid#0" expanded="false" />
                 <element signature="n#!!block;n#init#0;n#DummyGrid#0" expanded="false" />
                 <element signature="n#!!block;n#_getRotateBlock#0;n#DummyGrid#0" expanded="false" />
-                <element signature="e#6813#6949#0" expanded="false" />
-                <element signature="e#6973#6978#0" expanded="false" />
-                <element signature="e#6986#7016#0" expanded="false" />
-                <element signature="e#7039#7258#0" expanded="false" />
-                <element signature="e#7353#7358#0" expanded="false" />
-                <element signature="e#7501#7506#0" expanded="false" />
+                <element signature="e#6802#6938#0" expanded="false" />
+                <element signature="e#6962#6967#0" expanded="false" />
+                <element signature="e#6975#7005#0" expanded="false" />
+                <element signature="e#7028#7247#0" expanded="false" />
+                <element signature="e#7342#7347#0" expanded="false" />
+                <element signature="e#7490#7495#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Manager.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#38#0" expanded="false" />
+                <element signature="n#Manager#0" expanded="false" />
+                <element signature="n#AudioManager#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -109,6 +121,11 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>deb</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -160,13 +177,13 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/audioManager.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/tank.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/fire.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
       </list>
     </option>
   </component>
@@ -660,7 +677,7 @@
       <workItem from="1484740701030" duration="4331000" />
       <workItem from="1484793807063" duration="205000" />
       <workItem from="1484814448222" duration="2841000" />
-      <workItem from="1484877338355" duration="19566000" />
+      <workItem from="1484877338355" duration="24064000" />
     </task>
     <task id="LOCAL-00001" summary="aside">
       <created>1477287814745</created>
@@ -893,11 +910,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484898094921</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="fix with es6 feature :cop:">
+      <created>1484903817596</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1484903817596</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229456000" />
+    <option name="totallyTimeSpent" value="233954000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -983,7 +1007,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="aside" />
     <MESSAGE value="bootstrap icons&#10;" />
     <MESSAGE value="video part structure over" />
     <MESSAGE value="fetch data and COR FAILED" />
@@ -1008,7 +1031,8 @@
     <MESSAGE value="update :hankey:" />
     <MESSAGE value="move :hankey:" />
     <MESSAGE value="move &amp; turn :heart:" />
-    <option name="LAST_COMMIT_MESSAGE" value="move &amp; turn :heart:" />
+    <MESSAGE value="fix with es6 feature :cop:" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix with es6 feature :cop:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1241,16 +1265,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#38#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../chat/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1293,14 +1307,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/output/js/game.bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -1309,10 +1315,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="26" column="14" lean-forward="true" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Manager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="46" column="31" lean-forward="false" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+            <element signature="n#Manager#0" expanded="false" />
+            <element signature="n#AudioManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="81" column="23" lean-forward="true" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+        <state relative-caret-position="120">
+          <caret line="213" column="9" lean-forward="false" selection-start-line="213" selection-start-column="9" selection-end-line="213" selection-end-column="9" />
           <folding>
             <element signature="e#1120#1342#0" expanded="false" />
             <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
@@ -1322,27 +1356,18 @@
             <element signature="n#!!block;n#_drawBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#updateTank#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_clearArea#0;n#Grid#0" expanded="false" />
-            <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#DummyGrid#0" expanded="false" />
             <element signature="n#!!block;n#init#0;n#DummyGrid#0" expanded="false" />
             <element signature="n#!!block;n#_getRotateBlock#0;n#DummyGrid#0" expanded="false" />
-            <element signature="e#6813#6949#0" expanded="false" />
-            <element signature="e#6973#6978#0" expanded="false" />
-            <element signature="e#6986#7016#0" expanded="false" />
-            <element signature="e#7039#7258#0" expanded="false" />
-            <element signature="e#7353#7358#0" expanded="false" />
-            <element signature="e#7501#7506#0" expanded="false" />
+            <element signature="e#6802#6938#0" expanded="false" />
+            <element signature="e#6962#6967#0" expanded="false" />
+            <element signature="e#6975#7005#0" expanded="false" />
+            <element signature="e#7028#7247#0" expanded="false" />
+            <element signature="e#7342#7347#0" expanded="false" />
+            <element signature="e#7490#7495#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -26,23 +26,29 @@ export class AudioManager extends Manager{
 export class ImageManager extends Manager{
 	constructor(props){
 		super(props)
-
 	}
 
-	static getBitMap(file){
-		let image = new Image()
-		let i = 0, found = 0
+	//store all the images in memory, or browser will load all images again and again
+	static init(){
+		let i = 0
+		this.imgStore = []
+		this.nameStore = []
 		requireContext.keys().map((key)=>{
-			let name = key.match(/\.\/(.*?)\.gif/)[1]
-			if(name === file) found = 1
-			if(found === 0)i ++
+			let image = new Image()
+			image.src = allGif[i ++]
+			this.nameStore.push(key.match(/\.\/(.*?)\.gif/)[1])
+			this.imgStore.push(image)
 		})
-		if(allGif[i] === undefined) return
-		image.src = allGif[i]
-		return image
 	}
 
+	static getBitMap(file) {
+		let k = 0
+		while (k++ < this.imgStore.length && !(this.nameStore[k] === file)){}
+		return this.imgStore[k]
+	}
 }
+
+ImageManager.init()
 
 /*
  image source map:
