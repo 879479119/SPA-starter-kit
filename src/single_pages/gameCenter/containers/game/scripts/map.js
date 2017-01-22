@@ -128,7 +128,7 @@ export class Grid{
 			case direction == 'w':
 				if(offsetY <= 0){
 					tank.posY --
-					tank.offsetY = 15
+					tank.offsetY = 16
 				}else tank.offsetY = offsetY - move
 				//TIP: because calculating pixel will cause some colored pixel left,
 				//     so we just clear a double size of it
@@ -136,7 +136,7 @@ export class Grid{
 				degree = 0
 				break
 			case direction == 's':
-				if(offsetY >= 15){
+				if(offsetY >= 16){
 					tank.posY ++
 					tank.offsetY = 0
 				}else tank.offsetY = offsetY + move
@@ -146,13 +146,13 @@ export class Grid{
 			case direction == 'a':
 				if(offsetX <= 0){
 					tank.posX --
-					tank.offsetX = 15
+					tank.offsetX = 16
 				}else tank.offsetX = offsetX - move
 				this._clearArea(tank.posX,posY,tank.offsetX + 2 * move,offsetY)
 				degree = 270
 				break
 			case direction == 'd':
-				if(offsetX >= 15){
+				if(offsetX >= 16){
 					tank.posX ++
 					tank.offsetX = 0
 				}else tank.offsetX = offsetX + move
@@ -178,8 +178,6 @@ export class Grid{
 			width = material[0].length,
 			height = material.length
 		let gridValid = []
-
-		window.m = material
 
 		for(let row = 0;row < height;row ++){
 			let rowArr1 = [],rowArr2 = []

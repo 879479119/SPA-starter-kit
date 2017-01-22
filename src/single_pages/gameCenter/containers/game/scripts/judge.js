@@ -39,7 +39,7 @@ export default class Judge{
 		 */
 		const player = this.player,
 			grid = this.grid
-		player.running = Judge._checkImpact(grid, player)
+		Judge._checkImpact(grid, player)
 		if(player.running){
 			grid.updateTank(player)
 		}
@@ -48,30 +48,69 @@ export default class Judge{
 		const alley = grid._geneAlley(),
 			{ posX, posY, offsetX, offsetY, direction} = player
 
+		let row = posY * 2 + Math.floor(offsetY/8),
+			col = posX * 2 + Math.floor(offsetX/8)
+
 		//check if any endpoint touch other construction
 		if(direction === 'w'){
-			//this row will be tested
-			let row = posY * 2 + Math.floor(offsetY/8),
-				col = posX * 2 + Math.floor(offsetX/8)
-
 			//TIP: all the constructions are located at the standard grid,
 			//     but tanks may be located with a param 'offset'
-			window.p = alley
 			if (offsetY <= 1) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
 					//either it's running straight into block or the edge of the map
-					if (row === 0 || alley[row - 1][col] === 0) return false
+					if (row === 0 || alley[row - 1][c] === 0){
+						player.running = false
+						player.offsetY = 0
+						return
+					}
 				}
-				return true
+				player.running = true
 			} else {
-				return true
+				player.running = true
 			}
 		}else if(direction === 's'){
-			return true
+			if (offsetY >= 16) {
+				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
+					if (row === alley.length || alley[row + 1][c] === 0){
+						player.running = false
+						player.offsetY = 16
+						return
+					}
+				}
+				player.running = true
+
+			} else {
+				player.running = true
+
+			}
 		}else if(direction === 'a'){
-			return true
+			if (offsetX <= 0) {
+				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
+					if (col === 0 || alley[r][col - 1] === 0){
+						player.offsetX = 0
+						player.running = false
+						return
+					}
+				}
+				player.running = true
+			} else {
+				player.running = true
+			}
 		}else if(direction === 'd'){
-			return true
+			if (offsetX >= 16) {
+				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
+					if (col === alley[0].length || alley[r][col + 1] === 0) {
+						if (col === 0 || alley[r][col - 1] === 0) {
+							player.offsetX = 16
+							player.running = false
+							return
+						}
+					}
+				}
+				player.running = true
+			} else {
+				player.running = true
+			}
 		}else{
 			throw Error("You cannot change variable 'direction' manually")
 		}
