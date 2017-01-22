@@ -12,7 +12,7 @@ export default function init() {
 	//get map source
 	let grid = new Grid(800,400)
 	let map = new Map(800,400)
-	let player = new Player(5,3)
+	let player = new Player(2,2)
 	//draw construction
 	grid.init()
 	grid.drawConstruction(map)

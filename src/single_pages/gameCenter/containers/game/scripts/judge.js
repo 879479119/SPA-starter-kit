@@ -39,7 +39,7 @@ export default class Judge{
 		 */
 		const player = this.player,
 			grid = this.grid
-		Judge._checkImpact(grid, player)
+		player.running = Judge._checkImpact(grid, player)
 		if(player.running){
 			grid.updateTank(player)
 		}
@@ -50,13 +50,28 @@ export default class Judge{
 
 		//check if any endpoint touch other construction
 		if(direction === 'w'){
-						
+			//this row will be tested
+			let row = posY * 2 + Math.floor(offsetY/8),
+				col = posX * 2 + Math.floor(offsetX/8)
+
+			//TIP: all the constructions are located at the standard grid,
+			//     but tanks may be located with a param 'offset'
+			window.p = alley
+			if (offsetY <= 1) {
+				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
+					//either it's running straight into block or the edge of the map
+					if (row === 0 || alley[row - 1][col] === 0) return false
+				}
+				return true
+			} else {
+				return true
+			}
 		}else if(direction === 's'){
-
+			return true
 		}else if(direction === 'a'){
-
+			return true
 		}else if(direction === 'd'){
-
+			return true
 		}else{
 			throw Error("You cannot change variable 'direction' manually")
 		}

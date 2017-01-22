@@ -74,8 +74,8 @@ export class Grid{
 		this.height = height || 400
 		this.ele = window.document.querySelector("#canvas")
 		this.c = this.ele.getContext('2d')
-		this.step = 4       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
-		this.gridBlock = 4  //a block consists of 16 pixels
+		this.step = 8       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
+		this.gridBlock = 2  //a block consists of 16 pixels
 		this.len = this.gridBlock * this.step
 
 		//it's an Matrix which shows where the tanks could go
@@ -94,7 +94,7 @@ export class Grid{
 
 		for(let row = 0;row < height;row ++){
 			for(let col = 0;col < width;col ++){
-				this._drawBlock(col, row, blocks[col][row])
+				this._drawBlock(row, col, blocks[row][col])
 			}
 		}
 
@@ -108,7 +108,7 @@ export class Grid{
 	_drawPlayer(x, y){
 		this._drawBlock(x, y, 'p1tankU')
 	}
-	_drawBlock(col, row, type, self){
+	_drawBlock(row, col, type, self){
 		if(self === undefined) self = this
 		let x = col * self.len,
 			y = row * self.len,
@@ -179,7 +179,7 @@ export class Grid{
 			height = material.length
 		let gridValid = []
 
-		// debugger
+		window.m = material
 
 		for(let row = 0;row < height;row ++){
 			let rowArr1 = [],rowArr2 = []
