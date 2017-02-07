@@ -41,7 +41,12 @@ export default class Judge{
 		const player = this.player,
 			grid = this.grid,
 			fireController = this.fireController
+		//check tanks and construction
 		Judge._checkImpact(grid, player)
+		//check fire & construction & tanks
+		//TODO: ignore enemies
+		Judge._checkCannon(grid, player, fireController)
+
 		if(player.key_down && player.running){
 			grid.updateTank(player)
 		}
@@ -121,7 +126,12 @@ export default class Judge{
 	static _checkMap(){
 
 	}
-	static _checkCannon(){
+	static _checkCannon(grid, player, fireC) {
+		/**
+		 * the tank of player will be destroyed if enemy's fire reached and vice versa,
+		 * because we can tell the fire whether it's friendly judging from 'from_ally'
+		 */
+		if (fireC.fireArr.length === 0) return
 
 	}
 }

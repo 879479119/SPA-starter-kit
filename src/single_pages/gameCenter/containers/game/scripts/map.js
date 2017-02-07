@@ -105,6 +105,14 @@ export class Grid{
 			height = material.length
 		let gridValid = []
 
+		/**
+		 * there is three types of 'small blocks':
+		 *  1 - void, fire & tank could pass, e.g: VOID, GRASS
+		 *  2 - unreachable, fire can pass, but tank doesn't, e.g: WATER
+		 *  3 - hard, only level 3 fire can destroy, e.g: STEEL
+		 *  4 -
+		 */
+
 		for(let row = 0;row < height;row ++){
 			let rowArr1 = [],rowArr2 = []
 			for(let col = 0;col < width;col ++){
