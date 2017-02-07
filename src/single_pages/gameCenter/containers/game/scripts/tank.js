@@ -24,6 +24,10 @@
  *  3. slow  one beat  highest
  *  4. normal normal  normal (always blinking and if destroy it, you can get useful items)
  */
+import Fire, { PLayerFire, FireManager } from './Fire'
+// import { Grid } from './map'
+
+let fireController = new FireManager()
 
 class Tank{
 	constructor(x,y){
@@ -53,14 +57,17 @@ export class Player extends Tank{
 			speed: 2,
 			health: 5,
 			damage: 5,
-			running: false         //shows whether the tank is moving during key down
+			key_down: false,        //the tank can run only when some key is pressed
+			running: false,         //shows whether the tank is moving during key down
+			now_fire: false,
+			fire_time: 0,
 		}
 		merge(this, initAttr)
 	}
-	init(){
-		this._listenKeyboard()
+	init(controller){
+		this._listenKeyboard(controller)
 	}
-	_listenKeyboard(){
+	_listenKeyboard(controller){
 		this.direction = 'w'
 		let that = this
 		const listen = window.document.addEventListener
@@ -73,13 +80,18 @@ export class Player extends Tank{
 				case 'a':
 				case 'd':
 					that.direction = e.key
-					that.running = true
+					that.key_down = true
+					break
+				case 'j':
+					// that.key_down = true
+					that.now_fire = true
+					that.fire_time = Date.now()
+					controller.addFire(new PLayerFire(that))
 					break
 			}
 		})
 		listen('keyup',function (e) {
-
-			that.running = false
+			that.key_down = false
 		})
 	}
 }

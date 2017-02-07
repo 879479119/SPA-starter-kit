@@ -8,7 +8,7 @@
  */
 
 export default class Judge{
-	constructor(grid, map, player, enemies){
+	constructor(grid, map, player, fireController, enemies){
 		//user data
 		this.player = player || {}
 		//enemies data
@@ -17,7 +17,8 @@ export default class Judge{
 		this.map = map || {}
 		//grid data
 		this.grid = grid || {}
-
+		//fire data
+		this.fireController = fireController
 	}
 	init(){
 
@@ -38,11 +39,13 @@ export default class Judge{
 		 *
 		 */
 		const player = this.player,
-			grid = this.grid
+			grid = this.grid,
+			fireController = this.fireController
 		Judge._checkImpact(grid, player)
-		if(player.running){
+		if(player.key_down && player.running){
 			grid.updateTank(player)
 		}
+		grid.updateFire(fireController)
 	}
 	static _checkImpact(grid, player){
 		const alley = grid._geneAlley(),

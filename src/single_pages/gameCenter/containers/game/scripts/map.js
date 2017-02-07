@@ -81,11 +81,80 @@ export class Grid{
 		//it's an Matrix which shows where the tanks could go
 		this.alley = []
 	}
+
+	/*basic methods*/
 	init(){
 		this.c.clearRect(0,0,this.width,this.height)
 		this.c.fillStyle = "#000"
 		this.c.fillRect(0,0,this.width,this.height)
 	}
+	_drawBlock(row, col, type, self){
+		if(self === undefined) self = this
+		let x = col * self.len,
+			y = row * self.len,
+			img = ImageManager.getBitMap(type)
+		img && self.c.drawImage(img, x, y, self.len, self.len)
+	}
+	_clearArea(posX, posY, offsetX, offsetY){
+		this.c.fillStyle = "#000"
+		this.c.fillRect(posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
+	}
+	_geneAlley(){
+		const material = this.material,
+			width = material[0].length,
+			height = material.length
+		let gridValid = []
+
+		for(let row = 0;row < height;row ++){
+			let rowArr1 = [],rowArr2 = []
+			for(let col = 0;col < width;col ++){
+				switch (material[row][col]){
+					case 'v': case 'g':
+					rowArr1.push(1,1);rowArr2.push(1,1)
+					break
+					case 'hbt': case 'hst':
+					rowArr1.push(0,0);rowArr2.push(1,1)
+					break
+					case 'hbr': case 'hsr':
+					rowArr1.push(1,0);rowArr2.push(1,0)
+					break
+					case 'hbb': case 'hsb':
+					rowArr1.push(1,1);rowArr2.push(0,0)
+					break
+					case 'hbl': case 'hsl':
+					rowArr1.push(0,1);rowArr2.push(0,1)
+					break
+					default:
+						rowArr1.push(0,0);rowArr2.push(0,0)
+						break
+				}
+			}
+			//store the data and clear cache
+			//TIP: I used to write like 'gridValid.push(rowArr1, rowArr2)', grid gets the references instead
+			//     once set rowArr.length to 0, grid turns to be void
+			gridValid.push([...rowArr1], [...rowArr2])
+			rowArr1.length = 0
+			rowArr2.length = 0
+		}
+		this.alley = gridValid
+		return gridValid
+	}
+
+	/*some special methods*/
+	_drawTank(){
+		const mapSourceList = Map.getMapList(),
+			{ startPos : [{ x, y }], enemies } = mapSourceList[0]
+
+		this._drawPlayer(x,y)
+	}
+	_drawPlayer(x, y){
+		this._drawBlock(x, y, 'p1tankU')
+	}
+	_drawFire(x, y, size = 4){
+		let	img = ImageManager.getBitMap('ball2')
+		img && this.c.drawImage(img, x, y, size, size)
+	}
+	/*export methods*/
 	drawConstruction(){
 		const mapSourceList = Map.getMapList(),
 			{ size: { width, height}, material } = mapSourceList[0]
@@ -98,22 +167,6 @@ export class Grid{
 			}
 		}
 
-	}
-	_drawTank(){
-		const mapSourceList = Map.getMapList(),
-			{ startPos : [{ x, y }], enemies } = mapSourceList[0]
-
-		this._drawPlayer(x,y)
-	}
-	_drawPlayer(x, y){
-		this._drawBlock(x, y, 'p1tankU')
-	}
-	_drawBlock(row, col, type, self){
-		if(self === undefined) self = this
-		let x = col * self.len,
-			y = row * self.len,
-			img = ImageManager.getBitMap(type)
-		img && self.c.drawImage(img, x, y, self.len, self.len)
 	}
 	updateTank(tank){
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second
@@ -169,49 +222,60 @@ export class Grid{
 			this.len, this.len
 		)
 	}
-	_clearArea(posX, posY, offsetX, offsetY){
+	updateFire(fireC){
+		// console.log(fireC.fireArr)
+		if(fireC.fireArr.length === 0) return
+		//TIP: to make sure there is least calculation, the code is redundant
+		const { len } = this
 		this.c.fillStyle = "#000"
-		this.c.fillRect(posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
-	}
-	_geneAlley(){
-		const material = this.material,
-			width = material[0].length,
-			height = material.length
-		let gridValid = []
-
-		for(let row = 0;row < height;row ++){
-			let rowArr1 = [],rowArr2 = []
-			for(let col = 0;col < width;col ++){
-				switch (material[row][col]){
-					case 'v': case 'g':
-						rowArr1.push(1,1);rowArr2.push(1,1)
-						break
-					case 'hbt': case 'hst':
-						rowArr1.push(0,0);rowArr2.push(1,1)
-						break
-					case 'hbr': case 'hsr':
-						rowArr1.push(1,0);rowArr2.push(1,0)
-						break
-					case 'hbb': case 'hsb':
-						rowArr1.push(1,1);rowArr2.push(0,0)
-						break
-					case 'hbl': case 'hsl':
-						rowArr1.push(0,1);rowArr2.push(0,1)
-						break
-					default:
-						rowArr1.push(0,0);rowArr2.push(0,0)
-						break
-				}
+		for(let fire of fireC.fireArr){
+			let { direction, posX, posY, offsetX, offsetY, speed, size } = fire
+			speed = speed / 5
+			switch (direction){
+				case "w":
+					if(fire.accuracyX === undefined){
+						fire.accuracyX = posX * len + offsetX + len / 2 - size / 2
+						fire.accuracyY = posY * len + offsetY - size
+					}else {
+						this.c.fillRect(fire.accuracyX,fire.accuracyY + 1,size,size)
+						this._drawFire(fire.accuracyX,fire.accuracyY,size)
+						fire.accuracyY -= speed
+					}
+					break
+				case "s":
+					if(fire.accuracyX === undefined){
+						fire.accuracyX = posX * len + offsetX + len / 2 - size / 2
+						fire.accuracyY = posY * len + offsetY + len
+					}else {
+						this.c.fillRect(fire.accuracyX,fire.accuracyY - 1,size,size)
+						this._drawFire(fire.accuracyX,fire.accuracyY,size)
+						fire.accuracyY += speed
+					}
+					break
+				case "a":
+					if(fire.accuracyX === undefined){
+						fire.accuracyX = posX * len + offsetX - size
+						fire.accuracyY = posY * len + offsetY + len / 2 - size / 2
+					}else {
+						this.c.fillRect(fire.accuracyX + 1,fire.accuracyY,size,size)
+						this._drawFire(fire.accuracyX,fire.accuracyY,size)
+						fire.accuracyX -= speed
+					}
+					break
+				case "d":
+					if(fire.accuracyX === undefined){
+						fire.accuracyX = posX * len + offsetX + len + size
+						fire.accuracyY = posY * len + offsetY + len / 2 - size / 2
+					}else {
+						this.c.fillRect(fire.accuracyX - 1,fire.accuracyY,size,size)
+						this._drawFire(fire.accuracyX,fire.accuracyY,size)
+						fire.accuracyX += speed
+					}
+					break
+				default:
+					throw Error("WRONG DIRECTION")
 			}
-			//store the data and clear cache
-			//TIP: I used to write like 'gridValid.push(rowArr1, rowArr2)', grid gets the references instead
-			//     once set rowArr.length to 0, grid turns to be void
-			gridValid.push([...rowArr1], [...rowArr2])
-			rowArr1.length = 0
-			rowArr2.length = 0
 		}
-		this.alley = gridValid
-		return gridValid
 	}
 	static _adaptor(material){
 		return material.map(k=>{
