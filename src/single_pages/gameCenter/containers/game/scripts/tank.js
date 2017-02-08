@@ -94,6 +94,11 @@ export class Player extends Tank{
 			that.key_down = false
 		})
 	}
+
+	getAttacked(){
+		this.health = 0
+		console.log("Damaged")
+	}
 }
 
 class Friend extends Tank{

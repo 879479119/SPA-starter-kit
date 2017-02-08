@@ -10,15 +10,15 @@
 export default class Judge{
 	constructor(grid, map, player, fireController, enemies){
 		//user data
-		this.player = player || {}
+		this._player = player || {}
 		//enemies data
-		this.enemies = enemies || {}
+		this._enemies = enemies || {}
 		//map data
-		this.map = map || {}
+		this._map = map || {}
 		//grid data
-		this.grid = grid || {}
+		this._grid = grid || {}
 		//fire data
-		this.fireController = fireController
+		this._fireController = fireController || {}
 	}
 	init(){
 
@@ -38,22 +38,20 @@ export default class Judge{
 		 *  4.a
 		 *
 		 */
-		const player = this.player,
-			grid = this.grid,
-			fireController = this.fireController
+		const player = this._player,
+			grid = this._grid,
+			fireController = this._fireController
 		//check tanks and construction
 		Judge._checkImpact(grid, player)
 		//check fire & construction & tanks
 		//TODO: ignore enemies
 		Judge._checkCannon(grid, player, fireController)
 
-		if(player.key_down && player.running){
-			grid.updateTank(player)
-		}
+		grid.updateTank(player, player.key_down && player.running)
 		grid.updateFire(fireController)
 	}
 	static _checkImpact(grid, player){
-		const alley = grid._geneAlley(),
+		const alley = grid.getAlley(),
 			{ posX, posY, offsetX, offsetY, direction} = player
 
 		let row = posY * 2 + Math.floor(offsetY/8),
@@ -132,6 +130,102 @@ export default class Judge{
 		 * because we can tell the fire whether it's friendly judging from 'from_ally'
 		 */
 		if (fireC.fireArr.length === 0) return
+		const alley = grid.getAlley()
 
+		for(let fire of fireC.fireArr){
+			const { accuracyX, accuracyY, direction, size, from_ally } = fire
+
+			let col = Math.floor(accuracyX / grid.step),
+				row = Math.floor(accuracyY / grid.step),
+				oX = accuracyX % grid.step,
+				oY = accuracyY % grid.step
+
+			//check Construction first
+			checkConstruction()
+			//then the player and enemies
+			checkPlayer()
+
+			function checkConstruction() {
+				//TIP: if the fire is away from construction
+				if(oX > 1 && oX < grid.step - 1) return
+				if(oY > 1 && oY < grid.step - 1) return
+				let w1 = alley[col][row - 1], w2 = alley[col + 1][row - 1]
+				let s1 = alley[col][row + 1], s2 = alley[col + 1][row + 1]
+				let a1 = alley[col - 1][row], a2 = alley[col - 1][row + 1]
+				let d1 = alley[col + 1][row], d2 = alley[col + 1][row + 1]
+				switch (direction){
+					case 'w':
+						if(w1 == 4 || w2 == 4){
+							//the top block
+							if(w1 == 4){grid.destroyBlock(col,row - 1)}
+							//the block at right
+							if(oX >= grid.step - size && w2 == 4){grid.destroyBlock(col + 1,row - 1)}
+						}else if(w1 == 3 || w2 == 3){
+							if(w1 == 3){} //draw a boom
+							if(oX >= grid.step - size && w2 == 3){} //boom
+						}
+						break
+					case 's':
+						if(s1 == 4 || s2 == 4){
+							if(oY + size >= grid.step && s1 == 4){grid.destroyBlock(col,row + 1)}
+							if(oX >= grid.step - size && oY + size >= grid.step && s2 == 4){grid.destroyBlock(col + 1,row + 1)}
+						}else if(s1 == 3 || s2 == 3){
+							if(oY + size >= grid.step && s1 == 3){} //draw a boom
+							if(oX >= grid.step - size && oY + size >= grid.step && s2 == 3){} //boom
+						}
+						break
+					case 'a':
+						if(a1 == 4 || a2 == 4){
+							if(a1 == 4){grid.destroyBlock(col - 1,row)}
+							if(oY >= grid.step - size && a2 == 4){grid.destroyBlock(col - 1,row + 1)}
+						}else if(a1 == 3 || a2 == 3){
+							if(a1 == 3){} //draw a boom
+							if(oY >= grid.step - size && a2 == 3){} //boom
+						}
+						break
+					case 'd':
+						if(d1 == 4 || d2 == 4){
+							if(oX + size >= grid.step && d1 == 4){grid.destroyBlock(col + 1,row)}
+							if(oY >= grid.step - size && oX + size >= grid.step && d2 == 4){grid.destroyBlock(col + 1,row + 1)}
+						}else if(d1 == 3 || d2 == 3){
+							if(oX + size >= grid.step && d1 == 3){} //draw a boom
+							if(oY >= grid.step - size && oX + size >= grid.step && d2 == 3){} //boom
+						}
+						break
+					default:
+						throw Error("WRONG DIRECTION")
+				}
+			}
+
+			function checkPlayer() {
+
+				const { posX, posY, offsetX, offsetY } = player
+
+				let pX = posX * grid.len + offsetX,
+					pY = posY * grid.len + offsetY
+
+				if((Math.abs(pX - accuracyX)) > 3) return
+				if((Math.abs(pY - accuracyY)) > 3) return
+
+				switch (direction){
+					case 'w':case 's':
+						if((pX - accuracyX < size && pX - accuracyX > grid.len && from_ally === false)
+							&& (pX - accuracyX <= grid.len || accuracyX - pX <= 0)){
+							player.getAttacked()
+							//TODO: special effect
+						}
+						break
+					case 'a':case 'd':
+						if((pY - accuracyY < size && pY - accuracyY > grid.len && from_ally === false)
+							&& (pY - accuracyY <= grid.len || accuracyY - pX <= 0)){
+							player.getAttacked()
+							//TODO: special effect
+						}
+						break
+					default:
+						throw Error("WRONG DIRECTION")
+				}
+			}
+		}
 	}
 }

@@ -27,18 +27,6 @@
  *  'w' - water
  *  's' - steel block
  *  'hsX' - half steel block, X is the same as 'hbX'
- *
- *
- */
-
-/*
-0.5px	|———————————|                   -2
-	1px	|           |——————————  offset -1
-	1px	|    4px    |                    0
-	1px	|           |                    1
-0.5px	|———————————|
-	          ↑
-	  single grid block
  */
 
 //noinspection JSUnresolvedVariable
@@ -84,7 +72,7 @@ export class Grid{
 
 	/*basic methods*/
 	init(){
-		this.c.clearRect(0,0,this.width,this.height)
+		// this.c.clearRect(0,0,this.width,this.height)
 		this.c.fillStyle = "#000"
 		this.c.fillRect(0,0,this.width,this.height)
 	}
@@ -110,7 +98,7 @@ export class Grid{
 		 *  1 - void, fire & tank could pass, e.g: VOID, GRASS
 		 *  2 - unreachable, fire can pass, but tank doesn't, e.g: WATER
 		 *  3 - hard, only level 3 fire can destroy, e.g: STEEL
-		 *  4 -
+		 *  4 - destroyable, fire can destroy, e.g: BLOCK
 		 */
 
 		for(let row = 0;row < height;row ++){
@@ -120,21 +108,42 @@ export class Grid{
 					case 'v': case 'g':
 					rowArr1.push(1,1);rowArr2.push(1,1)
 					break
-					case 'hbt': case 'hst':
-					rowArr1.push(0,0);rowArr2.push(1,1)
+					case 'w':
+					rowArr1.push(2,2);rowArr2.push(2,2)
 					break
-					case 'hbr': case 'hsr':
-					rowArr1.push(1,0);rowArr2.push(1,0)
+					case 's':
+					rowArr1.push(3,3);rowArr2.push(3,3)
 					break
-					case 'hbb': case 'hsb':
-					rowArr1.push(1,1);rowArr2.push(0,0)
+					case 'b':
+					rowArr1.push(4,4);rowArr2.push(4,4)
 					break
-					case 'hbl': case 'hsl':
-					rowArr1.push(0,1);rowArr2.push(0,1)
+					case 'hbt':
+					rowArr1.push(4,4);rowArr2.push(1,1)
+					break
+					case 'hst':
+					rowArr1.push(3,3);rowArr2.push(1,1)
+					break
+					case 'hbr':
+					rowArr1.push(1,4);rowArr2.push(1,4)
+					break
+					case 'hsr':
+					rowArr1.push(1,3);rowArr2.push(1,3)
+					break
+					case 'hbb':
+					rowArr1.push(1,1);rowArr2.push(4,4)
+					break
+					case 'hsb':
+					rowArr1.push(1,1);rowArr2.push(3,3)
+					break
+					case 'hbl':
+					rowArr1.push(4,1);rowArr2.push(4,1)
+					break
+					case 'hsl':
+					rowArr1.push(3,1);rowArr2.push(3,1)
 					break
 					default:
-						rowArr1.push(0,0);rowArr2.push(0,0)
-						break
+					rowArr1.push(3,3);rowArr2.push(3,3)
+					break
 				}
 			}
 			//store the data and clear cache
@@ -163,6 +172,10 @@ export class Grid{
 		img && this.c.drawImage(img, x, y, size, size)
 	}
 	/*export methods*/
+	getAlley(init = false){
+		if(init) this._geneAlley()
+		else return this.alley
+	}
 	drawConstruction(){
 		const mapSourceList = Map.getMapList(),
 			{ size: { width, height}, material } = mapSourceList[0]
@@ -176,7 +189,7 @@ export class Grid{
 		}
 
 	}
-	updateTank(tank){
+	updateTank(tank, run = false){
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second
 		let {posX, posY, offsetX, offsetY, speed, direction} = tank
 		let move = speed * 10 / 60
@@ -184,6 +197,19 @@ export class Grid{
 		//TIP: DummyGrid is a canvas buffer which provides a transformed image
 		let dummy = new DummyGrid()
 		let degree = 0
+
+		if(run === false){
+			//interesting usage
+			let d = [0,90,180,270]['wdsa'.indexOf(direction)]
+
+			this.c.drawImage(
+				dummy._getRotateBlock('p1tankU',d),
+				posX * this.len + offsetX,
+				posY * this.len + offsetY,
+				this.len, this.len
+			)
+			return
+		}
 
 		switch (true){
 			case direction == 'w':
@@ -193,7 +219,7 @@ export class Grid{
 				}else tank.offsetY = offsetY - move
 				//TIP: because calculating pixel will cause some colored pixel left,
 				//     so we just clear a double size of it
-				this._clearArea(posX,tank.posY,offsetX,tank.offsetY + 2 * move)
+				// this._clearArea(posX,tank.posY,offsetX,tank.offsetY + 2 * move)
 				degree = 0
 				break
 			case direction == 's':
@@ -201,7 +227,7 @@ export class Grid{
 					tank.posY ++
 					tank.offsetY = 0
 				}else tank.offsetY = offsetY + move
-				this._clearArea(posX,tank.posY,offsetX,tank.offsetY - 2 * move)
+				// this._clearArea(posX,tank.posY,offsetX,tank.offsetY - 2 * move)
 				degree = 180
 				break
 			case direction == 'a':
@@ -209,7 +235,7 @@ export class Grid{
 					tank.posX --
 					tank.offsetX = 16
 				}else tank.offsetX = offsetX - move
-				this._clearArea(tank.posX,posY,tank.offsetX + 2 * move,offsetY)
+				// this._clearArea(tank.posX,posY,tank.offsetX + 2 * move,offsetY)
 				degree = 270
 				break
 			case direction == 'd':
@@ -217,12 +243,10 @@ export class Grid{
 					tank.posX ++
 					tank.offsetX = 0
 				}else tank.offsetX = offsetX + move
-				this._clearArea(tank.posX,posY,tank.offsetX - 2 * move,offsetY)
+				// this._clearArea(tank.posX,posY,tank.offsetX - 2 * move,offsetY)
 				degree = 90
 				break
 		}
-
-
 		this.c.drawImage(
 			dummy._getRotateBlock('p1tankU',degree),
 			tank.posX * this.len + tank.offsetX,
@@ -284,6 +308,9 @@ export class Grid{
 					throw Error("WRONG DIRECTION")
 			}
 		}
+	}
+	destroyBlock(col, row){
+		this.alley[col][row] = 1
 	}
 	static _adaptor(material){
 		return material.map(k=>{
