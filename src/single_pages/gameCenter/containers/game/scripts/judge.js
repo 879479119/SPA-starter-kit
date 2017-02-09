@@ -47,6 +47,7 @@ export default class Judge{
 		//TODO: ignore enemies
 		Judge._checkCannon(grid, player, fireController)
 
+		grid.drawConstruction()
 		grid.updateTank(player, player.key_down && player.running)
 		grid.updateFire(fireController)
 	}
@@ -64,7 +65,7 @@ export default class Judge{
 			if (offsetY <= 1) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
 					//either it's running straight into block or the edge of the map
-					if (row === 0 || alley[row - 1][c] === 0){
+					if (row === 0 || alley[row - 1][c] > 1){
 						player.running = false
 						player.offsetY = 0
 						return
@@ -77,7 +78,7 @@ export default class Judge{
 		}else if(direction === 's'){
 			if (offsetY >= 16) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
-					if (row === alley.length || alley[row + 1][c] === 0){
+					if (row === alley.length || alley[row + 1][c] > 1){
 						player.running = false
 						player.offsetY = 16
 						return
@@ -92,7 +93,7 @@ export default class Judge{
 		}else if(direction === 'a'){
 			if (offsetX <= 0) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col === 0 || alley[r][col - 1] === 0){
+					if (col === 0 || alley[r][col - 1] > 1){
 						player.offsetX = 0
 						player.running = false
 						return
@@ -106,7 +107,7 @@ export default class Judge{
 			if (offsetX >= 16) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
 					if (col === alley[0].length || alley[r][col + 1] === 0) {
-						if (col === 0 || alley[r][col - 1] === 0) {
+						if (col === 0 || alley[r][col - 1] > 1) {
 							player.offsetX = 16
 							player.running = false
 							return

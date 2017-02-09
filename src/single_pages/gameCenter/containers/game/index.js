@@ -26,6 +26,7 @@ export default function init() {
 	//draw construction
 
 	//draw tanks
+	grid.drawConstruction()
 	grid.getAlley(true)
 	grid._drawTank(map)
 	player.init(fireController)
@@ -35,7 +36,6 @@ export default function init() {
 	let i = 1
 	let keyFrame = () => {
 		grid.init(map)
-		grid.drawConstruction(map)
 		frame.go()
 		requestAnimationFrame(keyFrame)
 		if(i ++ > 1000) cancelAnimationFrame(animation)
