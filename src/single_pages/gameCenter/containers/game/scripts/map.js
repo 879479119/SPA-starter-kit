@@ -19,14 +19,12 @@
  */
 
 /**
- * construction types:
- *  'v' - void area
- *  'b' - complete block
- *  'hbX' - half block, X represents an clockwise orientation(t,r,l,b)
- *  'g' - grass
- *  'w' - water
- *  's' - steel block
- *  'hsX' - half steel block, X is the same as 'hbX'
+ * there is three types of 'small blocks':
+ *  0 - void, fire & tank could pass, e.g: VOID
+ *  1 - void, fire & tank could pass, e.g: GRASS
+ *  2 - unreachable, fire can pass, but tank doesn't, e.g: WATER
+ *  3 - hard, only level 3 fire can destroy, e.g: STEEL
+ *  4 - destroyable, fire can destroy, e.g: BLOCK
  */
 
 //noinspection JSUnresolvedVariable
@@ -34,21 +32,25 @@ import { ImageManager } from './Manager'
 
 const MAP_TEMPLATE = {
 	size: {
-		width: 10,
-		height: 4
+		width: 12,
+		height: 8
 	},
 	startPosition: [{
-		x: 5,
-		y: 3
+		x: 2,
+		y: 2
 	}],
 	enemies: [
 		{ x: 0, y: 0, type: 0, }
 	],
 	material: [
-		['b','v','v','b'],
-		['v','b','v','v'],
-		['v','b','v','v'],
-		['v','b','v','v']
+		[0,0,1,1,0,0,0,0,0,0,0,0,],
+		[0,0,1,1,0,0,0,0,0,0,0,0,],
+		[0,0,0,0,0,0,0,0,4,4,0,0,],
+		[0,0,0,0,2,2,0,0,4,4,0,0,],
+		[0,0,0,0,2,2,0,0,0,0,0,0,],
+		[0,0,0,0,3,3,0,0,4,4,0,0,],
+		[0,0,0,0,3,3,0,0,4,4,0,0,],
+		[0,0,0,0,0,0,0,0,0,0,0,0,],
 	]
 }
 
@@ -78,6 +80,13 @@ export class Grid{
 	}
 	_drawBlock(row, col, type, self){
 		if(self === undefined) self = this
+		let x = col * self.step,
+			y = row * self.step,
+			img = ImageManager.getBitMap(type)
+		img && self.c.drawImage(img, x, y, self.step, self.step)
+	}
+	_drawGaintBlock(col, row, type, self){
+		if(self === undefined) self = this
 		let x = col * self.len,
 			y = row * self.len,
 			img = ImageManager.getBitMap(type)
@@ -95,63 +104,30 @@ export class Grid{
 
 		/**
 		 * there is three types of 'small blocks':
-		 *  1 - void, fire & tank could pass, e.g: VOID, GRASS
+		 *  0 - void, fire & tank could pass, e.g: VOID
+		 *  1 - void, fire & tank could pass, e.g: GRASS
 		 *  2 - unreachable, fire can pass, but tank doesn't, e.g: WATER
 		 *  3 - hard, only level 3 fire can destroy, e.g: STEEL
 		 *  4 - destroyable, fire can destroy, e.g: BLOCK
 		 */
 
+
 		for(let row = 0;row < height;row ++){
-			let rowArr1 = [],rowArr2 = []
+			let rowArr = []
+
 			for(let col = 0;col < width;col ++){
-				switch (material[row][col]){
-					case 'v': case 'g':
-					rowArr1.push(1,1);rowArr2.push(1,1)
-					break
-					case 'w':
-					rowArr1.push(2,2);rowArr2.push(2,2)
-					break
-					case 's':
-					rowArr1.push(3,3);rowArr2.push(3,3)
-					break
-					case 'b':
-					rowArr1.push(4,4);rowArr2.push(4,4)
-					break
-					case 'hbt':
-					rowArr1.push(4,4);rowArr2.push(1,1)
-					break
-					case 'hst':
-					rowArr1.push(3,3);rowArr2.push(1,1)
-					break
-					case 'hbr':
-					rowArr1.push(1,4);rowArr2.push(1,4)
-					break
-					case 'hsr':
-					rowArr1.push(1,3);rowArr2.push(1,3)
-					break
-					case 'hbb':
-					rowArr1.push(1,1);rowArr2.push(4,4)
-					break
-					case 'hsb':
-					rowArr1.push(1,1);rowArr2.push(3,3)
-					break
-					case 'hbl':
-					rowArr1.push(4,1);rowArr2.push(4,1)
-					break
-					case 'hsl':
-					rowArr1.push(3,1);rowArr2.push(3,1)
-					break
-					default:
-					rowArr1.push(3,3);rowArr2.push(3,3)
-					break
+				if (material[row][col] === 0 || material[row][col] === 1){
+					rowArr.push(1)
+				}else {
+					rowArr.push(0)
 				}
 			}
+
 			//store the data and clear cache
 			//TIP: I used to write like 'gridValid.push(rowArr1, rowArr2)', grid gets the references instead
 			//     once set rowArr.length to 0, grid turns to be void
-			gridValid.push([...rowArr1], [...rowArr2])
-			rowArr1.length = 0
-			rowArr2.length = 0
+			gridValid.push([...rowArr])
+			rowArr.length = 0
 		}
 		this.alley = gridValid
 		return gridValid
@@ -160,12 +136,12 @@ export class Grid{
 	/*some special methods*/
 	_drawTank(){
 		const mapSourceList = Map.getMapList(),
-			{ startPos : [{ x, y }], enemies } = mapSourceList[0]
+			{ startPosition : [{ x, y }], enemies } = mapSourceList[0]
 
 		this._drawPlayer(x,y)
 	}
 	_drawPlayer(x, y){
-		this._drawBlock(x, y, 'p1tankU')
+		this._drawGaintBlock(x, y, 'p1tankU')
 	}
 	_drawFire(x, y, size = 4){
 		let	img = ImageManager.getBitMap('ball2')
@@ -204,9 +180,9 @@ export class Grid{
 
 			this.c.drawImage(
 				dummy._getRotateBlock('p1tankU',d),
-				posX * this.len + offsetX,
-				posY * this.len + offsetY,
-				this.len, this.len
+				posX * this.step + offsetX,
+				posY * this.step + offsetY,
+				this.len, 16
 			)
 			return
 		}
@@ -215,7 +191,7 @@ export class Grid{
 			case direction == 'w':
 				if(offsetY <= 0){
 					tank.posY --
-					tank.offsetY = 16
+					tank.offsetY = 8
 				}else tank.offsetY = offsetY - move
 				//TIP: because calculating pixel will cause some colored pixel left,
 				//     so we just clear a double size of it
@@ -223,7 +199,7 @@ export class Grid{
 				degree = 0
 				break
 			case direction == 's':
-				if(offsetY >= 16){
+				if(offsetY >= 8){
 					tank.posY ++
 					tank.offsetY = 0
 				}else tank.offsetY = offsetY + move
@@ -233,13 +209,13 @@ export class Grid{
 			case direction == 'a':
 				if(offsetX <= 0){
 					tank.posX --
-					tank.offsetX = 16
+					tank.offsetX = 8
 				}else tank.offsetX = offsetX - move
 				// this._clearArea(tank.posX,posY,tank.offsetX + 2 * move,offsetY)
 				degree = 270
 				break
 			case direction == 'd':
-				if(offsetX >= 16){
+				if(offsetX >= 8){
 					tank.posX ++
 					tank.offsetX = 0
 				}else tank.offsetX = offsetX + move
@@ -249,9 +225,9 @@ export class Grid{
 		}
 		this.c.drawImage(
 			dummy._getRotateBlock('p1tankU',degree),
-			tank.posX * this.len + tank.offsetX,
-			tank.posY * this.len + tank.offsetY,
-			this.len, this.len
+			tank.posX * this.step + tank.offsetX,
+			tank.posY * this.step + tank.offsetY,
+			this.len, 16
 		)
 	}
 	updateFire(fireC){
@@ -320,8 +296,11 @@ export class Grid{
 	//add all the blocks here
 	static get materialData(){
 		return {
-			v: 0,
-			b: "walls"
+			0: 0,
+			1: "gra",
+			2: "wate",
+			3: "stee",
+			4: "wall"
 		}
 	}
 }
@@ -362,10 +341,10 @@ export class  DummyGrid extends Grid{
 				this.c.rotate(-Math.PI/2)
 				break
 			default:
-				console.log("what do you want?");
+				console.log("what do you want? ");
 		}
 
-		super._drawBlock(0,0,type,this)
+		super._drawGaintBlock(0,0,type,this)
 
 		this.c.restore()
 		return this.ele

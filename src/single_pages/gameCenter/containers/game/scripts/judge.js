@@ -55,8 +55,7 @@ export default class Judge{
 		const alley = grid.getAlley(),
 			{ posX, posY, offsetX, offsetY, direction} = player
 
-		let row = posY * 2 + Math.floor(offsetY/8),
-			col = posX * 2 + Math.floor(offsetX/8)
+		let row = posY, col = posX
 
 		//check if any endpoint touch other construction
 		if(direction === 'w'){
@@ -65,7 +64,7 @@ export default class Judge{
 			if (offsetY <= 1) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
 					//either it's running straight into block or the edge of the map
-					if (row === 0 || alley[row - 1][c] > 1){
+					if (row === 0 || alley[row - 1][c] == 1){
 						player.running = false
 						player.offsetY = 0
 						return
@@ -76,11 +75,11 @@ export default class Judge{
 				player.running = true
 			}
 		}else if(direction === 's'){
-			if (offsetY >= 16) {
+			if (offsetY >= 8) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
-					if (row === alley.length || alley[row + 1][c] > 1){
+					if (row === alley.length || alley[row + 1][c] === 1){
 						player.running = false
-						player.offsetY = 16
+						player.offsetY = 8
 						return
 					}
 				}
@@ -93,7 +92,7 @@ export default class Judge{
 		}else if(direction === 'a'){
 			if (offsetX <= 0) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col === 0 || alley[r][col - 1] > 1){
+					if (col === 0 || alley[r][col - 1] === 1){
 						player.offsetX = 0
 						player.running = false
 						return
@@ -104,14 +103,14 @@ export default class Judge{
 				player.running = true
 			}
 		}else if(direction === 'd'){
-			if (offsetX >= 16) {
+			if (offsetX >= 8) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col === alley[0].length || alley[r][col + 1] === 0) {
-						if (col === 0 || alley[r][col - 1] > 1) {
-							player.offsetX = 16
-							player.running = false
-							return
-						}
+					if (col === alley[0].length || alley[r][col + 1] === 1) {
+						// if (col === 0 || alley[r][col - 1] === 1) {
+						player.offsetX = 8
+						player.running = false
+						return
+						// }
 					}
 				}
 				player.running = true
@@ -131,7 +130,7 @@ export default class Judge{
 		 * because we can tell the fire whether it's friendly judging from 'from_ally'
 		 */
 		if (fireC.fireArr.length === 0) return
-		const alley = grid.getAlley()
+		const alley = grid.material
 
 		for(let fire of fireC.fireArr){
 			const { accuracyX, accuracyY, direction, size, from_ally } = fire
@@ -202,11 +201,11 @@ export default class Judge{
 
 				const { posX, posY, offsetX, offsetY } = player
 
-				let pX = posX * grid.len + offsetX,
-					pY = posY * grid.len + offsetY
+				let pX = posX * grid.step + offsetX,
+					pY = posY * grid.step + offsetY
 
-				if((Math.abs(pX - accuracyX)) > 3) return
-				if((Math.abs(pY - accuracyY)) > 3) return
+				if((Math.abs(pX - accuracyX)) > 2) return
+				if((Math.abs(pY - accuracyY)) > 2) return
 
 				switch (direction){
 					case 'w':case 's':
