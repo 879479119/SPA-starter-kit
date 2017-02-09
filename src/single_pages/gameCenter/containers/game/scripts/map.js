@@ -85,7 +85,7 @@ export class Grid{
 			img = ImageManager.getBitMap(type)
 		img && self.c.drawImage(img, x, y, self.step, self.step)
 	}
-	_drawGaintBlock(col, row, type, self){
+	_drawGiantBlock(col, row, type, self){
 		if(self === undefined) self = this
 		let x = col * self.len,
 			y = row * self.len,
@@ -141,7 +141,7 @@ export class Grid{
 		this._drawPlayer(x,y)
 	}
 	_drawPlayer(x, y){
-		this._drawGaintBlock(x, y, 'p1tankU')
+		this._drawGiantBlock(x, y, 'p1tankU')
 	}
 	_drawFire(x, y, size = 4){
 		let	img = ImageManager.getBitMap('ball2')
@@ -182,7 +182,7 @@ export class Grid{
 				dummy._getRotateBlock('p1tankU',d),
 				posX * this.step + offsetX,
 				posY * this.step + offsetY,
-				this.len, 16
+				this.len, this.len
 			)
 			return
 		}
@@ -227,7 +227,7 @@ export class Grid{
 			dummy._getRotateBlock('p1tankU',degree),
 			tank.posX * this.step + tank.offsetX,
 			tank.posY * this.step + tank.offsetY,
-			this.len, 16
+			this.len, this.len
 		)
 	}
 	updateFire(fireC){
@@ -344,7 +344,7 @@ export class  DummyGrid extends Grid{
 				console.log("what do you want? ");
 		}
 
-		super._drawGaintBlock(0,0,type,this)
+		super._drawGiantBlock(0,0,type,this)
 
 		this.c.restore()
 		return this.ele

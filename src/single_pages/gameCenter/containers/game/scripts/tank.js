@@ -50,8 +50,8 @@ class Tank{
 }
 
 export class Player extends Tank{
-	constructor(props){
-		super(props)
+	constructor(...props){
+		super(...props)
 		const initAttr = {
 			type: "p1tankU",
 			speed: 2,

@@ -55,16 +55,19 @@ export default class Judge{
 		const alley = grid.getAlley(),
 			{ posX, posY, offsetX, offsetY, direction} = player
 
+		window.a = alley
+		window.f = offsetY
+
 		let row = posY, col = posX
 
 		//check if any endpoint touch other construction
 		if(direction === 'w'){
 			//TIP: all the constructions are located at the standard grid,
 			//     but tanks may be located with a param 'offset'
-			if (offsetY <= 1) {
+			if (offsetY <= 0) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
 					//either it's running straight into block or the edge of the map
-					if (row === 0 || alley[row - 1][c] == 1){
+					if (row === 0 || alley[row - 1][c] === 0){
 						player.running = false
 						player.offsetY = 0
 						return
@@ -75,24 +78,22 @@ export default class Judge{
 				player.running = true
 			}
 		}else if(direction === 's'){
-			if (offsetY >= 8) {
+			if (offsetY <= 1) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
-					if (row === alley.length || alley[row + 1][c] === 1){
+					if (row === alley.length || alley[row + 2][c] === 0){
 						player.running = false
-						player.offsetY = 8
+						player.offsetY = 0
 						return
 					}
 				}
 				player.running = true
-
 			} else {
 				player.running = true
-
 			}
 		}else if(direction === 'a'){
 			if (offsetX <= 0) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col === 0 || alley[r][col - 1] === 1){
+					if (col === 0 || alley[r][col - 1] === 0){
 						player.offsetX = 0
 						player.running = false
 						return
@@ -103,14 +104,12 @@ export default class Judge{
 				player.running = true
 			}
 		}else if(direction === 'd'){
-			if (offsetX >= 8) {
+			if (offsetX <= 1) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col === alley[0].length || alley[r][col + 1] === 1) {
-						// if (col === 0 || alley[r][col - 1] === 1) {
-						player.offsetX = 8
+					if (col === alley[0].length || alley[r][col + 2] === 0) {
+						player.offsetX = 0
 						player.running = false
 						return
-						// }
 					}
 				}
 				player.running = true
