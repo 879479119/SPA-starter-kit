@@ -16,8 +16,8 @@ export default class Fire{
 		this.offsetY = offsetY
 		this.direction = direction
 
-		this.accuracyX = undefined    //the right position where we draw a ball based on pos and offset
-		this.accuracyY = undefined
+		this.accuracyX = posX * 8 + offsetX + 6    //the right position where we draw a ball based on pos and offset
+		this.accuracyY = posY * 8 + offsetY + 6
 	}
 
 }
@@ -38,5 +38,9 @@ export class FireManager{
 
 	addFire(fireObj){
 		this.fireArr.push(fireObj)
+	}
+
+	fireGone(index){
+		this.fireArr.splice(index,1)
 	}
 }

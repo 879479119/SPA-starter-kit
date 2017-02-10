@@ -26,7 +26,8 @@ export default function init() {
 	//draw construction
 
 	//draw tanks
-	grid.drawConstruction()
+	// grid.init()
+	// grid.drawConstruction()
 	grid.getAlley(true)
 	grid._drawTank(map)
 	player.init(fireController)

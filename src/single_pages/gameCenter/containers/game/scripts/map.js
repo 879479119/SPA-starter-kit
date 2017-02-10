@@ -70,6 +70,11 @@ export class Grid{
 
 		//it's an Matrix which shows where the tanks could go
 		this.alley = []
+
+		const mapSourceList = Map.getMapList(),
+			{ material } = mapSourceList[0]
+		this.map = mapSourceList[0]
+		this.material = material
 	}
 
 	/*basic methods*/
@@ -153,9 +158,10 @@ export class Grid{
 		else return this.alley
 	}
 	drawConstruction(){
-		const mapSourceList = Map.getMapList(),
-			{ size: { width, height}, material } = mapSourceList[0]
-		this.material = material
+
+		const { size: { width, height} } = this.map,
+			material = this.material
+
 		let blocks = Grid._adaptor(material)
 
 		for(let row = 0;row < height;row ++){
@@ -234,59 +240,45 @@ export class Grid{
 		// console.log(fireC.fireArr)
 		if(fireC.fireArr.length === 0) return
 		//TIP: to make sure there is least calculation, the code is redundant
-		const { len } = this
+
 		this.c.fillStyle = "#000"
 		for(let fire of fireC.fireArr){
-			let { direction, posX, posY, offsetX, offsetY, speed, size } = fire
+			let { direction, speed, size } = fire
 			speed = speed / 5
 			switch (direction){
 				case "w":
-					if(fire.accuracyX === undefined){
-						fire.accuracyX = posX * len + offsetX + len / 2 - size / 2
-						fire.accuracyY = posY * len + offsetY - size
-					}else {
-						this.c.fillRect(fire.accuracyX,fire.accuracyY + 1,size,size)
-						this._drawFire(fire.accuracyX,fire.accuracyY,size)
-						fire.accuracyY -= speed
-					}
+					this._drawFire(fire.accuracyX,fire.accuracyY,size)
+					fire.accuracyY -= speed
 					break
 				case "s":
-					if(fire.accuracyX === undefined){
-						fire.accuracyX = posX * len + offsetX + len / 2 - size / 2
-						fire.accuracyY = posY * len + offsetY + len
-					}else {
-						this.c.fillRect(fire.accuracyX,fire.accuracyY - 1,size,size)
-						this._drawFire(fire.accuracyX,fire.accuracyY,size)
-						fire.accuracyY += speed
-					}
+					this._drawFire(fire.accuracyX,fire.accuracyY,size)
+					fire.accuracyY += speed
 					break
 				case "a":
-					if(fire.accuracyX === undefined){
-						fire.accuracyX = posX * len + offsetX - size
-						fire.accuracyY = posY * len + offsetY + len / 2 - size / 2
-					}else {
-						this.c.fillRect(fire.accuracyX + 1,fire.accuracyY,size,size)
-						this._drawFire(fire.accuracyX,fire.accuracyY,size)
-						fire.accuracyX -= speed
-					}
+					this._drawFire(fire.accuracyX,fire.accuracyY,size)
+					fire.accuracyX -= speed
 					break
 				case "d":
-					if(fire.accuracyX === undefined){
-						fire.accuracyX = posX * len + offsetX + len + size
-						fire.accuracyY = posY * len + offsetY + len / 2 - size / 2
-					}else {
-						this.c.fillRect(fire.accuracyX - 1,fire.accuracyY,size,size)
-						this._drawFire(fire.accuracyX,fire.accuracyY,size)
-						fire.accuracyX += speed
-					}
+					this._drawFire(fire.accuracyX,fire.accuracyY,size)
+					fire.accuracyX += speed
 					break
 				default:
 					throw Error("WRONG DIRECTION")
 			}
 		}
 	}
+	fireOnBlock(fire, col, row){
+		const { accuracyX, accuracyY } = fire
+		let	img = ImageManager.getBitMap('blast7')
+		img && this.c.drawImage(img, accuracyX - 4, accuracyY - 4, 4 , 4)
+		if(col !== undefined){
+			this.destroyBlock(col,row)
+		}
+	}
 	destroyBlock(col, row){
-		this.alley[col][row] = 1
+		console.log(col,row);
+		this.alley[row][col] = 1
+		this.material[row][col] = 0
 	}
 	static _adaptor(material){
 		return material.map(k=>{

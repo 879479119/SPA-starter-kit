@@ -131,72 +131,80 @@ export default class Judge{
 		if (fireC.fireArr.length === 0) return
 		const alley = grid.material
 
-		for(let fire of fireC.fireArr){
-			const { accuracyX, accuracyY, direction, size, from_ally } = fire
-
+		for(let index in fireC.fireArr){
+			const { accuracyX = 0, accuracyY = 0, direction, size, from_ally } = fireC.fireArr[index]
 			let col = Math.floor(accuracyX / grid.step),
 				row = Math.floor(accuracyY / grid.step),
 				oX = accuracyX % grid.step,
 				oY = accuracyY % grid.step
 
-			//check Construction first
-			checkConstruction()
-			//then the player and enemies
-			checkPlayer()
-
-			function checkConstruction() {
+			let checkConstruction = () => {
 				//TIP: if the fire is away from construction
-				if(oX > 1 && oX < grid.step - 1) return
-				if(oY > 1 && oY < grid.step - 1) return
-				let w1 = alley[col][row - 1], w2 = alley[col + 1][row - 1]
-				let s1 = alley[col][row + 1], s2 = alley[col + 1][row + 1]
-				let a1 = alley[col - 1][row], a2 = alley[col - 1][row + 1]
-				let d1 = alley[col + 1][row], d2 = alley[col + 1][row + 1]
+				// if(oX > 2 && oX < grid.step - 2) return
+				// if(oY > 2 && oY < grid.step - 2) return
+				if(row <= 0 || col <= 0) return
+				if(row >= alley.length - 1 || col >= alley[0].length - 1) return
+				let w1 = alley[row - 1][col], w2 = alley[row - 1][col + 1]
+				let s1 = alley[row + 1][col], s2 = alley[row + 1][col + 1]
+				let a1 = alley[row][col - 1], a2 = alley[row + 1][col - 1]
+				let d1 = alley[row][col + 1], d2 = alley[row + 1][col + 1]
+				let over = false
 				switch (direction){
 					case 'w':
 						if(w1 == 4 || w2 == 4){
 							//the top block
-							if(w1 == 4){grid.destroyBlock(col,row - 1)}
+							if(oY <= 1 && w1 == 4){fireOnBlock(index,col,row - 1)}
 							//the block at right
-							if(oX >= grid.step - size && w2 == 4){grid.destroyBlock(col + 1,row - 1)}
+							if(oY <= 1 && oX >= grid.step - size && w2 == 4){fireOnBlock(index,index,col + 1,row - 1)}
 						}else if(w1 == 3 || w2 == 3){
-							if(w1 == 3){} //draw a boom
-							if(oX >= grid.step - size && w2 == 3){} //boom
+							if(oY <= 1 && w1 == 3){fireOnBlock(index)} //draw a boom
+							if(oY <= 1 && oX >= grid.step - size && w2 == 3){fireOnBlock(index)} //boom
 						}
 						break
 					case 's':
 						if(s1 == 4 || s2 == 4){
-							if(oY + size >= grid.step && s1 == 4){grid.destroyBlock(col,row + 1)}
-							if(oX >= grid.step - size && oY + size >= grid.step && s2 == 4){grid.destroyBlock(col + 1,row + 1)}
+							if(oY + size >= grid.step && s1 == 4){fireOnBlock(index,col,row + 1)}
+							if(oX >= grid.step - size && oY + size >= grid.step && s2 == 4){fireOnBlock(index,col + 1,row + 1)}
 						}else if(s1 == 3 || s2 == 3){
-							if(oY + size >= grid.step && s1 == 3){} //draw a boom
-							if(oX >= grid.step - size && oY + size >= grid.step && s2 == 3){} //boom
+							if(oY + size >= grid.step && s1 == 3){fireOnBlock(index)} //draw a boom
+							if(oX >= grid.step - size && oY + size >= grid.step && s2 == 3){fireOnBlock(index)} //boom
 						}
 						break
 					case 'a':
 						if(a1 == 4 || a2 == 4){
-							if(a1 == 4){grid.destroyBlock(col - 1,row)}
-							if(oY >= grid.step - size && a2 == 4){grid.destroyBlock(col - 1,row + 1)}
+							if(oX <= 1 && a1 == 4){fireOnBlock(index,col - 1,row)}
+							if(oX <= 1 && oY >= grid.step - size && a2 == 4){fireOnBlock(index,col - 1,row + 1)}
 						}else if(a1 == 3 || a2 == 3){
-							if(a1 == 3){} //draw a boom
-							if(oY >= grid.step - size && a2 == 3){} //boom
+							if(oX <= 1 && a1 == 3){fireOnBlock(index)} //draw a boom
+							if(oX <= 1 && oY >= grid.step - size && a2 == 3){fireOnBlock(index)} //boom
 						}
 						break
 					case 'd':
 						if(d1 == 4 || d2 == 4){
-							if(oX + size >= grid.step && d1 == 4){grid.destroyBlock(col + 1,row)}
-							if(oY >= grid.step - size && oX + size >= grid.step && d2 == 4){grid.destroyBlock(col + 1,row + 1)}
+							if(oX + size >= grid.step && d1 == 4){fireOnBlock(index,col + 1,row)}
+							if(oY >= grid.step - size && oX + size >= grid.step && d2 == 4){fireOnBlock(index,col + 1,row + 1)}
 						}else if(d1 == 3 || d2 == 3){
-							if(oX + size >= grid.step && d1 == 3){} //draw a boom
-							if(oY >= grid.step - size && oX + size >= grid.step && d2 == 3){} //boom
+							if(oX + size >= grid.step && d1 == 3){fireOnBlock(index)} //draw a boom
+							if(oY >= grid.step - size && oX + size >= grid.step && d2 == 3){fireOnBlock(index)} //boom
 						}
 						break
 					default:
 						throw Error("WRONG DIRECTION")
 				}
+
+				if(over === true) fireC.fireGone(index)
+
+				/**
+				 * if user pass 'col',the block will be destroyed!
+				 * and fire would be destroyed only when the function is called
+				 */
+				function fireOnBlock(index, col, row) {
+					grid.fireOnBlock(fireC.fireArr[index], col, row)
+					over = true
+				}
 			}
 
-			function checkPlayer() {
+			let checkPlayer = () => {
 
 				const { posX, posY, offsetX, offsetY } = player
 
@@ -225,6 +233,10 @@ export default class Judge{
 						throw Error("WRONG DIRECTION")
 				}
 			}
+			//check Construction first
+			checkConstruction()
+			//then the player and enemies
+			checkPlayer()
 		}
 	}
 }
