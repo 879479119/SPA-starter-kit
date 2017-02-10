@@ -270,7 +270,7 @@ export class Grid{
 	fireOnBlock(fire, col, row){
 		const { accuracyX, accuracyY } = fire
 		let	img = ImageManager.getBitMap('blast7')
-		img && this.c.drawImage(img, accuracyX - 4, accuracyY - 4, 4 , 4)
+		img && this.c.drawImage(img, accuracyX - 2, accuracyY - 2, 6, 6)
 		if(col !== undefined){
 			this.destroyBlock(col,row)
 		}

@@ -18,6 +18,12 @@ export default class Fire{
 
 		this.accuracyX = posX * 8 + offsetX + 6    //the right position where we draw a ball based on pos and offset
 		this.accuracyY = posY * 8 + offsetY + 6
+		switch (direction){
+			case "w": this.accuracyY -= 8;break
+			case "s": this.accuracyY += 8;break
+			case "a": this.accuracyX -= 8;break
+			case "d": this.accuracyX += 8;break
+		}
 	}
 
 }

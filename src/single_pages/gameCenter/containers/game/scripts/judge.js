@@ -138,19 +138,21 @@ export default class Judge{
 				oX = accuracyX % grid.step,
 				oY = accuracyY % grid.step
 
+			console.log(accuracyX,accuracyY,oY)
+
 			let checkConstruction = () => {
 				//TIP: if the fire is away from construction
-				// if(oX > 2 && oX < grid.step - 2) return
-				// if(oY > 2 && oY < grid.step - 2) return
-				if(row <= 0 || col <= 0) return
-				if(row >= alley.length - 1 || col >= alley[0].length - 1) return
-				let w1 = alley[row - 1][col], w2 = alley[row - 1][col + 1]
-				let s1 = alley[row + 1][col], s2 = alley[row + 1][col + 1]
-				let a1 = alley[row][col - 1], a2 = alley[row + 1][col - 1]
-				let d1 = alley[row][col + 1], d2 = alley[row + 1][col + 1]
+				if(row == 0 && (direction == 'w' || direction == 's')) return
+				if(col == 0 && (direction == 'a' || direction == 'd')) return
+				if((accuracyY < 0) || (accuracyX < 0) || (accuracyY - size >= alley.length * grid.step) || (accuracyX - size >= alley[0].length * grid.step)) {
+					fireOnBlock(index)
+					fireC.fireGone(index)
+					return
+				}
 				let over = false
 				switch (direction){
 					case 'w':
+						let w1 = alley[row - 1][col], w2 = alley[row - 1][col + 1]
 						if(w1 == 4 || w2 == 4){
 							//the top block
 							if(oY <= 1 && w1 == 4){fireOnBlock(index,col,row - 1)}
@@ -162,6 +164,7 @@ export default class Judge{
 						}
 						break
 					case 's':
+						let s1 = alley[row + 1][col], s2 = alley[row + 1][col + 1]
 						if(s1 == 4 || s2 == 4){
 							if(oY + size >= grid.step && s1 == 4){fireOnBlock(index,col,row + 1)}
 							if(oX >= grid.step - size && oY + size >= grid.step && s2 == 4){fireOnBlock(index,col + 1,row + 1)}
@@ -171,6 +174,7 @@ export default class Judge{
 						}
 						break
 					case 'a':
+						let a1 = alley[row][col - 1], a2 = alley[row + 1][col - 1]
 						if(a1 == 4 || a2 == 4){
 							if(oX <= 1 && a1 == 4){fireOnBlock(index,col - 1,row)}
 							if(oX <= 1 && oY >= grid.step - size && a2 == 4){fireOnBlock(index,col - 1,row + 1)}
@@ -180,6 +184,7 @@ export default class Judge{
 						}
 						break
 					case 'd':
+						let d1 = alley[row][col + 1], d2 = alley[row + 1][col + 1]
 						if(d1 == 4 || d2 == 4){
 							if(oX + size >= grid.step && d1 == 4){fireOnBlock(index,col + 1,row)}
 							if(oY >= grid.step - size && oX + size >= grid.step && d2 == 4){fireOnBlock(index,col + 1,row + 1)}
