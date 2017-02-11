@@ -29,6 +29,7 @@
 
 //noinspection JSUnresolvedVariable
 import { ImageManager } from './Manager'
+import { EnemyBase } from './tank'
 
 const MAP_TEMPLATE = {
 	size: {
@@ -40,7 +41,9 @@ const MAP_TEMPLATE = {
 		y: 2
 	}],
 	enemies: [
-		{ x: 0, y: 0, type: 0, }
+		{ x: 0, y: 0, type: [0,1,2,3,4] },
+		{ x: 4, y: 0, type: [0,1,2,3,4] },
+		{ x: 0, y: 4, type: [0,1,2,3,4] },
 	],
 	material: [
 		[0,0,1,1,0,0,0,0,0,0,0,0,],
@@ -53,6 +56,8 @@ const MAP_TEMPLATE = {
 		[0,0,0,0,0,0,0,0,0,0,0,0,],
 	]
 }
+
+//localStorage.setItem('mapList',JSON.stringify([MAP_TEMPLATE]))
 
 /**
  * the class grid controls the canvas,and store some data
@@ -170,6 +175,12 @@ export class Grid{
 			}
 		}
 
+	}
+	birthAnimation(enemyBase, init= false){
+		if(init === true) enemyBase.blinkStage = 0
+		let { posX, posY, blinkStage } = enemyBase
+		this._drawGiantBlock(posY,posX,"born"+EnemyBase.bornPic[blinkStage])
+		enemyBase.blinkStage ++
 	}
 	updateTank(tank, run = false){
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second

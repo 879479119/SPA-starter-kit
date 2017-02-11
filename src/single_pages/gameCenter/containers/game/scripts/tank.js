@@ -84,9 +84,11 @@ export class Player extends Tank{
 					break
 				case 'j':
 					// that.key_down = true
-					that.now_fire = true
-					that.fire_time = Date.now()
-					controller.addFire(new PLayerFire(that))
+					// that.now_fire = true
+					if(Date.now() - that.fire_time > 500) {
+						controller.addFire(new PLayerFire(that))
+						that.fire_time = Date.now()
+					}
 					break
 			}
 		})
@@ -136,6 +138,31 @@ export class Enemy extends Tank{
 		 *
 		 *
 		 */
+	}
+}
+
+export class EnemyBase{
+
+	constructor(base) {
+		this.posX = base.x
+		this.posY = base.y
+		this.type = base.type
+		this.count = 0                 //has born
+		this.total = base.total || 5   //the number of tank that would be born here
+		this.blinkStage = 0            //associated with bornPic
+		this.frameCounter = 0          //enemy would born if fC % bI = 0
+		this.bornInterval = 8 * Math.floor(Math.random() * 60 + 60)
+	}
+	bornOne(){
+		if(this.count === this.total) return -1
+		this.count ++
+		return this
+	}
+	static get bornPic() {
+		/**
+		 * show 'born' picture step by step
+		 */
+		return [1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,2,2,2,2,2,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4]
 	}
 }
 

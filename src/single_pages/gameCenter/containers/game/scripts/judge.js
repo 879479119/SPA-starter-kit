@@ -1,18 +1,14 @@
 /**
- * Created by zi on 2017/1/13.
- */
-
-/**
  * this class should store all the status that affect the game,
  *
  */
 
 export default class Judge{
-	constructor(grid, map, player, fireController, enemies){
+	constructor(grid, map, player, fireController, enemyBases){
 		//user data
 		this._player = player || {}
 		//enemies data
-		this._enemies = enemies || {}
+		this._enemyBases = enemyBases || {}
 		//map data
 		this._map = map || {}
 		//grid data
@@ -40,7 +36,11 @@ export default class Judge{
 		 */
 		const player = this._player,
 			grid = this._grid,
-			fireController = this._fireController
+			fireController = this._fireController,
+			enemyBases = this._enemyBases
+
+		//enemies are born after a period
+		Judge._checkBirth(grid, enemyBases)
 		//check tanks and construction
 		Judge._checkImpact(grid, player)
 		//check fire & construction & tanks
@@ -120,8 +120,17 @@ export default class Judge{
 			throw Error("You cannot change variable 'direction' manually")
 		}
 	}
-	static _checkMap(){
-
+	static _checkBirth(grid, enemyBases){
+		enemyBases.forEach((item) => {
+			if(++ item.frameCounter % item.bornInterval === 0){
+				if(item.bornOne() !== -1){
+					grid.birthAnimation(item, true)
+				}
+			}
+			if(item.blinkStage < 40){
+				grid.birthAnimation(item)
+			}
+		})
 	}
 	static _checkCannon(grid, player, fireC) {
 		/**
@@ -141,7 +150,6 @@ export default class Judge{
 			console.log(accuracyX,accuracyY,oY)
 
 			let checkConstruction = () => {
-				//TIP: if the fire is away from construction
 				if(row == 0 && (direction == 'w' || direction == 's')) return
 				if(col == 0 && (direction == 'a' || direction == 'd')) return
 				if((accuracyY < 0) || (accuracyX < 0) || (accuracyY - size >= alley.length * grid.step) || (accuracyX - size >= alley[0].length * grid.step)) {

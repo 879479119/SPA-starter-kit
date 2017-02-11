@@ -3,7 +3,7 @@
  */
 
 import Map, { Grid } from './scripts/map'
-import { Player, Enemy } from './scripts/tank'
+import { Player, EnemyBase } from './scripts/tank'
 import Judge from './scripts/judge'
 import { FireManager } from './scripts/Fire'
 
@@ -21,7 +21,12 @@ export default function init() {
 	//get map source
 	let grid = new Grid(800,400)
 	let map = new Map(800,400)
-	let player = new Player(2,2)
+
+	const mapSourceList = Map.getMapList(),
+		{ startPosition: [{ x, y }], enemies} = mapSourceList[0]
+
+	let player = new Player(x,y)
+	let enemyBases = enemies.map(item => new EnemyBase(item))
 	let fireController = new FireManager()
 	//draw construction
 
@@ -33,7 +38,7 @@ export default function init() {
 	player.init(fireController)
 
 	//start moving frame by frame
-	let frame = new Judge(grid, map, player, fireController, {})
+	let frame = new Judge(grid, map, player, fireController, enemyBases)
 	let i = 1
 	let keyFrame = () => {
 		grid.init(map)
