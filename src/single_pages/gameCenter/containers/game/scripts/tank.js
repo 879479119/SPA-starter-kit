@@ -23,6 +23,7 @@ let fireController = new FireManager()
 class Tank{
 	constructor(x,y){
 		const initAttr = {
+			id: Date.now(),       //TODO: replace this with symbol
 			ally: false,
 			posX: x || 0,         //tank's position on axis X
 			posY: y || 0,         //position on axis Y
@@ -146,6 +147,13 @@ export class Enemy extends Tank{
 		 *
 		 *
 		 */
+	}
+	changeDirection(reverse= false){
+		if(reverse){
+			this.direction = {'w':'s','s':'w','a':'d','d':'a'}[this.direction]
+		}else {
+			this.direction = "wasd"[Math.random()*4>>>0]
+		}
 	}
 }
 

@@ -81,7 +81,6 @@ export class Grid{
 		this.map = mapSourceList[0]
 		this.material = material
 	}
-
 	/*basic methods*/
 	init(){
 		// this.c.clearRect(0,0,this.width,this.height)
@@ -142,7 +141,6 @@ export class Grid{
 		this.alley = gridValid
 		return gridValid
 	}
-
 	/*some special methods*/
 	_drawTank(){
 		const mapSourceList = Map.getMapList(),
@@ -312,7 +310,6 @@ export class Grid{
 }
 
 export class  DummyGrid extends Grid{
-
 	constructor(width, height) {
 		super(width, height);
 		this.width = 16
@@ -320,14 +317,12 @@ export class  DummyGrid extends Grid{
 		this.len = 16
 		this.init()
 	}
-
 	init() {
 		this.ele = window.document.createElement("canvas")
 		this.ele.width = this.width
 		this.ele.height = this.height
 		this.c = this.ele.getContext('2d')
 	}
-
 	_getRotateBlock(type, degree){
 		this.c.clearRect(0,0,this.len,this.len)
 		//we must draw the bitmap on 'this.c' ,so just take this as a param

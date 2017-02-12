@@ -53,23 +53,26 @@ export default class Judge{
 		Judge._checkCannon(grid, player, fireController)
 
 		grid.drawConstruction()
+		Judge._checkTanks(grid, player, enemyController)
 		grid.updateTank(player, player.key_down && player.running)
 
 		/*------------------------enemy  part-------------------------*/
 
 		enemyController.tankArr.map(item=>{
 			Judge._checkImpact(grid, item)
-			if(item.running === false) item.direction = "wasd"[Math.random()*4>>>0]
+			if(item.running === false) item.changeDirection()
 			grid.updateTank(item, item.running)
 		})
+
+		/*------------------------either  part-------------------------*/
+
+
 		grid.updateFire(fireController)
 	}
 	static _checkImpact(grid, tank){
+
 		const alley = grid.getAlley(),
 			{ posX, posY, offsetX, offsetY, direction} = tank
-
-		window.a = alley
-		window.f = offsetY
 
 		let row = posY, col = posX
 
@@ -88,6 +91,8 @@ export default class Judge{
 				}
 				tank.running = true
 			} else {
+				//here we go, the impact detection between tanks
+
 				tank.running = true
 			}
 		}else if(direction === 's'){
@@ -135,6 +140,45 @@ export default class Judge{
 		}
 
 		return true
+	}
+	static _checkTanks(grid, player, enemyC){
+		/**
+		 * there are some differences between 'grid & tank' and
+		 * 'tank & tank', for the first one, we can easily check
+		 * the neighborhood, but the second one, since there are
+		 * few tanks, we could just detect impact in the group
+		 * that takes a period of N^2
+		 *
+		 * TIP: _checkImpact is detecting ahead of time, but _check Tanks is detecting after crush
+		 *      therefore this method is not related with direction
+		 */
+
+		enemyC.tankArr.map(item=>{
+			if(detectOneTank(item)) item.changeDirection(true)
+		})
+
+		if(detectOneTank(player)) player.running = false
+
+		function detectOneTank(tank) {
+			const step = grid.step, len = grid.len
+			const { posX, posY, offsetX, offsetY} = tank,
+				y = posY * step + offsetY,
+				x = posX * step + offsetX,
+				enemies = enemyC.tankArr
+
+			for(let i = 0;i < enemies.length;i ++) {
+				if(tank.id === enemies[i].id) continue
+				let eX = enemies[i].posX * step + enemies[i].offsetX
+				let eY = enemies[i].posY * step + enemies[i].offsetY
+				if(x + len > eX && x - len < eX){
+					if(y + len > eY && y - len < eY){
+						return true
+					}
+				}
+			}
+
+			return false
+		}
 	}
 	static _checkBirth(grid, enemyBases, enemyC){
 		enemyBases.forEach((item) => {
