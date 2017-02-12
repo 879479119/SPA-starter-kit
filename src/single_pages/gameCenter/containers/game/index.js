@@ -3,7 +3,7 @@
  */
 
 import Map, { Grid } from './scripts/map'
-import { Player, EnemyBase } from './scripts/tank'
+import { Player, EnemyBase, EnemyController } from './scripts/tank'
 import Judge from './scripts/judge'
 import { FireManager } from './scripts/Fire'
 
@@ -28,17 +28,18 @@ export default function init() {
 	let player = new Player(x,y)
 	let enemyBases = enemies.map(item => new EnemyBase(item))
 	let fireController = new FireManager()
+	let enemyController = new EnemyController()
 	//draw construction
 
 	//draw tanks
 	// grid.init()
 	// grid.drawConstruction()
 	grid.getAlley(true)
-	grid._drawTank(map)
+	grid._drawPlayer(x,y)
 	player.init(fireController)
 
 	//start moving frame by frame
-	let frame = new Judge(grid, map, player, fireController, enemyBases)
+	let frame = new Judge(grid, map, player, fireController, enemyBases, enemyController)
 	let i = 1
 	let keyFrame = () => {
 		grid.init(map)

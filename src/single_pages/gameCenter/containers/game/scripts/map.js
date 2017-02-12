@@ -176,6 +176,9 @@ export class Grid{
 		}
 
 	}
+	updateEnemy(enemy){
+		this.updateTank(enemy)
+	}
 	birthAnimation(enemyBase, init= false){
 		if(init === true) enemyBase.blinkStage = 0
 		let { posX, posY, blinkStage } = enemyBase
@@ -184,8 +187,9 @@ export class Grid{
 	}
 	updateTank(tank, run = false){
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second
-		let {posX, posY, offsetX, offsetY, speed, direction} = tank
+		let {posX, posY, offsetX, offsetY, speed, direction, type, ally} = tank
 		let move = speed * 10 / 60
+		let tankName = ally ? 'p1tankU' : ['p1tankU','enemy1','enemy2','enemy3','p2tankF'][type]
 
 		//TIP: DummyGrid is a canvas buffer which provides a transformed image
 		let dummy = new DummyGrid()
@@ -196,14 +200,13 @@ export class Grid{
 			let d = [0,90,180,270]['wdsa'.indexOf(direction)]
 
 			this.c.drawImage(
-				dummy._getRotateBlock('p1tankU',d),
+				dummy._getRotateBlock(tankName,d),
 				posX * this.step + offsetX,
 				posY * this.step + offsetY,
 				this.len, this.len
 			)
 			return
 		}
-
 		switch (true){
 			case direction == 'w':
 				if(offsetY <= 0){
@@ -241,7 +244,7 @@ export class Grid{
 				break
 		}
 		this.c.drawImage(
-			dummy._getRotateBlock('p1tankU',degree),
+			dummy._getRotateBlock(tankName,degree),
 			tank.posX * this.step + tank.offsetX,
 			tank.posY * this.step + tank.offsetY,
 			this.len, this.len

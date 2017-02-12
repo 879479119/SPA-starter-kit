@@ -1,10 +1,11 @@
 /**
  * this class should store all the status that affect the game,
- *
  */
 
+import { Enemy, EnemyController } from './tank'
+
 export default class Judge{
-	constructor(grid, map, player, fireController, enemyBases){
+	constructor(grid, map, player, fireController, enemyBases, enemyController){
 		//user data
 		this._player = player || {}
 		//enemies data
@@ -15,6 +16,8 @@ export default class Judge{
 		this._grid = grid || {}
 		//fire data
 		this._fireController = fireController || {}
+		//shown enemies
+		this._enemyController = enemyController || {}
 	}
 	init(){
 
@@ -37,10 +40,11 @@ export default class Judge{
 		const player = this._player,
 			grid = this._grid,
 			fireController = this._fireController,
-			enemyBases = this._enemyBases
+			enemyBases = this._enemyBases,
+			enemyController = this._enemyController
 
 		//enemies are born after a period
-		Judge._checkBirth(grid, enemyBases)
+		Judge._checkBirth(grid, enemyBases, enemyController)
 		//check tanks and construction
 		Judge._checkImpact(grid, player)
 		//check fire & construction & tanks
@@ -49,6 +53,9 @@ export default class Judge{
 
 		grid.drawConstruction()
 		grid.updateTank(player, player.key_down && player.running)
+		enemyController.tankArr.map(item=>{
+			grid.updateTank(item)
+		})
 		grid.updateFire(fireController)
 	}
 	static _checkImpact(grid, player){
@@ -120,15 +127,20 @@ export default class Judge{
 			throw Error("You cannot change variable 'direction' manually")
 		}
 	}
-	static _checkBirth(grid, enemyBases){
+	static _checkBirth(grid, enemyBases, enemyC){
 		enemyBases.forEach((item) => {
 			if(++ item.frameCounter % item.bornInterval === 0){
 				if(item.bornOne() !== -1){
 					grid.birthAnimation(item, true)
 				}
 			}
-			if(item.blinkStage < 40){
-				grid.birthAnimation(item)
+			if(item.blinkStage < 40) grid.birthAnimation(item)
+			else if(item.blinkStage ++ === 40){
+				let type = item.type[Math.random() * item.type.length >>> 0]
+				let enemy = new Enemy(item.posX,item.posY,type)
+				enemyC.addTank(enemy)
+				grid.updateEnemy(enemy)
+				// item.blinkStage = 0
 			}
 		})
 	}

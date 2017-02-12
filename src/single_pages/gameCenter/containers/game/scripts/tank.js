@@ -15,15 +15,6 @@
  *  3.
  */
 
-/**
- * Enemy tank types:
- *     speed | power | health
- *  0.  fast  normal   less
- *  1. normal normal  normal
- *  2. normal higher   more
- *  3. slow  one beat  highest
- *  4. normal normal  normal (always blinking and if destroy it, you can get useful items)
- */
 import Fire, { PLayerFire, FireManager } from './Fire'
 // import { Grid } from './map'
 
@@ -32,6 +23,7 @@ let fireController = new FireManager()
 class Tank{
 	constructor(x,y){
 		const initAttr = {
+			ally: false,
 			posX: x || 0,         //tank's position on axis X
 			posY: y || 0,         //position on axis Y
 			offsetX: 0,           //it's the atomic unit - 'px'
@@ -43,7 +35,7 @@ class Tank{
 			shell: 0,        //shell may keep out some attack
 			damage: 1,
 			stage: 0,        //tank acts different
-			direction: 0     //0-3 for the clockwise direction
+			direction: 'w'   //0-3 for the clockwise direction
 		}
 		merge(this, initAttr)
 	}
@@ -53,6 +45,7 @@ export class Player extends Tank{
 	constructor(...props){
 		super(...props)
 		const initAttr = {
+			ally: true,
 			type: "p1tankU",
 			speed: 2,
 			health: 5,
@@ -107,6 +100,7 @@ class Friend extends Tank{
 	constructor(props){
 		super(props)
 		const initAttr = {
+			ally: true,
 			type: 2,
 			speed: 2,
 			health: 5,
@@ -116,11 +110,21 @@ class Friend extends Tank{
 	}
 }
 
+/**
+ * Enemy tank types:
+ *     speed | power | health
+ *  0.  fast  normal   less
+ *  1. normal normal  normal
+ *  2. normal higher   more
+ *  3. slow  one beat  highest
+ *  4. normal normal  normal (always blinking and if destroy it, you can get useful items)
+ */
+
 export class Enemy extends Tank{
-	constructor(props){
-		super(props)
+	constructor(...props){
+		super(...props)
 		const initAttr = {
-			type: 0,
+			type: props[2] || props.type, //like this?
 			speed: 1,
 			health: 5,
 			damage: 1
@@ -163,6 +167,16 @@ export class EnemyBase{
 		 * show 'born' picture step by step
 		 */
 		return [1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,2,2,2,2,2,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4]
+	}
+}
+
+export class EnemyController{
+
+	constructor() {
+		this.tankArr = []
+	}
+	addTank(enemy){
+		this.tankArr.push(enemy)
 	}
 }
 
