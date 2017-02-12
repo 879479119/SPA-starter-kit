@@ -46,7 +46,7 @@ export default class Judge{
 		/*------------------------player part-------------------------*/
 
 		//enemies are born after a period
-		Judge._checkBirth(grid, enemyBases, enemyController)
+		Judge._checkBirth(grid, enemyBases, player, enemyController)
 		//check tanks and construction
 		Judge._checkImpact(grid, player)
 		//check fire & construction & tanks
@@ -96,7 +96,6 @@ export default class Judge{
 				tank.running = true
 			}
 		}else if(direction === 's'){
-			console.log(row,col)
 			if (offsetY <= 1) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
 					if (row >= alley.length - 2 || alley[row + 2][c] === 0){
@@ -180,20 +179,66 @@ export default class Judge{
 			return false
 		}
 	}
-	static _checkBirth(grid, enemyBases, enemyC){
+	static _checkBirth(grid, enemyBases, player, enemyC){
 		enemyBases.forEach((item) => {
-			if(++ item.frameCounter % item.bornInterval === 0){
-				if(item.bornOne() !== -1){
-					grid.birthAnimation(item, true)
+			const { len, step } = grid
+			const { posX, posY } = item, enemies = enemyC.tankArr
+			//flag is a variable that check if there is any tank above enemy base
+			let flag = false
+			let circle = 0
+			let y = posY * step, x = posX * step
+
+			//check if player locates above it
+			let pX = player.posX * step + player.offsetX
+			let pY = player.posY * step + player.offsetY
+			if(x + len > pX && x - len < pX){
+				if(y + len > pY && y - len < pY){
+					flag = true
 				}
 			}
-			if(item.blinkStage < 40) grid.birthAnimation(item)
-			else if(item.blinkStage ++ === 40){
-				let type = item.type[Math.random() * item.type.length >>> 0]
-				let enemy = new Enemy(item.posX,item.posY,type)
-				enemyC.addTank(enemy)
-				grid.updateEnemy(enemy)
-				// item.blinkStage = 0
+
+			//check enemies
+			for(let i = 0;i < enemies.length;i ++) {
+				let eX = enemies[i].posX * step + enemies[i].offsetX
+				let eY = enemies[i].posY * step + enemies[i].offsetY
+				if(x + len > eX && x - len < eX){
+					if(y + len > eY && y - len < eY){
+						flag = true
+					}
+				}
+			}
+
+			//after some time, enemies start to come out
+			if(++ item.frameCounter % item.bornInterval === 0){
+				if(item.readyToBear() === 1){
+					grid.birthAnimation(item, true)
+					item.bornStarted = true
+				}
+			}
+
+			if(item.bornStarted === true) grid.birthAnimation(item)
+			if(flag === true && item.blinkStage > 40){
+				item.blinkStage = 0
+				circle = 1
+			}
+
+			if(flag === false){
+				if(item.blinkStage === 40 ){
+					let type = item.type[Math.random() * item.type.length >>> 0]
+					let enemy = new Enemy(item.posX,item.posY,type)
+					item.bearOne()
+					enemyC.addTank(enemy)
+					grid.updateEnemy(enemy)
+					// console.log(1);
+				}
+				else if(circle === 1 && item.bornStarted === true){
+					let type = item.type[Math.random() * item.type.length >>> 0]
+					let enemy = new Enemy(item.posX,item.posY,type)
+					item.bearOne()
+					enemyC.addTank(enemy)
+					grid.updateEnemy(enemy)
+					// console.log(2);
+				}
 			}
 		})
 	}
@@ -211,8 +256,6 @@ export default class Judge{
 				row = Math.floor(accuracyY / grid.step),
 				oX = accuracyX % grid.step,
 				oY = accuracyY % grid.step
-
-			console.log(accuracyX,accuracyY,oY)
 
 			let checkConstruction = () => {
 				if(row == 0 && (direction == 'w' || direction == 's')) return

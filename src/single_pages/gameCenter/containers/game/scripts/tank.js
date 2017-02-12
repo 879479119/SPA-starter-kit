@@ -167,11 +167,16 @@ export class EnemyBase{
 		this.total = base.total || 5   //the number of tank that would be born here
 		this.blinkStage = 0            //associated with bornPic
 		this.frameCounter = 0          //enemy would born if fC % bI = 0
-		this.bornInterval = 8 * Math.floor(Math.random() * 60 + 60)
+		this.bornInterval = 2 * Math.floor(Math.random() * 60 + 60)
+		this.bornStarted = false
 	}
-	bornOne(){
+	readyToBear(){
 		if(this.count === this.total) return -1
+		else return 1
+	}
+	bearOne(){
 		this.count ++
+		this.bornStarted = false
 		return this
 	}
 	static get bornPic() {
