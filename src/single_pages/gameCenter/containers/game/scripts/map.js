@@ -347,7 +347,6 @@ export class  DummyGrid extends Grid{
 				this.c.rotate(-Math.PI/2)
 				break
 			default:
-				console.log("what do you want? ");
 		}
 
 		super._drawGiantBlock(0,0,type,this)

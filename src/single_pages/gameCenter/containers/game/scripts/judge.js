@@ -43,24 +43,30 @@ export default class Judge{
 			enemyBases = this._enemyBases,
 			enemyController = this._enemyController
 
+		/*------------------------player part-------------------------*/
+
 		//enemies are born after a period
 		Judge._checkBirth(grid, enemyBases, enemyController)
 		//check tanks and construction
 		Judge._checkImpact(grid, player)
 		//check fire & construction & tanks
-		//TODO: ignore enemies
 		Judge._checkCannon(grid, player, fireController)
 
 		grid.drawConstruction()
 		grid.updateTank(player, player.key_down && player.running)
+
+		/*------------------------enemy  part-------------------------*/
+
 		enemyController.tankArr.map(item=>{
-			grid.updateTank(item)
+			Judge._checkImpact(grid, item)
+			if(item.running === false) item.direction = "wasd"[Math.random()*4>>>0]
+			grid.updateTank(item, item.running)
 		})
 		grid.updateFire(fireController)
 	}
-	static _checkImpact(grid, player){
+	static _checkImpact(grid, tank){
 		const alley = grid.getAlley(),
-			{ posX, posY, offsetX, offsetY, direction} = player
+			{ posX, posY, offsetX, offsetY, direction} = tank
 
 		window.a = alley
 		window.f = offsetY
@@ -75,57 +81,60 @@ export default class Judge{
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
 					//either it's running straight into block or the edge of the map
 					if (row === 0 || alley[row - 1][c] === 0){
-						player.running = false
-						player.offsetY = 0
-						return
+						tank.running = false
+						tank.offsetY = 0
+						return false
 					}
 				}
-				player.running = true
+				tank.running = true
 			} else {
-				player.running = true
+				tank.running = true
 			}
 		}else if(direction === 's'){
+			console.log(row,col)
 			if (offsetY <= 1) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
-					if (row === alley.length || alley[row + 2][c] === 0){
-						player.running = false
-						player.offsetY = 0
-						return
+					if (row >= alley.length - 2 || alley[row + 2][c] === 0){
+						tank.running = false
+						tank.offsetY = 0
+						return false
 					}
 				}
-				player.running = true
+				tank.running = true
 			} else {
-				player.running = true
+				tank.running = true
 			}
 		}else if(direction === 'a'){
 			if (offsetX <= 0) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
 					if (col === 0 || alley[r][col - 1] === 0){
-						player.offsetX = 0
-						player.running = false
-						return
+						tank.offsetX = 0
+						tank.running = false
+						return false
 					}
 				}
-				player.running = true
+				tank.running = true
 			} else {
-				player.running = true
+				tank.running = true
 			}
 		}else if(direction === 'd'){
 			if (offsetX <= 1) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col === alley[0].length || alley[r][col + 2] === 0) {
-						player.offsetX = 0
-						player.running = false
-						return
+					if (col >= alley[0].length - 2 || alley[r][col + 2] === 0) {
+						tank.offsetX = 0
+						tank.running = false
+						return false
 					}
 				}
-				player.running = true
+				tank.running = true
 			} else {
-				player.running = true
+				tank.running = true
 			}
 		}else{
 			throw Error("You cannot change variable 'direction' manually")
 		}
+
+		return true
 	}
 	static _checkBirth(grid, enemyBases, enemyC){
 		enemyBases.forEach((item) => {

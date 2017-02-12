@@ -35,7 +35,11 @@ class Tank{
 			shell: 0,        //shell may keep out some attack
 			damage: 1,
 			stage: 0,        //tank acts different
-			direction: 'w'   //0-3 for the clockwise direction
+			direction: 'w',   //0-3 for the clockwise direction
+			key_down: false,        //the tank can run only when some key is pressed
+			running: false,         //shows whether the tank is moving during key down
+			now_fire: false,
+			fire_time: 0,
 		}
 		merge(this, initAttr)
 	}
