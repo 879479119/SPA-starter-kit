@@ -44,6 +44,17 @@ class Tank{
 		}
 		merge(this, initAttr)
 	}
+	changeDirection(reverse= false){
+		if(reverse){
+			this.direction = {'w':'s','s':'w','a':'d','d':'a'}[this.direction]
+		}else {
+			this.direction = "wasd"[Math.random()*4>>>0]
+		}
+	}
+	getAttacked(){
+		this.health = 0
+		console.log("boom")
+	}
 }
 
 export class Player extends Tank{
@@ -95,8 +106,7 @@ export class Player extends Tank{
 		})
 	}
 	getAttacked(){
-		this.health = 0
-		console.log("Damaged")
+		super.getAttacked()
 	}
 }
 
@@ -129,7 +139,7 @@ export class Enemy extends Tank{
 		super(...props)
 		const initAttr = {
 			type: props[2] || 0, //like this?
-			speed: 5,
+			speed: 0,
 			health: 5,
 			damage: 1
 		}
@@ -146,12 +156,8 @@ export class Enemy extends Tank{
 		 *
 		 */
 	}
-	changeDirection(reverse= false){
-		if(reverse){
-			this.direction = {'w':'s','s':'w','a':'d','d':'a'}[this.direction]
-		}else {
-			this.direction = "wasd"[Math.random()*4>>>0]
-		}
+	getAttacked(){
+		super.getAttacked()
 	}
 }
 
@@ -190,6 +196,11 @@ export class EnemyController{
 	}
 	addTank(enemy){
 		this.tankArr.push(enemy)
+	}
+	removeItem(id){
+		this.tankArr.forEach((item, index)=>{
+			if(item.id === id) this.tankArr.splice(index, 1)
+		})
 	}
 }
 

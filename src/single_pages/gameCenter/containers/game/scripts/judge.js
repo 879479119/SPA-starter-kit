@@ -50,14 +50,20 @@ export default class Judge{
 		//check tanks and construction
 		Judge._checkImpact(grid, player)
 		//check fire & construction & tanks
-		Judge._checkCannon(grid, player, fireController)
+		Judge._checkCannon(grid, player, enemyController, fireController)
 
 		Judge._checkTanks(grid, player, enemyController)
+		if(player.health === 0){}
 		grid.updateTank(player, player.key_down && player.running)
+		player.running = true
 
 		/*------------------------enemy  part-------------------------*/
 
 		enemyController.tankArr.map(item=>{
+			if(item.health === 0){
+				enemyController.removeItem(item.id)
+				return
+			}
 			Judge._checkImpact(grid, item)
 			if(item.running === false) item.changeDirection()
 			else if(Judge.randomBool === false) item.changeDirection()
@@ -78,67 +84,44 @@ export default class Judge{
 		let row = posY, col = posX
 
 		//check if any endpoint touch other construction
-		if(direction === 'w'){
+		if(direction === 'w' && offsetY <= 0){
 			//TIP: all the constructions are located at the standard grid,
 			//     but tanks may be located with a param 'offset'
-			if (offsetY <= 0) {
-				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
-					//either it's running straight into block or the edge of the map
-					if (row <= 1 || alley[row - 2][c] === 0){
-						tank.running = false
-						tank.offsetY = 0
-						return false
-					}
+			for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
+				//either it's running straight into block or the edge of the map
+				if (row <= 0 || alley[row - 1][c] === 0){
+					tank.running = false
+					tank.offsetY = 0
+					return false
 				}
-				tank.running = true
-			} else {
-				//here we go, the impact detection between tanks
-
-				tank.running = true
 			}
-		}else if(direction === 's'){
-			if (offsetY <= 1) {
-				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
-					if (row >= alley.length - 2 || alley[row + 2][c] === 0){
-						tank.running = false
-						tank.offsetY = 0
-						return false
-					}
+		}else if(direction === 's' && offsetY <= 1){
+			for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
+				if (row >= alley.length - 2 || alley[row + 2][c] === 0){
+					tank.running = false
+					tank.offsetY = 0
+					return false
 				}
-				tank.running = true
-			} else {
-				tank.running = true
 			}
-		}else if(direction === 'a'){
-			if (offsetX <= 0) {
-				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col <= 1 || alley[r][col - 2] === 0){
-						tank.offsetX = 0
-						tank.running = false
-						return false
-					}
+		}else if(direction === 'a' && offsetX <= 0){
+			for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
+				if (col <= 0 || alley[r][col - 1] === 0){
+					tank.offsetX = 0
+					tank.running = false
+					return false
 				}
-				tank.running = true
-			} else {
-				tank.running = true
 			}
-		}else if(direction === 'd'){
-			if (offsetX <= 1) {
-				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col >= alley[0].length - 2 || alley[r][col + 2] === 0) {
-						tank.offsetX = 0
-						tank.running = false
-						return false
-					}
+		}else if(direction === 'd' && offsetX <= 1){
+			for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
+				if (col >= alley[0].length - 2 || alley[r][col + 2] === 0) {
+					tank.offsetX = 0
+					tank.running = false
+					return false
 				}
-				tank.running = true
-			} else {
-				tank.running = true
 			}
-		}else{
-			throw Error("You cannot change variable 'direction' manually")
 		}
 
+		tank.running = true
 		return true
 	}
 	static _checkTanks(grid, player, enemyC){
@@ -156,16 +139,18 @@ export default class Judge{
 		enemyC.tankArr.map(item=>{
 			if(detectOneTank(item, false)) {
 				item.changeDirection(true)
-				// switch (this.direction){
-				// 	case 'w': this.offsetY --;break
-				// 	case 's': this.offsetY ++;break
-				// 	case 'a': this.offsetX --;break
-				// 	case 'd': this.offsetX ++;break
-				// }
 			}
 		})
 
-		if(detectOneTank(player, true)) player.running = false
+		if(detectOneTank(player, true)) {
+			player.running = false
+			switch (player.direction){
+				case 'w': this.offsetY += 2; break
+				case 's': this.offsetY -= 2; break
+				case 'a': this.offsetX += 2; break
+				case 'd': this.offsetX -= 2; break
+			}
+		}
 
 		function detectOneTank(tank, isPlayer= false) {
 			const step = grid.step, len = grid.len
@@ -254,7 +239,7 @@ export default class Judge{
 			}
 		})
 	}
-	static _checkCannon(grid, player, fireC) {
+	static _checkCannon(grid, player, enemyC, fireC) {
 		/**
 		 * the tank of player will be destroyed if enemy's fire reached and vice versa,
 		 * because we can tell the fire whether it's friendly judging from 'from_ally'
@@ -349,27 +334,63 @@ export default class Judge{
 
 				switch (direction){
 					case 'w':case 's':
-						if((pX - accuracyX < size && pX - accuracyX > grid.len && from_ally === false)
-							&& (pX - accuracyX <= grid.len || accuracyX - pX <= 0)){
-							player.getAttacked()
-							//TODO: special effect
-						}
-						break
+					//TIP: very complex logical judgement !!!!!
+					if((pX - accuracyX < size && accuracyX - pX < grid.len && from_ally === false)
+						&& ((direction === 's' && pY - accuracyY <= size) || (direction === 'w' && accuracyY - pY <= grid.len))){
+						e.getAttacked()
+						//TODO: special effect
+					}
+					break
 					case 'a':case 'd':
-						if((pY - accuracyY < size && pY - accuracyY > grid.len && from_ally === false)
-							&& (pY - accuracyY <= grid.len || accuracyY - pX <= 0)){
-							player.getAttacked()
-							//TODO: special effect
-						}
-						break
+					if((pY - accuracyY < size && accuracyY - pY < grid.len && from_ally === false)
+						&& ((direction === 'd' && pX - accuracyX <= size) || (direction === 'a' && accuracyX - pX <= grid.len))){
+						e.getAttacked()
+						//TODO: special effect
+					}
+					break
 					default:
 						throw Error("WRONG DIRECTION")
 				}
 			}
+
+			let checkEnemies = () => {
+				for(let index in enemyC.tankArr){
+					let e = enemyC.tankArr[index]
+					const { posX, posY, offsetX, offsetY } = e
+
+					let pX = posX * grid.step + offsetX,
+						pY = posY * grid.step + offsetY
+					// if((Math.abs(pX - accuracyX)) > 10) return
+					// if((Math.abs(pY - accuracyY)) > 10) return
+
+					switch (direction){
+						case 'w':case 's':
+
+							//TIP: very complex logical judgement !!!!!
+							if((pX - accuracyX < size && accuracyX - pX < grid.len && from_ally === true)
+								&& ((direction === 's' && pY - accuracyY <= size) || (direction === 'w' && accuracyY - pY <= grid.len))){
+								e.getAttacked()
+								//TODO: special effect
+							}
+							break
+						case 'a':case 'd':
+							if((pY - accuracyY < size && accuracyY - pY < grid.len && from_ally === true)
+								&& ((direction === 'd' && pX - accuracyX <= size) || (direction === 'a' && accuracyX - pX <= grid.len))){
+								e.getAttacked()
+								//TODO: special effect
+							}
+							break
+						default:
+							throw Error("WRONG DIRECTION")
+					}
+				}
+			}
 			//check Construction first
 			checkConstruction()
-			//then the player and enemies
+			//then the player
 			checkPlayer()
+			//and enemies
+			checkEnemies()
 		}
 	}
 	static get randomBool(){

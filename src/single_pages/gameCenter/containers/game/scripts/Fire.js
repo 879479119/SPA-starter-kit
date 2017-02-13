@@ -5,7 +5,7 @@ export default class Fire{
 	constructor(tank) {
 		if(tank === undefined) throw Error('Fire cannot be created without direction')
 		const {direction, posX, posY, offsetX, offsetY} = tank
-		this.speed = 2
+		this.speed = 5
 		this.type = 'ball'
 		this.size = 4         //pixels that a ball consists
 		this.from_ally = false
