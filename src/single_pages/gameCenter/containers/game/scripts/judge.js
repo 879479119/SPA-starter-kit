@@ -52,7 +52,6 @@ export default class Judge{
 		//check fire & construction & tanks
 		Judge._checkCannon(grid, player, fireController)
 
-		grid.drawConstruction()
 		Judge._checkTanks(grid, player, enemyController)
 		grid.updateTank(player, player.key_down && player.running)
 
@@ -61,11 +60,13 @@ export default class Judge{
 		enemyController.tankArr.map(item=>{
 			Judge._checkImpact(grid, item)
 			if(item.running === false) item.changeDirection()
+			else if(Judge.randomBool === false) item.changeDirection()
 			grid.updateTank(item, item.running)
 		})
 
 		/*------------------------either  part-------------------------*/
 
+		grid.drawConstruction()
 
 		grid.updateFire(fireController)
 	}
@@ -83,7 +84,7 @@ export default class Judge{
 			if (offsetY <= 0) {
 				for (let c = col; c < 2 + col + (offsetX ? 1 : 0); c ++) {
 					//either it's running straight into block or the edge of the map
-					if (row === 0 || alley[row - 1][c] === 0){
+					if (row <= 1 || alley[row - 2][c] === 0){
 						tank.running = false
 						tank.offsetY = 0
 						return false
@@ -111,7 +112,7 @@ export default class Judge{
 		}else if(direction === 'a'){
 			if (offsetX <= 0) {
 				for (let r = row; r < 2 + row + (offsetY ? 1 : 0); r ++) {
-					if (col === 0 || alley[r][col - 1] === 0){
+					if (col <= 1 || alley[r][col - 2] === 0){
 						tank.offsetX = 0
 						tank.running = false
 						return false
@@ -153,12 +154,20 @@ export default class Judge{
 		 */
 
 		enemyC.tankArr.map(item=>{
-			if(detectOneTank(item)) item.changeDirection(true)
+			if(detectOneTank(item, false)) {
+				item.changeDirection(true)
+				// switch (this.direction){
+				// 	case 'w': this.offsetY --;break
+				// 	case 's': this.offsetY ++;break
+				// 	case 'a': this.offsetX --;break
+				// 	case 'd': this.offsetX ++;break
+				// }
+			}
 		})
 
-		if(detectOneTank(player)) player.running = false
+		if(detectOneTank(player, true)) player.running = false
 
-		function detectOneTank(tank) {
+		function detectOneTank(tank, isPlayer= false) {
 			const step = grid.step, len = grid.len
 			const { posX, posY, offsetX, offsetY} = tank,
 				y = posY * step + offsetY,
@@ -171,6 +180,16 @@ export default class Judge{
 				let eY = enemies[i].posY * step + enemies[i].offsetY
 				if(x + len > eX && x - len < eX){
 					if(y + len > eY && y - len < eY){
+						return true
+					}
+				}
+			}
+
+			if(isPlayer === false){
+				let pX = player.posX * step + player.offsetX
+				let pY = player.posY * step + player.offsetY
+				if(x + len > pX && x - len < pX){
+					if(y + len > pY && y - len < pY){
 						return true
 					}
 				}
@@ -197,6 +216,8 @@ export default class Judge{
 				}
 			}
 
+			window.ll = enemies.length
+
 			//check enemies
 			for(let i = 0;i < enemies.length;i ++) {
 				let eX = enemies[i].posX * step + enemies[i].offsetX
@@ -222,22 +243,13 @@ export default class Judge{
 				circle = 1
 			}
 
-			if(flag === false){
-				if(item.blinkStage === 40 ){
+			if(flag === false && item.bornStarted === true){
+				if(item.blinkStage === 40 || circle === 1){
 					let type = item.type[Math.random() * item.type.length >>> 0]
 					let enemy = new Enemy(item.posX,item.posY,type)
 					item.bearOne()
 					enemyC.addTank(enemy)
 					grid.updateEnemy(enemy)
-					// console.log(1);
-				}
-				else if(circle === 1 && item.bornStarted === true){
-					let type = item.type[Math.random() * item.type.length >>> 0]
-					let enemy = new Enemy(item.posX,item.posY,type)
-					item.bearOne()
-					enemyC.addTank(enemy)
-					grid.updateEnemy(enemy)
-					// console.log(2);
 				}
 			}
 		})
@@ -359,5 +371,8 @@ export default class Judge{
 			//then the player and enemies
 			checkPlayer()
 		}
+	}
+	static get randomBool(){
+		return !!(Math.random() * 500 >>> 0)
 	}
 }

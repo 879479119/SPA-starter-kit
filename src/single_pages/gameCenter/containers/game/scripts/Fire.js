@@ -2,7 +2,6 @@
  * Created by zi on 2017/1/20.
  */
 export default class Fire{
-
 	constructor(tank) {
 		if(tank === undefined) throw Error('Fire cannot be created without direction')
 		const {direction, posX, posY, offsetX, offsetY} = tank
@@ -25,11 +24,9 @@ export default class Fire{
 			case "d": this.accuracyX += 8;break
 		}
 	}
-
 }
 
 export class PLayerFire extends Fire{
-
 	constructor(props) {
 		super(props)
 		this.from_ally = true
@@ -37,15 +34,12 @@ export class PLayerFire extends Fire{
 }
 
 export class FireManager{
-
 	constructor() {
 		this.fireArr = []
 	}
-
 	addFire(fireObj){
 		this.fireArr.push(fireObj)
 	}
-
 	fireGone(index){
 		this.fireArr.splice(index,1)
 	}

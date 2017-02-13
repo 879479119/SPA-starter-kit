@@ -52,7 +52,7 @@ export class Player extends Tank{
 		const initAttr = {
 			ally: true,
 			type: "p1tankU",
-			speed: 2,
+			speed: 10,
 			health: 5,
 			damage: 5,
 			key_down: false,        //the tank can run only when some key is pressed
@@ -94,7 +94,6 @@ export class Player extends Tank{
 			that.key_down = false
 		})
 	}
-
 	getAttacked(){
 		this.health = 0
 		console.log("Damaged")
@@ -129,14 +128,13 @@ export class Enemy extends Tank{
 	constructor(...props){
 		super(...props)
 		const initAttr = {
-			type: props[2] || props.type, //like this?
-			speed: 1,
+			type: props[2] || 0, //like this?
+			speed: 5,
 			health: 5,
 			damage: 1
 		}
 		merge(this, initAttr)
 	}
-
 	_chaseUser(){
 		/**
 		 * when enemies chases users, the A* algorithm will take much time to find the way out,
@@ -158,7 +156,6 @@ export class Enemy extends Tank{
 }
 
 export class EnemyBase{
-
 	constructor(base) {
 		this.posX = base.x
 		this.posY = base.y
@@ -188,7 +185,6 @@ export class EnemyBase{
 }
 
 export class EnemyController{
-
 	constructor() {
 		this.tankArr = []
 	}
