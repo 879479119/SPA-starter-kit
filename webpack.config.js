@@ -27,7 +27,7 @@ var DevConfig = {
       progress: true,
 			color: true,
 			//好像想要在手机上访问的话这里需要改成 0.0.0.0
-      host: '127.0.0.1',
+      host: '0.0.0.0',
 			port: globalConfig.dev.sourcePort,
 			contentBase: 'output/',
 			outputPublicPath: 'output/'

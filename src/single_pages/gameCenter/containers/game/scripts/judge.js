@@ -61,7 +61,8 @@ export default class Judge{
 
 		enemyController.tankArr.map(item=>{
 			if(item.health === 0){
-				enemyController.removeItem(item.id)
+				grid.blastAnimation(item)
+				if(item.deadStage === 8) enemyController.removeItem(item.id)
 				return
 			}
 			Judge._checkImpact(grid, item)
@@ -255,9 +256,9 @@ export default class Judge{
 				oY = accuracyY % grid.step
 
 			let checkConstruction = () => {
-				if(row == 0 && (direction == 'w' || direction == 's')) return
-				if(col == 0 && (direction == 'a' || direction == 'd')) return
-				if((accuracyY < 0) || (accuracyX < 0) || (accuracyY - size >= alley.length * grid.step) || (accuracyX - size >= alley[0].length * grid.step)) {
+				if((row == 0 || row == alley.length - 1) && (direction == 'w' || direction == 's')) return
+				if((col == 0 || col == alley[0].length - 1) && (direction == 'a' || direction == 'd')) return
+				if((accuracyY < 0) || (accuracyX < 0) || (accuracyY + size >= alley.length * grid.step) || (accuracyX + size >= alley[0].length * grid.step)) {
 					fireOnBlock(index)
 					fireC.fireGone(index)
 					return
@@ -329,23 +330,22 @@ export default class Judge{
 				let pX = posX * grid.step + offsetX,
 					pY = posY * grid.step + offsetY
 
-				if((Math.abs(pX - accuracyX)) > 2) return
-				if((Math.abs(pY - accuracyY)) > 2) return
+				// if((Math.abs(pX - accuracyX)) > 10) return
+				// if((Math.abs(pY - accuracyY)) > 10) return
 
 				switch (direction){
 					case 'w':case 's':
+
 					//TIP: very complex logical judgement !!!!!
 					if((pX - accuracyX < size && accuracyX - pX < grid.len && from_ally === false)
-						&& ((direction === 's' && pY - accuracyY <= size) || (direction === 'w' && accuracyY - pY <= grid.len))){
-						e.getAttacked()
-						//TODO: special effect
+						&& ((direction === 's' && pY - accuracyY <= size && pY - accuracyY >= 0) || (direction === 'w' && accuracyY - pY <= grid.len && accuracyY - pY >= 0))){
+						player.getAttacked()
 					}
 					break
 					case 'a':case 'd':
 					if((pY - accuracyY < size && accuracyY - pY < grid.len && from_ally === false)
-						&& ((direction === 'd' && pX - accuracyX <= size) || (direction === 'a' && accuracyX - pX <= grid.len))){
-						e.getAttacked()
-						//TODO: special effect
+						&& ((direction === 'd' && pX - accuracyX <= size && pX - accuracyX >= 0) || (direction === 'a' && accuracyX - pX <= grid.len && accuracyX - pX >= 0))){
+						player.getAttacked()
 					}
 					break
 					default:
@@ -360,24 +360,23 @@ export default class Judge{
 
 					let pX = posX * grid.step + offsetX,
 						pY = posY * grid.step + offsetY
-					// if((Math.abs(pX - accuracyX)) > 10) return
-					// if((Math.abs(pY - accuracyY)) > 10) return
+
+					// if((Math.abs(pX - accuracyX)) > 50) return
+					// if((Math.abs(pY - accuracyY)) > 50) return
 
 					switch (direction){
 						case 'w':case 's':
 
 							//TIP: very complex logical judgement !!!!!
 							if((pX - accuracyX < size && accuracyX - pX < grid.len && from_ally === true)
-								&& ((direction === 's' && pY - accuracyY <= size) || (direction === 'w' && accuracyY - pY <= grid.len))){
-								e.getAttacked()
-								//TODO: special effect
+								&& ((direction === 's' && pY - accuracyY <= size && pY - accuracyY >= 0) || (direction === 'w' && accuracyY - pY <= grid.len && accuracyY - pY >= 0))){
+								e.getAttacked(grid)
 							}
 							break
 						case 'a':case 'd':
 							if((pY - accuracyY < size && accuracyY - pY < grid.len && from_ally === true)
-								&& ((direction === 'd' && pX - accuracyX <= size) || (direction === 'a' && accuracyX - pX <= grid.len))){
-								e.getAttacked()
-								//TODO: special effect
+								&& ((direction === 'd' && pX - accuracyX <= size && pX - accuracyX >= 0) || (direction === 'a' && accuracyX - pX <= grid.len && accuracyX - pX >= 0))){
+								e.getAttacked(grid)
 							}
 							break
 						default:

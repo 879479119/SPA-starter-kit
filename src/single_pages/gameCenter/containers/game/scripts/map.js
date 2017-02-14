@@ -78,6 +78,7 @@ const MAP_TEMPLATE = {
  */
 export class Grid{
 	constructor(width, height){
+		localStorage.setItem('mapList',JSON.stringify([MAP_TEMPLATE]))
 		/*the canvas must be width 800px,height 400px*/
 		this.width = width || 800
 		this.height = height || 400
@@ -108,10 +109,10 @@ export class Grid{
 			img = ImageManager.getBitMap(type)
 		img && self.c.drawImage(img, x, y, self.step, self.step)
 	}
-	_drawGiantBlock(col, row, type, self){
+	_drawGiantBlock(col, row, type, self, accuracy= false){
 		if(self === undefined) self = this
-		let x = col * self.step,
-			y = row * self.step,
+		let x = accuracy ? col : col * self.step,
+			y = accuracy ? row : row * self.step,
 			img = ImageManager.getBitMap(type)
 		img && self.c.drawImage(img, x, y, self.len, self.len)
 	}
@@ -194,8 +195,17 @@ export class Grid{
 	birthAnimation(enemyBase, init= false){
 		if(init === true) enemyBase.blinkStage = 0
 		let { posX, posY, blinkStage } = enemyBase
-		this._drawGiantBlock(posX,posY,"born"+EnemyBase.bornPic[blinkStage])
+		this._drawGiantBlock(posX,posY,"born"+EnemyBase.bornPic[blinkStage],this)
 		enemyBase.blinkStage ++
+	}
+	blastAnimation(tank, init= false){
+		//TODO: blast animation
+		if(init === true) tank.deadStage = 1
+		else tank.deadStage ++
+		const { posX, posY, offsetX, offsetY } = tank
+		let aX = posX * this.step + offsetX
+		let aY = posY * this.step + offsetY
+		this._drawGiantBlock(aX,aY,"blast"+tank.deadStage,this,true)
 	}
 	updateTank(tank, run = false){
 		//in ideal situation(60Hz), the tank can go $speed*10 pixel one second

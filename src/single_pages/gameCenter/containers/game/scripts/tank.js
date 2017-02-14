@@ -41,6 +41,7 @@ class Tank{
 			running: false,         //shows whether the tank is moving during key down
 			now_fire: false,
 			fire_time: 0,
+			deadStage: 1
 		}
 		merge(this, initAttr)
 	}
@@ -53,7 +54,6 @@ class Tank{
 	}
 	getAttacked(){
 		this.health = 0
-		console.log("boom")
 	}
 }
 
@@ -70,6 +70,7 @@ export class Player extends Tank{
 			running: false,         //shows whether the tank is moving during key down
 			now_fire: false,
 			fire_time: 0,
+			key_buffer: []
 		}
 		merge(this, initAttr)
 	}
@@ -88,6 +89,7 @@ export class Player extends Tank{
 				case 's':
 				case 'a':
 				case 'd':
+					that.key_buffer.push(e.key)
 					that.direction = e.key
 					that.key_down = true
 					break
@@ -102,6 +104,9 @@ export class Player extends Tank{
 			}
 		})
 		listen('keyup',function (e) {
+			if(that.key_buffer.length != 1 && that.running === true){
+				that.direction = that.key_buffer.pop()
+			}
 			that.key_down = false
 		})
 	}
@@ -139,7 +144,7 @@ export class Enemy extends Tank{
 		super(...props)
 		const initAttr = {
 			type: props[2] || 0, //like this?
-			speed: 0,
+			speed: 5,
 			health: 5,
 			damage: 1
 		}
@@ -170,7 +175,7 @@ export class EnemyBase{
 		this.total = base.total || 5   //the number of tank that would be born here
 		this.blinkStage = 0            //associated with bornPic
 		this.frameCounter = 0          //enemy would born if fC % bI = 0
-		this.bornInterval = 2 * Math.floor(Math.random() * 60 + 60)
+		this.bornInterval = 8 * Math.floor(Math.random() * 60 + 60)
 		this.bornStarted = false
 	}
 	readyToBear(){
