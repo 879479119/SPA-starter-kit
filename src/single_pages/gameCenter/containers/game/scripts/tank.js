@@ -63,14 +63,15 @@ export class Player extends Tank{
 		const initAttr = {
 			ally: true,
 			type: "p1tankU",
-			speed: 10,
+			speed: 8,
 			health: 5,
 			damage: 5,
 			key_down: false,        //the tank can run only when some key is pressed
 			running: false,         //shows whether the tank is moving during key down
 			now_fire: false,
 			fire_time: 0,
-			key_buffer: []
+			key_buffer: [],
+			last_key: ''
 		}
 		merge(this, initAttr)
 	}
@@ -83,14 +84,17 @@ export class Player extends Tank{
 		const listen = window.document.addEventListener
 		//once player press down a button,we should
 		listen('keydown',function (e) {
-
+			console.log(e.key)
 			switch (e.key){
 				case 'w':
 				case 's':
 				case 'a':
 				case 'd':
-					that.key_buffer.push(e.key)
-					that.direction = e.key
+					if(that.last_key != e.key) {
+						that.key_buffer.push(e.key)
+						that.last_key = e.key
+						that.direction = e.key
+					}
 					that.key_down = true
 					break
 				case 'j':
@@ -104,10 +108,15 @@ export class Player extends Tank{
 			}
 		})
 		listen('keyup',function (e) {
-			if(that.key_buffer.length != 1 && that.running === true){
-				that.direction = that.key_buffer.pop()
+			if(that.key_buffer.length <= 1){
+				that.key_buffer.length = 0
+				that.key_down = false
+			}else if(that.key_buffer.length > 1){
+				let k = that.key_buffer.pop()
+				if(e.key === k){
+					that.direction = that.key_buffer[that.key_buffer.length - 1]
+				}
 			}
-			that.key_down = false
 		})
 	}
 	getAttacked(){
@@ -144,7 +153,7 @@ export class Enemy extends Tank{
 		super(...props)
 		const initAttr = {
 			type: props[2] || 0, //like this?
-			speed: 5,
+			speed: 0,
 			health: 5,
 			damage: 1
 		}

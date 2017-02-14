@@ -44,7 +44,7 @@ export default class Judge{
 			enemyController = this._enemyController
 
 		/*------------------------player part-------------------------*/
-
+		window.t = player
 		//enemies are born after a period
 		Judge._checkBirth(grid, enemyBases, player, enemyController)
 		//check tanks and construction

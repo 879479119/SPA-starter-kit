@@ -217,11 +217,26 @@ export class Grid{
 		let dummy = new DummyGrid()
 		let degree = 0
 
-		if(tankName === undefined) console.log(type);
-
 		if(run === false){
 			//interesting usage
 			let d = [0,90,180,270]['wdsa'.indexOf(direction)]
+
+			/**
+			 * when tanks are crushing straight into the block, we can do some
+			 * compatible work to make it easier to pass an alley
+			 */
+
+			if(offsetX < 2) tank.offsetX = 0
+			else if(offsetX > 6){
+				tank.posX ++
+				tank.offsetX = 0
+			}
+
+			if(offsetY < 2) tank.offsetY = 0
+			else if(offsetY > 6){
+				tank.posY ++
+				tank.offsetY = 0
+			}
 
 			this.c.drawImage(
 				dummy._getRotateBlock(tankName,d),
@@ -235,7 +250,7 @@ export class Grid{
 			case direction == 'w':
 				if(offsetY < 0){
 					tank.posY --
-					tank.offsetY = 8
+					tank.offsetY = 7.9
 				}else tank.offsetY = offsetY - move
 				//TIP: because calculating pixel will cause some colored pixel left,
 				//     so we just clear a double size of it
@@ -253,12 +268,15 @@ export class Grid{
 			case direction == 'a':
 				if(offsetX < 0){
 					tank.posX --
-					tank.offsetX = 8
+					tank.offsetX = 7.9
 				}else tank.offsetX = offsetX - move
 				// this._clearArea(tank.posX,posY,tank.offsetX + 2 * move,offsetY)
 				degree = 270
 				break
 			case direction == 'd':
+				if(offsetY < 1 && offsetY > -1){
+					tank.offsetY = 0
+				}
 				if(offsetX >= 8){
 					tank.posX ++
 					tank.offsetX = 0
