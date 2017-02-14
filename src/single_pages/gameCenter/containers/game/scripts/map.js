@@ -51,8 +51,8 @@ const MAP_TEMPLATE = {
 		[0,0,0,0,0,0,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,],
 		[0,0,0,0,2,2,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
 		[0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-		[0,0,0,0,3,3,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
-		[0,0,0,0,3,3,0,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
+		[0,0,0,0,3,3,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
+		[0,0,0,0,3,3,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
 		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
 		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
 		[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,],
@@ -95,12 +95,14 @@ export class Grid{
 			{ material } = mapSourceList[0]
 		this.map = mapSourceList[0]
 		this.material = material
+
 	}
 	/*basic methods*/
 	init(){
 		// this.c.clearRect(0,0,this.width,this.height)
 		this.c.fillStyle = "#000"
 		this.c.fillRect(0,0,this.width,this.height)
+		this.dummyGrid = new DummyGrid()
 	}
 	_drawBlock(row, col, type, self){
 		if(self === undefined) self = this
@@ -214,7 +216,7 @@ export class Grid{
 		let tankName = ally ? 'p1tankU' : ['p1tankU','enemy1','enemy2','enemy3','p2tankF'][type]
 
 		//TIP: DummyGrid is a canvas buffer which provides a transformed image
-		let dummy = new DummyGrid()
+		let dummy = this.dummyGrid
 		let degree = 0
 
 		if(run === false){
@@ -274,9 +276,6 @@ export class Grid{
 				degree = 270
 				break
 			case direction == 'd':
-				if(offsetY < 1 && offsetY > -1){
-					tank.offsetY = 0
-				}
 				if(offsetX >= 8){
 					tank.posX ++
 					tank.offsetX = 0

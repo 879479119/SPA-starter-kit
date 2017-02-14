@@ -15,10 +15,8 @@
  *  3.
  */
 
-import Fire, { PLayerFire, FireManager } from './Fire'
+import Fire, { PLayerFire, EnemyFire } from './Fire'
 // import { Grid } from './map'
-
-let fireController = new FireManager()
 
 class Tank{
 	constructor(x,y){
@@ -55,6 +53,9 @@ class Tank{
 	getAttacked(){
 		this.health = 0
 	}
+	static get randomBool(){
+		return !!(Math.random() * 100 >>> 0)
+	}
 }
 
 export class Player extends Tank{
@@ -84,7 +85,6 @@ export class Player extends Tank{
 		const listen = window.document.addEventListener
 		//once player press down a button,we should
 		listen('keydown',function (e) {
-			console.log(e.key)
 			switch (e.key){
 				case 'w':
 				case 's':
@@ -117,6 +117,7 @@ export class Player extends Tank{
 					that.direction = that.key_buffer[that.key_buffer.length - 1]
 				}
 			}
+			that.last_key = ''
 		})
 	}
 	getAttacked(){
@@ -153,7 +154,7 @@ export class Enemy extends Tank{
 		super(...props)
 		const initAttr = {
 			type: props[2] || 0, //like this?
-			speed: 0,
+			speed: 5,
 			health: 5,
 			damage: 1
 		}
@@ -172,6 +173,9 @@ export class Enemy extends Tank{
 	}
 	getAttacked(){
 		super.getAttacked()
+	}
+	releaseRandomFire(controller){
+		if(Tank.randomBool === false)controller.addFire(new EnemyFire(this))
 	}
 }
 

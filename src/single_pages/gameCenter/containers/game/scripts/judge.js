@@ -43,8 +43,11 @@ export default class Judge{
 			enemyBases = this._enemyBases,
 			enemyController = this._enemyController
 
+		if(player.health === 0){
+			//TODO:calculate your score and restart the game
+		}
 		/*------------------------player part-------------------------*/
-		window.t = player
+
 		//enemies are born after a period
 		Judge._checkBirth(grid, enemyBases, player, enemyController)
 		//check tanks and construction
@@ -53,7 +56,7 @@ export default class Judge{
 		Judge._checkCannon(grid, player, enemyController, fireController)
 
 		Judge._checkTanks(grid, player, enemyController)
-		if(player.health === 0){}
+
 		grid.updateTank(player, player.key_down && player.running)
 		player.running = true
 
@@ -65,6 +68,7 @@ export default class Judge{
 				if(item.deadStage === 8) enemyController.removeItem(item.id)
 				return
 			}
+			item.releaseRandomFire(fireController)
 			Judge._checkImpact(grid, item)
 			if(item.running === false) item.changeDirection()
 			else if(Judge.randomBool === false) item.changeDirection()
@@ -139,18 +143,18 @@ export default class Judge{
 
 		enemyC.tankArr.map(item=>{
 			if(detectOneTank(item, false)) {
+				switch (item.direction){
+					case 'w': item.offsetY += 1; break
+					case 's': item.offsetY -= 2; break
+					case 'a': item.offsetX += 1; break
+					case 'd': item.offsetX -= 1; break
+				}
 				item.changeDirection(true)
 			}
 		})
 
 		if(detectOneTank(player, true)) {
 			player.running = false
-			switch (player.direction){
-				case 'w': this.offsetY += 2; break
-				case 's': this.offsetY -= 2; break
-				case 'a': this.offsetX += 2; break
-				case 'd': this.offsetX -= 2; break
-			}
 		}
 
 		function detectOneTank(tank, isPlayer= false) {
@@ -269,12 +273,12 @@ export default class Judge{
 						let w1 = alley[row - 1][col], w2 = alley[row - 1][col + 1]
 						if(w1 == 4 || w2 == 4){
 							//the top block
-							if(oY <= 1 && w1 == 4){fireOnBlock(index,col,row - 1)}
+							if(oY <= 2 && w1 == 4){fireOnBlock(index,col,row - 1)}
 							//the block at right
-							if(oY <= 1 && oX >= grid.step - size && w2 == 4){fireOnBlock(index,index,col + 1,row - 1)}
+							if(oY <= 2 && oX >= grid.step - size && w2 == 4){fireOnBlock(index,col + 1,row - 1)}
 						}else if(w1 == 3 || w2 == 3){
-							if(oY <= 1 && w1 == 3){fireOnBlock(index)} //draw a boom
-							if(oY <= 1 && oX >= grid.step - size && w2 == 3){fireOnBlock(index)} //boom
+							if(oY <= 2 && w1 == 3){fireOnBlock(index)} //draw a boom
+							if(oY <= 2 && oX >= grid.step - size && w2 == 3){fireOnBlock(index)} //boom
 						}
 						break
 					case 's':
@@ -290,11 +294,11 @@ export default class Judge{
 					case 'a':
 						let a1 = alley[row][col - 1], a2 = alley[row + 1][col - 1]
 						if(a1 == 4 || a2 == 4){
-							if(oX <= 1 && a1 == 4){fireOnBlock(index,col - 1,row)}
-							if(oX <= 1 && oY >= grid.step - size && a2 == 4){fireOnBlock(index,col - 1,row + 1)}
+							if(oX <= 2 && a1 == 4){fireOnBlock(index,col - 1,row)}
+							if(oX <= 2 && oY >= grid.step - size && a2 == 4){fireOnBlock(index,col - 1,row + 1)}
 						}else if(a1 == 3 || a2 == 3){
-							if(oX <= 1 && a1 == 3){fireOnBlock(index)} //draw a boom
-							if(oX <= 1 && oY >= grid.step - size && a2 == 3){fireOnBlock(index)} //boom
+							if(oX <= 2 && a1 == 3){fireOnBlock(index)} //draw a boom
+							if(oX <= 2 && oY >= grid.step - size && a2 == 3){fireOnBlock(index)} //boom
 						}
 						break
 					case 'd':
@@ -337,15 +341,19 @@ export default class Judge{
 					case 'w':case 's':
 
 					//TIP: very complex logical judgement !!!!!
-					if((pX - accuracyX < size && accuracyX - pX < grid.len && from_ally === false)
-						&& ((direction === 's' && pY - accuracyY <= size && pY - accuracyY >= 0) || (direction === 'w' && accuracyY - pY <= grid.len && accuracyY - pY >= 0))){
-						player.getAttacked()
+					if((pX - accuracyX < size && accuracyX - pX < grid.len)
+						&& ((direction === 's' && pY - accuracyY <= size && pY - accuracyY >= 0)
+						|| (direction === 'w' && accuracyY - pY <= grid.len && accuracyY - pY >= 0))){
+						if(from_ally === false) tankDamaged(player)
+						else fireC.fireGone(index)
 					}
 					break
 					case 'a':case 'd':
-					if((pY - accuracyY < size && accuracyY - pY < grid.len && from_ally === false)
-						&& ((direction === 'd' && pX - accuracyX <= size && pX - accuracyX >= 0) || (direction === 'a' && accuracyX - pX <= grid.len && accuracyX - pX >= 0))){
-						player.getAttacked()
+					if((pY - accuracyY < size && accuracyY - pY < grid.len)
+						&& ((direction === 'd' && pX - accuracyX <= size && pX - accuracyX >= 0)
+						|| (direction === 'a' && accuracyX - pX <= grid.len && accuracyX - pX >= 0))){
+						if(from_ally === false) tankDamaged(player)
+						else fireC.fireGone(index)
 					}
 					break
 					default:
@@ -354,8 +362,8 @@ export default class Judge{
 			}
 
 			let checkEnemies = () => {
-				for(let index in enemyC.tankArr){
-					let e = enemyC.tankArr[index]
+				for(let t in enemyC.tankArr){
+					let e = enemyC.tankArr[t]
 					const { posX, posY, offsetX, offsetY } = e
 
 					let pX = posX * grid.step + offsetX,
@@ -368,21 +376,31 @@ export default class Judge{
 						case 'w':case 's':
 
 							//TIP: very complex logical judgement !!!!!
-							if((pX - accuracyX < size && accuracyX - pX < grid.len && from_ally === true)
-								&& ((direction === 's' && pY - accuracyY <= size && pY - accuracyY >= 0) || (direction === 'w' && accuracyY - pY <= grid.len && accuracyY - pY >= 0))){
-								e.getAttacked(grid)
+							if((pX - accuracyX < size && accuracyX - pX < grid.len)
+								&& ((direction === 's' && pY - accuracyY <= size && pY - accuracyY >= 0)
+								|| (direction === 'w' && accuracyY - pY <= grid.len && accuracyY - pY >= 0))){
+								if(from_ally === true) tankDamaged(e)
+								else fireC.fireGone(index)
 							}
 							break
 						case 'a':case 'd':
-							if((pY - accuracyY < size && accuracyY - pY < grid.len && from_ally === true)
-								&& ((direction === 'd' && pX - accuracyX <= size && pX - accuracyX >= 0) || (direction === 'a' && accuracyX - pX <= grid.len && accuracyX - pX >= 0))){
-								e.getAttacked(grid)
+							if((pY - accuracyY < size && accuracyY - pY < grid.len)
+								&& ((direction === 'd' && pX - accuracyX <= size && pX - accuracyX >= 0)
+								|| (direction === 'a' && accuracyX - pX <= grid.len && accuracyX - pX >= 0))){
+								if(from_ally === true) tankDamaged(e)
+								else fireC.fireGone(index)
 							}
 							break
 						default:
 							throw Error("WRONG DIRECTION")
 					}
 				}
+			}
+
+			function tankDamaged(tank) {
+				tank.getAttacked(grid)
+				grid.fireOnBlock(fireC.fireArr[index], col, row)
+				fireC.fireGone(index)
 			}
 			//check Construction first
 			checkConstruction()
@@ -393,6 +411,6 @@ export default class Judge{
 		}
 	}
 	static get randomBool(){
-		return !!(Math.random() * 500 >>> 0)
+		return !!(Math.random() * 600 >>> 0)
 	}
 }
