@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output/js/data.bundle.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/output/js/music.bundle.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <ignored path="WTF.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -146,13 +139,13 @@
               <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="60">
-                      <caret line="195" column="5" lean-forward="true" selection-start-line="195" selection-start-column="5" selection-end-line="195" selection-end-column="5" />
+                    <state relative-caret-position="297">
+                      <caret line="433" column="40" lean-forward="true" selection-start-line="433" selection-start-column="40" selection-end-line="433" selection-end-column="40" />
                       <folding>
                         <element signature="n#!!doc" expanded="true" />
                         <element signature="e#997#2924#0" expanded="false" />
-                        <element signature="n#!!block;n#constructor#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
+                        <element signature="n#!!block;n#_drawBlock#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_drawGiantBlock#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_clearArea#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
@@ -170,8 +163,10 @@
                         <element signature="n#!!block;n#destroyBlock#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
-                        <element signature="n#EditorGrid#0" expanded="false" />
+                        <element signature="n#!!block;n#constructor#0;n#EditorGrid#0" expanded="false" />
+                        <element signature="n#!!block;n#init#0;n#EditorGrid#0" expanded="false" />
                         <element signature="n#DummyGrid#0" expanded="false" />
+                        <element signature="e#15453#16195#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -186,8 +181,8 @@
           <file leaf-file-name="Fire.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+                <state relative-caret-position="147">
+                  <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -273,8 +268,8 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
       </list>
     </option>
   </component>
@@ -828,14 +823,7 @@
       <workItem from="1487297209011" duration="36000" />
       <workItem from="1487318040878" duration="14877000" />
       <workItem from="1487383402224" duration="308000" />
-      <workItem from="1487397350671" duration="151000" />
-    </task>
-    <task id="LOCAL-00008" summary="pagination completed">
-      <created>1477541377207</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1477541377207</updated>
+      <workItem from="1487397350671" duration="7349000" />
     </task>
     <task id="LOCAL-00009" summary="promise">
       <created>1477561754132</created>
@@ -1173,11 +1161,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487079332675</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary=":box: start a journey of editor">
+      <created>1487397570626</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1487397570627</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="435990000" />
+    <option name="totallyTimeSpent" value="443188000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1197,19 +1192,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3045977" sideWeight="0.5029762" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32614943" sideWeight="0.49702382" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.050670642" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0976155" sideWeight="0.49702382" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902297" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1245,8 +1240,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update :smiley:" />
-    <MESSAGE value="update :hankey:" />
     <MESSAGE value="move :hankey:" />
     <MESSAGE value="move &amp; turn :heart:" />
     <MESSAGE value="fix with es6 feature :cop:" />
@@ -1270,7 +1263,9 @@
     <MESSAGE value=":heart: wish all tanks rest in peace ." />
     <MESSAGE value="daily update" />
     <MESSAGE value="smarter and more smooth alley :cry:" />
-    <option name="LAST_COMMIT_MESSAGE" value="smarter and more smooth alley :cry:" />
+    <MESSAGE value=":box: start a journey of editor" />
+    <MESSAGE value=":astonished: basic draw functions" />
+    <option name="LAST_COMMIT_MESSAGE" value=":astonished: basic draw functions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1551,6 +1546,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1613,15 +1609,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        <state relative-caret-position="297">
+          <caret line="433" column="40" lean-forward="true" selection-start-line="433" selection-start-column="40" selection-end-line="433" selection-end-column="40" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#997#2924#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
+            <element signature="n#!!block;n#_drawBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_drawGiantBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_clearArea#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
@@ -1639,17 +1643,11 @@
             <element signature="n#!!block;n#destroyBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
-            <element signature="n#EditorGrid#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#EditorGrid#0" expanded="false" />
+            <element signature="n#!!block;n#init#0;n#EditorGrid#0" expanded="false" />
             <element signature="n#DummyGrid#0" expanded="false" />
+            <element signature="e#15453#16195#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>

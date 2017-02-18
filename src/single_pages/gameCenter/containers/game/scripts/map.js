@@ -88,6 +88,9 @@ export class Grid{
 		this.gridBlock = 2  //a block consists of 16 pixels
 		this.len = this.gridBlock * this.step
 
+		this.oX = 0
+		this.oY = 0
+
 		//it's an Matrix which shows where the tanks could go
 		this.alley = []
 
@@ -106,8 +109,8 @@ export class Grid{
 	}
 	_drawBlock(row, col, type, self){
 		if(self === undefined) self = this
-		let x = col * self.step,
-			y = row * self.step,
+		let x = col * self.step + this.oX,
+			y = row * self.step + this.oY,
 			img = ImageManager.getBitMap(type)
 		img && self.c.drawImage(img, x, y, self.step, self.step)
 	}
@@ -355,11 +358,22 @@ export class Grid{
 export class EditorGrid extends Grid{
 	constructor(...props){
 		super(...props)
+
+		this.activePicker = null
+		this.key_down = false
+		this.startX = 0
+		this.startY = 0
+		this.coveredArea = []
+
 		//init the toolBar picker
 		this.startPicker()
 	}
 	init(map){
 		super.init()
+		let that = this
+		window.document.addEventListener("resize",function () {
+			that.startPicker()
+		})
 		this.map = map
 	}
 	drawBorder(){
@@ -370,6 +384,9 @@ export class EditorGrid extends Grid{
 		this.c.strokeStyle = "#ccc"
 		this.c.lineWidth = 4
 		this.c.strokeRect(x,y,w,h)
+
+		this.oX = x + 2
+		this.oY = y + 2
 	}
 	drawLine(){
 		/**
@@ -379,6 +396,11 @@ export class EditorGrid extends Grid{
 		 *  3.draw a giant count of lines
 		 *
 		 *  TODO:check which method perform the best
+		 *
+		 * solution:
+		 *  1.not yet
+		 *  2.since each border of a rectangle is at least 2px, give up
+		 *  3.may be the most effective API
 		 */
 
 		let w = this.step * this.map.width + 4,
@@ -405,24 +427,70 @@ export class EditorGrid extends Grid{
 			this._drawGiantBlock.apply(this,item)
 		})
 	}
+	drawArea(col, row){
+		const { startX, startY, step} = this
+		let fromX = (startX / step) >>> 0,
+			fromY = (startY / step) >>> 0
+		for(let i = fromX;i < col;i ++){
+			for(let j = fromY;j < row;j ++){
+				this._drawBlock(j,i,EditorGrid.MAPPER[this.activePicker])
+			}
+		}
+	}
 	startPicker(){
-		let { step, ele: { offsetLeft, offsetTop } } = this
+		let { step, ele: { offsetLeft, offsetTop } } = this, that = this
+		let listen = this.ele.addEventListener
+		listen("mousemove",e=>{
+			let dX = e.x - offsetLeft - (that.width - that.step * that.map.width) / 2,
+				dY = e.y - offsetTop - (that.height - that.step * that.map.height) / 2
 
-		this.ele.addEventListener("mousemove",function (e) {
-			let x = e.x - offsetLeft,
-				y = e.y - offsetTop
-
+			//press down a key
+			if(that.key_down === true){
+				//in the range of a grid
+				if(dX >= 0 && dX < that.map.width * that.step
+				&& dY >= 0 && dY < that.map.height * that.step){
+					let col = (dX / that.step) >>> 0,
+						row = (dY / that.step) >>> 0
+					console.log(col,row);
+				}
+			}
 		})
 
-		this.ele.addEventListener("click",function (e) {
+		listen("mouseup",e=>{
+			let dX = e.x - offsetLeft - (that.width - that.step * that.map.width) / 2,
+				dY = e.y - offsetTop - (that.height - that.step * that.map.height) / 2
+			let col = (dX / that.step) >>> 0,
+				row = (dY / that.step) >>> 0
+
+			this.drawArea(col,row)
+
+			that.key_down = false
+			e.preventDefault()
+		})
+
+		listen("click",e=>{
 			let x = e.x - offsetLeft,
 				y = e.y - offsetTop
 
+			//choose a picker to build
 			EditorGrid.PICKER.map((item,index)=>{
-				if((item[0] - 1) * step < x && (item[0] + 2) * step > x){
-					console.log(23);
+				if((item[0] - 1) * step < x && (item[0] + 3) * step > x){
+					if((item[1] - 1) * step < y && (item[1] + 3) * step > y){
+						that.activePicker = item[2]
+					}
 				}
 			})
+		})
+
+		listen("mousedown",e=>{
+			let dX = e.x - offsetLeft - (that.width - that.step * that.map.width) / 2,
+				dY = e.y - offsetTop - (that.height - that.step * that.map.height) / 2
+
+			that.key_down = true
+			that.startX = dX
+			that.startY = dY
+
+			e.preventDefault()
 		})
 	}
 	static get PICKER(){
@@ -436,6 +504,14 @@ export class EditorGrid extends Grid{
 			[94,30,"water"],
 			[94,40,"walls"],
 		]
+	}
+	static get MAPPER(){
+		return {
+			steels: "stee",
+			grass: "gra",
+			water: "wate",
+			walls: "wall"
+		}
 	}
 }
 
