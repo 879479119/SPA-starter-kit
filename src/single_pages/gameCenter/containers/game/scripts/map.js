@@ -73,6 +73,41 @@ const MAP_TEMPLATE = {
 
 //localStorage.setItem('mapList',JSON.stringify([MAP_TEMPLATE]))
 
+export class Canvas{
+	constructor(dom){
+
+		this.sX = 0
+		this.sY = 0
+		this.oX = 0
+		this.oY = 0
+
+		//create a new canvas and set some attributes
+		this.ele = document.createElement("canvas")
+		this.ele.width = dom.width
+		this.ele.height = dom.height
+		this.ele.style.position = "absolute"
+		this.ele.style.left = 0
+		this.ele.style.top = 0
+		document.querySelector("#canvas-container").appendChild(this.ele)
+
+		this.c = this.ele.getContext('2d')
+	}
+	setOffset(oX,oY){
+		this.oX = oX
+		this.oY = oY
+	}
+	startSelection(col, row){
+		this.sX = col
+		this.sY = row
+	}
+	drawSelection(col, row){
+		const { oX, oY, sX, sY } = this
+		this.c.clearRect(0,0,this.ele.width,this.ele.height)
+		this.c.fillStyle = "rgba(255,255,255,0.5)"
+		this.c.fillRect(oX+sX*8,oY+sY*8,(col-sX)*8,(row-sY)*8)
+	}
+}
+
 /**
  * the class grid controls the canvas,and store some data
  */
@@ -295,7 +330,6 @@ export class Grid{
 		)
 	}
 	updateFire(fireC){
-		// console.log(fireC.fireArr)
 		if(fireC.fireArr.length === 0) return
 		//TIP: to make sure there is least calculation, the code is redundant
 
@@ -334,7 +368,6 @@ export class Grid{
 		}
 	}
 	destroyBlock(col, row){
-		console.log(col,row);
 		this.alley[row][col] = 1
 		this.material[row][col] = 0
 	}
@@ -366,15 +399,15 @@ export class EditorGrid extends Grid{
 		this.coveredArea = []
 
 		//init the toolBar picker
-		this.startPicker()
 	}
-	init(map){
+	init(map, canvas){
 		super.init()
-		let that = this
-		window.document.addEventListener("resize",function () {
-			that.startPicker()
+		window.document.addEventListener("resize",()=>{
+			this.startPicker()
 		})
 		this.map = map
+		this.partner = canvas
+		this.startPicker()
 	}
 	drawBorder(){
 		let w = this.step * this.map.width + 4,
@@ -384,9 +417,10 @@ export class EditorGrid extends Grid{
 		this.c.strokeStyle = "#ccc"
 		this.c.lineWidth = 4
 		this.c.strokeRect(x,y,w,h)
-
+		window.p = this
 		this.oX = x + 2
 		this.oY = y + 2
+		this.partner.setOffset(this.oX,this.oY)
 	}
 	drawLine(){
 		/**
@@ -438,33 +472,35 @@ export class EditorGrid extends Grid{
 		}
 	}
 	startPicker(){
-		let { step, ele: { offsetLeft, offsetTop } } = this, that = this
-		let listen = this.ele.addEventListener
+		let { map, width, height, step, ele: { offsetLeft, offsetTop } } = this
+		offsetLeft = offsetLeft + this.ele.parentNode.offsetLeft
+		offsetTop = offsetTop + this.ele.parentNode.offsetTop
+		let listen = this.partner.ele.addEventListener
 		listen("mousemove",e=>{
-			let dX = e.x - offsetLeft - (that.width - that.step * that.map.width) / 2,
-				dY = e.y - offsetTop - (that.height - that.step * that.map.height) / 2
+			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
+				dY = e.y - offsetTop - (height - step * map.height) / 2
 
 			//press down a key
-			if(that.key_down === true){
+			if(this.key_down === true){
 				//in the range of a grid
-				if(dX >= 0 && dX < that.map.width * that.step
-				&& dY >= 0 && dY < that.map.height * that.step){
-					let col = (dX / that.step) >>> 0,
-						row = (dY / that.step) >>> 0
-					console.log(col,row);
+				if(dX >= 0 && dX < map.width * step
+				&& dY >= 0 && dY < map.height * step){
+					let col = (dX / step) >>> 0,
+						row = (dY / step) >>> 0
+					this.partner.drawSelection(col,row)
 				}
 			}
 		})
 
 		listen("mouseup",e=>{
-			let dX = e.x - offsetLeft - (that.width - that.step * that.map.width) / 2,
-				dY = e.y - offsetTop - (that.height - that.step * that.map.height) / 2
-			let col = (dX / that.step) >>> 0,
-				row = (dY / that.step) >>> 0
+			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
+				dY = e.y - offsetTop - (height - step * map.height) / 2
+			let col = (dX / step) >>> 0,
+				row = (dY / step) >>> 0
 
 			this.drawArea(col,row)
 
-			that.key_down = false
+			this.key_down = false
 			e.preventDefault()
 		})
 
@@ -476,19 +512,23 @@ export class EditorGrid extends Grid{
 			EditorGrid.PICKER.map((item,index)=>{
 				if((item[0] - 1) * step < x && (item[0] + 3) * step > x){
 					if((item[1] - 1) * step < y && (item[1] + 3) * step > y){
-						that.activePicker = item[2]
+						this.activePicker = item[2]
 					}
 				}
 			})
 		})
 
 		listen("mousedown",e=>{
-			let dX = e.x - offsetLeft - (that.width - that.step * that.map.width) / 2,
-				dY = e.y - offsetTop - (that.height - that.step * that.map.height) / 2
+			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
+				dY = e.y - offsetTop - (height - step * map.height) / 2
 
-			that.key_down = true
-			that.startX = dX
-			that.startY = dY
+			this.key_down = true
+			this.startX = dX
+			this.startY = dY
+			let col = (dX / step) >>> 0,
+				row = (dY / step) >>> 0
+			console.log(e.x,offsetLeft,width,step,map.width);
+			this.partner.startSelection(col,row)
 
 			e.preventDefault()
 		})

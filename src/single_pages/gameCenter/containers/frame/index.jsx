@@ -36,7 +36,7 @@ class Frame extends Component {
                 </nav>
                 <div className="container-fluid main-body">
                     <div className="row">
-                        <div className="well well-body">
+                        <div className="well well-body" style={{position: "relative"}} id="canvas-container">
                             <canvas id="canvas" width={"800"} height={"400"}>Your browser does not support canvas</canvas>
                         </div>
                     </div>

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
     </list>
     <ignored path="WTF.iws" />
@@ -25,9 +27,9 @@
     <favorites_list name="WTF" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.75676984">
+    <splitter split-orientation="horizontal" split-proportion="0.8079615">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.6980914">
+        <splitter split-orientation="horizontal" split-proportion="0.6543879">
           <split-first>
             <splitter split-orientation="horizontal" split-proportion="0.47537878">
               <split-first>
@@ -58,11 +60,11 @@
                   <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="83">
-                          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+                        <state relative-caret-position="423">
+                          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
                           <folding>
                             <element signature="n#!!doc" expanded="true" />
-                            <element signature="e#46#99#0" expanded="true" />
+                            <element signature="e#46#107#0" expanded="true" />
                           </folding>
                         </state>
                       </provider>
@@ -71,8 +73,8 @@
                   <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="126">
-                          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+                        <state relative-caret-position="273">
+                          <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
                           <folding>
                             <element signature="e#0#40#0" expanded="true" />
                           </folding>
@@ -99,7 +101,7 @@
                   <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="21">
+                        <state relative-caret-position="126">
                           <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
                           <folding>
                             <element signature="n#!!doc" expanded="true" />
@@ -139,11 +141,12 @@
               <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="297">
-                      <caret line="433" column="40" lean-forward="true" selection-start-line="433" selection-start-column="40" selection-end-line="433" selection-end-column="40" />
+                    <state relative-caret-position="299">
+                      <caret line="477" column="0" lean-forward="false" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
                       <folding>
                         <element signature="n#!!doc" expanded="true" />
                         <element signature="e#997#2924#0" expanded="false" />
+                        <element signature="n#!!block;n#constructor#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_drawBlock#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_drawGiantBlock#0;n#Grid#0" expanded="false" />
@@ -163,10 +166,7 @@
                         <element signature="n#!!block;n#destroyBlock#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
-                        <element signature="n#!!block;n#constructor#0;n#EditorGrid#0" expanded="false" />
-                        <element signature="n#!!block;n#init#0;n#EditorGrid#0" expanded="false" />
-                        <element signature="n#DummyGrid#0" expanded="false" />
-                        <element signature="e#15453#16195#0" expanded="false" />
+                        <element signature="e#16417#17159#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -181,8 +181,8 @@
           <file leaf-file-name="Fire.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="147">
-                  <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+                <state relative-caret-position="252">
+                  <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -208,6 +208,7 @@
       <find>this.material</find>
       <find>16</find>
       <find>console</find>
+      <find>offsetLeft</find>
     </findStrings>
     <replaceStrings>
       <replace>w1</replace>
@@ -266,9 +267,9 @@
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
       </list>
     </option>
@@ -823,14 +824,7 @@
       <workItem from="1487297209011" duration="36000" />
       <workItem from="1487318040878" duration="14877000" />
       <workItem from="1487383402224" duration="308000" />
-      <workItem from="1487397350671" duration="7349000" />
-    </task>
-    <task id="LOCAL-00009" summary="promise">
-      <created>1477561754132</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1477561754132</updated>
+      <workItem from="1487397350671" duration="11633000" />
     </task>
     <task id="LOCAL-00010" summary="face some error of fetch">
       <created>1477564660635</created>
@@ -1168,11 +1162,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487397570627</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary=":astonished: basic draw functions">
+      <created>1487404928426</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1487404928426</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="443188000" />
+    <option name="totallyTimeSpent" value="447472000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1590,8 +1591,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        <state relative-caret-position="273">
+          <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
@@ -1600,32 +1601,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+        <state relative-caret-position="423">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#46#99#0" expanded="true" />
+            <element signature="e#46#107#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="433" column="40" lean-forward="true" selection-start-line="433" selection-start-column="40" selection-end-line="433" selection-end-column="40" />
+        <state relative-caret-position="126">
+          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#997#2924#0" expanded="false" />
+            <element signature="n#!!block;n#constructor#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
-            <element signature="n#!!block;n#_drawBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_drawGiantBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_clearArea#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
@@ -1643,11 +1636,17 @@
             <element signature="n#!!block;n#destroyBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
-            <element signature="n#!!block;n#constructor#0;n#EditorGrid#0" expanded="false" />
-            <element signature="n#!!block;n#init#0;n#EditorGrid#0" expanded="false" />
+            <element signature="n#EditorGrid#0" expanded="false" />
             <element signature="n#DummyGrid#0" expanded="false" />
-            <element signature="e#15453#16195#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

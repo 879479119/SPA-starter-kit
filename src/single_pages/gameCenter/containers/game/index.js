@@ -2,7 +2,7 @@
  * Created by RockSAMA on 2017/1/13.
  */
 
-import Map, { Grid, EditorGrid } from './scripts/map'
+import Map, { Canvas, Grid, EditorGrid } from './scripts/map'
 import { Player, EnemyBase, EnemyController } from './scripts/tank'
 import Judge from './scripts/judge'
 import { FireManager } from './scripts/Fire'
@@ -53,8 +53,9 @@ export function editMap(width, height) {
 	//get map source
 	let grid = new EditorGrid(800,400)
 	let map = new Map(width, height)
+	let canvas = new Canvas(grid.ele)
 
-	grid.init(map)
+	grid.init(map,canvas)
 	grid.drawBorder()
 	grid.drawLine()
 
