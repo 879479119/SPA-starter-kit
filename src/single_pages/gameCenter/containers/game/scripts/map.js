@@ -80,6 +80,9 @@ export class Canvas{
 		this.sY = 0
 		this.oX = 0
 		this.oY = 0
+		//the params that we use to draw
+		this.endCol = 0
+		this.endRow = 0
 
 		//create a new canvas and set some attributes
 		this.ele = document.createElement("canvas")
@@ -97,6 +100,7 @@ export class Canvas{
 		this.oY = oY
 	}
 	startSelection(col, row){
+		console.log(col,row);
 		this.sX = col
 		this.sY = row
 	}
@@ -105,6 +109,14 @@ export class Canvas{
 		this.c.clearRect(0,0,this.ele.width,this.ele.height)
 		this.c.fillStyle = "rgba(255,255,255,0.5)"
 		this.c.fillRect(oX+sX*8,oY+sY*8,(col-sX)*8,(row-sY)*8)
+
+		//TIP: the selection tool sometimes is not the same as what we draw
+		//therefore, we can store the status in memory
+		this.endCol = col
+		this.endRow = row
+	}
+	clearSelection(){
+		this.c.clearRect(0,0,this.ele.width,this.ele.height)
 	}
 }
 
@@ -199,7 +211,7 @@ export class Grid{
 	/*some special methods*/
 	_drawTank(){
 		const mapSourceList = Map.getMapList(),
-			{ startPosition : [{ x, y }], enemies } = mapSourceList[0]
+			{ startPosition : [{ x, y }] } = mapSourceList[0]
 
 		this._drawPlayer(x,y)
 	}
@@ -394,8 +406,6 @@ export class EditorGrid extends Grid{
 
 		this.activePicker = null
 		this.key_down = false
-		this.startX = 0
-		this.startY = 0
 		this.coveredArea = []
 
 		//init the toolBar picker
@@ -455,28 +465,27 @@ export class EditorGrid extends Grid{
 		}
 		this.c.stroke()
 	}
-	drawArea(col, row){
-		const { startX, startY, step} = this
-		let fromX = (startX / step) >>> 0,
-			fromY = (startY / step) >>> 0
+	drawArea(){
+		let { partner: {endCol, endRow, sX, sY}} = this
 
-		if(fromX === col && fromY === row){
-			this._drawBlock(row,col,EditorGrid.MAPPER[this.activePicker])
+		if(sX === endCol && sY === endRow){
+			this._drawBlock(endRow,endCol,EditorGrid.MAPPER[this.activePicker])
 			return
 		}
 
 		//exchange the order of the numbers
-		if(fromX > col) {let temp = fromX;fromX = col;col = temp}
-		if(fromY > row) {let temp = fromY;fromY = row;row = temp}
+		if(sX > endCol) {let temp = sX;sX = endCol;endCol = temp}
+		if(sY > endRow) {let temp = sY;sY = endRow;endRow = temp}
 
-		for(let i = fromX;i < col;i ++){
-			for(let j = fromY;j < row;j ++){
+		for(let i = sX;i < endCol;i ++){
+			for(let j = sY;j < endRow;j ++){
 				this._drawBlock(j,i,EditorGrid.MAPPER[this.activePicker])
 			}
 		}
+
+		this.partner.clearSelection()
 	}
 	drawToolBar(){
-		const { c, step, width, height, map } = this
 		EditorGrid.PICKER.map(item=>{
 			this._drawGiantBlock.apply(this,item)
 		})
@@ -502,13 +511,7 @@ export class EditorGrid extends Grid{
 		})
 
 		listen("mouseup",e=>{
-			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
-				dY = e.y - offsetTop - (height - step * map.height) / 2
-			let col = (dX / step) >>> 0,
-				row = (dY / step) >>> 0
-
-			this.drawArea(col,row)
-
+			this.drawArea()
 			this.key_down = false
 			e.preventDefault()
 		})
@@ -518,7 +521,7 @@ export class EditorGrid extends Grid{
 				y = e.y - offsetTop
 
 			//choose a picker to build
-			EditorGrid.PICKER.map((item,index)=>{
+			EditorGrid.PICKER.map((item)=>{
 				if((item[0] - 1) * step < x && (item[0] + 3) * step > x){
 					if((item[1] - 1) * step < y && (item[1] + 3) * step > y){
 						this.activePicker = item[2]
@@ -532,8 +535,6 @@ export class EditorGrid extends Grid{
 				dY = e.y - offsetTop - (height - step * map.height) / 2
 
 			this.key_down = true
-			this.startX = dX
-			this.startY = dY
 			let col = (dX / step) >>> 0,
 				row = (dY / step) >>> 0
 			this.partner.startSelection(col,row)

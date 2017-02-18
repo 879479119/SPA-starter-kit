@@ -10,6 +10,7 @@ class Frame extends Component {
     }
     componentDidMount(){
         window.onload = editMap(80,40)
+        // window.onload = game()
     }
     render(){
         return (
