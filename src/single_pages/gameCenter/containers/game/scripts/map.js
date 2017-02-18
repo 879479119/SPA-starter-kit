@@ -455,21 +455,31 @@ export class EditorGrid extends Grid{
 		}
 		this.c.stroke()
 	}
-	drawToolBar(){
-		const { c, step, width, height, map } = this
-		EditorGrid.PICKER.map(item=>{
-			this._drawGiantBlock.apply(this,item)
-		})
-	}
 	drawArea(col, row){
 		const { startX, startY, step} = this
 		let fromX = (startX / step) >>> 0,
 			fromY = (startY / step) >>> 0
+
+		if(fromX === col && fromY === row){
+			this._drawBlock(row,col,EditorGrid.MAPPER[this.activePicker])
+			return
+		}
+
+		//exchange the order of the numbers
+		if(fromX > col) {let temp = fromX;fromX = col;col = temp}
+		if(fromY > row) {let temp = fromY;fromY = row;row = temp}
+
 		for(let i = fromX;i < col;i ++){
 			for(let j = fromY;j < row;j ++){
 				this._drawBlock(j,i,EditorGrid.MAPPER[this.activePicker])
 			}
 		}
+	}
+	drawToolBar(){
+		const { c, step, width, height, map } = this
+		EditorGrid.PICKER.map(item=>{
+			this._drawGiantBlock.apply(this,item)
+		})
 	}
 	startPicker(){
 		let { map, width, height, step, ele: { offsetLeft, offsetTop } } = this
@@ -479,7 +489,6 @@ export class EditorGrid extends Grid{
 		listen("mousemove",e=>{
 			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
 				dY = e.y - offsetTop - (height - step * map.height) / 2
-
 			//press down a key
 			if(this.key_down === true){
 				//in the range of a grid
@@ -527,7 +536,6 @@ export class EditorGrid extends Grid{
 			this.startY = dY
 			let col = (dX / step) >>> 0,
 				row = (dY / step) >>> 0
-			console.log(e.x,offsetLeft,width,step,map.width);
 			this.partner.startSelection(col,row)
 
 			e.preventDefault()
