@@ -143,12 +143,13 @@ export default class Judge{
 
 		enemyC.tankArr.map(item=>{
 			if(detectOneTank(item, false)) {
-				switch (item.direction){
-					case 'w': item.offsetY += 1; break
-					case 's': item.offsetY -= 2; break
-					case 'a': item.offsetX += 1; break
-					case 'd': item.offsetX -= 1; break
-				}
+				// switch (item.direction){
+				// 	case 'w': item.offsetY += 4; break
+				// 	case 's': item.offsetY -= 4; break
+				// 	case 'a': item.offsetX += 4; break
+				// 	case 'd': item.offsetX -= 4; break
+				// }
+				item.running = false
 				item.changeDirection(true)
 			}
 		})
@@ -178,8 +179,8 @@ export default class Judge{
 			if(isPlayer === false){
 				let pX = player.posX * step + player.offsetX
 				let pY = player.posY * step + player.offsetY
-				if(x + len > pX && x - len < pX){
-					if(y + len > pY && y - len < pY){
+				if(x + len + 3 > pX && x - len - 3< pX){
+					if(y + len + 3 > pY && y - len - 3< pY){
 						return true
 					}
 				}

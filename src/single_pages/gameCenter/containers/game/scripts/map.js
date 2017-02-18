@@ -1,5 +1,5 @@
 /**
- * Created by zi on 2017/1/13.
+ * Created by RockSAMA on 2017/1/13.
  */
 
 /**
@@ -352,6 +352,93 @@ export class Grid{
 	}
 }
 
+export class EditorGrid extends Grid{
+	constructor(...props){
+		super(...props)
+		//init the toolBar picker
+		this.startPicker()
+	}
+	init(map){
+		super.init()
+		this.map = map
+	}
+	drawBorder(){
+		let w = this.step * this.map.width + 4,
+			h = this.step * this.map.height + 4,
+			x = (this.width - w) / 2 - 2,
+			y = (this.height - h) / 2 - 2
+		this.c.strokeStyle = "#ccc"
+		this.c.lineWidth = 4
+		this.c.strokeRect(x,y,w,h)
+	}
+	drawLine(){
+		/**
+		 * there are three ways to draw a grid:
+		 *  1.draw a single path or a few paths to constrain usage of CANVAS API
+		 *  2.draw several rectangles to keep balance
+		 *  3.draw a giant count of lines
+		 *
+		 *  TODO:check which method perform the best
+		 */
+
+		let w = this.step * this.map.width + 4,
+			h = this.step * this.map.height + 4,
+			x = (this.width - w) / 2,
+			y = (this.height - h) / 2
+
+		this.c.strokeStyle = "#333"
+		this.c.lineWidth = 1
+
+		for(let row = 0;row < this.map.width;row += 2){
+			this.c.moveTo(x+row*this.step+0.5,y)
+			this.c.lineTo(x+row*this.step+0.5,h+y-4)
+		}
+		for(let col = 0;col < this.map.height;col += 2){
+			this.c.moveTo(x,y+col*this.step+0.5,)
+			this.c.lineTo(w+x-4,y+col*this.step+0.5,)
+		}
+		this.c.stroke()
+	}
+	drawToolBar(){
+		const { c, step, width, height, map } = this
+		EditorGrid.PICKER.map(item=>{
+			this._drawGiantBlock.apply(this,item)
+		})
+	}
+	startPicker(){
+		let { step, ele: { offsetLeft, offsetTop } } = this
+
+		this.ele.addEventListener("mousemove",function (e) {
+			let x = e.x - offsetLeft,
+				y = e.y - offsetTop
+
+		})
+
+		this.ele.addEventListener("click",function (e) {
+			let x = e.x - offsetLeft,
+				y = e.y - offsetTop
+
+			EditorGrid.PICKER.map((item,index)=>{
+				if((item[0] - 1) * step < x && (item[0] + 2) * step > x){
+					console.log(23);
+				}
+			})
+		})
+	}
+	static get PICKER(){
+		return [
+			[4,10,"base"],
+			[4,20,"p1tankU"],
+			[4,30,"p2tankF"],
+			[4,40,"enemy1"],
+			[94,10,"steels"],
+			[94,20,"grass"],
+			[94,30,"water"],
+			[94,40,"walls"],
+		]
+	}
+}
+
 export class  DummyGrid extends Grid{
 	constructor(width, height) {
 		super(width, height);
@@ -395,10 +482,10 @@ export class  DummyGrid extends Grid{
 }
 
 export default class Map extends Grid{
-	constructor(width, height){
-		super(width, height)
-		this.width = width
-		this.height =height
+	constructor(...props){
+		super(...props)
+		this.width = props[0]
+		this.height = props[1]
 		//this prop shows how the block damaged
 		this.blockStatus = []
 	}

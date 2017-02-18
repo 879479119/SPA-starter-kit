@@ -12,13 +12,13 @@ pages.forEach(function(item,index){
 	entryObj[item.name] = __DEV__ ? [
 		item.src,
 		'webpack/hot/dev-server',
-		'webpack-dev-server/client?http://127.0.0.1:'+globalConfig.dev.sourcePort
+		'webpack-dev-server/client?http://0.0.0.0:'+globalConfig.dev.sourcePort
 	] : item.src;
 })
 
 var DevConfig = {
 	output : {
-		publicPath: "http://127.0.0.1:"+globalConfig.dev.sourcePort+"/output/js/",
+		publicPath: "http://0.0.0.1:"+globalConfig.dev.sourcePort+"/output/js/",
 		path : __dirname + '/output/js',
 		filename : '[name].bundle.js'
 	},
@@ -108,7 +108,5 @@ if(__DEV__){
 	// 	err && console.error(err,new Date());
 	// });
 }
-
-console.log(config);
 
 module.exports = config;

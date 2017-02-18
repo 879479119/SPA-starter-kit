@@ -1,8 +1,8 @@
 /**
- * Created by zi on 2017/1/13.
+ * Created by RockSAMA on 2017/1/13.
  */
 
-import Map, { Grid } from './scripts/map'
+import Map, { Grid, EditorGrid } from './scripts/map'
 import { Player, EnemyBase, EnemyController } from './scripts/tank'
 import Judge from './scripts/judge'
 import { FireManager } from './scripts/Fire'
@@ -16,7 +16,6 @@ import { FireManager } from './scripts/Fire'
  */
 
 export default function init() {
-	/*仅支持最新的chrome，firefox浏览器，可以运行es6代码的*/
 
 	//get map source
 	let grid = new Grid(800,400)
@@ -50,3 +49,15 @@ export default function init() {
 	let animation = window.requestAnimationFrame(keyFrame)
 }
 
+export function editMap(width, height) {
+	//get map source
+	let grid = new EditorGrid(800,400)
+	let map = new Map(width, height)
+
+	grid.init(map)
+	grid.drawBorder()
+	grid.drawLine()
+
+	//create some samples for user to pick
+	grid.drawToolBar()
+}

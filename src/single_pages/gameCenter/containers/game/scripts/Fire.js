@@ -1,5 +1,5 @@
 /**
- * Created by zi on 2017/1/20.
+ * Created by RockSAMA on 2017/1/20.
  */
 export default class Fire{
 	constructor(tank) {
@@ -9,10 +9,6 @@ export default class Fire{
 		this.type = 'ball'
 		this.size = 4         //pixels that a ball consists
 		this.from_ally = false
-		// this.posX = posX
-		// this.posY = posY
-		// this.offsetX = offsetX
-		// this.offsetY = offsetY
 		this.direction = direction
 
 		this.accuracyX = posX * 8 + offsetX + 6    //the right position where we draw a ball based on pos and offset
