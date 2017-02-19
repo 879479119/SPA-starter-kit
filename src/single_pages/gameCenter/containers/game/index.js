@@ -57,7 +57,7 @@ export function editMap(width, height) {
 
 	grid.init(map,canvas)
 	grid.drawBorder()
-	grid.drawLine()
+	// grid.drawLine()
 
 	//create some samples for user to pick
 	grid.drawToolBar()

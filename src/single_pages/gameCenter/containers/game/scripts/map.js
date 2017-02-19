@@ -100,7 +100,6 @@ export class Canvas{
 		this.oY = oY
 	}
 	startSelection(col, row){
-		console.log(col,row);
 		this.sX = col
 		this.sY = row
 	}
@@ -159,6 +158,11 @@ export class Grid{
 		let x = col * self.step + this.oX,
 			y = row * self.step + this.oY,
 			img = ImageManager.getBitMap(type)
+		if(type === "void"){
+			self.c.fillStyle = "#000"
+			self.c.fillRect(x, y, self.step, self.step)
+			return
+		}
 		img && self.c.drawImage(img, x, y, self.step, self.step)
 	}
 	_drawGiantBlock(col, row, type, self, accuracy= false){
@@ -167,10 +171,6 @@ export class Grid{
 			y = accuracy ? row : row * self.step,
 			img = ImageManager.getBitMap(type)
 		img && self.c.drawImage(img, x, y, self.len, self.len)
-	}
-	_clearArea(posX, posY, offsetX, offsetY){
-		this.c.fillStyle = "#000"
-		this.c.fillRect(posX * this.len + offsetX, posY * this.len + offsetY, this.len, this.len)
 	}
 	_geneAlley(){
 		const material = this.material,
@@ -407,6 +407,7 @@ export class EditorGrid extends Grid{
 		this.activePicker = null
 		this.key_down = false
 		this.coveredArea = []
+		this.giantBlock = false
 
 		//init the toolBar picker
 	}
@@ -418,6 +419,18 @@ export class EditorGrid extends Grid{
 		this.map = map
 		this.partner = canvas
 		this.startPicker()
+	}
+	drawInnerGiantBlock(col, row, type){
+		let x = col * this.step + this.oX,
+			y = row * this.step + this.oY,
+			img = ImageManager.getBitMap(type)
+		img && this.c.drawImage(img, x, y, this.len, this.len)
+	}
+	clearInnerGiant(col, row){
+		let x = col * this.step + this.oX,
+			y = row * this.step + this.oY
+		this.c.fillStyle = "#000"
+		this.c.fillRect(x,y,this.len,this.len)
 	}
 	drawBorder(){
 		let w = this.step * this.map.width + 4,
@@ -465,10 +478,17 @@ export class EditorGrid extends Grid{
 		}
 		this.c.stroke()
 	}
+	drawItem(){
+		let { partner: {sX, sY}, map} = this
+		map.changeItem(sX,sY,this.activePicker)
+		this.clearInnerGiant(sX,sY)
+		this.drawInnerGiantBlock(sX,sY,this.activePicker)
+	}
 	drawArea(){
-		let { partner: {endCol, endRow, sX, sY}} = this
+		let { partner: {endCol, endRow, sX, sY}, map} = this
 
 		if(sX === endCol && sY === endRow){
+			map.changeBlock(endCol,endRow,EditorGrid.MAPPER[this.activePicker])
 			this._drawBlock(endRow,endCol,EditorGrid.MAPPER[this.activePicker])
 			return
 		}
@@ -479,6 +499,7 @@ export class EditorGrid extends Grid{
 
 		for(let i = sX;i < endCol;i ++){
 			for(let j = sY;j < endRow;j ++){
+				map.changeBlock(i,j,EditorGrid.MAPPER[this.activePicker])
 				this._drawBlock(j,i,EditorGrid.MAPPER[this.activePicker])
 			}
 		}
@@ -487,7 +508,7 @@ export class EditorGrid extends Grid{
 	}
 	drawToolBar(){
 		EditorGrid.PICKER.map(item=>{
-			this._drawGiantBlock.apply(this,item)
+			this._drawGiantBlock(item[0],item[1],item[2])
 		})
 	}
 	startPicker(){
@@ -501,8 +522,8 @@ export class EditorGrid extends Grid{
 			//press down a key
 			if(this.key_down === true){
 				//in the range of a grid
-				if(dX >= 0 && dX < map.width * step
-				&& dY >= 0 && dY < map.height * step){
+				if(dX >= 0 && dX <= map.width * step
+				&& dY >= 0 && dY <= map.height * step){
 					let col = (dX / step) >>> 0,
 						row = (dY / step) >>> 0
 					this.partner.drawSelection(col,row)
@@ -511,7 +532,11 @@ export class EditorGrid extends Grid{
 		})
 
 		listen("mouseup",e=>{
-			this.drawArea()
+			if(this.giantBlock === true){
+				this.drawItem()
+			}else{
+				this.drawArea()
+			}
 			this.key_down = false
 			e.preventDefault()
 		})
@@ -522,9 +547,21 @@ export class EditorGrid extends Grid{
 
 			//choose a picker to build
 			EditorGrid.PICKER.map((item)=>{
-				if((item[0] - 1) * step < x && (item[0] + 3) * step > x){
-					if((item[1] - 1) * step < y && (item[1] + 3) * step > y){
-						this.activePicker = item[2]
+				if((item[0] - 1) * step < x && (item[0] + 3) * step > x
+					&& (item[1] - 1) * step < y && (item[1] + 3) * step > y) {
+					switch(item[3]){
+						case 1:
+							this.activePicker = item[2]
+							this.giantBlock = false
+							break
+						case 2:
+							this.activePicker = item[2]
+							this.giantBlock = true
+							break
+						case 3:
+							break
+						default:
+							throw Error("NEW ERROR!")
 					}
 				}
 			})
@@ -537,21 +574,32 @@ export class EditorGrid extends Grid{
 			this.key_down = true
 			let col = (dX / step) >>> 0,
 				row = (dY / step) >>> 0
-			this.partner.startSelection(col,row)
+
+			if(col > this.map.width || row > this.map.height) return
+
+			if(this.giantBlock === false){
+				this.partner.startSelection(col,row)
+				this.partner.drawSelection(col,row)
+			}else{
+				this.partner.startSelection(col,row)
+			}
 
 			e.preventDefault()
 		})
 	}
 	static get PICKER(){
 		return [
-			[4,10,"base"],
-			[4,20,"p1tankU"],
-			[4,30,"p2tankF"],
-			[4,40,"enemy1"],
-			[94,10,"steels"],
-			[94,20,"grass"],
-			[94,30,"water"],
-			[94,40,"walls"],
+			[49,47,"bin",1],
+			[29,47,"save",3],
+			[69,47,"quit",3],
+			[4,10,"base",2],
+			[4,20,"p1tankU",2],
+			[4,30,"p2tankF",2],
+			[4,40,"enemy1",2],
+			[94,10,"steels",1],
+			[94,20,"grass",1],
+			[94,30,"water",1],
+			[94,40,"walls",1],
 		]
 	}
 	static get MAPPER(){
@@ -559,7 +607,8 @@ export class EditorGrid extends Grid{
 			steels: "stee",
 			grass: "gra",
 			water: "wate",
-			walls: "wall"
+			walls: "wall",
+			bin: "void"
 		}
 	}
 }
@@ -611,33 +660,39 @@ export default class Map extends Grid{
 		super(...props)
 		this.width = props[0]
 		this.height = props[1]
-		//this prop shows how the block damaged
-		this.blockStatus = []
+		//store the map we are drawing
+		this.mapData = []
+		this.base = {}
+		this.player = {}
+		this.friend = {}
+		this.enemies = []
+		this.init()
 	}
 	//init the map
 	init(){
-
-	}
-	draw(){
-		return this.blockStatus
-	}
-	_geneStatus(material){
-		// 1 represent this position is accessible,
-		// 0 represent other position with entity
-		const REFLECT = {
-			v: 1, g: 1
+		let arr = []
+		for(let i = 0;i < this.height;i ++){
+			let tempArr = []
+			for(let j = 0;j < this.width;j ++){
+				tempArr.push(0)
+			}
+			arr.push([...tempArr])
 		}
-		return this.blockStatus = material.map(k=>{
-			return k.map(k=>REFLECT[k] || 0)
-		})
+		this.mapData = arr
 	}
-	/**
-	 * draw map using an object 'map'
-	 * @param map Object
-	 * @private
-	 */
-	_drawMap(map){
-
+	changeBlock(col, row, type){
+		this.mapData[row][col] = type
+	}
+	changeItem(col, row, type){
+		if(type === "1"){
+			this.player = {}
+		}else if(type === "2"){
+			this.enemies.push({})
+		}else if(type === "3"){
+			this.friend = {}
+		}else if(type === "4"){
+			this.base = {}
+		}
 	}
 	//draw from local storage
 	static getMapList(){
