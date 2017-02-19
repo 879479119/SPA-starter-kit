@@ -74,8 +74,14 @@ const MAP_TEMPLATE = {
 //localStorage.setItem('mapList',JSON.stringify([MAP_TEMPLATE]))
 
 export class Canvas{
-	constructor(dom){
+	constructor(grid, map){
 
+		let dom = grid.ele
+		this.grid = grid
+		this.step = 8
+		this.map = map
+		this.width = dom.width
+		this.height = dom.height
 		this.sX = 0
 		this.sY = 0
 		this.oX = 0
@@ -103,9 +109,15 @@ export class Canvas{
 		this.sX = col
 		this.sY = row
 	}
+
+	/**
+	 * draw a grid when run 'drawSelection' is what a low performance,
+	 * to avoid unnecessary CPU cost, this function is closed by annotated
+	 */
 	drawSelection(col, row){
 		const { oX, oY, sX, sY } = this
 		this.c.clearRect(0,0,this.ele.width,this.ele.height)
+		// this.grid.drawLine(this)
 		this.c.fillStyle = "rgba(255,255,255,0.5)"
 		this.c.fillRect(oX+sX*8,oY+sY*8,(col-sX)*8,(row-sY)*8)
 
@@ -116,6 +128,7 @@ export class Canvas{
 	}
 	clearSelection(){
 		this.c.clearRect(0,0,this.ele.width,this.ele.height)
+		// this.grid.drawLine(this)
 	}
 }
 
@@ -445,7 +458,7 @@ export class EditorGrid extends Grid{
 		this.oY = y + 2
 		this.partner.setOffset(this.oX,this.oY)
 	}
-	drawLine(){
+	drawLine(self){
 		/**
 		 * there are three ways to draw a grid:
 		 *  1.draw a single path or a few paths to constrain usage of CANVAS API
@@ -459,29 +472,32 @@ export class EditorGrid extends Grid{
 		 *  2.since each border of a rectangle is at least 2px, give up
 		 *  3.may be the most effective API
 		 */
+		if(self === undefined) self = this
+		let w = self.step * self.map.width + 4,
+			h = self.step * self.map.height + 4,
+			x = (self.width - w) / 2,
+			y = (self.height - h) / 2
 
-		let w = this.step * this.map.width + 4,
-			h = this.step * this.map.height + 4,
-			x = (this.width - w) / 2,
-			y = (this.height - h) / 2
+		self.c.strokeStyle = "#333"
+		self.c.lineWidth = 1
 
-		this.c.strokeStyle = "#333"
-		this.c.lineWidth = 1
-
-		for(let row = 0;row < this.map.width;row += 2){
-			this.c.moveTo(x+row*this.step+0.5,y)
-			this.c.lineTo(x+row*this.step+0.5,h+y-4)
+		for(let row = 0;row < self.map.width;row += 2){
+			self.c.moveTo(x+row*self.step+0.5,y)
+			self.c.lineTo(x+row*self.step+0.5,h+y-4)
 		}
-		for(let col = 0;col < this.map.height;col += 2){
-			this.c.moveTo(x,y+col*this.step+0.5,)
-			this.c.lineTo(w+x-4,y+col*this.step+0.5,)
+		for(let col = 0;col < self.map.height;col += 2){
+			self.c.moveTo(x,y+col*self.step+0.5,)
+			self.c.lineTo(w+x-4,y+col*self.step+0.5,)
 		}
-		this.c.stroke()
+		self.c.stroke()
 	}
 	drawItem(){
 		let { partner: {sX, sY}, map} = this
-		map.changeItem(sX,sY,this.activePicker)
+		//this method returns the old position
+		let { x, y } = map.changeItem(sX,sY,this.activePicker)
+		if(x != undefined) this.clearInnerGiant(x,y)
 		this.clearInnerGiant(sX,sY)
+		//draw a new item
 		this.drawInnerGiantBlock(sX,sY,this.activePicker)
 	}
 	drawArea(){
@@ -520,7 +536,7 @@ export class EditorGrid extends Grid{
 			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
 				dY = e.y - offsetTop - (height - step * map.height) / 2
 			//press down a key
-			if(this.key_down === true){
+			if(this.key_down === true && this.giantBlock === false){
 				//in the range of a grid
 				if(dX >= 0 && dX <= map.width * step
 				&& dY >= 0 && dY <= map.height * step){
@@ -532,12 +548,33 @@ export class EditorGrid extends Grid{
 		})
 
 		listen("mouseup",e=>{
+			let {
+				partner: {endCol, endRow, sX, sY},
+				map: { player, friend, base, enemies }
+			} = this, posArr = []
+
+
+
+
+			//exchange the order of the numbers
+			if(sX > endCol) {let temp = sX;sX = endCol;endCol = temp}
+			if(sY > endRow) {let temp = sY;sY = endRow;endRow = temp}
+			//serialize the items
+			posArr.push(player,friend,base,...enemies)
+
+			for(let {x,y} of posArr){
+				if(x > sX - 2 && x <= endCol && y > sY - 2 && y <= endRow){
+					console.log(1)
+				}
+			}
+
+			this.key_down = false
+			if(this.outterClick === true) return
 			if(this.giantBlock === true){
 				this.drawItem()
 			}else{
 				this.drawArea()
 			}
-			this.key_down = false
 			e.preventDefault()
 		})
 
@@ -549,6 +586,7 @@ export class EditorGrid extends Grid{
 			EditorGrid.PICKER.map((item)=>{
 				if((item[0] - 1) * step < x && (item[0] + 3) * step > x
 					&& (item[1] - 1) * step < y && (item[1] + 3) * step > y) {
+
 					switch(item[3]){
 						case 1:
 							this.activePicker = item[2]
@@ -575,7 +613,12 @@ export class EditorGrid extends Grid{
 			let col = (dX / step) >>> 0,
 				row = (dY / step) >>> 0
 
-			if(col > this.map.width || row > this.map.height) return
+			if(col > this.map.width || row > this.map.height){
+				this.outterClick = true
+				return
+			}else {
+				this.outterClick = false
+			}
 
 			if(this.giantBlock === false){
 				this.partner.startSelection(col,row)
@@ -684,14 +727,20 @@ export default class Map extends Grid{
 		this.mapData[row][col] = type
 	}
 	changeItem(col, row, type){
-		if(type === "1"){
-			this.player = {}
+		if(type === "p1tankU") {
+			let lastPos = {x: this.player.x, y: this.player.y}
+			this.player = {x: col, y: row}
+			return lastPos
 		}else if(type === "2"){
 			this.enemies.push({})
-		}else if(type === "3"){
-			this.friend = {}
-		}else if(type === "4"){
-			this.base = {}
+		}else if(type === "p2tankF"){
+			let lastPos = {x: this.friend.x, y: this.friend.y}
+			this.friend = {x: col, y: row}
+			return lastPos
+		}else if(type === "base"){
+			let lastPos = {x: this.base.x, y: this.base.y}
+			this.base = {x: col, y: row}
+			return lastPos
 		}
 	}
 	//draw from local storage

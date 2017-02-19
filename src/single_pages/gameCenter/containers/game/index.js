@@ -53,7 +53,7 @@ export function editMap(width, height) {
 	//get map source
 	let grid = new EditorGrid(800,400)
 	let map = new Map(width, height)
-	let canvas = new Canvas(grid.ele)
+	let canvas = new Canvas(grid, map)
 
 	grid.init(map,canvas)
 	grid.drawBorder()
