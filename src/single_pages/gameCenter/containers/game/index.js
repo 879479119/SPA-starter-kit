@@ -1,11 +1,16 @@
-/**
- * Created by RockSAMA on 2017/1/13.
- */
-
-import Map, { Canvas, Grid, GameGrid, EditorGrid } from './scripts/map'
-import { Player, EnemyBase, EnemyController } from './scripts/tank'
 import Judge from './scripts/judge'
-import { FireManager } from './scripts/Fire'
+
+import Map from './scripts/ClassGrid/Map'
+import Canvas from './scripts/ClassGrid/Canvas'
+import Grid from './scripts/ClassGrid/Grid'
+import GameGrid from './scripts/ClassGrid/GameGrid'
+import EditorGrid from './scripts/ClassGrid/EditorGrid'
+
+import Player from './scripts/ClassTank/Player'
+import EnemyBase from './scripts/ClassTank/EnemyBase'
+import EnemyController from './scripts/ClassTank/EnemyController'
+
+import FireManager from './scripts/ClassFire/FireManager'
 
 /**
  * there are four layers in a screen that should be rendered in order:

@@ -1,6 +1,3 @@
-/**
- * Created by RockSAMA on 2017/1/20.
- */
 export default class Fire{
 	constructor(tank) {
 		if(tank === undefined) throw Error('Fire cannot be created without direction')
@@ -19,31 +16,5 @@ export default class Fire{
 			case "a": this.accuracyX -= 10;break
 			case "d": this.accuracyX += 6;break
 		}
-	}
-}
-
-export class PLayerFire extends Fire{
-	constructor(props) {
-		super(props)
-		this.from_ally = true
-	}
-}
-
-export class EnemyFire extends Fire{
-	constructor(props) {
-		super(props)
-		this.from_ally = false
-	}
-}
-
-export class FireManager{
-	constructor() {
-		this.fireArr = []
-	}
-	addFire(fireObj){
-		this.fireArr.push(fireObj)
-	}
-	fireGone(index){
-		this.fireArr.splice(index,1)
 	}
 }

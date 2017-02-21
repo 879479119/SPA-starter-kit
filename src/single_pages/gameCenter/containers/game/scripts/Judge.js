@@ -2,7 +2,9 @@
  * this class should store all the status that affect the game,
  */
 
-import { Enemy, EnemyController } from './tank'
+import Enemy from './ClassTank/Enemy'
+import EnemyConreoller from './ClassTank/EnemyController'
+import EnemyBase from './ClassTank/EnemyBase'
 
 export default class Judge{
 	constructor(grid, map, player, fireController, enemyBases, enemyController){
