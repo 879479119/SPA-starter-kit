@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/js/music.bundle.js" afterPath="$PROJECT_DIR$/output/js/music.bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
     </list>
     <ignored path="WTF.iws" />
@@ -60,8 +58,8 @@
                   <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="305">
-                          <caret line="55" column="32" lean-forward="false" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+                        <state relative-caret-position="95">
+                          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
                           <folding />
                         </state>
                       </provider>
@@ -70,7 +68,7 @@
                   <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="147">
+                        <state relative-caret-position="-9">
                           <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
                           <folding />
                         </state>
@@ -84,8 +82,8 @@
                   <file leaf-file-name="tank.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/tank.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="3822">
-                          <caret line="224" column="14" lean-forward="false" selection-start-line="224" selection-start-column="9" selection-end-line="224" selection-end-column="14" />
+                        <state relative-caret-position="129">
+                          <caret line="203" column="11" lean-forward="true" selection-start-line="203" selection-start-column="11" selection-end-line="203" selection-end-column="11" />
                           <folding>
                             <element signature="n#!!block;n#_listenKeyboard#0;n#Player#0" expanded="false" />
                           </folding>
@@ -96,11 +94,11 @@
                   <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="204">
-                          <caret line="180" column="4" lean-forward="false" selection-start-line="180" selection-start-column="4" selection-end-line="180" selection-end-column="4" />
+                        <state relative-caret-position="477">
+                          <caret line="520" column="25" lean-forward="false" selection-start-line="520" selection-start-column="25" selection-end-line="520" selection-end-column="25" />
                           <folding>
                             <element signature="n#!!doc" expanded="true" />
-                            <element signature="e#997#2924#0" expanded="false" />
+                            <element signature="e#1087#3014#0" expanded="false" />
                             <element signature="n#!!block;n#constructor#0;n#Grid#0" expanded="false" />
                             <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
                             <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
@@ -133,11 +131,11 @@
               <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="220">
-                      <caret line="615" column="50" lean-forward="true" selection-start-line="615" selection-start-column="50" selection-end-line="615" selection-end-column="50" />
+                    <state relative-caret-position="126">
+                      <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
                       <folding>
                         <element signature="n#!!doc" expanded="true" />
-                        <element signature="e#997#2924#0" expanded="false" />
+                        <element signature="e#1087#3014#0" expanded="false" />
                         <element signature="n#!!block;n#constructor#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
@@ -155,6 +153,8 @@
                         <element signature="n#!!block;n#destroyBlock#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
                         <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
+                        <element signature="e#17044#17594#0" expanded="false" />
+                        <element signature="e#17621#18214#0" expanded="false" />
                         <element signature="n#!!block;n#_getRotateBlock#0;n#DummyGrid#0" expanded="false" />
                       </folding>
                     </state>
@@ -170,8 +170,8 @@
           <file leaf-file-name="Fire.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+                <state relative-caret-position="273">
+                  <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -193,7 +193,6 @@
       <find>deb</find>
       <find>len</find>
       <find>alley[col][row - 1]</find>
-      <find>debu</find>
       <find>this.material</find>
       <find>16</find>
       <find>console</find>
@@ -203,6 +202,12 @@
       <find>key_down</find>
       <find>sX</find>
       <find>.sX</find>
+      <find>sX = 0</find>
+      <find>sX =</find>
+      <find>endCol =</find>
+      <find>endCol =</find>
+      <find>if(sX &gt; endCol)</find>
+      <find>debu</find>
     </findStrings>
     <replaceStrings>
       <replace>w1</replace>
@@ -627,14 +632,11 @@
       <workItem from="1487383402224" duration="308000" />
       <workItem from="1487397350671" duration="19498000" />
       <workItem from="1487482516847" duration="14056000" />
-      <workItem from="1487501247969" duration="6882000" />
-    </task>
-    <task id="LOCAL-00014" summary="update&#10;">
-      <created>1477924872121</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1477924872121</updated>
+      <workItem from="1487501247969" duration="6964000" />
+      <workItem from="1487556628073" duration="84000" />
+      <workItem from="1487594851735" duration="1651000" />
+      <workItem from="1487652037588" duration="693000" />
+      <workItem from="1487652989874" duration="8063000" />
     </task>
     <task id="LOCAL-00015" summary="update&#10;">
       <created>1477978076821</created>
@@ -972,11 +974,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487496594984</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary=":cry::cry::cry::cry: get some bugs fixed">
+      <created>1487510438575</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1487510438576</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="476275000" />
+    <option name="totallyTimeSpent" value="486848000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -997,7 +1006,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32614943" sideWeight="0.49702382" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.094634876" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09836066" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0976155" sideWeight="0.49702382" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1044,7 +1053,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="map fix :dart:" />
     <MESSAGE value="block them! :cat:" />
     <MESSAGE value="fire a ball without impact check :hammer:" />
     <MESSAGE value="mid :cop:" />
@@ -1069,7 +1077,8 @@
     <MESSAGE value=":astonished: extrodinary work" />
     <MESSAGE value=":sad: some unsolved BUGS :bug:" />
     <MESSAGE value=":smile: add some new features" />
-    <option name="LAST_COMMIT_MESSAGE" value=":smile: add some new features" />
+    <MESSAGE value=":cry::cry::cry::cry: get some bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value=":cry::cry::cry::cry: get some bugs fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1343,7 +1352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1385,16 +1393,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
+        <state relative-caret-position="-9">
           <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/tank.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3822">
-          <caret line="224" column="14" lean-forward="false" selection-start-line="224" selection-start-column="9" selection-end-line="224" selection-end-column="14" />
+        <state relative-caret-position="129">
+          <caret line="203" column="11" lean-forward="true" selection-start-line="203" selection-start-column="11" selection-end-line="203" selection-end-column="11" />
           <folding>
             <element signature="n#!!block;n#_listenKeyboard#0;n#Player#0" expanded="false" />
           </folding>
@@ -1403,27 +1419,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Fire.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="55" column="32" lean-forward="false" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+        <state relative-caret-position="273">
+          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="615" column="50" lean-forward="true" selection-start-line="615" selection-start-column="50" selection-end-line="615" selection-end-column="50" />
+        <state relative-caret-position="126">
+          <caret line="6" column="77" lean-forward="false" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#997#2924#0" expanded="false" />
+            <element signature="e#1087#3014#0" expanded="false" />
             <element signature="n#!!block;n#constructor#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#init#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_geneAlley#0;n#Grid#0" expanded="false" />
@@ -1441,6 +1449,8 @@
             <element signature="n#!!block;n#destroyBlock#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#_adaptor#0;n#Grid#0" expanded="false" />
             <element signature="n#!!block;n#materialData#0;n#Grid#0" expanded="false" />
+            <element signature="e#17044#17594#0" expanded="false" />
+            <element signature="e#17621#18214#0" expanded="false" />
             <element signature="n#!!block;n#_getRotateBlock#0;n#DummyGrid#0" expanded="false" />
           </folding>
         </state>

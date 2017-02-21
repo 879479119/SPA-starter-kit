@@ -3,7 +3,8 @@
  */
 
 /**
- * methods started with character 'u' mean this works for user
+ * TIP: if you want to deconstruct a class, you may use 'const' instead of
+ *      'let', because its prop may be changed though it's a number or string
  */
 
 /**
@@ -108,6 +109,7 @@ export class Canvas{
 	startSelection(col, row){
 		this.sX = col
 		this.sY = row
+		console.log(this.sX,this.sY)
 	}
 
 	/**
@@ -501,7 +503,7 @@ export class EditorGrid extends Grid{
 		this.drawInnerGiantBlock(sX,sY,this.activePicker)
 	}
 	drawArea(){
-		let { partner: {endCol, endRow, sX, sY}, map} = this
+		const { partner: {endCol, endRow, sX, sY}, map} = this
 
 		if(sX === endCol && sY === endRow){
 			map.changeBlock(endCol,endRow,EditorGrid.MAPPER[this.activePicker])
@@ -509,12 +511,14 @@ export class EditorGrid extends Grid{
 			return
 		}
 
-		//exchange the order of the numbers
-		if(sX > endCol) {let temp = sX;sX = endCol;endCol = temp}
-		if(sY > endRow) {let temp = sY;sY = endRow;endRow = temp}
+		let xA = [sX,endCol],yA = [sY,endRow]
 
-		for(let i = sX;i < endCol;i ++){
-			for(let j = sY;j < endRow;j ++){
+		//exchange the order of the numbers
+		if(sX > endCol) {xA = [endCol,sX]}
+		if(sY > endRow) {yA = [endRow,sY]}
+
+		for(let i = xA[0];i < xA[1];i ++){
+			for(let j = yA[0];j < yA[1];j ++){
 				map.changeBlock(i,j,EditorGrid.MAPPER[this.activePicker])
 				this._drawBlock(j,i,EditorGrid.MAPPER[this.activePicker])
 			}
@@ -548,28 +552,39 @@ export class EditorGrid extends Grid{
 		})
 
 		listen("mouseup",e=>{
-			let {
+
+			//rest the mouse and return
+			this.key_down = false
+			if(this.outterClick === true) return
+
+			const {
 				partner: {endCol, endRow, sX, sY},
 				map: { player, friend, base, enemies }
 			} = this, posArr = []
 
+			const MAPPER = ["p1tankU","p2tankF","base","enemy1"]
 
-
+			let xA = [sX,endCol],yA = [sY,endRow]
 
 			//exchange the order of the numbers
-			if(sX > endCol) {let temp = sX;sX = endCol;endCol = temp}
-			if(sY > endRow) {let temp = sY;sY = endRow;endRow = temp}
+			if(sX > endCol) {xA = [endCol,sX]}
+			if(sY > endRow) {yA = [endRow,sY]}
 			//serialize the items
 			posArr.push(player,friend,base,...enemies)
 
-			for(let {x,y} of posArr){
-				if(x > sX - 2 && x <= endCol && y > sY - 2 && y <= endRow){
-					console.log(1)
+			for(let index in posArr){
+				let item = posArr[index],{x,y} = item
+				let type = undefined
+
+				if(x > xA[0] - 2 && x <= xA[1] && y > yA[0] - 2 && y <= yA[1]){
+					if(index < 3) type = MAPPER[index]
+					else type = MAPPER[3]
+					//set a "undefined" value to make sure it's removed
+					this.map.changeItem(undefined,undefined,type)
+					this.clearInnerGiant(x,y)
 				}
 			}
 
-			this.key_down = false
-			if(this.outterClick === true) return
 			if(this.giantBlock === true){
 				this.drawItem()
 			}else{
@@ -618,13 +633,13 @@ export class EditorGrid extends Grid{
 				return
 			}else {
 				this.outterClick = false
-			}
-
-			if(this.giantBlock === false){
-				this.partner.startSelection(col,row)
-				this.partner.drawSelection(col,row)
-			}else{
-				this.partner.startSelection(col,row)
+				if(this.giantBlock === false){
+					this.partner.startSelection(col,row)
+					this.partner.drawSelection(col,row)
+				}else{
+					this.partner.startSelection(col,row)
+					this.partner.drawSelection(col,row)
+				}
 			}
 
 			e.preventDefault()
@@ -731,8 +746,6 @@ export default class Map extends Grid{
 			let lastPos = {x: this.player.x, y: this.player.y}
 			this.player = {x: col, y: row}
 			return lastPos
-		}else if(type === "2"){
-			this.enemies.push({})
 		}else if(type === "p2tankF"){
 			let lastPos = {x: this.friend.x, y: this.friend.y}
 			this.friend = {x: col, y: row}
@@ -741,6 +754,9 @@ export default class Map extends Grid{
 			let lastPos = {x: this.base.x, y: this.base.y}
 			this.base = {x: col, y: row}
 			return lastPos
+		}else if(type === "enemy1") {
+			if (col === undefined || row === undefined) return
+			this.enemies.push({x:col,y:row})
 		}
 	}
 	//draw from local storage
