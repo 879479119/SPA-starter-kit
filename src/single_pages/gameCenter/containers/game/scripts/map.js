@@ -111,7 +111,6 @@ export class Canvas{
 		this.sY = row
 		console.log(this.sX,this.sY)
 	}
-
 	/**
 	 * draw a grid when run 'drawSelection' is what a low performance,
 	 * to avoid unnecessary CPU cost, this function is closed by annotated
@@ -148,26 +147,12 @@ export class Grid{
 		this.step = 8       //step means how many pixels tank goes when press button, it's like "control resolution ratio"
 		this.gridBlock = 2  //a block consists of 16 pixels
 		this.len = this.gridBlock * this.step
-
-		this.oX = 0
-		this.oY = 0
-
-		//it's an Matrix which shows where the tanks could go
-		this.alley = []
-
-		const mapSourceList = Map.getMapList(),
-			{ material } = mapSourceList[0]
-		this.map = mapSourceList[0]
-		this.material = material
-
 	}
-	/*basic methods*/
 	init(){
-		// this.c.clearRect(0,0,this.width,this.height)
 		this.c.fillStyle = "#000"
 		this.c.fillRect(0,0,this.width,this.height)
-		this.dummyGrid = new DummyGrid()
 	}
+	/*basic methods*/
 	_drawBlock(row, col, type, self){
 		if(self === undefined) self = this
 		let x = col * self.step + this.oX,
@@ -186,6 +171,43 @@ export class Grid{
 			y = accuracy ? row : row * self.step,
 			img = ImageManager.getBitMap(type)
 		img && self.c.drawImage(img, x, y, self.len, self.len)
+	}
+	static _adaptor(material){
+		return material.map(k=>{
+			return k.map(k=>Grid.materialData[k])
+		})
+	}
+	//add all the blocks here
+	static get materialData(){
+		return {
+			0: 0,
+			1: "gra",
+			2: "wate",
+			3: "stee",
+			4: "wall"
+		}
+	}
+}
+
+
+export class GameGrid extends Grid{
+	constructor(...props){
+		super(...props)
+		this.oX = 0
+		this.oY = 0
+
+		//it's an Matrix which shows where the tanks could go
+		this.alley = []
+
+		const mapSourceList = Map.getMapList(),
+			{ material } = mapSourceList[0]
+		this.map = mapSourceList[0]
+		this.material = material
+	}
+	/*basic methods*/
+	init(){
+		super.init()
+		this.dummyGrid = new DummyGrid()
 	}
 	_geneAlley(){
 		const material = this.material,
@@ -398,21 +420,6 @@ export class Grid{
 		this.alley[row][col] = 1
 		this.material[row][col] = 0
 	}
-	static _adaptor(material){
-		return material.map(k=>{
-			return k.map(k=>Grid.materialData[k])
-		})
-	}
-	//add all the blocks here
-	static get materialData(){
-		return {
-			0: 0,
-			1: "gra",
-			2: "wate",
-			3: "stee",
-			4: "wall"
-		}
-	}
 }
 
 export class EditorGrid extends Grid{
@@ -455,7 +462,6 @@ export class EditorGrid extends Grid{
 		this.c.strokeStyle = "#ccc"
 		this.c.lineWidth = 4
 		this.c.strokeRect(x,y,w,h)
-		window.p = this
 		this.oX = x + 2
 		this.oY = y + 2
 		this.partner.setOffset(this.oX,this.oY)

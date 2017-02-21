@@ -9,8 +9,8 @@ class Frame extends Component {
         super(props)
     }
     componentDidMount(){
-        window.onload = editMap(80,40)
-        // window.onload = game()
+        // window.onload = editMap(80,40)
+        window.onload = game()
     }
     render(){
         return (

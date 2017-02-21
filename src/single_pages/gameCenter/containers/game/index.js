@@ -2,7 +2,7 @@
  * Created by RockSAMA on 2017/1/13.
  */
 
-import Map, { Canvas, Grid, EditorGrid } from './scripts/map'
+import Map, { Canvas, Grid, GameGrid, EditorGrid } from './scripts/map'
 import { Player, EnemyBase, EnemyController } from './scripts/tank'
 import Judge from './scripts/judge'
 import { FireManager } from './scripts/Fire'
@@ -23,7 +23,7 @@ export function enter() {
 export default function init() {
 
 	//get map source
-	let grid = new Grid(800,400)
+	let grid = new GameGrid(800,400)
 	let map = new Map(800,400)
 
 	const mapSourceList = Map.getMapList(),
