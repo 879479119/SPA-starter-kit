@@ -139,7 +139,7 @@ export class Canvas{
  */
 export class Grid{
 	constructor(width, height){
-		localStorage.setItem('mapList',JSON.stringify([MAP_TEMPLATE]))
+		// localStorage.setItem('mapList',JSON.stringify([MAP_TEMPLATE]))
 		/*the canvas must be width 800px,height 400px*/
 		this.width = width || 800
 		this.height = height || 400
@@ -506,8 +506,8 @@ export class EditorGrid extends Grid{
 		const { partner: {endCol, endRow, sX, sY}, map} = this
 
 		if(sX === endCol && sY === endRow){
-			map.changeBlock(endCol,endRow,EditorGrid.MAPPER[this.activePicker])
-			this._drawBlock(endRow,endCol,EditorGrid.MAPPER[this.activePicker])
+			map.changeBlock(endCol,endRow,EditorGrid.MAPPER[this.activePicker][1])
+			this._drawBlock(endRow,endCol,EditorGrid.MAPPER[this.activePicker][0])
 			return
 		}
 
@@ -519,8 +519,8 @@ export class EditorGrid extends Grid{
 
 		for(let i = xA[0];i < xA[1];i ++){
 			for(let j = yA[0];j < yA[1];j ++){
-				map.changeBlock(i,j,EditorGrid.MAPPER[this.activePicker])
-				this._drawBlock(j,i,EditorGrid.MAPPER[this.activePicker])
+				map.changeBlock(i,j,EditorGrid.MAPPER[this.activePicker][1])
+				this._drawBlock(j,i,EditorGrid.MAPPER[this.activePicker][0])
 			}
 		}
 
@@ -612,6 +612,11 @@ export class EditorGrid extends Grid{
 							this.giantBlock = true
 							break
 						case 3:
+							if(item[2] === "quit"){
+								//TODO: quit editor mode
+							}else if(item[2] === "save"){
+								this.map.insertMap()
+							}
 							break
 						default:
 							throw Error("NEW ERROR!")
@@ -662,11 +667,11 @@ export class EditorGrid extends Grid{
 	}
 	static get MAPPER(){
 		return {
-			steels: "stee",
-			grass: "gra",
-			water: "wate",
-			walls: "wall",
-			bin: "void"
+			steels: ["stee",3],
+			grass: ["gra",1],
+			water: ["wate",2],
+			walls: ["wall",4],
+			bin: ["void",0]
 		}
 	}
 }
@@ -765,6 +770,15 @@ export default class Map extends Grid{
 		return JSON.parse(maps)
 	}
 	insertMap(){
-
+		let map = {
+			size: {
+				width: this.width,
+				height: this.height
+			},
+			startPosition: [this.player],
+			enemies: [{ x: 0, y: 0, type: [3,4] },],
+			material: this.mapData
+		}
+		window.localStorage.setItem('mapList',JSON.stringify([map]))
 	}
 }

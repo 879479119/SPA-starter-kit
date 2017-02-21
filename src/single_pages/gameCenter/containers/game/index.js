@@ -15,6 +15,11 @@ import { FireManager } from './scripts/Fire'
  *  4.powerful items
  */
 
+export function enter() {
+	let grid = new Grid(800,400)
+
+}
+
 export default function init() {
 
 	//get map source
