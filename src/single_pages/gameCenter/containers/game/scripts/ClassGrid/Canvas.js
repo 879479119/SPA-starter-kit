@@ -1,6 +1,6 @@
-import ImageManager from '../ClassManager/ImageManager'
-import EnemyBase from '../ClassTank/EnemyBase'
-import Grid from './Grid'
+/**
+ * this is just a canvas that helps to provide higher performance
+ */
 
 export default class Canvas{
 	constructor(grid, map){

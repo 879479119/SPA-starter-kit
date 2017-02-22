@@ -14,10 +14,10 @@ export default class EditorGrid extends Grid{
 	constructor(...props){
 		super(...props)
 
-		this.activePicker = null
+		this.activePicker = "walls"
 		this.key_down = false
-		this.coveredArea = []
 		this.giantBlock = false
+		this.game = props[2]
 
 		//init the toolBar picker
 	}
@@ -130,7 +130,8 @@ export default class EditorGrid extends Grid{
 		offsetLeft = offsetLeft + this.ele.parentNode.offsetLeft
 		offsetTop = offsetTop + this.ele.parentNode.offsetTop
 		let listen = this.partner.ele.addEventListener
-		listen("mousemove",e=>{
+
+		let fnMouseMove = e=>{
 			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
 				dY = e.y - offsetTop - (height - step * map.height) / 2
 			//press down a key
@@ -143,9 +144,9 @@ export default class EditorGrid extends Grid{
 					this.partner.drawSelection(col,row)
 				}
 			}
-		})
+		}
 
-		listen("mouseup",e=>{
+		let fnMouseUp = e=>{
 
 			//rest the mouse and return
 			this.key_down = false
@@ -185,9 +186,9 @@ export default class EditorGrid extends Grid{
 				this.drawArea()
 			}
 			e.preventDefault()
-		})
+		}
 
-		listen("click",e=>{
+		let fnClick = e=>{
 			let x = e.x - offsetLeft,
 				y = e.y - offsetTop
 
@@ -217,9 +218,9 @@ export default class EditorGrid extends Grid{
 					}
 				}
 			})
-		})
+		}
 
-		listen("mousedown",e=>{
+		let fnMouseDown = e=>{
 			let dX = e.x - offsetLeft - (width - step * map.width) / 2,
 				dY = e.y - offsetTop - (height - step * map.height) / 2
 
@@ -242,7 +243,27 @@ export default class EditorGrid extends Grid{
 			}
 
 			e.preventDefault()
-		})
+		}
+
+		let fnKeyDown = e=>{
+			if(e.keyCode === 27){
+				let remove = this.partner.ele.removeEventListener
+				this.game.status = "profile"
+
+				this.partner.ele.remove()
+				remove("mousemove", fnMouseMove)
+				remove("mouseup", fnMouseUp)
+				remove("click", fnClick)
+				remove("mousedown", fnMouseDown)
+				remove("keydown", fnKeyDown)
+			}
+		}
+
+		listen("mousemove", fnMouseMove)
+		listen("mouseup", fnMouseUp)
+		listen("click", fnClick)
+		listen("mousedown", fnMouseDown)
+		listen("keydown", fnKeyDown)
 	}
 	static get PICKER(){
 		return [

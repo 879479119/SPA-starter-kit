@@ -3,8 +3,8 @@ import Grid from './Grid'
 export default class Map extends Grid{
 	constructor(...props){
 		super(...props)
-		this.width = props[0]
-		this.height = props[1]
+		this.width = props[0] || 80
+		this.height = props[1] || 40
 		//store the map we are drawing
 		this.mapData = []
 		this.base = {}

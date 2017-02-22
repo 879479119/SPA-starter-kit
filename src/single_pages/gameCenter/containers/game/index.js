@@ -55,21 +55,21 @@ export function init(game) {
 		grid.init(map)
 		frame.go()
 		animation = requestAnimationFrame(keyFrame)
-		if(game.status === "running") cancelAnimationFrame(animation)
+		if(!game.animation) cancelAnimationFrame(animation)
 	}
 	let animation = window.requestAnimationFrame(keyFrame)
 }
 
 export function editMap(game, width, height) {
 	//get map source
-	let grid = new EditorGrid(800,400)
+	let grid = new EditorGrid(800,400,game)
 	let map = new Map(width, height)
 	let canvas = new Canvas(grid, map)
 
 	grid.init(map,canvas)
 	grid.drawBorder()
 	// grid.drawLine()
-
+	console.log(213);
 	//create some samples for user to pick
 	grid.drawToolBar()
 }

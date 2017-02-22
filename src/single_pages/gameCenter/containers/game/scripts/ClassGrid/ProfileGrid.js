@@ -63,7 +63,7 @@ export default class ProfileGrid extends Grid{
 				this.ele.removeEventListener("click",callback)
 				this.game.status = "running"
 			}
-			if(x > 260 && x < 540 && y > 300 && y < 360){				this._backClip()
+			if(x > 260 && x < 540 && y > 300 && y < 360){
 				this.c.restore()
 				this.ele.removeEventListener("click",callback)
 				this.game.status = "edit"

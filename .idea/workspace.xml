@@ -5,9 +5,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Player.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Player.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Judge.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Judge.js" />
     </list>
     <ignored path="WTF.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +39,8 @@
               <file leaf-file-name="Judge.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Judge.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="460">
-                      <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+                    <state relative-caret-position="514">
+                      <caret line="78" column="39" lean-forward="true" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
                       <folding>
                         <element signature="e#216#522#0" expanded="false" />
                         <element signature="e#2550#3912#0" expanded="false" />
@@ -55,6 +57,22 @@
                   </provider>
                 </entry>
               </file>
+              <file leaf-file-name="ProfileGrid.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="378">
+                      <caret line="68" column="41" lean-forward="true" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+                      <folding>
+                        <element signature="e#0#25#0" expanded="true" />
+                        <element signature="e#257#302#0" expanded="false" />
+                        <element signature="e#716#1140#0" expanded="false" />
+                        <element signature="e#1160#1267#0" expanded="false" />
+                        <element signature="e#1864#2082#0" expanded="false" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
             </leaf>
           </split-first>
           <split-second>
@@ -62,8 +80,8 @@
               <file leaf-file-name="Grid.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Grid.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="320">
-                      <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+                    <state relative-caret-position="341">
+                      <caret line="32" column="35" lean-forward="true" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
                       <folding>
                         <element signature="e#1349#1671#0" expanded="false" />
                         <element signature="e#1727#1948#0" expanded="false" />
@@ -74,45 +92,23 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="ProfileGrid.js" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="63">
-                      <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-                      <folding>
-                        <element signature="e#0#25#0" expanded="true" />
-                        <element signature="e#257#302#0" expanded="false" />
-                        <element signature="e#716#1140#0" expanded="false" />
-                        <element signature="e#1160#1267#0" expanded="false" />
-                        <element signature="e#1884#2102#0" expanded="false" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
               <file leaf-file-name="EditorGrid.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="231">
-                      <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                    <state relative-caret-position="241">
+                      <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
                       <folding>
                         <element signature="e#0#55#0" expanded="true" />
-                        <element signature="e#471#624#0" expanded="false" />
-                        <element signature="e#643#801#0" expanded="false" />
-                        <element signature="e#838#1008#0" expanded="false" />
-                        <element signature="e#1035#1178#0" expanded="false" />
-                        <element signature="e#1192#1504#0" expanded="false" />
-                        <element signature="e#1520#2458#0" expanded="false" />
-                        <element signature="e#2470#2760#0" expanded="false" />
-                        <element signature="e#2772#3436#0" expanded="false" />
-                        <element signature="e#3451#3541#0" expanded="false" />
-                        <element signature="e#3556#6623#0" expanded="false" />
-                        <element signature="e#3820#4261#0" expanded="false" />
+                        <element signature="e#840#1010#0" expanded="false" />
+                        <element signature="e#1037#1180#0" expanded="false" />
+                        <element signature="e#1522#2460#0" expanded="false" />
+                        <element signature="e#2472#2762#0" expanded="false" />
+                        <element signature="e#3453#3543#0" expanded="false" />
+                        <element signature="e#3822#4263#0" expanded="false" />
                         <element signature="e#4286#5287#0" expanded="false" />
-                        <element signature="e#5310#5999#0" expanded="false" />
-                        <element signature="e#6026#6619#0" expanded="false" />
-                        <element signature="e#6644#6902#0" expanded="false" />
-                        <element signature="e#6923#7049#0" expanded="false" />
+                        <element signature="e#5308#5997#0" expanded="false" />
+                        <element signature="e#6022#6615#0" expanded="false" />
+                        <element signature="e#7144#7402#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -136,24 +132,82 @@
         <splitter split-orientation="horizontal" split-proportion="0.5">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
+              <file leaf-file-name="Canvas.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="201">
-                      <caret line="60" column="1" lean-forward="true" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+                    <state relative-caret-position="42">
+                      <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
                       <folding>
-                        <element signature="e#0#35#0" expanded="true" />
+                        <element signature="n#Canvas#0;n#!!top" expanded="false" />
+                        <element signature="n#!!block;n#setOffset#0;n#Canvas#0;n#!!top" expanded="false" />
+                        <element signature="n#!!block;n#startSelection#0;n#Canvas#0;n#!!top" expanded="false" />
+                        <element signature="n#!!block;n#drawSelection#0;n#Canvas#0;n#!!top" expanded="false" />
+                        <element signature="n#!!block;n#clearSelection#0;n#Canvas#0;n#!!top" expanded="false" />
                       </folding>
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
+              <file leaf-file-name="Map.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="126">
+                      <caret line="6" column="35" lean-forward="false" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+                      <folding>
+                        <element signature="e#337#530#0" expanded="false" />
+                        <element signature="e#559#595#0" expanded="false" />
+                        <element signature="e#623#1153#0" expanded="false" />
+                        <element signature="e#1296#1548#0" expanded="false" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="index.jsx" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="105">
-                      <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+                    <state relative-caret-position="210">
+                      <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
                       <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="GameGrid.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/GameGrid.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="126">
+                      <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+                      <folding>
+                        <element signature="e#256#516#0" expanded="false" />
+                        <element signature="e#543#597#0" expanded="false" />
+                        <element signature="e#611#1591#0" expanded="false" />
+                        <element signature="e#1630#1754#0" expanded="false" />
+                        <element signature="e#1773#1817#0" expanded="false" />
+                        <element signature="e#1844#1941#0" expanded="false" />
+                        <element signature="e#1985#2043#0" expanded="false" />
+                        <element signature="e#2063#2322#0" expanded="false" />
+                        <element signature="e#2342#2371#0" expanded="false" />
+                        <element signature="e#2411#2607#0" expanded="false" />
+                        <element signature="e#2642#2923#0" expanded="false" />
+                        <element signature="e#2954#5178#0" expanded="false" />
+                        <element signature="e#5197#5959#0" expanded="false" />
+                        <element signature="e#5988#6203#0" expanded="false" />
+                        <element signature="e#6227#6288#0" expanded="false" />
+                        <element signature="e#6313#8246#0" expanded="false" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="252">
+                      <caret line="57" column="12" lean-forward="false" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+                      <folding>
+                        <element signature="e#0#35#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -165,13 +219,13 @@
               <file leaf-file-name="Player.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Player.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="189">
-                      <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+                    <state relative-caret-position="84">
+                      <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
                       <folding>
                         <element signature="e#0#25#0" expanded="true" />
                         <element signature="e#488#814#0" expanded="false" />
                         <element signature="e#859#898#0" expanded="false" />
-                        <element signature="e#1932#2225#0" expanded="false" />
+                        <element signature="e#1964#2257#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -249,8 +303,6 @@
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/judge.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/map.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/DummyGrid.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Friend.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Tank.js" />
@@ -268,14 +320,16 @@
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/EnemyController.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassManager/ImageManager.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/GameGrid.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassUtil/Util.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Grid.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Judge.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js" />
+        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
         <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Player.js" />
-        <option value="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
       </list>
     </option>
   </component>
@@ -842,14 +896,7 @@
       <workItem from="1487594851735" duration="1651000" />
       <workItem from="1487652037588" duration="693000" />
       <workItem from="1487652989874" duration="21521000" />
-      <workItem from="1487730069175" duration="14730000" />
-    </task>
-    <task id="LOCAL-00020" summary="images">
-      <created>1478009437784</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1478009437784</updated>
+      <workItem from="1487730069175" duration="20131000" />
     </task>
     <task id="LOCAL-00021" summary="images">
       <created>1478009713307</created>
@@ -1187,11 +1234,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487741964169</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary=":lollipop: FINALLY RESOLVE THE MEMORY LEAK     !!!!!!!!!">
+      <created>1487748521531</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1487748521531</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="515036000" />
+    <option name="totallyTimeSpent" value="520437000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1259,7 +1313,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="map could be drawn correctly :cat:" />
     <MESSAGE value="tank goes perfectly!!! :full_moon_with_face:" />
     <MESSAGE value="fire can destroy :angel::angel::angel:" />
     <MESSAGE value="almost ....  without any enemy :muscle:" />
@@ -1284,7 +1337,8 @@
     <MESSAGE value=":lollipop: ready to commit a reconstruction" />
     <MESSAGE value=":art: build completed" />
     <MESSAGE value=":bird: simply splash screen" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bird: simply splash screen" />
+    <MESSAGE value=":lollipop: FINALLY RESOLVE THE MEMORY LEAK     !!!!!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value=":lollipop: FINALLY RESOLVE THE MEMORY LEAK     !!!!!!!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1457,21 +1511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#55#0" expanded="false" />
-            <element signature="e#182#790#0" expanded="false" />
-            <element signature="e#808#842#0" expanded="false" />
-            <element signature="e#868#935#0" expanded="false" />
-            <element signature="e#1110#1495#0" expanded="false" />
-            <element signature="e#1513#1602#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Friend.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1567,20 +1606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-          <folding>
-            <element signature="e#88#301#0" expanded="false" />
-            <element signature="e#325#518#0" expanded="false" />
-            <element signature="e#547#583#0" expanded="false" />
-            <element signature="e#611#1141#0" expanded="false" />
-            <element signature="e#1284#1536#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassManager/ImageManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -1599,11 +1624,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="35" lean-forward="false" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <element signature="e#337#530#0" expanded="false" />
+            <element signature="e#559#595#0" expanded="false" />
+            <element signature="e#623#1153#0" expanded="false" />
+            <element signature="e#1296#1548#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="68" column="41" lean-forward="true" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#257#302#0" expanded="false" />
+            <element signature="e#716#1140#0" expanded="false" />
+            <element signature="e#1160#1267#0" expanded="false" />
+            <element signature="e#1864#2082#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+          <folding>
+            <element signature="n#Canvas#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#setOffset#0;n#Canvas#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#startSelection#0;n#Canvas#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#drawSelection#0;n#Canvas#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#clearSelection#0;n#Canvas#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Grid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="32" column="35" lean-forward="true" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+          <folding>
+            <element signature="e#1349#1671#0" expanded="false" />
+            <element signature="e#1727#1948#0" expanded="false" />
+            <element signature="e#1975#2052#0" expanded="false" />
+            <element signature="e#2106#2188#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+            <element signature="e#840#1010#0" expanded="false" />
+            <element signature="e#1037#1180#0" expanded="false" />
+            <element signature="e#1522#2460#0" expanded="false" />
+            <element signature="e#2472#2762#0" expanded="false" />
+            <element signature="e#3453#3543#0" expanded="false" />
+            <element signature="e#3822#4263#0" expanded="false" />
+            <element signature="e#4286#5287#0" expanded="false" />
+            <element signature="e#5308#5997#0" expanded="false" />
+            <element signature="e#6022#6615#0" expanded="false" />
+            <element signature="e#7144#7402#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/GameGrid.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+        <state relative-caret-position="126">
+          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
           <folding>
+            <element signature="e#256#516#0" expanded="false" />
+            <element signature="e#543#597#0" expanded="false" />
             <element signature="e#611#1591#0" expanded="false" />
             <element signature="e#1630#1754#0" expanded="false" />
             <element signature="e#1773#1817#0" expanded="false" />
@@ -1624,8 +1733,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/Judge.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="514">
+          <caret line="78" column="39" lean-forward="true" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
           <folding>
             <element signature="e#216#522#0" expanded="false" />
             <element signature="e#2550#3912#0" expanded="false" />
@@ -1641,94 +1750,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Grid.js">
+    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+        <state relative-caret-position="252">
+          <caret line="57" column="12" lean-forward="false" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
           <folding>
-            <element signature="e#1349#1671#0" expanded="false" />
-            <element signature="e#1727#1948#0" expanded="false" />
-            <element signature="e#1975#2052#0" expanded="false" />
-            <element signature="e#2106#2188#0" expanded="false" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="210">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="84">
+          <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#488#814#0" expanded="false" />
             <element signature="e#859#898#0" expanded="false" />
-            <element signature="e#1932#2225#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#257#302#0" expanded="false" />
-            <element signature="e#716#1140#0" expanded="false" />
-            <element signature="e#1160#1267#0" expanded="false" />
-            <element signature="e#1884#2102#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-            <element signature="e#471#624#0" expanded="false" />
-            <element signature="e#643#801#0" expanded="false" />
-            <element signature="e#838#1008#0" expanded="false" />
-            <element signature="e#1035#1178#0" expanded="false" />
-            <element signature="e#1192#1504#0" expanded="false" />
-            <element signature="e#1520#2458#0" expanded="false" />
-            <element signature="e#2470#2760#0" expanded="false" />
-            <element signature="e#2772#3436#0" expanded="false" />
-            <element signature="e#3451#3541#0" expanded="false" />
-            <element signature="e#3556#6623#0" expanded="false" />
-            <element signature="e#3820#4261#0" expanded="false" />
-            <element signature="e#4286#5287#0" expanded="false" />
-            <element signature="e#5310#5999#0" expanded="false" />
-            <element signature="e#6026#6619#0" expanded="false" />
-            <element signature="e#6644#6902#0" expanded="false" />
-            <element signature="e#6923#7049#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="60" column="1" lean-forward="true" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#1964#2257#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -9,16 +9,17 @@ class Frame extends Component {
         super(props)
     }
     componentDidMount(){
-        let game = {status: "profile"}
+        let game = {status: "profile",animation:true}
         setInterval(()=>{
             if(game.status === "profile"){
+                game.animation = true
 	            enter(game)
                 game.status = ""
             }else if(game.status === "running"){
 	            init(game)
                 game.status = ""
             }else if(game.status === "edit"){
-	            editMap(game)
+	            editMap(game,80,40)
                 game.status = ""
             }
         },200)
