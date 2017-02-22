@@ -30,6 +30,7 @@ export default class Grid{
 		this.len = this.gridBlock * this.step
 	}
 	init(){
+		this.c.textBaseline = "top"
 		this.c.fillStyle = "#000"
 		this.c.fillRect(0,0,this.width,this.height)
 	}

@@ -2,9 +2,9 @@ import Judge from './scripts/judge'
 
 import Map from './scripts/ClassGrid/Map'
 import Canvas from './scripts/ClassGrid/Canvas'
-import Grid from './scripts/ClassGrid/Grid'
 import GameGrid from './scripts/ClassGrid/GameGrid'
 import EditorGrid from './scripts/ClassGrid/EditorGrid'
+import ProfileGrid from './scripts/ClassGrid/ProfileGrid'
 
 import Player from './scripts/ClassTank/Player'
 import EnemyBase from './scripts/ClassTank/EnemyBase'
@@ -21,11 +21,12 @@ import FireManager from './scripts/ClassFire/FireManager'
  */
 
 export function enter() {
-	let grid = new Grid(800,400)
-
+	let grid = new ProfileGrid(800,400)
+	grid.init()
+	grid.drawSplashScreen()
 }
 
-export default function init() {
+export function init() {
 
 	//get map source
 	let grid = new GameGrid(800,400)

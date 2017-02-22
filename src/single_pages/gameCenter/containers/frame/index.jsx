@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import game, { editMap } from '../game'
+import { init, editMap, enter } from '../game'
 
 import './main.less'
 
@@ -10,7 +10,8 @@ class Frame extends Component {
     }
     componentDidMount(){
         // window.onload = editMap(80,40)
-        window.onload = game()
+        // window.onload = init()
+        window.onload = enter()
     }
     render(){
         return (

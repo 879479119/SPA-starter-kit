@@ -5,3 +5,7 @@ export function merge(self, init) {
 	}
 	return 1;
 }
+
+export function getPath2D(char) {
+	let result = ""
+}

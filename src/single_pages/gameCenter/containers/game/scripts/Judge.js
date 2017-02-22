@@ -3,8 +3,6 @@
  */
 
 import Enemy from './ClassTank/Enemy'
-import EnemyConreoller from './ClassTank/EnemyController'
-import EnemyBase from './ClassTank/EnemyBase'
 
 export default class Judge{
 	constructor(grid, map, player, fireController, enemyBases, enemyController){

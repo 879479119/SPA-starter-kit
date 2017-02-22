@@ -1,5 +1,3 @@
-import ImageManager from '../ClassManager/ImageManager'
-import EnemyBase from '../ClassTank/EnemyBase'
 import Grid from './Grid'
 
 export default class Map extends Grid{
