@@ -20,13 +20,13 @@ import FireManager from './scripts/ClassFire/FireManager'
  *  4.powerful items
  */
 
-export function enter() {
-	let grid = new ProfileGrid(800,400)
+export function enter(game) {
+	let grid = new ProfileGrid(800,400,game)
 	grid.init()
 	grid.drawSplashScreen()
 }
 
-export function init() {
+export function init(game) {
 
 	//get map source
 	let grid = new GameGrid(800,400)
@@ -35,7 +35,7 @@ export function init() {
 	const mapSourceList = Map.getMapList(),
 		{ startPosition: [{ x, y }], enemies} = mapSourceList[0]
 
-	let player = new Player(x,y)
+	let player = new Player(x,y,game)
 	let enemyBases = enemies.map(item => new EnemyBase(item))
 	let fireController = new FireManager()
 	let enemyController = new EnemyController()
@@ -50,17 +50,17 @@ export function init() {
 
 	//start moving frame by frame
 	let frame = new Judge(grid, map, player, fireController, enemyBases, enemyController)
-	let i = 1
+
 	let keyFrame = () => {
 		grid.init(map)
 		frame.go()
-		requestAnimationFrame(keyFrame)
-		if(i ++ > 1000) cancelAnimationFrame(animation)
+		animation = requestAnimationFrame(keyFrame)
+		if(game.status === "running") cancelAnimationFrame(animation)
 	}
 	let animation = window.requestAnimationFrame(keyFrame)
 }
 
-export function editMap(width, height) {
+export function editMap(game, width, height) {
 	//get map source
 	let grid = new EditorGrid(800,400)
 	let map = new Map(width, height)

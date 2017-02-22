@@ -9,6 +9,7 @@ import { init, editMap } from '../../index'
 export default class ProfileGrid extends Grid{
 	constructor(...props){
 		super(...props)
+		this.game = props[2]
 	}
 	init(){
 		super.init()
@@ -60,12 +61,12 @@ export default class ProfileGrid extends Grid{
 			if(x > 300 && x < 500 && y > 240 && y < 280){
 				this.c.restore()
 				this.ele.removeEventListener("click",callback)
-				init()
+				this.game.status = "running"
 			}
 			if(x > 260 && x < 540 && y > 300 && y < 360){				this._backClip()
 				this.c.restore()
 				this.ele.removeEventListener("click",callback)
-				editMap()
+				this.game.status = "edit"
 			}
 		}
 

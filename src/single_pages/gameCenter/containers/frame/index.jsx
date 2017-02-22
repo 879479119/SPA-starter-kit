@@ -9,9 +9,19 @@ class Frame extends Component {
         super(props)
     }
     componentDidMount(){
-        // window.onload = editMap(80,40)
-        // window.onload = init()
-        window.onload = enter()
+        let game = {status: "profile"}
+        setInterval(()=>{
+            if(game.status === "profile"){
+	            enter(game)
+                game.status = ""
+            }else if(game.status === "running"){
+	            init(game)
+                game.status = ""
+            }else if(game.status === "edit"){
+	            editMap(game)
+                game.status = ""
+            }
+        },200)
     }
     render(){
         return (

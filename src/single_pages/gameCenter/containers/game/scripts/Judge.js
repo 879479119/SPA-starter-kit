@@ -19,9 +19,6 @@ export default class Judge{
 		//shown enemies
 		this._enemyController = enemyController || {}
 	}
-	init(){
-
-	}
 	//the most important part of this game
 	go(){
 		/**
@@ -206,8 +203,6 @@ export default class Judge{
 					flag = true
 				}
 			}
-
-			window.ll = enemies.length
 
 			//check enemies
 			for(let i = 0;i < enemies.length;i ++) {

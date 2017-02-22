@@ -1,6 +1,7 @@
 import Tank from './Tank'
 import PLayerFire from '../ClassFire/PlayerFire'
 import { merge } from '../ClassUtil/Util'
+import { enter } from '../../index'
 
 /**
  * User tank types:
@@ -24,7 +25,8 @@ export default class Player extends Tank{
 			now_fire: false,
 			fire_time: 0,
 			key_buffer: [],
-			last_key: ''
+			last_key: '',
+			game: props[2]
 		}
 		merge(this, initAttr)
 	}
@@ -36,7 +38,17 @@ export default class Player extends Tank{
 		let that = this
 		const listen = window.document.addEventListener
 		//once player press down a button,we should
-		listen('keydown',function (e) {
+		listen('keydown', listenKeyDown)
+		listen('keyup', listenKeyUp)
+
+		function listenKeyDown (e) {
+			if(e.keyCode === 27){
+
+				//remove the listeners to make sure that the garbage collection collect it
+				that.game.status = "profile"
+				window.document.removeEventListener('keydown', listenKeyDown)
+				window.document.removeEventListener('keyup', listenKeyUp)
+			}
 			switch (e.key){
 				case 'w':
 				case 's':
@@ -58,8 +70,9 @@ export default class Player extends Tank{
 					}
 					break
 			}
-		})
-		listen('keyup',function (e) {
+		}
+
+		function listenKeyUp (e) {
 			if(that.key_buffer.length <= 1){
 				that.key_buffer.length = 0
 				that.key_down = false
@@ -70,7 +83,7 @@ export default class Player extends Tank{
 				}
 			}
 			that.last_key = ''
-		})
+		}
 	}
 	getAttacked(){
 		super.getAttacked()
