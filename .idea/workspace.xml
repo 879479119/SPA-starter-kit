@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9fdfd2b4-cfd7-4276-a91b-13a6ae03d703" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/frame/index.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Canvas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/EditorGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/Map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassGrid/ProfileGrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Player.js" afterPath="$PROJECT_DIR$/src/single_pages/gameCenter/containers/game/scripts/ClassTank/Player.js" />
     </list>
     <ignored path="WTF.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -896,14 +889,7 @@
       <workItem from="1487594851735" duration="1651000" />
       <workItem from="1487652037588" duration="693000" />
       <workItem from="1487652989874" duration="21521000" />
-      <workItem from="1487730069175" duration="20131000" />
-    </task>
-    <task id="LOCAL-00021" summary="images">
-      <created>1478009713307</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1478009713307</updated>
+      <workItem from="1487730069175" duration="20645000" />
     </task>
     <task id="LOCAL-00022" summary="go back to update">
       <created>1484315775135</created>
@@ -1241,11 +1227,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487748521531</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary=":heartbeat: SINGLE PLAYER MODE COMPLETED !!!!!!">
+      <created>1487753973010</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1487753973010</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="520437000" />
+    <option name="totallyTimeSpent" value="520951000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1313,7 +1306,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tank goes perfectly!!! :full_moon_with_face:" />
     <MESSAGE value="fire can destroy :angel::angel::angel:" />
     <MESSAGE value="almost ....  without any enemy :muscle:" />
     <MESSAGE value="enemy birth animation :muscle:" />
@@ -1338,7 +1330,8 @@
     <MESSAGE value=":art: build completed" />
     <MESSAGE value=":bird: simply splash screen" />
     <MESSAGE value=":lollipop: FINALLY RESOLVE THE MEMORY LEAK     !!!!!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value=":lollipop: FINALLY RESOLVE THE MEMORY LEAK     !!!!!!!!!" />
+    <MESSAGE value=":heartbeat: SINGLE PLAYER MODE COMPLETED !!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value=":heartbeat: SINGLE PLAYER MODE COMPLETED !!!!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
