@@ -15,6 +15,7 @@
     "es6-symbol": "^3.1.0",
     "express": "~4.13.1",
     "history": "^1.17.0",
+    "jade": "^1.11.0",
     "morgan": "~1.6.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -42,6 +43,6 @@
     "redux-logger": "^2.7.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.11.0"
+    "webpack-dev-server": "^1.14.0"
   }
 }
