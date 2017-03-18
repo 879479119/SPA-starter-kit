@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'output')));
+app.use(express.static(path.join(__dirname, 'static/stream')));
 
 app.use('/video', videoRouter);
 app.use('/music', musicRouter);
