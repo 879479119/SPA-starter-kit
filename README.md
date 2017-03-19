@@ -27,21 +27,10 @@ There are several pages provides
 
 ```
  dir
-    │  .gitignore                                  #git repository ignored files
-    │  app.js                                      #back-end entry file
-    │  config.js                                   #web router configure
-    │  LICENSE                                     #MIT license
-    │  package.json                                #standard npm file
-    │  webpack.config.js                           #webpack entry for both build and production
     ├─bin
-    │      www.sh                                  #npm start
+    │  www.sh                                  #npm start
     ├─output
     │  ├─external                                  #external files manually add
-    │  │      bootstrap.min.css
-    │  │      jquery.min.js
-    │  │      react-dom.min.js
-    │  │      react.min.js
-    │  │      redux.min.js
     │  ├─fonts
     │  │      glyphicons-halflings-regular.woff
     │  └─js                                        #built bundle files
@@ -51,24 +40,11 @@ There are several pages provides
     │      │  index.jsx
     │      │  main.less
     │      ├─dataCenter                            #route "/data" folder
-    │      │  └─index.jsx
-    |      |     ...
     │      ├─musicCenter                           #route "/music" folder
-    │      │  └─index.jsx
-    |      |     ...
     │      └─videoCenter                 #configure of Redux store  
     │          ├─actions
     │          ├─components                        #components that can be re used
-    │          │  ├─fun-cell
-    │          │  ├─pagination
-    │          │  └─rank-list
     │          ├─containers                        #container of the page
-    │          │  ├─field
-    │          │  ├─frame                          #application framework
-    │          │  │  └─sub-lists
-    │          │  └─main                           #index container
-    │          │      ├─actions
-    │          │      └─reducers
     │          ├─reducers
     │          └─utils                              #common tools
     │              └─fetch
@@ -77,6 +53,5 @@ There are several pages provides
     └─views                                         #diffirent template for status
             error.jade
             index.jade
-            layout.jade
 ```
 **In fact there is a gameCenter in built** Make with :heart:
