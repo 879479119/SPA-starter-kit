@@ -1,12 +1,28 @@
 # spa-starter-kit
 A set of server and spas built with redux + react-router + webpack + es6 + express
----
-## Preview:
 
-![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220523.png)
-![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220449.png)
-![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220417.png)
-![as](http://7xsm7w.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20161101220505.png)
+#### Three Single-page-applications
+
+There are several pages provides 
+
++ **static pages**
++ some pages **using proxy data**
++ a **Danmu player** (offline now)
++ a **Music player** with dynamic lyric
+
+
+**Steps**：
+
++ `git clone git@github.com:879479119/SPA-starter-kit.git`
+
++ `npm install`
+
++ run `npm start` to start express server
+
++ run `npm run webpack` in another window
+
+### Preview:
+![overview](http://7xsm7w.com1.z0.glb.clouddn.com/SPA-tool.png)
 
 
 ```
@@ -29,14 +45,7 @@ A set of server and spas built with redux + react-router + webpack + es6 + expre
     │  ├─fonts
     │  │      glyphicons-halflings-regular.woff
     │  └─js                                        #built bundle files
-    │          data.bundle.js
-    │          music.bundle.js
     ├─routes                                       #back end main route files 
-    │      data.js
-    │      index.js
-    │      music.js
-    │      route.json
-    │      video.js
     ├─src                                          #front end source code
     │  └─single_pages                              #single page applications
     │      │  index.jsx
@@ -47,55 +56,22 @@ A set of server and spas built with redux + react-router + webpack + es6 + expre
     │      ├─musicCenter                           #route "/music" folder
     │      │  └─index.jsx
     |      |     ...
-    │      └─videoCenter                           #route "/video" folder
-    │          │  config.jsx                      
-    │          │  index.jsx                        #application entry
-    │          │  main.less
-    │          │  store.jsx                        #configure of Redux store  
+    │      └─videoCenter                 #configure of Redux store  
     │          ├─actions
-    │          │      common.jsx
-    │          │      index.jsx
-    │          │      pagination.jsx
     │          ├─components                        #components that can be re used
-    │          │  │  show.jsx
     │          │  ├─fun-cell
-    │          │  │      fun-cell.jsx
-    │          │  │      fun-cell.less
     │          │  ├─pagination
-    │          │  │      index.jsx
     │          │  └─rank-list
-    │          │          index.jsx
-    │          │          main.less
     │          ├─containers                        #container of the page
     │          │  ├─field
-    │          │  │      index.jsx
     │          │  ├─frame                          #application framework
-    │          │  │  │  index.jsx
-    │          │  │  │  main.less
     │          │  │  └─sub-lists
-    │          │  │          main.jsx
     │          │  └─main                           #index container
-    │          │      │  animation.jsx
-    │          │      │  fun.jsx
-    │          │      │  index.jsx
-    │          │      │  main.less
-    │          │      │  rank.jsx
     │          │      ├─actions
-    │          │      │      fun.jsx
-    │          │      │      index.jsx
-    │          │      │      rank.jsx
     │          │      └─reducers
-    │          │              fun.jsx
-    │          │              rank.jsx
     │          ├─reducers
-    │          │      common.jsx
-    │          │      index.jsx
-    │          │      pagination.jsx
     │          └─utils                              #common tools
-    │              │  number.jsx
     │              └─fetch
-    │                    action.jsx
-    │                    index.jsx
     ├─static                                        #static source files for back end
     │      fun_images.json
     └─views                                         #diffirent template for status
@@ -104,4 +80,3 @@ A set of server and spas built with redux + react-router + webpack + es6 + expre
             layout.jade
 ```
 **In fact there is a gameCenter in built** Make with :heart:
-have been optimized with quaternary tree ^_^ 
