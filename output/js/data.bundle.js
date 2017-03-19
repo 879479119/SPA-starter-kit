@@ -15354,15 +15354,15 @@
 	      markup = this.performInitialMount(renderedElement, hostParent, hostContainerInfo, transaction, context);
 	    }
 
-	    if (inst.componentDidMount) {
+	    if (Frame.componentDidMount) {
 	      if (process.env.NODE_ENV !== 'production') {
 	        transaction.getReactMountReady().enqueue(function () {
 	          measureLifeCyclePerf(function () {
-	            return inst.componentDidMount();
+	            return Frame.componentDidMount();
 	          }, _this._debugID, 'componentDidMount');
 	        });
 	      } else {
-	        transaction.getReactMountReady().enqueue(inst.componentDidMount, inst);
+	        transaction.getReactMountReady().enqueue(Frame.componentDidMount, inst);
 	      }
 	    }
 
@@ -25016,7 +25016,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(204)();
-	exports.push([module.id, "body {\n  background: #fcfcfc;\n}\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: '微软雅黑', \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n}\np,\nem,\nb,\ns,\nspan,\ndiv {\n  font-size: 14px;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  color: rgba(255, 255, 255, 0.6);\n}\nlabel {\n  color: #fff;\n}\ntd {\n  height: 19px;\n  display: inline-block;\n  margin-bottom: 3px;\n  overflow: hidden;\n}\nbutton {\n  cursor: pointer;\n}\n.absolute {\n  position: absolute;\n}\n.video {\n  position: relative;\n  width: 620px;\n  height: 349px;\n}\n.comment-cell {\n  position: absolute;\n  font-size: 15px;\n  padding: 2px;\n  color: #fff;\n  display: inline-block;\n  left: 619px;\n  white-space: nowrap;\n}\n#show-layout {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 620px;\n  height: 320px;\n  overflow: hidden;\n}\n.box-b h3 {\n  padding-left: 20px;\n  margin: 20px;\n  border-left: solid 3px rgba(255, 255, 255, 0.6);\n}\n#comment-form {\n  width: 620px;\n  margin: 20px;\n}\n.comment-bar {\n  width: 520px;\n}\n#comment {\n  border: solid 1px rgba(0, 0, 0, 0.6);\n}\n#submit {\n  color: rgba(0, 0, 0, 0.6);\n}\n.player {\n  position: relative;\n}\n", ""]);
+	exports.push([module.id, "body {\n  background: #fcfcfc;\n}\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: '微软雅黑', \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n}\np,\nem,\nb,\ns,\nspan,\ndiv {\n  font-size: 14px;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  color: rgba(255, 255, 255, 0.6);\n}\nlabel {\n  color: #fff;\n}\ntd {\n  height: 19px;\n  display: inline-block;\n  margin-bottom: 3px;\n  overflow: hidden;\n}\nbutton {\n  cursor: pointer;\n}\n.flex-box {\n  position: relative;\n  width: 600px;\n  margin: 50px auto 0 auto;\n}\n.flex-box h3 {\n  text-align: center;\n  color: #3c3c3c;\n}\n.absolute {\n  position: absolute;\n}\n.video {\n  position: relative;\n  width: 620px;\n  height: 349px;\n}\n.comment-cell {\n  position: absolute;\n  font-size: 15px;\n  padding: 2px;\n  color: #fff;\n  display: inline-block;\n  left: 619px;\n  white-space: nowrap;\n}\n#show-layout {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 620px;\n  height: 320px;\n  overflow: hidden;\n}\n.box-b h3 {\n  padding-left: 20px;\n  margin: 20px;\n  border-left: solid 3px rgba(255, 255, 255, 0.6);\n}\n#comment-form {\n  width: 620px;\n  margin: 20px;\n}\n.comment-bar {\n  width: 520px;\n}\n#comment {\n  border: solid 1px rgba(0, 0, 0, 0.6);\n}\n#submit {\n  color: rgba(0, 0, 0, 0.6);\n}\n.player {\n  position: relative;\n}\n", ""]);
 
 /***/ }
 /******/ ]);
