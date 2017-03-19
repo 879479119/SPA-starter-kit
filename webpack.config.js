@@ -39,16 +39,19 @@ let DevConfig = {
 			'process.env.NODE_ENV': '"development"',
 			'process.env.SOURCE_PORT': globalConfig.dev.sourcePort
 		}),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor'
+		})
 	],
 };
+
+entryObj.vendor = ["react"]
 
 //noinspection JSUnresolvedFunction
 let config = {
 	// 页面入口文件配置
-	entry : (function(){
-		return entryObj
-	})(),
+	entry : entryObj,
 	// 入口文件输出配置
 	output : {
 		path : __dirname + '/output/js/',
@@ -73,7 +76,7 @@ let config = {
 				loader: 'style!css!less'
 			},
 			{ test: /\.(png|jpg|gif)$/,
-				loader: 'url?limit=5000000'
+				loader: 'url?limit=5000'
 			}
 		]
 	},
@@ -89,7 +92,18 @@ let config = {
 	plugins : [
 		new webpack.DefinePlugin({
 			'process.env.SOURCE_PORT': globalConfig.dev.sourcePort
-		})
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor'
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			output: {
+				comments: false,
+			},
+			compress: {
+				warnings: false
+			}
+		}),
 	],
 };
 
