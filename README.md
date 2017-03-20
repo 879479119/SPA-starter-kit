@@ -21,9 +21,16 @@ There are several pages provides
 
 + run `npm run webpack` in another window
 
+***Attention**: sometimes the dev-server does't build bundles,and you can manually start `webpack --wacth`*
+
 ### Preview:
 ![overview](http://7xsm7w.com1.z0.glb.clouddn.com/SPA-tool.png)
 
+project running on port `3000`, and there is **No Homepage** page
++ Bilibili-data-page: [/video](http://127.0.0.1:3000/video)
++ Danmu-show-page: [/data](http://127.0.0.1:3000/data)
++ Audio-player-page: [/music](http://127.0.0.1:3000/music)
++ Tank-game-page: [/game](http://127.0.0.1:3000/game)
 
 ```
  dir
@@ -37,11 +44,6 @@ There are several pages provides
     │      www.sh                                  #npm start
     ├─output
     │  ├─external                                  #external files manually add
-    │  │      bootstrap.min.css
-    │  │      jquery.min.js
-    │  │      react-dom.min.js
-    │  │      react.min.js
-    │  │      redux.min.js
     │  ├─fonts
     │  │      glyphicons-halflings-regular.woff
     │  └─js                                        #built bundle files
@@ -52,10 +54,8 @@ There are several pages provides
     │      │  main.less
     │      ├─dataCenter                            #route "/data" folder
     │      │  └─index.jsx
-    |      |     ...
     │      ├─musicCenter                           #route "/music" folder
     │      │  └─index.jsx
-    |      |     ...
     │      └─videoCenter                 #configure of Redux store  
     │          ├─actions
     │          ├─components                        #components that can be re used
@@ -64,11 +64,8 @@ There are several pages provides
     │          │  └─rank-list
     │          ├─containers                        #container of the page
     │          │  ├─field
-    │          │  ├─frame                          #application framework
-    │          │  │  └─sub-lists
+    │          │  ├─frame
     │          │  └─main                           #index container
-    │          │      ├─actions
-    │          │      └─reducers
     │          ├─reducers
     │          └─utils                              #common tools
     │              └─fetch

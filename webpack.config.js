@@ -1,5 +1,6 @@
 let webpack = require('webpack');
 let fs = require('fs');
+let autoprefixer = require('autoprefixer');
 let globalConfig = require('./config');
 let exec = require('child_process').exec, child;
 
@@ -8,20 +9,20 @@ let __DEV__ = process.env.npm_lifecycle_event === "webpack";
 let pages = JSON.parse(fs.readFileSync('routes/route.json', 'utf-8'));
 let entryObj = {};
 
-pages.forEach(function(item,index){
+pages.forEach(function (item, index) {
 	entryObj[item.name] = __DEV__ ? [
 			item.src,
 			'webpack/hot/dev-server',
-			'webpack-dev-server/client?http://0.0.0.0:'+globalConfig.dev.sourcePort
+			'webpack-dev-server/client?http://0.0.0.0:' + globalConfig.dev.sourcePort
 		] : item.src;
 })
 
 //noinspection JSUnresolvedFunction
 let DevConfig = {
-	output : {
-		publicPath: "http://0.0.0.1:"+globalConfig.dev.sourcePort+"/output/js/",
-		path : __dirname + '/output/js',
-		filename : '[name].bundle.js'
+	output: {
+		publicPath: "http://0.0.0.1:" + globalConfig.dev.sourcePort + "/output/js/",
+		path: __dirname + '/output/js',
+		filename: '[name].bundle.js'
 	},
 	devServer: {
 		inline: true,
@@ -34,7 +35,7 @@ let DevConfig = {
 		outputPublicPath: 'output/'
 	},
 	// 插件项
-	plugins : [
+	plugins: [
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': '"development"',
 			'process.env.SOURCE_PORT': globalConfig.dev.sourcePort
@@ -51,31 +52,36 @@ entryObj.vendor = ["react"]
 //noinspection JSUnresolvedFunction
 let config = {
 	// 页面入口文件配置
-	entry : entryObj,
+	entry: entryObj,
 	// 入口文件输出配置
-	output : {
-		path : __dirname + '/output/js/',
-		filename : '[name].bundle.js',
+	output: {
+		path: __dirname + '/output/js/',
+		filename: '[name].bundle.js',
 	},
+	postcss:[autoprefixer({browsers:['last 2 versions']})],
 	module: {
 		// 加载器配置
 		loaders: [
-			{	test: /\.(jsx|js)$/,
+			{
+				test: /\.(jsx|js)$/,
 				exclude: /node_modules/,
 				loader: 'babel',
 				//很奇怪，不需要进行query配置或者是.babelrc文件，用了会报错
 				query: {
-					presets: ["react",'es2015','stage-0']
+					presets: ["react", 'es2015', 'stage-0']
 				}
 			},
-			{	test: /\.css$/,
+			{
+				test: /\.css$/,
 				exclude: /node_modules/,
 				loader: 'style!css'
 			},
-			{ test: /\.less$/,
-				loader: 'style!css!less'
+			{
+				test: /\.less$/,
+				loader: 'style!css!postcss!less'
 			},
-			{ test: /\.(png|jpg|gif)$/,
+			{
+				test: /\.(png|jpg|gif)$/,
 				loader: 'url?limit=5000'
 			}
 		]
@@ -89,7 +95,7 @@ let config = {
 		jquery: "jquery"
 	},
 
-	plugins : [
+	plugins: [
 		new webpack.DefinePlugin({
 			'process.env.SOURCE_PORT': globalConfig.dev.sourcePort
 		}),
@@ -108,9 +114,9 @@ let config = {
 };
 
 //进入开发者模式
-if(__DEV__){
+if (__DEV__) {
 	let prop;
-	for(prop in DevConfig){
+	for (prop in DevConfig) {
 		config[prop] = DevConfig[prop]
 	}
 	//启动后台nodejs服务器
