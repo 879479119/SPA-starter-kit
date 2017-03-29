@@ -20,8 +20,8 @@ pages.forEach(function (item, index) {
 //noinspection JSUnresolvedFunction
 let DevConfig = {
 	output: {
-		publicPath: "http://0.0.0.1:" + globalConfig.dev.sourcePort + "/output/js/",
-		path: __dirname + '/output/js',
+		publicPath: "http://0.0.0.1:" + globalConfig.dev.sourcePort + "/output/",
+		path: __dirname + '/output',
 		filename: '[name].bundle.js'
 	},
 	devServer: {
@@ -55,7 +55,7 @@ let config = {
 	entry: entryObj,
 	// 入口文件输出配置
 	output: {
-		path: __dirname + '/output/js/',
+		path: __dirname + '/output/',
 		filename: '[name].bundle.js',
 	},
 	postcss:[autoprefixer({browsers:['last 2 versions']})],

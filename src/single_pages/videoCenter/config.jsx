@@ -7,8 +7,23 @@ import Main from './containers/main'
 
 // import MainHome from './containers/main/home'
 import Rank from './containers/main/rank'
-import Fun from './containers/main/fun'
+// import Fun from './containers/main/fun'
 import Animation from './containers/main/animation'
+
+class RouterLoader {
+	static loadMain(location, callback){
+		require.ensure([], require => {
+			callback(null, require('./containers/main').default)
+			console.log("inner");
+		}, 'main')
+	}
+	static loadFun(location, callback){
+		require.ensure([], require => {
+			console.log(location)
+			callback(null, require('./containers/main/fun').default)
+		}, 'fun')
+	}
+}
 
 //关于react-router路由的配置
 export default class RouterConfig extends Component {
@@ -18,15 +33,11 @@ export default class RouterConfig extends Component {
 				<Route path="/" component={Frame}>
 					<IndexRoute component={Main}/>
 					<Route path="/main">
-						<IndexRoute components={Main} />
-						<Route path={"ranks"} components={Rank} />
-						<Route path={"fun"} components={Fun} />
+						<IndexRoute getComponent={RouterLoader.loadMain} />
+						<Route path={"ranks"} component={Rank} />
+						<Route path={"fun"} getComponent={RouterLoader.loadFun} />
 						<Route path={"animation"} components={Animation} />
 					</Route>
-					{/*<Route path="/live" components={Show}/>*/}
-					{/*<Route path="/field" components={Show}/>*/}
-					{/*<Route path="/watch" components={Show}/>*/}
-					{/*<Route path="/personal" components={Show}/>*/}
 				</Route>
 			</Router>
 		)
