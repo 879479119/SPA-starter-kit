@@ -61,4 +61,8 @@ project running on port `3000`, and there is **No Homepage** page
             error.jade
             index.jade
 ```
-**In fact there is a gameCenter in built** Make with :heart:
+
+## Sample Site
+These links lead to **(<ゝω·)Kira☆~**
+
+[Center](http://www.jian-gamestudio.cn/video) | [Danmu](http://www.jian-gamestudio.cn/data) | [Music](http://www.jian-gamestudio.cn/music) | [Game](http://www.jian-gamestudio.cn/game)

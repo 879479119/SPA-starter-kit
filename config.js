@@ -1,6 +1,6 @@
 module.exports = {
   dev:{
     port: 3000,
-    sourcePort: 8888
+    sourcePort: 3000
   }
 }
