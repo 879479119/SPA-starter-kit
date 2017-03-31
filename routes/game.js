@@ -6,7 +6,7 @@ let express = require('express');
 let router = express.Router();
 
 router.get('/', function(req, res) {
-	res.render('index', { title: 'GameCenter', sourcePort: 8888, page: "game"});
+	res.render('index', { title: 'RockSAMA - (<ゝω·)Kira☆~', sourcePort: 8888, page: "game"});
 });
 
 module.exports = router;

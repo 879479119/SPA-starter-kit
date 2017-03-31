@@ -34,7 +34,7 @@ class Frame extends Component {
                         <article className="flex-box box-b">
                             <h3>弹幕演示视频:</h3>
                             <div id="player" className="player">
-                                <video src="/video.mp4" className="video" id="video" controls>CANNOT LOAD</video>
+                                <video src="/stream/video.mp4" className="video" id="video" controls>CANNOT LOAD</video>
                                 <div id="show-layout">
                                 </div>
                             </div>

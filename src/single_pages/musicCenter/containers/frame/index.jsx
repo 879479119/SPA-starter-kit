@@ -35,7 +35,7 @@ class Frame extends Component {
                             <pre id="show" className="text-center pre-scrollable">&nbsp;</pre>
                         </div>
                     </div>
-                    <audio src="/music.mp3" id="audio">CANNOT PLAY</audio>
+                    <audio src="/stream/music.mp3" id="audio">CANNOT PLAY</audio>
                     <div className="row">
                         <div className="col-lg-6 col-lg-offset-3">
                             <div className="col-lg-2 text-right">
@@ -47,8 +47,8 @@ class Frame extends Component {
                             </div>
                             <div className="col-lg-8">
                                 <div className="progress" id="drop">
-                                    <div className="progress-bar progress-bar-success progress-bar-striped" style={{width:0}} id="pb"></div>
-                                    <div id="drag" className=" text-center dragged-div"></div>
+                                    <div className="progress-bar progress-bar-success progress-bar-striped" style={{width: 0}} id="pb"/>
+                                    <div id="drag" className=" text-center dragged-div"/>
                                 </div>
                             </div>
                             <div className="col-lg-2 text-left">

@@ -33,7 +33,7 @@ export default function () {
 			$("#pb").css({"transition":"none"});
 
 			$.ajax({
-				url:"/lrc.txt",
+				url:"/stream/lrc.txt",
 				async:true,
 				success:function(e){
 
