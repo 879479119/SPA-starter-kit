@@ -1,27 +1,28 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 //noinspection JSUnresolvedVariable
-import { Router, Route, Link, hashHistory, IndexRoute, Redirect,IndexLink} from 'react-router';
+import {hashHistory, IndexRoute, Route, Router} from "react-router";
 
-import Frame from './containers/frame'
-import Main from './containers/main'
-
-// import MainHome from './containers/main/home'
-import Rank from './containers/main/rank'
-// import Fun from './containers/main/fun'
-import Animation from './containers/main/animation'
+import Frame from "./containers/frame";
+import Main from "./containers/main";
 
 class RouterLoader {
-	static loadMain(location, callback){
-		require.ensure([], require => {
-			callback(null, require('./containers/main').default)
-			console.log("inner");
-		}, 'main')
-	}
 	static loadFun(location, callback){
 		require.ensure([], require => {
 			console.log(location)
 			callback(null, require('./containers/main/fun').default)
 		}, 'fun')
+	}
+	static loadRank(location, callback){
+		require.ensure([], require => {
+			console.log(location)
+			callback(null, require('./containers/main/rank').default)
+		}, 'rank')
+	}
+	static loadAnim(location, callback){
+		require.ensure([], require => {
+			console.log(location)
+			callback(null, require('./containers/main/animation').default)
+		}, 'anim')
 	}
 }
 
@@ -33,10 +34,10 @@ export default class RouterConfig extends Component {
 				<Route path="/" component={Frame}>
 					<IndexRoute component={Main}/>
 					<Route path="/main">
-						<IndexRoute getComponent={RouterLoader.loadMain} />
-						<Route path={"ranks"} component={Rank} />
+						<IndexRoute component={Main} />
+						<Route path={"ranks"} getComponent={RouterLoader.loadRank} />
 						<Route path={"fun"} getComponent={RouterLoader.loadFun} />
-						<Route path={"animation"} components={Animation} />
+						<Route path={"animation"} getComponent={RouterLoader.loadAnim} />
 					</Route>
 				</Route>
 			</Router>
